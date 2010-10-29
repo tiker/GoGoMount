@@ -39,6 +39,8 @@ function GoGo_OnEvent(event)
 		if (GoGo_Variables.Player.Class == "DRUID") then
 			GoGo_Variables.Druid = {}
 			GoGoFrame:RegisterEvent("PLAYER_REGEN_DISABLED")
+			GoGo_Druid_Panel()
+			GoGo_Panel_UpdateViews("DRUID")
 		elseif (GoGo_Variables.Player.Class == "SHAMAN") then
 			GoGo_Variables.Shaman = {}
 			GoGoFrame:RegisterEvent("PLAYER_REGEN_DISABLED")
@@ -1703,165 +1705,65 @@ function GoGo_Panel_OnLoad(GoGo_Panel)
 --	local GoGo_Panel = CreateFrame("FRAME", nil);
 --	GoGo_Panel:SetScript("OnShow",function() GoGo_Panel_UpdateViews(); end);
 	GoGo_Panel.name = "GoGoMount"
-	GoGo_Panel.okay = function (self) GoGo_Panel_Okay(); end;
+	GoGo_Panel.okay = function (self) GoGo_Panel_Okay("MAIN"); end;
 	GoGo_Panel.default = function (self) GoGo_Settings_Default(); GoGo_Panel_UpdateViews(); end;
 	InterfaceOptions_AddCategory(GoGo_Panel)
 	
 end --function
 
 ---------
-function GoGo_Panel_CurrentZoneFavorites_OnLoad(GoGo_Panel_CurrentZoneFavorites)
----------
-	GoGo_Panel_CurrentZoneFavorites.name = GoGo_Variables.Localize.String.CurrentZoneFavorites
-	GoGo_Panel_CurrentZoneFavorites.parent = "GoGoMount"
-	GoGo_Panel_CurrentZoneFavorites.okay = function (self) GoGo_Panel_Okay(); end;
-	GoGo_Panel_CurrentZoneFavorites.default = function (self) GOGO_COMMANDS["clear"](); GoGo_UpdateFavoritesTabs(); end;  -- use clear command with default button
-	InterfaceOptions_AddCategory(GoGo_Panel_CurrentZoneFavorites)
-end --function
-
----------
-function GoGo_Panel_GlobalFavorites_OnLoad(GoGo_Panel_GlobalFavorites)
----------
-	GoGo_Panel_GlobalFavorites.name = GoGo_Variables.Localize.String.GlobalFavorites
-	GoGo_Panel_GlobalFavorites.parent = "GoGoMount"
-	GoGo_Panel_GlobalFavorites.okay = function (self) GoGo_Panel_Okay(); end;
-	GoGo_Panel_GlobalFavorites.default = function (self) GOGO_COMMANDS["clear"](); GoGo_UpdateFavoritesTabs(); end;  -- use clear command with default button
-	InterfaceOptions_AddCategory(GoGo_Panel_GlobalFavorites)
-end --function
-
---[[
----------
-function GoGo_Panel_GlobalFavorites_Populate()
----------
-
-	
-	if getn(GoGo_Variables.MountList) > 0 then
-		for numMounts = 1, getn(GoGo_Variables.MountList) do
-			GoGo_CurrentMountID = CreateFrame("CheckButton", GoGo_Variables.MountList[numMounts], GoGo_Panel_GlobalFavorites, "OptionsCheckButtonTemplate")
-			GoGo_CurrentMountID:SetPoint("TOPLEFT", numMounts * 16, -16)
-			--GoGo_Panel_MountItem = getglobal(GoGo_Panel_MountItem[GoGo_CurrentMountID])
-			GoGo_CurrentMountIDText:SetText(GoGo_Variables.MountList[numMounts])
-	
-		end --for
-	end --if
-	
-
-
-end --function
-
-]]
----------
 function GoGo_Panel_Options()
 ---------
-	GoGo_Panel_DruidClickForm = CreateFrame("CheckButton", "GoGo_Panel_DruidClickForm", GoGo_Panel, "OptionsCheckButtonTemplate")
-	GoGo_Panel_DruidClickForm:SetPoint("TOPLEFT", 16, -16)
-	GoGo_Panel_DruidClickFormText:SetText(GoGo_Variables.Localize.String.DruidSingleClick)
-
-	GoGo_Panel_DruidFlightForm = CreateFrame("CheckButton", "GoGo_Panel_DruidFlightForm", GoGo_Panel, "OptionsCheckButtonTemplate")
-	GoGo_Panel_DruidFlightForm:SetPoint("TOPLEFT", "GoGo_Panel_DruidClickForm", "BOTTOMLEFT", 0, -4)
-	GoGo_Panel_DruidFlightFormText:SetText(GoGo_Variables.Localize.String.DruidFlightPreference)
-
 	GoGo_Panel_AutoDismount = CreateFrame("CheckButton", "GoGo_Panel_AutoDismount", GoGo_Panel, "OptionsCheckButtonTemplate")
-	GoGo_Panel_AutoDismount:SetPoint("TOPLEFT", "GoGo_Panel_DruidFlightForm", "BOTTOMLEFT", 0, -4)
+	GoGo_Panel_AutoDismount:SetPoint("TOPLEFT", 16, -16)
 	GoGo_Panel_AutoDismountText:SetText(GoGo_Variables.Localize.String.EnableAutoDismount)
-
 
 	GoGo_Panel_GlobalPrefMount = CreateFrame("CheckButton", "GoGo_Panel_GlobalPrefMount", GoGo_Panel, "OptionsCheckButtonTemplate")
 	GoGo_Panel_GlobalPrefMount:SetPoint("TOPLEFT", "GoGo_Panel_AutoDismount", "BOTTOMLEFT", 0, -4)
 	GoGo_Panel_GlobalPrefMountText:SetText("Preferred mount changes apply to global setting")
 
---	GoGo_Panel_PaliUseCrusader = CreateFrame("CheckButton", "GoGo_Panel_PaliUseCrusader", GoGo_Panel, "OptionsCheckButtonTemplate")
---	GoGo_Panel_PaliUseCrusader:SetPoint("TOPLEFT", "GoGo_Panel_GlobalPrefMount", "BOTTOMLEFT", 0, -4)
---	GoGo_Panel_PaliUseCrusaderText:SetText("Paladins:  Auto start Crusader Aura when mounting")
-
 	GoGo_Panel_DisableUpdateNotice = CreateFrame("CheckButton", "GoGo_Panel_DisableUpdateNotice", GoGo_Panel, "OptionsCheckButtonTemplate")
---	GoGo_Panel_DisableUpdateNotice:SetPoint("TOPLEFT", "GoGo_Panel_PaliUseCrusader", "BOTTOMLEFT", 0, -12)
 	GoGo_Panel_DisableUpdateNotice:SetPoint("TOPLEFT", "GoGo_Panel_GlobalPrefMount", "BOTTOMLEFT", 0, -12)
 	GoGo_Panel_DisableUpdateNoticeText:SetText(GoGo_Variables.Localize.String.DisableUpdateNotices)
 
 	GoGo_Panel_DisableMountNotice = CreateFrame("CheckButton", "GoGo_Panel_DisableMountNotice", GoGo_Panel, "OptionsCheckButtonTemplate")
 	GoGo_Panel_DisableMountNotice:SetPoint("TOPLEFT", "GoGo_Panel_DisableUpdateNotice", "BOTTOMLEFT", 0, -4)
 	GoGo_Panel_DisableMountNoticeText:SetText(GoGo_Variables.Localize.String.DisableUnknownMountNotices)
+end --function
 
--- Global favorite scroll frame and buttons
---[[
-	GoGo_Panel_GlobalFavorites_Scroll = CreateFrame("ScrollFrame", "GoGo_Panel_GlobalFavorites_Scroll", GoGo_Panel_GlobalFavorites, "FauxScrollFrameTemplate")
-	GoGo_Panel_GlobalFavorites_Scroll:SetPoint("TOPLEFT", "GoGo_Panel_GlobalFavorites", "TOPLEFT")
-	GoGo_Panel_GlobalFavorites_Scroll:SetScript("OnVerticalScroll",function() FauxScrollFrame_OnVerticalScroll(this, offset, 16, GoGo_Panel_GlobalFavorites_Scroll_Update); end);
-	GoGo_Panel_GlobalFavorites_Scroll:SetScript("OnShow",function() GoGo_Panel_GlobalFavorites_Scroll_Update(); end);
+---------
+function GoGo_Druid_Panel()
+---------
+	GoGo_Druid_Panel = CreateFrame("Frame", nil, UIParent)
+	GoGo_Druid_Panel.name = GoGo_Variables.Localize.String.DruidOptions
+	GoGo_Druid_Panel.parent = "GoGoMount"
+	GoGo_Druid_Panel.okay = function (self) GoGo_Panel_Okay("DRUID"); end;
+	GoGo_Druid_Panel.default = function (self) GoGo_Settings_Default("DRUID"); GoGo_UpdateFavoritesTabs(); end;  -- use clear command with default button
+	InterfaceOptions_AddCategory(GoGo_Druid_Panel)
+
+	GoGo_Druid_Panel_ClickForm = CreateFrame("CheckButton", "GoGo_Panel_DruidClickForm", GoGo_Panel, "OptionsCheckButtonTemplate")
+	GoGo_Druid_Panel_ClickForm:SetPoint("TOPLEFT", 16, -16)
+	GoGo_Druid_Panel_ClickFormText:SetText(GoGo_Variables.Localize.String.DruidSingleClick)
+
+	GoGo_Druid_Panel_FlightForm = CreateFrame("CheckButton", "GoGo_Panel_DruidFlightForm", GoGo_Panel, "OptionsCheckButtonTemplate")
+	GoGo_Druid_Panel_FlightForm:SetPoint("TOPLEFT", "GoGo_Panel_DruidClickForm", "BOTTOMLEFT", 0, -4)
+	GoGo_Druid_Panel_FlightFormText:SetText(GoGo_Variables.Localize.String.DruidFlightPreference)
 	
-	GoGo_Panel_GlobalFavorites_Line1 = CreateFrame("Button", "GoGo_Panel_GlobalFavorites_Line1", GoGo_Panel_GlobalFavorites_Scroll, "GoGo_Favorite_Button")
-	GoGo_Panel_GlobalFavorites_Line1:SetPoint("TOPLEFT", "GoGo_Panel_GlobalFavorites_Scroll", "TOPLEFT", 8, 0)
-	GoGo_Panel_GlobalFavorites_Line2 = CreateFrame("Button", "GoGo_Panel_GlobalFavorites_Line2",GoGo_Panel_GlobalFavorites_Scroll, "GoGo_Favorite_Button")
-	GoGo_Panel_GlobalFavorites_Line2:SetPoint("TOPLEFT", "GoGo_Panel_GlobalFavorites_Line1", "BOTTOMLEFT")
-	GoGo_Panel_GlobalFavorites_Line3 = CreateFrame("Button", "GoGo_Panel_GlobalFavorites_Line3", GoGo_Panel_GlobalFavorites, "GoGo_Favorite_Button")
-	GoGo_Panel_GlobalFavorites_Line3:SetPoint("TOPLEFT", "GoGo_Panel_GlobalFavorites_Line2", "BOTTOMLEFT")
-	GoGo_Panel_GlobalFavorites_Line4 = CreateFrame("Button", "GoGo_Panel_GlobalFavorites_Line4", GoGo_Panel_GlobalFavorites, "GoGo_Favorite_Button")
-	GoGo_Panel_GlobalFavorites_Line4:SetPoint("TOPLEFT", "GoGo_Panel_GlobalFavorites_Line3", "BOTTOMLEFT")
-	GoGo_Panel_GlobalFavorites_Line5 = CreateFrame("Button", "GoGo_Panel_GlobalFavorites_Line5", GoGo_Panel_GlobalFavorites, "GoGo_Favorite_Button")
-	GoGo_Panel_GlobalFavorites_Line5:SetPoint("TOPLEFT", "GoGo_Panel_GlobalFavorites_Line4", "BOTTOMLEFT")
-	GoGo_Panel_GlobalFavorites_Line6 = CreateFrame("Button", "GoGo_Panel_GlobalFavorites_Line6", GoGo_Panel_GlobalFavorites, "GoGo_Favorite_Button")
-	GoGo_Panel_GlobalFavorites_Line6:SetPoint("TOPLEFT", "GoGo_Panel_GlobalFavorites_Line5", "BOTTOMLEFT")
-	GoGo_Panel_GlobalFavorites_Line7 = CreateFrame("Button", "GoGo_Panel_GlobalFavorites_Line7", GoGo_Panel_GlobalFavorites, "GoGo_Favorite_Button")
-	GoGo_Panel_GlobalFavorites_Line7:SetPoint("TOPLEFT", "GoGo_Panel_GlobalFavorites_Line6", "BOTTOMLEFT")
-	GoGo_Panel_GlobalFavorites_Line8 = CreateFrame("Button", "GoGo_Panel_GlobalFavorites_Line8", GoGo_Panel_GlobalFavorites, "GoGo_Favorite_Button")
-	GoGo_Panel_GlobalFavorites_Line8:SetPoint("TOPLEFT", "GoGo_Panel_GlobalFavorites_Line7", "BOTTOMLEFT")
-	GoGo_Panel_GlobalFavorites_Line9 = CreateFrame("Button", "GoGo_Panel_GlobalFavorites_Line9", GoGo_Panel_GlobalFavorites, "GoGo_Favorite_Button")
-	GoGo_Panel_GlobalFavorites_Line9:SetPoint("TOPLEFT", "GoGo_Panel_GlobalFavorites_Line8", "BOTTOMLEFT")
-	GoGo_Panel_GlobalFavorites_Line10 = CreateFrame("Button", "GoGo_Panel_GlobalFavorites_Line10", GoGo_Panel_GlobalFavorites, "GoGo_Favorite_Button")
-	GoGo_Panel_GlobalFavorites_Line10:SetPoint("TOPLEFT", "GoGo_Panel_GlobalFavorites_Line9", "BOTTOMLEFT")
-	GoGo_Panel_GlobalFavorites_Line11 = CreateFrame("Button", "GoGo_Panel_GlobalFavorites_Line11", GoGo_Panel_GlobalFavorites, "GoGo_Favorite_Button")
-	GoGo_Panel_GlobalFavorites_Line11:SetPoint("TOPLEFT", "GoGo_Panel_GlobalFavorites_Line10", "BOTTOMLEFT")
-	GoGo_Panel_GlobalFavorites_Line12 = CreateFrame("Button", "GoGo_Panel_GlobalFavorites_Line12", GoGo_Panel_GlobalFavorites, "GoGo_Favorite_Button")
-	GoGo_Panel_GlobalFavorites_Line12:SetPoint("TOPLEFT", "GoGo_Panel_GlobalFavorites_Line11", "BOTTOMLEFT")
-	GoGo_Panel_GlobalFavorites_Line13 = CreateFrame("Button", "GoGo_Panel_GlobalFavorites_Line13", GoGo_Panel_GlobalFavorites, "GoGo_Favorite_Button")
-	GoGo_Panel_GlobalFavorites_Line13:SetPoint("TOPLEFT", "GoGo_Panel_GlobalFavorites_Line12", "BOTTOMLEFT")
-	GoGo_Panel_GlobalFavorites_Line14 = CreateFrame("Button", "GoGo_Panel_GlobalFavorites_Line14", GoGo_Panel_GlobalFavorites, "GoGo_Favorite_Button")
-	GoGo_Panel_GlobalFavorites_Line14:SetPoint("TOPLEFT", "GoGo_Panel_GlobalFavorites_Line13", "BOTTOMLEFT")
-	GoGo_Panel_GlobalFavorites_Line15 = CreateFrame("Button", "GoGo_Panel_GlobalFavorites_Line15", GoGo_Panel_GlobalFavorites, "GoGo_Favorite_Button")
-	GoGo_Panel_GlobalFavorites_Line15:SetPoint("TOPLEFT", "GoGo_Panel_GlobalFavorites_Line14", "BOTTOMLEFT")
-	GoGo_Panel_GlobalFavorites_Line16 = CreateFrame("Button", "GoGo_Panel_GlobalFavorites_Line16", GoGo_Panel_GlobalFavorites, "GoGo_Favorite_Button")
-	GoGo_Panel_GlobalFavorites_Line16:SetPoint("TOPLEFT", "GoGo_Panel_GlobalFavorites_Line15", "BOTTOMLEFT")
-	GoGo_Panel_GlobalFavorites_Line17 = CreateFrame("Button", "GoGo_Panel_GlobalFavorites_Line17", GoGo_Panel_GlobalFavorites, "GoGo_Favorite_Button")
-	GoGo_Panel_GlobalFavorites_Line17:SetPoint("TOPLEFT", "GoGo_Panel_GlobalFavorites_Line16", "BOTTOMLEFT")
-	GoGo_Panel_GlobalFavorites_Line18 = CreateFrame("Button", "GoGo_Panel_GlobalFavorites_Line18", GoGo_Panel_GlobalFavorites, "GoGo_Favorite_Button")
-	GoGo_Panel_GlobalFavorites_Line18:SetPoint("TOPLEFT", "GoGo_Panel_GlobalFavorites_Line17", "BOTTOMLEFT")
-	GoGo_Panel_GlobalFavorites_Line19 = CreateFrame("Button", "GoGo_Panel_GlobalFavorites_Line19", GoGo_Panel_GlobalFavorites, "GoGo_Favorite_Button")
-	GoGo_Panel_GlobalFavorites_Line19:SetPoint("TOPLEFT", "GoGo_Panel_GlobalFavorites_Line18", "BOTTOMLEFT")
-	GoGo_Panel_GlobalFavorites_Line20 = CreateFrame("Button", "GoGo_Panel_GlobalFavorites_Line20", GoGo_Panel_GlobalFavorites, "GoGo_Favorite_Button")
-	GoGo_Panel_GlobalFavorites_Line20:SetPoint("TOPLEFT", "GoGo_Panel_GlobalFavorites_Line19", "BOTTOMLEFT")
 
-]]
 end --function
 
 ---------
-function GoGo_Panel_GlobalFavorites_Scroll_Update()
+function GoGo_Panel_UpdateViews(Class)
 ---------
-	local line; -- 1 through 5 of our window to scroll
-	local lineplusoffset; -- an index into our data calculated from the scroll offset
-	FauxScrollFrame_Update(GoGo_Panel_GlobalFavorites_Scroll,50,20,16);
-	for line=1,20 do
-		lineplusoffset = line + FauxScrollFrame_GetOffset(GoGo_Panel_GlobalFavorites_Scroll);
-		if lineplusoffset <= 50 then
-			getglobal("GoGo_Panel_GlobalFavorites_Line"..line):SetText(GoGo_GetIDName(GoGo_Variables.MountSpellList[lineplusoffset]));
-			--GoGo_DebugAddLine(GoGo_GetIDName(GoGo_Variables.MountSpellList[lineplusoffset]))
-			getglobal("GoGo_Panel_GlobalFavorites_Line"..line):Show();
-		else
-			getglobal("GoGo_Panel_GlobalFavorites_Line"..line):Hide();
-		end --if
-	end  --for
-end --function
-
----------
-function GoGo_Panel_UpdateViews()
----------
-	GoGo_Panel_AutoDismount:SetChecked(GoGo_Prefs.autodismount)
-	GoGo_Panel_DisableUpdateNotice:SetChecked(GoGo_Prefs.DisableUpdateNotice)
-	GoGo_Panel_DisableMountNotice:SetChecked(GoGo_Prefs.DisableMountNotice)
-	GoGo_Panel_DruidClickForm:SetChecked(GoGo_Prefs.DruidClickForm)
-	GoGo_Panel_DruidFlightForm:SetChecked(GoGo_Prefs.DruidFlightForm)
-	GoGo_Panel_GlobalPrefMount:SetChecked(GoGo_Prefs.GlobalPrefMount)
---	GoGo_Panel_PaliUseCrusader:SetChecked(GoGo_Prefs.PaliUseCrusader)
+	if Class == "DRUID" then
+		GoGo_Druid_Panel_ClickForm:SetChecked(GoGo_Prefs.DruidClickForm)
+		GoGo_Druid_Panel_FlightForm:SetChecked(GoGo_Prefs.DruidFlightForm)
+	else
+		GoGo_Panel_AutoDismount:SetChecked(GoGo_Prefs.autodismount)
+		GoGo_Panel_DisableUpdateNotice:SetChecked(GoGo_Prefs.DisableUpdateNotice)
+		GoGo_Panel_DisableMountNotice:SetChecked(GoGo_Prefs.DisableMountNotice)
+		GoGo_Panel_GlobalPrefMount:SetChecked(GoGo_Prefs.GlobalPrefMount)
+	end --if
 	
 	if GoGo_Prefs.autodismount then
 		GoGoFrame:RegisterEvent("UI_ERROR_MESSAGE")
@@ -1871,32 +1773,38 @@ function GoGo_Panel_UpdateViews()
 end -- function
 
 ---------
-function GoGo_Panel_Okay()
+function GoGo_Panel_Okay(Panel)
 ---------
-	GoGo_Prefs.autodismount = GoGo_Panel_AutoDismount:GetChecked()
-	GoGo_Prefs.DisableUpdateNotice = GoGo_Panel_DisableUpdateNotice:GetChecked()
-	GoGo_Prefs.DisableMountNotice = GoGo_Panel_DisableMountNotice:GetChecked()
-	GoGo_Prefs.DruidClickForm = GoGo_Panel_DruidClickForm:GetChecked()
-	GoGo_Prefs.DruidFlightForm = GoGo_Panel_DruidFlightForm:GetChecked()
-	GoGo_Prefs.GlobalPrefMount = GoGo_Panel_GlobalPrefMount:GetChecked()
-	--	GoGo_Prefs.PaliUseCrusader = GoGo_Panel_PaliUseCrusader:GetChecked()
+	if Panel == "MAIN" then
+		GoGo_Prefs.autodismount = GoGo_Panel_AutoDismount:GetChecked()
+		GoGo_Prefs.DisableUpdateNotice = GoGo_Panel_DisableUpdateNotice:GetChecked()
+		GoGo_Prefs.DisableMountNotice = GoGo_Panel_DisableMountNotice:GetChecked()
+		GoGo_Prefs.GlobalPrefMount = GoGo_Panel_GlobalPrefMount:GetChecked()
+	elseif Panel == "DRUID" then
+		GoGo_Prefs.DruidClickForm = GoGo_Druid_Panel_ClickForm:GetChecked()
+		GoGo_Prefs.DruidFlightForm = GoGo_Druid_Panel_FlightForm:GetChecked()
+	end--if
 end --function
 
 ---------
-function GoGo_Settings_Default()
+function GoGo_Settings_Default(Class)
 ---------
-	GoGo_Prefs = {}
-	GoGo_Prefs.GlobalExclude = {}
-	GoGo_Prefs.version = GetAddOnMetadata("GoGoMount", "Version")
-	GoGo_Prefs.autodismount = true
-	GoGo_Prefs.DisableUpdateNotice = false
-	GoGo_Prefs.DisableMountNotice = false
-	GoGo_Prefs.DruidClickForm = true
-	GoGo_Prefs.DruidFlightForm = false
-	GoGo_Prefs.UnknownMounts = {}
-	GoGo_Prefs.GlobalPrefMounts = {}
-	GoGo_Prefs.GlobalPrefMount = false
---	GoGo_Prefs.PaliUseCrusader = false
+	if Class == "DRUID" then
+		GoGo_Prefs.DruidClickForm = true
+		GoGo_Prefs.DruidFlightForm = false
+	else
+		GoGo_Prefs = {}
+		GoGo_Prefs.GlobalExclude = {}
+		GoGo_Prefs.version = GetAddOnMetadata("GoGoMount", "Version")
+		GoGo_Prefs.autodismount = true
+		GoGo_Prefs.DisableUpdateNotice = false
+		GoGo_Prefs.DisableMountNotice = false
+		GoGo_Prefs.DruidClickForm = true
+		GoGo_Prefs.DruidFlightForm = false
+		GoGo_Prefs.UnknownMounts = {}
+		GoGo_Prefs.GlobalPrefMounts = {}
+		GoGo_Prefs.GlobalPrefMount = false
+	end --if
 end --function
 
 ---------
