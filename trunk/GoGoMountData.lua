@@ -401,6 +401,7 @@ GoGo_Variables.MountDB = {
 	[768] = {[7] = true, [8] = true, [25] = true, [1000] = true},  -- Druid Cat Form
 	[1066] = {[7] = true, [34] = true, [1000] = true},  -- Druid Aqua form
 	[5118] = {[7] = true, [8] = true, [26] = true},  -- Aspect of the Cheeta
+	[13159] = {[7] = true, [8] = true, [26] = true},  -- Aspect of the Pack
 	
 -- Mounts for Cataclysm (keeping seperate as they may change before release)
 	[69820] = {[14] = true, [20] = true, [21] = true, [38] = true},  -- Sunwalker Kodo

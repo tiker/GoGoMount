@@ -44,6 +44,9 @@ function GoGo_OnEvent(event)
 		elseif (GoGo_Variables.Player.Class == "SHAMAN") then
 			GoGo_Variables.Shaman = {}
 			GoGoFrame:RegisterEvent("PLAYER_REGEN_DISABLED")
+		elseif (GoGo_Variables.Player.Class == "HUNTER") then
+			GoGo_Hunter_Panel()
+			GoGo_Panel_UpdateViews("HUNTER")
 		end --if
 		GoGo_Variables.AzerothZones = table.concat({GetMapZones(1)}, ":")..":"..table.concat({GetMapZones(2)}, ":")
 		GoGo_Variables.OutlandZones = table.concat({GetMapZones(3)}, ":")..":"..GoGo_Variables.Localize.Zone.TwistingNether
@@ -740,9 +743,12 @@ function GoGo_BuildMountSpellList()
 			table.insert(GoGo_Variables.MountSpellList, GoGo_Variables.Localize.GhostWolf)
 		end --if
 	elseif GoGo_Variables.Player.Class == "HUNTER" then
-		if GoGo_InBook(GoGo_Variables.Localize.AspectCheetah) then
+		if GoGo_InBook(GoGo_Variables.Localize.AspectPack) and GoGo_Pref.AspectPack then
+			table.insert(GoGo_Variables.MountSpellList, GoGo_Variables.Localize.AspectPack)
+		elseif GoGo_InBook(GoGo_Variables.Localize.AspectCheetah) then
 			table.insert(GoGo_Variables.MountSpellList, GoGo_Variables.Localize.AspectCheetah)
 		end --if
+		
 	end --if
 
 	if GoGo_Variables.Player.Race == "Worgen" then
@@ -1738,7 +1744,7 @@ function GoGo_Druid_Panel()
 	GoGo_Druid_Panel.name = GoGo_Variables.Localize.String.DruidOptions
 	GoGo_Druid_Panel.parent = "GoGoMount"
 	GoGo_Druid_Panel.okay = function (self) GoGo_Panel_Okay("DRUID"); end;
-	GoGo_Druid_Panel.default = function (self) GoGo_Settings_Default("DRUID"); GoGo_UpdateFavoritesTabs(); end;  -- use clear command with default button
+	GoGo_Druid_Panel.default = function (self) GoGo_Settings_Default("DRUID"); GoGo_Panel_UpdateViews("DRUID"); end;  -- use clear command with default button
 	InterfaceOptions_AddCategory(GoGo_Druid_Panel)
 
 	GoGo_Druid_Panel_ClickForm = CreateFrame("CheckButton", "GoGo_Druid_Panel_ClickForm", GoGo_Druid_Panel, "OptionsCheckButtonTemplate")
@@ -1748,8 +1754,21 @@ function GoGo_Druid_Panel()
 	GoGo_Druid_Panel_FlightForm = CreateFrame("CheckButton", "GoGo_Druid_Panel_FlightForm", GoGo_Druid_Panel, "OptionsCheckButtonTemplate")
 	GoGo_Druid_Panel_FlightForm:SetPoint("TOPLEFT", "GoGo_Druid_Panel_ClickForm", "BOTTOMLEFT", 0, -4)
 	GoGo_Druid_Panel_FlightFormText:SetText(GoGo_Variables.Localize.String.DruidFlightPreference)
-	
+end --function
 
+---------
+function GoGo_Hunter_Panel()
+---------
+	GoGo_Hunter_Panel = CreateFrame("Frame", nil, UIParent)
+	GoGo_Hunter_Panel.name = GoGo_Variables.Localize.String.HunterOptions
+	GoGo_Hunter_Panel.parent = "GoGoMount"
+	GoGo_Hunter_Panel.okay = function (self) GoGo_Panel_Okay("HUNTER"); end;
+	GoGo_Hunter_Panel.default = function (self) GoGo_Settings_Default("HUNTER"); GoGo_Panel_UpdateViews("HUNTER"); end;  -- use clear command with default button
+	InterfaceOptions_AddCategory(GoGo_Hunter_Panel)
+
+	GoGo_Hunter_Panel_AspectOfPack = CreateFrame("CheckButton", "GoGo_Hunter_Panel_AspectOfPack", GoGo_Hunter_Panel, "OptionsCheckButtonTemplate")
+	GoGo_Hunter_Panel_AspectOfPack:SetPoint("TOPLEFT", 16, -16)
+	GoGo_Hunter_Panel_AspectOfPackText:SetText(GoGo_Variables.Localize.String.UseAspectOfThePackInstead)
 end --function
 
 ---------
@@ -1758,6 +1777,9 @@ function GoGo_Panel_UpdateViews(Class)
 	if Class == "DRUID" then
 		GoGo_Druid_Panel_ClickForm:SetChecked(GoGo_Prefs.DruidClickForm)
 		GoGo_Druid_Panel_FlightForm:SetChecked(GoGo_Prefs.DruidFlightForm)
+
+	elseif Class == "HUNTER" then
+		GoGo_Hunter_Panel_AspectOfPack:SetChecked(GoGo_Prefs.AspectPack)
 	else
 		GoGo_Panel_AutoDismount:SetChecked(GoGo_Prefs.autodismount)
 		GoGo_Panel_DisableUpdateNotice:SetChecked(GoGo_Prefs.DisableUpdateNotice)
@@ -1783,6 +1805,8 @@ function GoGo_Panel_Okay(Panel)
 	elseif Panel == "DRUID" then
 		GoGo_Prefs.DruidClickForm = GoGo_Druid_Panel_ClickForm:GetChecked()
 		GoGo_Prefs.DruidFlightForm = GoGo_Druid_Panel_FlightForm:GetChecked()
+	elseif Panel == "HUNTER" then
+		GoGo_Prefs.AspectPack = GoGo_Hunter_Panel_AspectOfPack:GetChecked()
 	end--if
 end --function
 
@@ -1792,6 +1816,8 @@ function GoGo_Settings_Default(Class)
 	if Class == "DRUID" then
 		GoGo_Prefs.DruidClickForm = true
 		GoGo_Prefs.DruidFlightForm = false
+	elseif Class == "HUNTER" then
+		GoGo_Prefs.AspectPack = false
 	else
 		GoGo_Prefs = {}
 		GoGo_Prefs.GlobalExclude = {}
@@ -1804,6 +1830,7 @@ function GoGo_Settings_Default(Class)
 		GoGo_Prefs.UnknownMounts = {}
 		GoGo_Prefs.GlobalPrefMounts = {}
 		GoGo_Prefs.GlobalPrefMount = false
+		GoGo_Prefs.AspectPack = false
 	end --if
 end --function
 
@@ -1817,6 +1844,7 @@ function GoGo_Settings_SetUpdates()
 	if not GoGo_Prefs.DruidClickForm then GoGo_Prefs.DruidClickForm = false end
 	if not GoGo_Prefs.DruidFlightForm then GoGo_Prefs.DruidFlightForm = false end
 	if not GoGo_Prefs.GlobalPrefMount then GoGo_Prefs.GlobalPrefMount = false end
+	if not GoGo_Prefs.AspectPack then GoGo_Prefs.AspectPack = false end
 --	if not GoGo_Prefs.PaliUseCrusader then GoGo_Prefs.PaliUseCrusader = false end
 	GoGo_Prefs.UnknownMounts = {}
 	if not GoGo_Prefs.GlobalExclude then
