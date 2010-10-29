@@ -21,8 +21,10 @@
 				Favorites = "Favorites",
 				GlobalFavorites = "Global Favorites",
 				GlobalPreferences = "Global Preferences",
+				HunterOptions = "Hunter Options",
 				NewVersionFound = "A newer version of GoGoMount is available.",
 				UnknownMountFound = "An unknown mount has been found in you list of mounts.  Please report this so that it can be added to future versions of GoGoMount.",
+				UseAspectOfThePackInstead = "Use Aspect Of The Pack instead of Aspect Of The Cheeta",
 			},
 			Talent = {
 				AncestralSwiftness = "Ancestral Swiftness",
