@@ -15,6 +15,7 @@
 				DisableUnknownMountNotices = "Disable unknown mount notices",
 				DisableUpdateNotices = "Disable update notices",
 				DruidFlightPreference = "Always use flight forms instead of when moving only",
+				DruidOptions = "Druid Options",
 				DruidSingleClick = "Single click to shift from form to travel forms",
 				EnableAutoDismount = "Enable automatic dismount",
 				Favorites = "Favorites",
