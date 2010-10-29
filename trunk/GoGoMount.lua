@@ -378,6 +378,10 @@ function GoGo_ChooseMount()
 		end --if
 	end --if
 
+	if GoGo_Variables.Player.Class == "DRUID" and GoGo_Prefs.DruidFormNotRandomize and not (IsMoving() or IsFalling()) then
+		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 9998)
+	end --if
+	
 	if GoGo_Variables.SelectPassengerMount then
 		if GoGo_Variables.Debug then
 			GoGo_DebugAddLine("GoGo_ChooseMount: Filtering out all mounts except passenger mounts since passenger mount only was requested.")
@@ -1754,6 +1758,10 @@ function GoGo_Druid_Panel()
 	GoGo_Druid_Panel_FlightForm = CreateFrame("CheckButton", "GoGo_Druid_Panel_FlightForm", GoGo_Druid_Panel, "OptionsCheckButtonTemplate")
 	GoGo_Druid_Panel_FlightForm:SetPoint("TOPLEFT", "GoGo_Druid_Panel_ClickForm", "BOTTOMLEFT", 0, -4)
 	GoGo_Druid_Panel_FlightFormText:SetText(GoGo_Variables.Localize.String.DruidFlightPreference)
+
+	GoGo_Druid_Panel_NoShapeInRandom = CreateFrame("CheckButton", "GoGo_Druid_Panel_NoShapeInRandom", GoGo_Druid_Panel, "OptionsCheckButtonTemplate")
+	GoGo_Druid_Panel_NoShapeInRandom:SetPoint("TOPLEFT", "GoGo_Druid_Panel_FlightForm", "BOTTOMLEFT", 0, -4)
+	GoGo_Druid_Panel_NoShapeInRandomText:SetText(GoGo_Variables.Localize.String.NoShapeInRandom)
 end --function
 
 ---------
@@ -1777,7 +1785,7 @@ function GoGo_Panel_UpdateViews(Class)
 	if Class == "DRUID" then
 		GoGo_Druid_Panel_ClickForm:SetChecked(GoGo_Prefs.DruidClickForm)
 		GoGo_Druid_Panel_FlightForm:SetChecked(GoGo_Prefs.DruidFlightForm)
-
+		GoGo_Druid_Panel_NoShapeInRandom:SetChecked(GoGo_Prefs.DruidFormNotRandomize)
 	elseif Class == "HUNTER" then
 		GoGo_Hunter_Panel_AspectOfPack:SetChecked(GoGo_Prefs.AspectPack)
 	else
@@ -1805,6 +1813,7 @@ function GoGo_Panel_Okay(Panel)
 	elseif Panel == "DRUID" then
 		GoGo_Prefs.DruidClickForm = GoGo_Druid_Panel_ClickForm:GetChecked()
 		GoGo_Prefs.DruidFlightForm = GoGo_Druid_Panel_FlightForm:GetChecked()
+		GoGo_Prefs.DruidFormNotRandomize = GoGo_Druid_Panel_NoShapeInRandom:GetChecked()
 	elseif Panel == "HUNTER" then
 		GoGo_Prefs.AspectPack = GoGo_Hunter_Panel_AspectOfPack:GetChecked()
 	end--if
@@ -1816,6 +1825,7 @@ function GoGo_Settings_Default(Class)
 	if Class == "DRUID" then
 		GoGo_Prefs.DruidClickForm = true
 		GoGo_Prefs.DruidFlightForm = false
+		GoGo_Prefs.DruidFormNotRandomize = false
 	elseif Class == "HUNTER" then
 		GoGo_Prefs.AspectPack = false
 	else
@@ -1831,6 +1841,7 @@ function GoGo_Settings_Default(Class)
 		GoGo_Prefs.GlobalPrefMounts = {}
 		GoGo_Prefs.GlobalPrefMount = false
 		GoGo_Prefs.AspectPack = false
+		GoGo_Prefs.DruidFormNotRandomize = false
 	end --if
 end --function
 
@@ -1845,7 +1856,7 @@ function GoGo_Settings_SetUpdates()
 	if not GoGo_Prefs.DruidFlightForm then GoGo_Prefs.DruidFlightForm = false end
 	if not GoGo_Prefs.GlobalPrefMount then GoGo_Prefs.GlobalPrefMount = false end
 	if not GoGo_Prefs.AspectPack then GoGo_Prefs.AspectPack = false end
---	if not GoGo_Prefs.PaliUseCrusader then GoGo_Prefs.PaliUseCrusader = false end
+	if not GoGo_Prefs.DruidFormNotRandomize then GoGo_Prefs.DruidFormNotRandomize = false end
 	GoGo_Prefs.UnknownMounts = {}
 	if not GoGo_Prefs.GlobalExclude then
 		GoGo_Prefs.GlobalExclude = {}
