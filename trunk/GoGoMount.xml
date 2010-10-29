@@ -68,30 +68,4 @@
 			</OnLoad>
 		</Scripts>
 	</Frame>
-
-	<Button name = "GoGo_Favorite_Button" virtual="true">
-		<Size>
-			<AbsDimension x="150" y="16" />
-		</Size>
-		<NormalFont style="GameFontHighlightLeft"/>
-	</Button>
-<!--
-	<Frame name="GoGo_Panel_CurrentZoneFavorites">
-		<Scripts>
-			<OnLoad>
-				GoGo_Panel_CurrentZoneFavorites_OnLoad(self);
-			</OnLoad>
-			<OnShow>
-			</OnShow>
-		</Scripts>
-	</Frame>
-
-	<Frame name="GoGo_Panel_GlobalFavorites" enableMouse="true" movable="false">
-		<Scripts>
-			<OnLoad>
-				GoGo_Panel_GlobalFavorites_OnLoad(self);
-			</OnLoad>
-		</Scripts>
-	</Frame>
--->
 </Ui>
