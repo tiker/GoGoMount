@@ -1741,12 +1741,12 @@ function GoGo_Druid_Panel()
 	GoGo_Druid_Panel.default = function (self) GoGo_Settings_Default("DRUID"); GoGo_UpdateFavoritesTabs(); end;  -- use clear command with default button
 	InterfaceOptions_AddCategory(GoGo_Druid_Panel)
 
-	GoGo_Druid_Panel_ClickForm = CreateFrame("CheckButton", "GoGo_Panel_DruidClickForm", GoGo_Panel, "OptionsCheckButtonTemplate")
+	GoGo_Druid_Panel_ClickForm = CreateFrame("CheckButton", "GoGo_Druid_Panel_ClickForm", GoGo_Druid_Panel, "OptionsCheckButtonTemplate")
 	GoGo_Druid_Panel_ClickForm:SetPoint("TOPLEFT", 16, -16)
 	GoGo_Druid_Panel_ClickFormText:SetText(GoGo_Variables.Localize.String.DruidSingleClick)
 
-	GoGo_Druid_Panel_FlightForm = CreateFrame("CheckButton", "GoGo_Panel_DruidFlightForm", GoGo_Panel, "OptionsCheckButtonTemplate")
-	GoGo_Druid_Panel_FlightForm:SetPoint("TOPLEFT", "GoGo_Panel_DruidClickForm", "BOTTOMLEFT", 0, -4)
+	GoGo_Druid_Panel_FlightForm = CreateFrame("CheckButton", "GoGo_Druid_Panel_FlightForm", GoGo_Druid_Panel, "OptionsCheckButtonTemplate")
+	GoGo_Druid_Panel_FlightForm:SetPoint("TOPLEFT", "GoGo_Druid_Panel_ClickForm", "BOTTOMLEFT", 0, -4)
 	GoGo_Druid_Panel_FlightFormText:SetText(GoGo_Variables.Localize.String.DruidFlightPreference)
 	
 
