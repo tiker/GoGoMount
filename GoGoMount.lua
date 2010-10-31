@@ -747,7 +747,7 @@ function GoGo_BuildMountSpellList()
 			table.insert(GoGo_Variables.MountSpellList, GoGo_Variables.Localize.GhostWolf)
 		end --if
 	elseif GoGo_Variables.Player.Class == "HUNTER" then
-		if GoGo_InBook(GoGo_Variables.Localize.AspectPack) and GoGo_Pref.AspectPack then
+		if GoGo_InBook(GoGo_Variables.Localize.AspectPack) and GoGo_Prefs.AspectPack then
 			table.insert(GoGo_Variables.MountSpellList, GoGo_Variables.Localize.AspectPack)
 		elseif GoGo_InBook(GoGo_Variables.Localize.AspectCheetah) then
 			table.insert(GoGo_Variables.MountSpellList, GoGo_Variables.Localize.AspectCheetah)
