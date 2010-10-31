@@ -1716,7 +1716,7 @@ function GoGo_Panel_OnLoad(GoGo_Panel)
 --	GoGo_Panel:SetScript("OnShow",function() GoGo_Panel_UpdateViews(); end);
 	GoGo_Panel.name = "GoGoMount"
 	GoGo_Panel.okay = function (self) GoGo_Panel_Okay("MAIN"); end;
-	GoGo_Panel.default = function (self) GoGo_Settings_Default(); GoGo_Panel_UpdateViews(); end;
+	GoGo_Panel.default = function (self) GoGo_Settings_Default("ALL"); GoGo_Panel_UpdateViews(); end;
 	InterfaceOptions_AddCategory(GoGo_Panel)
 	
 end --function
@@ -1758,12 +1758,24 @@ function GoGo_Druid_Panel()
 	GoGo_Druid_Panel_FlightForm = CreateFrame("CheckButton", "GoGo_Druid_Panel_FlightForm", GoGo_Druid_Panel, "OptionsCheckButtonTemplate")
 	GoGo_Druid_Panel_FlightForm:SetPoint("TOPLEFT", "GoGo_Druid_Panel_ClickForm", "BOTTOMLEFT", 0, -4)
 	GoGo_Druid_Panel_FlightFormText:SetText(GoGo_Variables.Localize.String.DruidFlightPreference)
---	GoGo_Druid_Panel_FlightForm:SetScript("OnClick", function() if GoGo_Druid_Panel_FlightForm:GetChecked() = true then	GoGo_Druid_Panel_NoShapeInRandom:SetChecked(false) end end) --function
-
+	GoGo_Druid_Panel_FlightForm:SetScript("OnClick",
+		function(self)
+			if self:GetChecked() then
+				GoGo_Druid_Panel_NoShapeInRandom:SetChecked(0)
+			end  --if
+		end --function
+	)
+	
 	GoGo_Druid_Panel_NoShapeInRandom = CreateFrame("CheckButton", "GoGo_Druid_Panel_NoShapeInRandom", GoGo_Druid_Panel, "OptionsCheckButtonTemplate")
 	GoGo_Druid_Panel_NoShapeInRandom:SetPoint("TOPLEFT", "GoGo_Druid_Panel_FlightForm", "BOTTOMLEFT", 0, -4)
 	GoGo_Druid_Panel_NoShapeInRandomText:SetText(GoGo_Variables.Localize.String.NoShapeInRandom)
---	GoGo_Druid_Panel_NoShapeInRandom:SetScript("OnClick", function() if GoGo_Druid_Panel_NoShapeInRandom:GetChecked() = true then GoGo_Druid_Panel_FlightForm:SetChecked(false) end end) --function
+	GoGo_Druid_Panel_NoShapeInRandom:SetScript("OnClick",
+		function(self)
+			if self:GetChecked() then
+				GoGo_Druid_Panel_FlightForm:SetChecked(0)
+			end --if
+		end --function
+	)
 end --function
 
 ---------
@@ -1830,6 +1842,11 @@ function GoGo_Settings_Default(Class)
 		GoGo_Prefs.DruidFormNotRandomize = false
 	elseif Class == "HUNTER" then
 		GoGo_Prefs.AspectPack = false
+	elseif Class == "ALL" then
+		GoGo_Prefs.autodismount = true
+		GoGo_Prefs.DisableUpdateNotice = false
+		GoGo_Prefs.DisableMountNotice = false
+		GoGo_Prefs.GlobalPrefMount = false
 	else
 		GoGo_Prefs = {}
 		GoGo_Prefs.GlobalExclude = {}
