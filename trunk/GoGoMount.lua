@@ -1727,18 +1727,38 @@ function GoGo_Panel_Options()
 	GoGo_Panel_AutoDismount = CreateFrame("CheckButton", "GoGo_Panel_AutoDismount", GoGo_Panel, "OptionsCheckButtonTemplate")
 	GoGo_Panel_AutoDismount:SetPoint("TOPLEFT", 16, -16)
 	GoGo_Panel_AutoDismountText:SetText(GoGo_Variables.Localize.String.EnableAutoDismount)
+	GoGo_Panel_AutoDismount:SetScript("OnClick",
+		function(self)
+			GoGo_Panel_Okay("MAIN")
+		end --function
+	)
 
 	GoGo_Panel_GlobalPrefMount = CreateFrame("CheckButton", "GoGo_Panel_GlobalPrefMount", GoGo_Panel, "OptionsCheckButtonTemplate")
 	GoGo_Panel_GlobalPrefMount:SetPoint("TOPLEFT", "GoGo_Panel_AutoDismount", "BOTTOMLEFT", 0, -4)
 	GoGo_Panel_GlobalPrefMountText:SetText("Preferred mount changes apply to global setting")
+	GoGo_Panel_GlobalPrefMount:SetScript("OnClick",
+		function(self)
+			GoGo_Panel_Okay("MAIN")
+		end --function
+	)
 
 	GoGo_Panel_DisableUpdateNotice = CreateFrame("CheckButton", "GoGo_Panel_DisableUpdateNotice", GoGo_Panel, "OptionsCheckButtonTemplate")
 	GoGo_Panel_DisableUpdateNotice:SetPoint("TOPLEFT", "GoGo_Panel_GlobalPrefMount", "BOTTOMLEFT", 0, -12)
 	GoGo_Panel_DisableUpdateNoticeText:SetText(GoGo_Variables.Localize.String.DisableUpdateNotices)
+	GoGo_Panel_DisableUpdateNotice:SetScript("OnClick",
+		function(self)
+			GoGo_Panel_Okay("MAIN")
+		end --function
+	)
 
 	GoGo_Panel_DisableMountNotice = CreateFrame("CheckButton", "GoGo_Panel_DisableMountNotice", GoGo_Panel, "OptionsCheckButtonTemplate")
 	GoGo_Panel_DisableMountNotice:SetPoint("TOPLEFT", "GoGo_Panel_DisableUpdateNotice", "BOTTOMLEFT", 0, -4)
 	GoGo_Panel_DisableMountNoticeText:SetText(GoGo_Variables.Localize.String.DisableUnknownMountNotices)
+	GoGo_Panel_DisableMountNotice:SetScript("OnClick",
+		function(self)
+			GoGo_Panel_Okay("MAIN")
+		end --function
+	)
 end --function
 
 ---------
@@ -1754,6 +1774,11 @@ function GoGo_Druid_Panel()
 	GoGo_Druid_Panel_ClickForm = CreateFrame("CheckButton", "GoGo_Druid_Panel_ClickForm", GoGo_Druid_Panel, "OptionsCheckButtonTemplate")
 	GoGo_Druid_Panel_ClickForm:SetPoint("TOPLEFT", 16, -16)
 	GoGo_Druid_Panel_ClickFormText:SetText(GoGo_Variables.Localize.String.DruidSingleClick)
+	GoGo_Druid_Panel_ClickForm:SetScript("OnClick",
+		function(self)
+			GoGo_Panel_Okay("DRUID")
+		end --function
+	)
 
 	GoGo_Druid_Panel_FlightForm = CreateFrame("CheckButton", "GoGo_Druid_Panel_FlightForm", GoGo_Druid_Panel, "OptionsCheckButtonTemplate")
 	GoGo_Druid_Panel_FlightForm:SetPoint("TOPLEFT", "GoGo_Druid_Panel_ClickForm", "BOTTOMLEFT", 0, -4)
@@ -1763,6 +1788,7 @@ function GoGo_Druid_Panel()
 			if self:GetChecked() then
 				GoGo_Druid_Panel_NoShapeInRandom:SetChecked(0)
 			end  --if
+			GoGo_Panel_Okay("DRUID")
 		end --function
 	)
 	
@@ -1774,6 +1800,7 @@ function GoGo_Druid_Panel()
 			if self:GetChecked() then
 				GoGo_Druid_Panel_FlightForm:SetChecked(0)
 			end --if
+			GoGo_Panel_Okay("DRUID")
 		end --function
 	)
 end --function
@@ -1791,6 +1818,12 @@ function GoGo_Hunter_Panel()
 	GoGo_Hunter_Panel_AspectOfPack = CreateFrame("CheckButton", "GoGo_Hunter_Panel_AspectOfPack", GoGo_Hunter_Panel, "OptionsCheckButtonTemplate")
 	GoGo_Hunter_Panel_AspectOfPack:SetPoint("TOPLEFT", 16, -16)
 	GoGo_Hunter_Panel_AspectOfPackText:SetText(GoGo_Variables.Localize.String.UseAspectOfThePackInstead)
+	GoGo_Hunter_Panel_AspectOfPack:SetScript("OnClick",
+		function(self)
+			GoGo_Panel_Okay("HUNTER")
+		end --function
+	)
+	
 end --function
 
 ---------
