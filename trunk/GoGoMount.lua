@@ -378,7 +378,7 @@ function GoGo_ChooseMount()
 		end --if
 	end --if
 
-	if GoGo_Variables.Player.Class == "DRUID" and GoGo_Prefs.DruidFormNotRandomize and not (IsMoving() or IsFalling()) then
+	if (GoGo_Variables.Player.Class == "DRUID" and GoGo_Prefs.DruidFormNotRandomize and not GoGo_IsMoving() and not IsFalling()) then
 		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 9998)
 	end --if
 	
@@ -1758,10 +1758,12 @@ function GoGo_Druid_Panel()
 	GoGo_Druid_Panel_FlightForm = CreateFrame("CheckButton", "GoGo_Druid_Panel_FlightForm", GoGo_Druid_Panel, "OptionsCheckButtonTemplate")
 	GoGo_Druid_Panel_FlightForm:SetPoint("TOPLEFT", "GoGo_Druid_Panel_ClickForm", "BOTTOMLEFT", 0, -4)
 	GoGo_Druid_Panel_FlightFormText:SetText(GoGo_Variables.Localize.String.DruidFlightPreference)
+--	GoGo_Druid_Panel_FlightForm:SetScript("OnClick", function() if GoGo_Druid_Panel_FlightForm:GetChecked() = true then	GoGo_Druid_Panel_NoShapeInRandom:SetChecked(false) end end) --function
 
 	GoGo_Druid_Panel_NoShapeInRandom = CreateFrame("CheckButton", "GoGo_Druid_Panel_NoShapeInRandom", GoGo_Druid_Panel, "OptionsCheckButtonTemplate")
 	GoGo_Druid_Panel_NoShapeInRandom:SetPoint("TOPLEFT", "GoGo_Druid_Panel_FlightForm", "BOTTOMLEFT", 0, -4)
 	GoGo_Druid_Panel_NoShapeInRandomText:SetText(GoGo_Variables.Localize.String.NoShapeInRandom)
+--	GoGo_Druid_Panel_NoShapeInRandom:SetScript("OnClick", function() if GoGo_Druid_Panel_NoShapeInRandom:GetChecked() = true then GoGo_Druid_Panel_FlightForm:SetChecked(false) end end) --function
 end --function
 
 ---------
