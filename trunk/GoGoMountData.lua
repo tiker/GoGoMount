@@ -4,6 +4,7 @@ BINDING_NAME_GOGOBINDING2 = "Mount/Dismount (no flying)"
 BINDING_NAME_GOGOBINDING3 = "Mount/Dismount Passenger Mounts"
 
 GoGo_Variables = {}
+GoGo_Variables.ZoneExclude = {}
 GoGo_Variables.Player = {}
 GoGo_Variables.MountList = {}
 --GoGo_DebugLog = {}
