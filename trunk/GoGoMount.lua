@@ -1345,7 +1345,7 @@ function GoGo_SetExpansionInfo()
 -- 3 - World of Warcraft: Cataclysm
 
 	GoGo_Variables.ExpansionNum = GetAccountExpansionLevel()
-	if GoGo_Variables.ExpansionNum = 3 then
+	if GoGo_Variables.ExpansionNum == 3 then
 		GoGo_Variables.Localize.SeaLegs_Name = GetSpellInfo(GoGo_Variables.Localize.SeaLegs)  -- 4.0.1 (without Cataclysm will not return a value here - used later on.
 	else
 		GoGo_Variables.Localize.SeaLegs_Name = ""
