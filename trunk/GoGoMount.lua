@@ -1181,6 +1181,11 @@ function GoGo_ZoneCheck()
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Tol Barad Peninsula.")
 		end --if
 		GoGo_Variables.CanFly = false
+	elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.TolBarad then
+		if GoGo_Variables.Debug then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Tol Barad.")
+		end --if
+		GoGo_Variables.CanFly = false
 	elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.Dalaran then
 		if not IsFlyableArea() then  -- have to use this.. flying is different in sewers and is different between 4.x with and without cataclysm
 			if GoGo_Variables.Debug then

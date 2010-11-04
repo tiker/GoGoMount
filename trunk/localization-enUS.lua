@@ -47,6 +47,7 @@
 				TheStormPeaks = "The Storm Peaks",
 				TheUnderbelly = "The Underbelly",
 				TheVioletCitadel = "The Violet Citadel",
+				TolBarad = "Tol Barad",
 				TolBaradPeninsula = "Tol Barad Peninsula",
 				TwistingNether = "Twisting Nether",
 				Vashjir = "Vashj'ir",
