@@ -356,7 +356,7 @@ function GoGo_ChooseMount()
 
 	GoGo_ZoneCheck()  -- Checking to see what we can and can not do in zones
 
-	if GoGo_Variables.Localize.SeaLegs_Name then  -- check to see if this spell exists - only exists for 4.x with Cataclysm expansion
+	if GoGo_Variables.ExpansionNum == 3 then  -- only exists for 4.x with Cataclysm expansion
 		if UnitBuff("player", GetSpellInfo(GoGo_Variables.Localize.SeaLegs)) then
 			if GoGo_Variables.Debug then
 				GoGo_DebugAddLine("GoGo_ChooseMount: Sea Legs buff found - not removing Vashj'ir mount.")
