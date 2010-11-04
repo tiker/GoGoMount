@@ -1204,6 +1204,9 @@ function GoGo_ZoneCheck()
 	else
 		GoGo_Variables.ZoneExclude.AQ40 = false
 	end --if
+
+	GoGo_Variables.ZoneExclude.AQ40 = true  -- TEMPORARY UNTIL BLIZZARD FIXES BUG MOUNTS IN AQ40 - FLAGGING THEM AS ALWAYS NOT AVAILABLE
+	
 --	if GoGo_InOutlands() or GoGo_InNorthrend() then
 --		GoGo_Variables.MountDB[75973] = {[9] = true, [2] = true, [3] = true, [14] = true, [20] = true, [21] = true, [22] = true, [23] = false, [39] = true, [998] = true}  --make the [X-53 Touring Rocket] a ground / flying mount (Warcraft 4.x without cata can use this as a ground mount in Dalaran)
 --	else
