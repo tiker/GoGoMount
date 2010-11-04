@@ -356,14 +356,6 @@ function GoGo_ChooseMount()
 
 	GoGo_ZoneCheck()  -- Checking to see what we can and can not do in zones
 
-					
-	if GoGo_Variables.Player.Zone ~= GoGo_Variables.Localize.Zone.AQ40 then
-		if GoGo_Variables.Debug then
-			GoGo_DebugAddLine("GoGo_ChooseMount: Removing AQ40 mounts since we are not in AQ40.")
-		end --if
-		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 50)
-	end --if
-
 	if GoGo_Variables.Localize.SeaLegs_Name then  -- check to see if this spell exists - only exists for 4.x with Cataclysm expansion
 		if UnitBuff("player", GetSpellInfo(GoGo_Variables.Localize.SeaLegs)) then
 			if GoGo_Variables.Debug then
@@ -387,6 +379,10 @@ function GoGo_ChooseMount()
 			GoGo_DebugAddLine("GoGo_ChooseMount: Filtering out all mounts except passenger mounts since passenger mount only was requested.")
 		end --if
 		GoGo_FilteredMounts = GoGo_FilterMountsIn(GoGo_FilteredMounts, 2) or {}
+	end --if
+
+	if GoGo_Variables.ZoneExclude.AQ40 then
+		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 50) or {}
 	end --if
 
 	if IsFalling() then  -- we're falling.. save us  (only grab instant cast spells)
@@ -1200,6 +1196,14 @@ function GoGo_ZoneCheck()
 		GoGo_Variables.CanFly = false
 	end --if
 
+	if GoGo_Variables.Player.Zone ~= GoGo_Variables.Localize.Zone.AQ40 then
+		if GoGo_Variables.Debug then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Removing AQ40 mounts since we are not in AQ40.")
+		end --if
+		GoGo_Variables.ZoneExclude.AQ40 = true
+	else
+		GoGo_Variables.ZoneExclude.AQ40 = false
+	end --if
 --	if GoGo_InOutlands() or GoGo_InNorthrend() then
 --		GoGo_Variables.MountDB[75973] = {[9] = true, [2] = true, [3] = true, [14] = true, [20] = true, [21] = true, [22] = true, [23] = false, [39] = true, [998] = true}  --make the [X-53 Touring Rocket] a ground / flying mount (Warcraft 4.x without cata can use this as a ground mount in Dalaran)
 --	else
