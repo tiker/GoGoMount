@@ -1350,6 +1350,7 @@ function GoGo_SetExpansionInfo()
 	else
 		GoGo_Variables.Localize.SeaLegs_Name = nil
 	end --if
+	
 end --function
 ---------
 function GoGo_Msg(msg)
@@ -1474,8 +1475,12 @@ function GoGo_GetAirMounts310(GoGo_FilteredMounts)
 	else
 		GoGo_FilteredMounts = GoGo_TempMounts
 	end --if
-
-
+	GoGo_TempMounts = GoGo_FilterMountsIn(GoGo_FilteredMounts, 24) or {}  -- picking up non-scaling 310% like fast flight form
+	if table.getn(GoGo_TempMounts) > 0 then
+		for GoGo_TempInt = 1, table.getn(GoGo_TempMounts) do
+			table.insert(GoGo_FilteredMounts, GoGo_TempMounts[GoGo_TempInt])
+		end --for
+	end --if
 	return GoGo_FilteredMounts
 end --function
 

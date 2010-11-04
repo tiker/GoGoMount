@@ -394,7 +394,7 @@ GoGo_Variables.MountDB = {
 --	[62087] = {[5] = true, [15] = true, [21] = true, [39] = true, [53] = true, [999] = true},  -- Aquatic Riding Ray   -- removed from the 3.1 PTR datafiles
 	
 -- Below are not used for detection, only used to prevent being reported as unknown mounts
-	[40120] = {[7] = true, [9] = true, [11] = true, [23] = true, [9998] = true},  -- Druid Fast Flight Form
+	[40120] = {[7] = true, [9] = true, [11] = true, [23] = true, [24] = true, [9998] = true},  -- Druid Fast Flight Form
 	[33943] = {[7] = true, [9] = true, [11] = true, [22] = true, [9998] = true},  -- Druid Flight Form
 	[783] = {[7] = true, [28] = true}, -- Druid Travel Form
 	[2645] = {[8] = true, [26] = true, [1000] = true}, -- Shaman Ghost Wolf Form
