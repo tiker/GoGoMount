@@ -81,29 +81,7 @@ function GoGo_OnEvent(event)
 		end --if
 	elseif (event == "PLAYER_ENTERING_WORLD") then
 		GoGo_Variables.Player.Zone = GetRealZoneText()
-		GoGo_SetExpansionInfo()  -- setting variables that may return errors if expansions not available
-
---		if GoGo_Variables.Debug then
---			GoGo_DebugAddLine("EVENT: Player Entering World")
---		end --if
---		GoGo_BuildMountSpellList()
---		GoGo_BuildMountItemList()
---		GoGo_BuildMountList()
---		GoGo_CheckForUnknownMounts()
---	elseif (event == "COMPANION_LEARNED") then
---		if GoGo_Variables.Debug then
---			GoGo_DebugAddLine("EVENT: Companion Learned")
---		end --if
---		GoGo_BuildMountSpellList()
---		GoGo_BuildMountList()
---		GoGo_CheckForUnknownMounts()
-
-		--	elseif (event == "BAG_UPDATE") then   -- currently causing a noticable lag when moving bag items around
---		if GoGo_Variables.Debug then
---			GoGo_DebugAddLine("EVENT: Bag Update")
---		end --if
---		GoGo_BuildMountItemList()
---		GoGo_BuildMountList()
+		GoGo_Variables.ExpansionNum = GetAccountExpansionLevel()
 	elseif (event == "CHAT_MSG_ADDON") and (arg1 == "GoGoMountVER") and not GoGo_Prefs.DisableUpdateNotice then
 		local major, minor, build = tonumber(arg2)
 		if not GoGo_Variables.UpdateShown then
@@ -1334,22 +1312,6 @@ function GoGo_CheckCoOrds(ZoneName, SubZoneName)
 	return false
 end --function
 
----------
-function GoGo_SetExpansionInfo()
----------
--- 0 - World of Warcraft ("Classic")
--- 1 - World of Warcraft: The Burning Crusade
--- 2 - World of Warcraft: Wrath of the Lich King
--- 3 - World of Warcraft: Cataclysm
-
-	GoGo_Variables.ExpansionNum = GetAccountExpansionLevel()
-	if GoGo_Variables.ExpansionNum == 3 then
-		GoGo_Variables.Localize.SeaLegs_Name = GetSpellInfo(GoGo_Variables.Localize.SeaLegs)  -- 4.0.1 (without Cataclysm will not return a value here - used later on.
-	else
-		GoGo_Variables.Localize.SeaLegs_Name = nil
-	end --if
-	
-end --function
 ---------
 function GoGo_Msg(msg)
 ---------
