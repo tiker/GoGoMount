@@ -1348,7 +1348,7 @@ function GoGo_SetExpansionInfo()
 	if GoGo_Variables.ExpansionNum == 3 then
 		GoGo_Variables.Localize.SeaLegs_Name = GetSpellInfo(GoGo_Variables.Localize.SeaLegs)  -- 4.0.1 (without Cataclysm will not return a value here - used later on.
 	else
-		GoGo_Variables.Localize.SeaLegs_Name = ""
+		GoGo_Variables.Localize.SeaLegs_Name = nil
 	end --if
 end --function
 ---------
