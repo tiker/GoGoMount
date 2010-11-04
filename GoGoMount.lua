@@ -81,7 +81,7 @@ function GoGo_OnEvent(event)
 		end --if
 	elseif (event == "PLAYER_ENTERING_WORLD") then
 		GoGo_Variables.Player.Zone = GetRealZoneText()
-		GoGo_Variables.Localize.SeaLegs_Name = GetSpellInfo(GoGo_Variables.Localize.SeaLegs)  -- 4.0.1 (without Cataclysm will not return a value here - used later on.
+		GoGo_SetExpansionInfo()  -- setting variables that may return errors if expansions not available
 
 --		if GoGo_Variables.Debug then
 --			GoGo_DebugAddLine("EVENT: Player Entering World")
@@ -587,6 +587,25 @@ function GoGo_ChooseMount()
 		if (table.getn(mounts) == 0) then
 			mounts = GoGo_GetGroundMounts0(GoGo_FilteredMounts) or {}
 		end --if
+	elseif IsIndoors() then  -- for druids / shaman mainly..
+		if (table.getn(mounts) == 0) then
+			mounts = GoGo_GetGroundMounts40(GoGo_FilteredMounts) or {}
+		end --if
+		if (table.getn(mounts) == 0) then
+			mounts = GoGo_GetGroundMounts35(GoGo_FilteredMounts) or {}
+		end --if
+		if (table.getn(mounts) == 0) then
+			mounts = GoGo_GetGroundMounts30(GoGo_FilteredMounts) or {}
+		end --if
+		if (table.getn(mounts) == 0) then
+			mounts = GoGo_GetGroundMounts15(GoGo_FilteredMounts) or {}
+		end --if
+		if (table.getn(mounts) == 0) then
+			mounts = GoGo_GetGroundMounts10(GoGo_FilteredMounts) or {}
+		end --if
+		if (table.getn(mounts) == 0) then
+			mounts = GoGo_GetGroundMounts0(GoGo_FilteredMounts) or {}
+		end --if
 	end --if
 	
 	if table.getn(GoGo_FilteredMounts) >= 1 then
@@ -752,7 +771,6 @@ function GoGo_BuildMountSpellList()
 		elseif GoGo_InBook(GoGo_Variables.Localize.AspectCheetah) then
 			table.insert(GoGo_Variables.MountSpellList, GoGo_Variables.Localize.AspectCheetah)
 		end --if
-		
 	end --if
 
 	if GoGo_Variables.Player.Race == "Worgen" then
@@ -1318,6 +1336,21 @@ function GoGo_CheckCoOrds(ZoneName, SubZoneName)
 	return false
 end --function
 
+---------
+function GoGo_SetExpansionInfo()
+---------
+-- 0 - World of Warcraft ("Classic")
+-- 1 - World of Warcraft: The Burning Crusade
+-- 2 - World of Warcraft: Wrath of the Lich King
+-- 3 - World of Warcraft: Cataclysm
+
+	GoGo_Variables.ExpansionNum = GetAccountExpansionLevel()
+	if GoGo_Variables.ExpansionNum = 3 then
+		GoGo_Variables.Localize.SeaLegs_Name = GetSpellInfo(GoGo_Variables.Localize.SeaLegs)  -- 4.0.1 (without Cataclysm will not return a value here - used later on.
+	else
+		GoGo_Variables.Localize.SeaLegs_Name = ""
+	end --if
+end --function
 ---------
 function GoGo_Msg(msg)
 ---------
@@ -1938,6 +1971,15 @@ function GoGo_DebugCollectInformation()
 		GoGo_DebugAddLine("Information: Client locale is zhTW")
 	elseif GetLocale() == "zhCN" then
 		GoGo_DebugAddLine("Information: Client locale is zhCN")
+	end --if
+	if GoGo_Variables.ExpansionNum == 0 then
+		GoGo_DebugAddLine("Information: World of Warcraft (Classic) enabled.")
+	elseif GoGo_Variables.ExpansionNum == 1 then
+		GoGo_DebugAddLine("Information: World of Warcraft: The Burning Crusade enabled.")
+	elseif GoGo_Variables.ExpansionNum == 2 then
+		GoGo_DebugAddLine("Information: World of Warcraft: Wrath of the Lich King enabled.")
+	elseif GoGo_Variables.ExpansionNum == 3 then
+		GoGo_DebugAddLine("Information: World of Warcraft: Cataclysm enabled.")
 	end --if
 	GoGo_DebugAddLine("Information: Location = " .. GetRealZoneText() .. " - " .. GetZoneText() .. " - " ..GetSubZoneText() .. " - " .. GetMinimapZoneText())
 	GoGo_DebugAddLine("Information: Current unit speed is " .. GetUnitSpeed("player"))
