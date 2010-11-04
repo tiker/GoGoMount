@@ -1169,12 +1169,7 @@ end --function
 function GoGo_ZoneCheck()
 --------- 
 	if GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.Deepholm then
-		if GoGo_Variables.Player.SubZone == GoGo_Variables.Localize.Zone.TempleOfEarth then
-			if GoGo_Variables.Debug then
-				GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Riding - in Deepholm / Temple of Earth.")
-			end --if
-			GoGo_Variables.CanRide = false
-		elseif GoGo_Variables.Player.SubZone == GoGo_Variables.Localize.Zone.CrumblingDepths then
+		if GoGo_Variables.Player.SubZone == GoGo_Variables.Localize.Zone.CrumblingDepths then
 			if GoGo_Variables.Debug then
 				GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Deepholm / Crumbling Depths.")
 			end --if
