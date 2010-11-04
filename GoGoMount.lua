@@ -1198,15 +1198,6 @@ function GoGo_ZoneCheck()
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Dire Maul area.")
 		end --if
 		GoGo_Variables.CanFly = false
-	elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.Ironforge then
-		if GoGo_Variables.Player.SubZone == GoGo_Variables.Localize.Zone.Ironforge then
-			if not IsFlyableArea() then  -- area by the gate is flyable but subzone name does not change
-				if GoGo_Variables.Debug then
-					GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Ironforge / Ironforge.")
-				end --if
-				GoGo_Variables.CanFly = false
-			end --if
-		end --if
 	end --if
 
 --	if GoGo_InOutlands() or GoGo_InNorthrend() then
