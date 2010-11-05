@@ -456,7 +456,7 @@ function GoGo_ChooseMount()
 			end --if
 		end --if
 	elseif IsSwimming() and not GetMirrorTimerProgress("BREATH") then
-		mounts = GoGo_GetBestAirMounts(GoGo_FilteredMounts)
+		mounts = GoGo_GetBestAirMounts(GoGo_FilteredMounts) or {}
 	end --if
 
 	GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 53)
@@ -1486,6 +1486,8 @@ function GoGo_GetBestAirMounts(GoGo_FilteredMounts)
 		if (table.getn(mounts) == 0 and (GoGo_Variables.Player.Class == "Druid") and (GoGo_InBook(GoGo_Variables.Localize.FlightForm))) then
 			table.insert(mounts, GoGo_Variables.Localize.FlightForm)
 		end --if
+		
+		return mounts
 end --function
 
 ---------
