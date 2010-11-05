@@ -331,6 +331,9 @@ function GoGo_ChooseMount()
 		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 55)
 	end --if
 ]]
+	if IsSwimming() then
+		GoGo_CheckSwimStatus()
+	end --if
 
 	GoGo_ZoneCheck()  -- Checking to see what we can and can not do in zones
 
@@ -384,9 +387,8 @@ function GoGo_ChooseMount()
 	if GoGo_Variables.Debug then
 		GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated mounts we can't use, forced shape forms if no mounts found.  Now we select a mount.")
 	end --if
-	
-	if IsSwimming() and GetMirrorTimerProgress("BREATH") then  -- find a mount to use in water
-		GoGo_Variables.SkipFlyingMount = true
+
+	if IsSwimming() and not GoGo_Variables.CanFly then  -- find a mount to use in water
 		if not IsIndoors() then
 			if (table.getn(mounts) == 0) then
 				mounts = GoGo_GetSwimmingMounts450(GoGo_FilteredMounts) or {}
@@ -455,7 +457,7 @@ function GoGo_ChooseMount()
 				return GoGo_InBook(GoGo_Variables.Localize.AquaForm)
 			end --if
 		end --if
-	elseif IsSwimming() and not GetMirrorTimerProgress("BREATH") then
+	elseif IsSwimming() and GoGo_Variables.CanFly then
 		mounts = GoGo_GetBestAirMounts(GoGo_FilteredMounts) or {}
 	end --if
 
@@ -1239,6 +1241,22 @@ function GoGo_GlyphActive(spellid)
 	end --if
 
 	return false
+end --function
+
+---------
+function GoGo_CheckSwimStatus()
+---------
+	for GoGo_TempCount = 1, MIRRORTIMER_NUMTIMERS do
+		local timer, value, maxvalue, scale, paused, label = GetMirrorTimerInfo(GoGo_TempCount)
+		if timer == "BREATH" then
+			if (scale == -1) then
+				if GoGo_Variables.Debug then
+					GoGo_DebugAddLine("GoGo_CheckSwimStatus: Breath timer bar found and it's slowly draining.  Disabling flying.")
+				end --if
+				GoGo_Variables.CanFly = false
+			end --if
+		end --if	
+	end --for
 end --function
 
 ---------
