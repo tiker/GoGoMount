@@ -69,6 +69,7 @@ function GoGo_OnEvent(event)
 	elseif event == "ZONE_CHANGED_NEW_AREA" then
 		SetMapToCurrentZone()
 		GoGo_Variables.Player.Zone = GetRealZoneText()
+		GoGo_UpdateZonePrefs()
 	elseif event == "TAXIMAP_OPENED" then
 		GoGo_Dismount()
 	elseif event == "UPDATE_BINDINGS" then
@@ -214,8 +215,8 @@ function GoGo_ChooseMount()
 	end --if
 
 	if (table.getn(mounts) == 0) then
-		if GoGo_Prefs[GoGo_Variables.Player.Zone] then
-			GoGo_FilteredMounts = GoGo_Prefs[GoGo_Variables.Player.Zone] or {}
+		if GoGo_Prefs.Zones[GoGo_Variables.Player.Zone] then
+			GoGo_FilteredMounts = GoGo_Prefs.Zones[GoGo_Variables.Player.Zone] or {}
 --			GoGo_DisableUnknownMountNotice = true
 		end --if
 	end --if
@@ -921,40 +922,67 @@ function GoGo_GlobalExcludeModify(SpellID)
 end --function
 
 ---------
-function GoGo_AddPrefMount(spell)
+function GoGo_AddPrefMount(SpellID)
 ---------
 	if GoGo_Variables.Debug then 
 		GoGo_DebugAddLine("GoGo_AddPrefMount: Preference " .. spell)
 	end --if
 
+	local GoGo_RemovedFlag = false
+	SpellID = tonumber(SpellID)
 	if not GoGo_Prefs.GlobalPrefMount then
 		GoGo_Variables.Player.Zone = GetRealZoneText()
-		if not GoGo_Prefs[GoGo_Variables.Player.Zone] then GoGo_Prefs[GoGo_Variables.Player.Zone] = {} end
-		table.insert(GoGo_Prefs[GoGo_Variables.Player.Zone], spell)
-		if table.getn(GoGo_Prefs[GoGo_Variables.Player.Zone]) > 1 then
-			local i = 2
-			repeat
-				if GoGo_Prefs[GoGo_Variables.Player.Zone][i] == GoGo_Prefs[GoGo_Variables.Player.Zone][i - 1] then
-					table.remove(GoGo_Prefs[GoGo_Variables.Player.Zone], i)
-				else
-					i = i + 1
+		if not GoGo_Prefs.Zones[GoGo_Variables.Player.Zone] then GoGo_Prefs.Zones[GoGo_Variables.Player.Zone] = {} end
+		if table.getn(GoGo_Prefs.Zones[GoGo_Variables.Player.Zone]) > 0 then
+			for GoGo_TempCounter = 1, table.getn(GoGo_Prefs.Zones[GoGo_Variables.Player.Zone]) do
+				if (GoGo_Prefs.Zones[GoGo_Variables.Player.Zone][GoGo_TempCounter] == SpellID) then
+					local GoGo_TempID = GoGo_Prefs.Zones[GoGo_Variables.Player.Zone][GoGo_TempCounter]
+					if GoGo_Variables.Debug then
+						GoGo_DebugAddLine("GoGo_AddPrefMount: Removing from exclusion list: " .. SpellID .. " " .. GoGo_GetIDName(SpellID))
+					end --if
+					table.remove(GoGo_Prefs.Zones[GoGo_Variables.Player.Zone], GoGo_TempCounter)
+					GoGo_RemovedFlag = true
+					if table.getn(GoGo_Prefs.Zones[GoGo_Variables.Player.Zone]) == 0 then
+						GoGo_Prefs.Zones[GoGo_Variables.Player.Zone] = nil
+					end --if
 				end --if
-			until i > table.getn(GoGo_Prefs[GoGo_Variables.Player.Zone])
+			end --for
+		end --if
+		if not GoGo_RemovedFlag then
+			table.insert(GoGo_Prefs.Zones[GoGo_Variables.Player.Zone],SpellID)
 		end --if
 	else
 		if not GoGo_Prefs.GlobalPrefMounts then GoGo_Prefs.GlobalPrefMounts = {} end
-		table.insert(GoGo_Prefs.GlobalPrefMounts, spell)
-		if table.getn(GoGo_Prefs.GlobalPrefMounts) > 1 then
-			local i = 2
-			repeat
-				if GoGo_Prefs.GlobalPrefMounts[i] == GoGo_Prefs.GlobalPrefMounts[i - 1] then
-					table.remove(GoGo_Prefs.GlobalPrefMounts, i)
-				else
-					i = i + 1
+		if table.getn(GoGo_Prefs.GlobalPrefMounts) > 0 then
+			for GoGo_TempCounter = 1, table.getn(GoGo_Prefs.GlobalPrefMounts) do
+				if (GoGo_Prefs.GlobalPrefMounts[GoGo_TempCounter] == SpellID) then
+					local GoGo_TempID = GoGo_Prefs.GlobalPrefMounts[GoGo_TempCounter]
+					if GoGo_Variables.Debug then
+						GoGo_DebugAddLine("GoGo_AddPrefMount: Removing from exclusion list: " .. SpellID .. " " .. GoGo_GetIDName(SpellID))
+					end --if
+					table.remove(GoGo_Prefs.GlobalPrefMounts, GoGo_TempCounter)
+					GoGo_RemovedFlag = true
+					if table.getn(GoGo_Prefs.GlobalPrefMounts) == 0 then
+						GoGo_Prefs.GlobalPrefMounts = nil
+					end --if
 				end --if
-			until i > table.getn(GoGo_Prefs.GlobalPrefMounts)
+			end --for
+		end --if
+		if not GoGo_RemovedFlag then
+			table.insert(GoGo_Prefs.GlobalPrefMounts,SpellID)
 		end --if
 	end --if
+end --function
+
+---------
+function GoGo_UpdateZonePrefs()
+---------
+
+	if GoGo_Prefs[GoGo_Variables.Player.Zone] then
+		GoGo_Prefs.Zones[GoGo_Variables.Player.Zone] = GoGo_Prefs[GoGo_Variables.Player.Zone]
+		GoGo_Prefs[GoGo_Variables.Player.Zone] = nil
+	end --if
+		
 end --function
 
 ---------
@@ -1635,7 +1663,7 @@ GOGO_COMMANDS = {
 				end --for
 			end --if
 		else
-			GoGo_Prefs[GoGo_Variables.Player.Zone] = nil
+			GoGo_Prefs.Zones[GoGo_Variables.Player.Zone] = nil
 			if not InCombatLockdown() then
 				for i, button in ipairs({GoGoButton, GoGoButton2}) do
 					GoGo_FillButton(button)
@@ -1681,8 +1709,8 @@ GOGO_MESSAGES = {
 		local msg = ""
 		if not GoGo_Prefs.GlobalPrefMount then
 			local list = ""
-			if GoGo_Prefs[GoGo_Variables.Player.Zone] then
-				list = list .. GoGo_GetIDName(GoGo_Prefs[GoGo_Variables.Player.Zone])
+			if GoGo_Prefs.Zones[GoGo_Variables.Player.Zone] then
+				list = list .. GoGo_GetIDName(GoGo_Prefs.Zones[GoGo_Variables.Player.Zone])
 				msg = GoGo_Variables.Player.Zone..": "..list.." - </gogo clear> to clear"
 			else
 				msg = GoGo_Variables.Player.Zone..": ?".." - </gogo ItemLink> or </gogo SpellName> to add"
@@ -1700,8 +1728,8 @@ GOGO_MESSAGES = {
 			else
 				msg =  "Global Preferred Mounts: ?".." - </gogo ItemLink> or </gogo SpellName> to add"
 			end --if
-			if GoGo_Prefs[GoGo_Variables.Player.Zone] then
-				list = list .. GoGo_GetIDName(GoGo_Prefs[GoGo_Variables.Player.Zone])
+			if GoGo_Prefs.Zones[GoGo_Variables.Player.Zone] then
+				list = list .. GoGo_GetIDName(GoGo_Prefs.Zones[GoGo_Variables.Player.Zone])
 				msg = msg .. "\n" .. GoGo_Variables.Player.Zone ..": "..list.." - Disable global mount preferences to change."
 			end --if
 			return msg
@@ -1934,6 +1962,7 @@ function GoGo_Settings_Default(Class)
 		GoGo_Prefs.GlobalPrefMount = false
 	else
 		GoGo_Prefs = {}
+		GoGo_Prefs.Zones = {}
 		GoGo_Prefs.GlobalExclude = {}
 		GoGo_Prefs.version = GetAddOnMetadata("GoGoMount", "Version")
 		GoGo_Prefs.autodismount = true
@@ -1964,6 +1993,9 @@ function GoGo_Settings_SetUpdates()
 	GoGo_Prefs.UnknownMounts = {}
 	if not GoGo_Prefs.GlobalExclude then
 		GoGo_Prefs.GlobalExclude = {}
+	end --if
+	if not GoGo_Prefs.Zones then
+		GoGo_Prefs.Zones = {}
 	end --if
 	
 end --function
