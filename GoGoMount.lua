@@ -385,7 +385,7 @@ function GoGo_ChooseMount()
 		GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated mounts we can't use, forced shape forms if no mounts found.  Now we select a mount.")
 	end --if
 	
-	if IsSwimming() then  -- find a mount to use in water
+	if IsSwimming() and GetMirrorTimerProgress("BREATH") then  -- find a mount to use in water
 		GoGo_Variables.SkipFlyingMount = true
 		if not IsIndoors() then
 			if (table.getn(mounts) == 0) then
@@ -455,11 +455,11 @@ function GoGo_ChooseMount()
 				return GoGo_InBook(GoGo_Variables.Localize.AquaForm)
 			end --if
 		end --if
-	else		
-		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 53)
+	elseif IsSwimming() and not GetMirrorTimerProgress("BREATH") then
+		mounts = GoGo_GetBestAirMounts(GoGo_FilteredMounts)
 	end --if
 
-	local GoGo_TempMounts = {}
+	GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 53)
 
 	if (table.getn(mounts) == 0) and GoGo_CanFly() and not GoGo_Variables.SkipFlyingMount and GoGo_Variables.CanFly then
 		if GoGo_Variables.Debug then
@@ -475,6 +475,7 @@ function GoGo_ChooseMount()
 
 	
 	-- Set the oculus mounts as the only mounts available if we're in the oculus, not skiping flying and have them in inventory
+	local GoGo_TempMounts = {}
 	if (table.getn(mounts) == 0) and (table.getn(GoGo_FilteredMounts) >= 1) and (GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.TheOculus) and not GoGo_Variables.SkipFlyingMount then
 		GoGo_TempMounts = GoGo_FilterMountsIn(GoGo_FilteredMounts, 54) or {}
 		if (table.getn(GoGo_TempMounts) >= 1) then
