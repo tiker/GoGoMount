@@ -359,6 +359,10 @@ function GoGo_ChooseMount()
 		GoGo_FilteredMounts = GoGo_FilterMountsIn(GoGo_FilteredMounts, 2) or {}
 	end --if
 
+	if GoGo_Variables.ZoneExclude.NorthrendLoanedMounts then
+		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 52) or {}
+	end --if
+
 	if GoGo_Variables.ZoneExclude.AQ40 then
 		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 50) or {}
 	end --if
@@ -469,13 +473,6 @@ function GoGo_ChooseMount()
 		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 35)
 	end --if
 
-	if (table.getn(mounts) == 0) and (table.getn(GoGo_FilteredMounts) >= 1) then  -- no flying mounts selected yet - try to use loaned mounts
-		GoGo_TempMounts = GoGo_FilterMountsIn(GoGo_FilteredMounts, 52) or {}
-		if (table.getn(GoGo_TempMounts) >= 1) and (GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.SholazarBasin or GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.TheStormPeaks or GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.Icecrown) then
-			mounts = GoGo_FilterMountsIn(GoGo_FilteredMounts, 52)
-		end --if
-		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 52)
-	end --if
 	
 	-- Set the oculus mounts as the only mounts available if we're in the oculus, not skiping flying and have them in inventory
 	if (table.getn(mounts) == 0) and (table.getn(GoGo_FilteredMounts) >= 1) and (GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.TheOculus) and not GoGo_Variables.SkipFlyingMount then
@@ -1118,6 +1115,10 @@ end --function
 ---------
 function GoGo_ZoneCheck()
 --------- 
+	--Resetting zone flags (if true then don't use)
+	GoGo_Variables.ZoneExclude.NorthrendLoanedMounts = true
+	GoGo_Variables.ZoneExclude.AQ40 = true
+	
 	if GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.Deepholm then
 		if GoGo_Variables.Player.SubZone == GoGo_Variables.Localize.Zone.CrumblingDepths then
 			if GoGo_Variables.Debug then
@@ -1148,24 +1149,29 @@ function GoGo_ZoneCheck()
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Dire Maul area.")
 		end --if
 		GoGo_Variables.CanFly = false
-	end --if
-
-	if GoGo_Variables.Player.Zone ~= GoGo_Variables.Localize.Zone.AQ40 then
+	elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.SholazarBasin then
+		if GoGo_Variables.Debug then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Not removing loaned mounts since we are in Sholazar Basin.")
+		end --if
+		GoGo_Variables.ZoneExclude.NorthrendLoanedMounts = false
+	elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.TheStormPeaks then
+		if GoGo_Variables.Debug then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Not removing loaned mounts since we are in The Storm Peaks.")
+		end --if
+		GoGo_Variables.ZoneExclude.NorthrendLoanedMounts = false
+	elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.Icecrown then
+		if GoGo_Variables.Debug then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Not removing loaned mounts since we are in Icecrown.")
+		end --if
+		GoGo_Variables.ZoneExclude.NorthrendLoanedMounts = false
+	elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.AQ40 then
 		if GoGo_Variables.Debug then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Removing AQ40 mounts since we are not in AQ40.")
 		end --if
-		GoGo_Variables.ZoneExclude.AQ40 = true
-	else
 		GoGo_Variables.ZoneExclude.AQ40 = false
 	end --if
 
 	GoGo_Variables.ZoneExclude.AQ40 = true  -- TEMPORARY UNTIL BLIZZARD FIXES BUG MOUNTS IN AQ40 - FLAGGING THEM AS ALWAYS NOT AVAILABLE
-	
---	if GoGo_InOutlands() or GoGo_InNorthrend() then
---		GoGo_Variables.MountDB[75973] = {[9] = true, [2] = true, [3] = true, [14] = true, [20] = true, [21] = true, [22] = true, [23] = false, [39] = true, [998] = true}  --make the [X-53 Touring Rocket] a ground / flying mount (Warcraft 4.x without cata can use this as a ground mount in Dalaran)
---	else
---		GoGo_Variables.MountDB[75973] = {[9] = true, [2] = true, [12] = true, [22] = true, [23] = false, [39] = true, [998] = true}  --make the [X-53 Touring Rocket] a flying mount only everywhere (since it can fly in Azeroth with Azeroth flying buff)
---	end --if
 
 end --function
 
