@@ -461,38 +461,10 @@ function GoGo_ChooseMount()
 		if GoGo_Variables.Debug then
 			GoGo_DebugAddLine("GoGo_ChooseMount: Looking for flying mounts since we past flight checks.")
 		end --if
-
-		-- Druid stuff... 
-		-- Use flight forms if preferred
-		if GoGo_Variables.Player.Class == "DRUID" and (GoGo_InBook(GoGo_Variables.Localize.FastFlightForm) or GoGo_InBook(GoGo_Variables.Localize.FlightForm)) and GoGo_Prefs.DruidFlightForm then
-			if GoGo_Variables.Debug then
-				GoGo_DebugAddLine("GoGo_ChooseMount: Druid with preferred flight forms option enabled.  Using flight form.")
-			end --if
-			return GoGo_InBook(GOGO_SPELLS["DRUID"])
-		end --if
-
-		if (table.getn(mounts) == 0) then
-			mounts = GoGo_GetAirMounts310(GoGo_FilteredMounts)
-		end --if
-
-		-- no epic flyers found - add druid swift flight if available
-		if (table.getn(mounts) == 0 and (GoGo_Variables.Player.Class == "Druid") and (GoGo_InBook(GoGo_Variables.Localize.FastFlightForm))) then
-			table.insert(mounts, GoGo_Variables.Localize.FastFlightForm)
-		end --if
-
-		if (table.getn(mounts) == 0) then
-			GoGo_TempMounts = GoGo_FilterMountsIn(GoGo_FilteredMounts, 9)
-			mounts = GoGo_FilterMountsIn(GoGo_TempMounts, 22)
-		end --if
-
-		-- no slow flying mounts found - add druid flight if available
-		if (table.getn(mounts) == 0 and (GoGo_Variables.Player.Class == "Druid") and (GoGo_InBook(GoGo_Variables.Localize.FlightForm))) then
-			table.insert(mounts, GoGo_Variables.Localize.FlightForm)
-		end --if
+		mounts = GoGo_GetBestAirMounts(GoGo_FilteredMounts)
 	end --if
 	
 	if (table.getn(GoGo_FilteredMounts) >= 1) then
-		--GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 1)
 		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 36)
 		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 35)
 	end --if
@@ -1476,6 +1448,37 @@ function GoGo_GetOculusMounts280(GoGo_FilteredMounts)
 ---------
 	GoGo_FilteredMounts = GoGo_FilterMountsIn(GoGo_FilteredMounts, 54) or {}
 	return GoGo_FilteredMounts
+end --function
+
+---------
+function GoGo_GetBestAirMounts(GoGo_FilteredMounts)
+---------
+		-- Druid stuff... 
+		-- Use flight forms if preferred
+		local mounts = {}
+		local GoGo_TempMounts = {}
+		if GoGo_Variables.Player.Class == "DRUID" and (GoGo_InBook(GoGo_Variables.Localize.FastFlightForm) or GoGo_InBook(GoGo_Variables.Localize.FlightForm)) and GoGo_Prefs.DruidFlightForm then
+			if GoGo_Variables.Debug then
+				GoGo_DebugAddLine("GoGo_ChooseMount: Druid with preferred flight forms option enabled.  Using flight form.")
+			end --if
+			return GoGo_InBook(GOGO_SPELLS["DRUID"])
+		end --if
+
+		mounts = GoGo_GetAirMounts310(GoGo_FilteredMounts)
+
+		-- no epic flyers found - add druid swift flight if available
+		if (table.getn(mounts) == 0 and (GoGo_Variables.Player.Class == "Druid") and (GoGo_InBook(GoGo_Variables.Localize.FastFlightForm))) then
+			table.insert(mounts, GoGo_Variables.Localize.FastFlightForm)
+		end --if
+
+		if (table.getn(mounts) == 0) then
+			mounts = GoGo_GetAirMounts150(GoGo_FilteredMounts)
+		end --if
+
+		-- no slow flying mounts found - add druid flight if available
+		if (table.getn(mounts) == 0 and (GoGo_Variables.Player.Class == "Druid") and (GoGo_InBook(GoGo_Variables.Localize.FlightForm))) then
+			table.insert(mounts, GoGo_Variables.Localize.FlightForm)
+		end --if
 end --function
 
 ---------
