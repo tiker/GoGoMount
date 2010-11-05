@@ -201,6 +201,7 @@ function GoGo_ChooseMount()
 	GoGo_Variables.EngineeringLevel = GoGo_GetProfSkillLevel(GoGo_Variables.Localize.Skill.Engineering)
 	GoGo_Variables.TailoringLevel = GoGo_GetProfSkillLevel(GoGo_Variables.Localize.Skill.Tailoring)
 	GoGo_Variables.RidingLevel = GoGo_GetRidingSkillLevel() or 0
+	GoGo_Variables.Player.Level = UnitLevel("player")
 
 	if (GoGo_Variables.Player.Class == "DRUID") then
 		GoGo_Variables.Druid.FeralSwiftness, _ = GoGo_GetTalentInfo(GoGo_Variables.Localize.Talent.FeralSwiftness)
@@ -338,6 +339,13 @@ function GoGo_ChooseMount()
 
 	GoGo_ZoneCheck()  -- Checking to see what we can and can not do in zones
 
+	if (GoGo_Variables.Player.Level < 60) then
+		if GoGo_Variables.Debug then
+			GoGo_DebugAddLine("GoGo_ChooseMount: Disabling flying - under level 60")
+		end --if
+		GoGo_Variables.CanFly = false
+	end --if
+
 	if GoGo_Variables.ExpansionNum == 3 then  -- only exists for 4.x with Cataclysm expansion
 		if UnitBuff("player", GetSpellInfo(GoGo_Variables.Localize.SeaLegs)) then
 			if GoGo_Variables.Debug then
@@ -464,7 +472,7 @@ function GoGo_ChooseMount()
 
 	GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 53)
 
-	if (table.getn(mounts) == 0) and GoGo_CanFly() and not GoGo_Variables.SkipFlyingMount and GoGo_Variables.CanFly then
+	if (table.getn(mounts) == 0) and not GoGo_Variables.SkipFlyingMount and GoGo_Variables.CanFly then
 		if GoGo_Variables.Debug then
 			GoGo_DebugAddLine("GoGo_ChooseMount: Looking for flying mounts since we past flight checks.")
 		end --if
@@ -977,12 +985,10 @@ end --function
 ---------
 function GoGo_UpdateZonePrefs()
 ---------
-
 	if GoGo_Prefs[GoGo_Variables.Player.Zone] then
 		GoGo_Prefs.Zones[GoGo_Variables.Player.Zone] = GoGo_Prefs[GoGo_Variables.Player.Zone]
 		GoGo_Prefs[GoGo_Variables.Player.Zone] = nil
 	end --if
-		
 end --function
 
 ---------
@@ -1097,105 +1103,94 @@ function GoGo_CheckBindings()
 end --function
 
 ---------
-function GoGo_CanFly()
----------
-	GoGo_Variables.Player.Zone = GetRealZoneText()
-	GoGo_Variables.Player.SubZone = GetSubZoneText()
-
-	local level = UnitLevel("player")
-
-	if (level < 60) then
-		if GoGo_Variables.Debug then
-			GoGo_DebugAddLine("GoGo_CanFly: Failed - Player under level 60")
-		end --if
-		return false
-	end --if
-	
-	if GoGo_InOutlands() then
-		-- we can fly here
-	elseif (GoGo_InNorthrend() and (GoGo_InBook(GoGo_Variables.Localize.ColdWeatherFlying))) then
-
-		if GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.Wintergrasp then
-			if GetWintergraspWaitTime() then
-				if GoGo_Variables.Debug then
-					GoGo_DebugAddLine("GoGo_CanFly: Player in Wintergrasp and battle ground is not active.")
-				end --if
-				-- timer ticking to start wg.. we can mount
-			else
-				if GoGo_Variables.Debug then
-					GoGo_DebugAddLine("GoGo_CanFly: Failed - Player in Wintergrasp and battle ground is active.")
-				end --if
-				-- we should be in battle.. can't mount
-				return false
-			end --if
-		end --if
-	elseif (GoGo_InMaelstrom() and (GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense))) then
-		-- we can fly here
-	elseif (GoGo_InAzeroth() and (GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense))) then
-		-- we can fly here
-	else
-		if GoGo_Variables.Debug then
-			GoGo_DebugAddLine("GoGo_CanFly: Failed - Player does not meet any flyable conditions.")
-		end --if
-		return false  -- we can't fly anywhere else
-	end --if
-	
-	return true
-end --function
-
----------
 function GoGo_ZoneCheck()
 --------- 
 	--Resetting zone flags (if true then don't use)
 	GoGo_Variables.ZoneExclude.NorthrendLoanedMounts = true
 	GoGo_Variables.ZoneExclude.AQ40 = true
 	
-	if GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.Deepholm then
-		if GoGo_Variables.Player.SubZone == GoGo_Variables.Localize.Zone.CrumblingDepths then
-			if GoGo_Variables.Debug then
-				GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Deepholm / Crumbling Depths.")
+	if (GoGo_InNorthrend()) then
+		if not (GoGo_InBook(GoGo_Variables.Localize.ColdWeatherFlying)) then
+			if GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.SholazarBasin then
+				if GoGo_Variables.Debug then
+					GoGo_DebugAddLine("GoGo_ZoneCheck: Not removing loaned mounts since we are in Sholazar Basin.")
+				end --if
+				GoGo_Variables.ZoneExclude.NorthrendLoanedMounts = false
+			elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.TheStormPeaks then
+				if GoGo_Variables.Debug then
+					GoGo_DebugAddLine("GoGo_ZoneCheck: Not removing loaned mounts since we are in The Storm Peaks.")
+				end --if
+				GoGo_Variables.ZoneExclude.NorthrendLoanedMounts = false
+			elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.Icecrown then
+				if GoGo_Variables.Debug then
+					GoGo_DebugAddLine("GoGo_ZoneCheck: Not removing loaned mounts since we are in Icecrown.")
+				end --if
+				GoGo_Variables.ZoneExclude.NorthrendLoanedMounts = false
 			end --if
-			GoGo_Variables.CanRide = true
+			if GoGo_Variables.ZoneExclude.NorthrendLoanedMounts then
+				GoGo_Variables.CanFly = false
+			end --if
+		elseif GoGo_InBook(GoGo_Variables.Localize.ColdWeatherFlying) then
+			if GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.Wintergrasp then
+				if GetWintergraspWaitTime() then
+					if GoGo_Variables.Debug then
+						GoGo_DebugAddLine("GoGo_ZoneCheck: Player in Wintergrasp and battle ground is not active.")
+					end --if
+					-- timer ticking to start wg.. we can mount
+				else
+					if GoGo_Variables.Debug then
+						GoGo_DebugAddLine("GoGo_ZoneCheck: Failed - Player in Wintergrasp and battle ground is active.")
+					end --if
+					-- we should be in battle.. can't mount
+					GoGo_Variables.CanFly = false
+				end --if
+			elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.Dalaran then
+				if not IsFlyableArea() then  -- have to use this.. flying is different in sewers and is different between 4.x with and without cataclysm
+					if GoGo_Variables.Debug then
+						GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - Player in " .. GoGo_Variables.Localize.Zone.Dalaran .. " and not in flyable area.")
+					end --if
+					GoGo_Variables.CanFly = false
+				end --if
+			end --if
+		end --if
+	elseif (GoGo_InMaelstrom()) then
+		if (GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense)) then
+			if GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.Deepholm then
+				if GoGo_Variables.Player.SubZone == GoGo_Variables.Localize.Zone.CrumblingDepths then
+					if GoGo_Variables.Debug then
+						GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Deepholm / Crumbling Depths.")
+					end --if
+					GoGo_Variables.CanRide = true
+					GoGo_Variables.CanFly = false
+				end --if
+			end --if
+		else  -- don't have Flight master's license
 			GoGo_Variables.CanFly = false
 		end --if
-	elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.TolBaradPeninsula then
-		if GoGo_Variables.Debug then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Tol Barad Peninsula.")
-		end --if
-		GoGo_Variables.CanFly = false
-	elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.TolBarad then
-		if GoGo_Variables.Debug then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Tol Barad.")
-		end --if
-		GoGo_Variables.CanFly = false
-	elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.Dalaran then
-		if not IsFlyableArea() then  -- have to use this.. flying is different in sewers and is different between 4.x with and without cataclysm
-			if GoGo_Variables.Debug then
-				GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - Player in " .. GoGo_Variables.Localize.Zone.Dalaran .. " and not in flyable area.")
+	elseif (GoGo_InAzeroth()) then
+		if (GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense)) then
+			if GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.TolBaradPeninsula then
+				if GoGo_Variables.Debug then
+					GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Tol Barad Peninsula.")
+				end --if
+				GoGo_Variables.CanFly = false
+			elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.TolBarad then
+				if GoGo_Variables.Debug then
+					GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Tol Barad.")
+				end --if
+				GoGo_Variables.CanFly = false
+			elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.DireMaul then
+				if GoGo_Variables.Debug then
+					GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Dire Maul area.")
+				end --if
+				GoGo_Variables.CanFly = false
 			end --if
+		else  -- don't have flight master's license
 			GoGo_Variables.CanFly = false
 		end --if
-	elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.DireMaul then
-		if GoGo_Variables.Debug then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Dire Maul area.")
-		end --if
-		GoGo_Variables.CanFly = false
-	elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.SholazarBasin then
-		if GoGo_Variables.Debug then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Not removing loaned mounts since we are in Sholazar Basin.")
-		end --if
-		GoGo_Variables.ZoneExclude.NorthrendLoanedMounts = false
-	elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.TheStormPeaks then
-		if GoGo_Variables.Debug then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Not removing loaned mounts since we are in The Storm Peaks.")
-		end --if
-		GoGo_Variables.ZoneExclude.NorthrendLoanedMounts = false
-	elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.Icecrown then
-		if GoGo_Variables.Debug then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Not removing loaned mounts since we are in Icecrown.")
-		end --if
-		GoGo_Variables.ZoneExclude.NorthrendLoanedMounts = false
-	elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.AQ40 then
+	end --if
+	
+	if GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.AQ40 then
 		if GoGo_Variables.Debug then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Removing AQ40 mounts since we are not in AQ40.")
 		end --if
@@ -1209,8 +1204,7 @@ end --function
 ---------
 function GoGo_CanRide()
 ---------
-	local level = UnitLevel("player")
-	if level >= 20 then
+	if GoGo_Variables.Player.Level >= 20 then
 		if GoGo_Variables.Debug then
 			GoGo_DebugAddLine("GoGo_CanRide: Passed - Player is over level 20.")
 		end --if
@@ -1615,9 +1609,9 @@ GOGO_SPELLS = {
 	["DRUID"] = function()
 		if GoGo_Prefs.DruidClickForm then
 			if GoGo_InBook(GoGo_Variables.Localize.AquaForm) then
-				if not GoGo_Variables.SkipFlyingMount and GoGo_CanFly() and GoGo_InBook(GoGo_Variables.Localize.FastFlightForm) and GoGo_Variables.CanFly then
+				if not GoGo_Variables.SkipFlyingMount and GoGo_InBook(GoGo_Variables.Localize.FastFlightForm) and GoGo_Variables.CanFly then
 					return "/cancelform [flying] \n/use [swimming] "..GoGo_InBook(GoGo_Variables.Localize.AquaForm).."; [indoors]"..GoGo_InBook(GoGo_Variables.Localize.CatForm).."; [combat]"..GoGo_InBook(GoGo_Variables.Localize.TravelForm).."; "..GoGo_InBook(GoGo_Variables.Localize.FastFlightForm)
-				elseif not GoGo_Variables.SkipFlyingMount and GoGo_CanFly() and GoGo_InBook(GoGo_Variables.Localize.FlightForm) and GoGo_Variables.CanFly then
+				elseif not GoGo_Variables.SkipFlyingMount and GoGo_InBook(GoGo_Variables.Localize.FlightForm) and GoGo_Variables.CanFly then
 					return "/cancelform [flying] \n/use [swimming] "..GoGo_InBook(GoGo_Variables.Localize.AquaForm).."; [indoors]"..GoGo_InBook(GoGo_Variables.Localize.CatForm).."; [combat]"..GoGo_InBook(GoGo_Variables.Localize.TravelForm).."; "..GoGo_InBook(GoGo_Variables.Localize.FlightForm)
 				else
 					return "/cancelform [flying] \n/use [swimming] "..GoGo_InBook(GoGo_Variables.Localize.AquaForm).."; [indoors]"..GoGo_InBook(GoGo_Variables.Localize.CatForm)..";"..GoGo_InBook(GoGo_Variables.Localize.TravelForm)
@@ -1632,9 +1626,9 @@ GOGO_SPELLS = {
 				GoGo_CastString = GoGo_CastString .. "[form:" .. GoGo_TempCount .. "] "..GoGo_FormName..";"
 			end --for
 			if GoGo_InBook(GoGo_Variables.Localize.AquaForm) then
-				if not GoGo_Variables.SkipFlyingMount and GoGo_CanFly() and GoGo_InBook(GoGo_Variables.Localize.FastFlightForm) and GoGo_Variables.CanFly then
+				if not GoGo_Variables.SkipFlyingMount and GoGo_InBook(GoGo_Variables.Localize.FastFlightForm) and GoGo_Variables.CanFly then
 					GoGo_CastString = GoGo_CastString .. "[swimming] "..GoGo_InBook(GoGo_Variables.Localize.AquaForm).."; [indoors]"..GoGo_InBook(GoGo_Variables.Localize.CatForm).."; [combat]"..GoGo_InBook(GoGo_Variables.Localize.TravelForm).."; "..GoGo_InBook(GoGo_Variables.Localize.FastFlightForm)
-				elseif not GoGo_Variables.SkipFlyingMount and GoGo_CanFly() and GoGo_InBook(GoGo_Variables.Localize.FlightForm) and GoGo_Variables.CanFly then
+				elseif not GoGo_Variables.SkipFlyingMount and GoGo_InBook(GoGo_Variables.Localize.FlightForm) and GoGo_Variables.CanFly then
 					GoGo_CastString = GoGo_CastString .. "[swimming] "..GoGo_InBook(GoGo_Variables.Localize.AquaForm).."; [indoors]"..GoGo_InBook(GoGo_Variables.Localize.CatForm).."; [combat]"..GoGo_InBook(GoGo_Variables.Localize.TravelForm).."; "..GoGo_InBook(GoGo_Variables.Localize.FlightForm)
 				else
 					GoGo_CastString = GoGo_CastString .. "[swimming] "..GoGo_InBook(GoGo_Variables.Localize.AquaForm).."; [indoors]"..GoGo_InBook(GoGo_Variables.Localize.CatForm)..";"..GoGo_InBook(GoGo_Variables.Localize.TravelForm)
@@ -2037,11 +2031,6 @@ function GoGo_DebugCollectInformation()
 	local level = UnitLevel("player")
 	GoGo_DebugAddLine("Information: We are level " .. level)
 	GoGo_DebugAddLine("Information: We are a " .. GoGo_Variables.Player.Race .. " " .. GoGo_Variables.Player.Class)
-	if GoGo_CanFly() then
-		GoGo_DebugAddLine("Information: We can fly here as per GoGo_CanFly()")
-	else
-		GoGo_DebugAddLine("Information: We can not fly here as per GoGo_CanFly()")
-	end --if
 	if IsOutdoors() then
 		GoGo_DebugAddLine("Information: We are outdoors as per IsOutdoors()")
 	else
