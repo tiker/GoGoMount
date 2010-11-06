@@ -1109,6 +1109,15 @@ function GoGo_ZoneCheck()
 	GoGo_Variables.ZoneExclude.NorthrendLoanedMounts = true
 	GoGo_Variables.ZoneExclude.AQ40 = true
 	
+	if not GoGo_InNorthrend() and not GoGo_InOutlands() and not GoGo_InAzeroth() and not GoGo_InMaelstrom() then
+		if GoGo_Variables.Player.Zone ~= GoGo_Variables.Localize.Zone.TheOculus then
+			if GoGo_Variables.Debug then
+				GoGo_DebugAddLine("GoGo_ZoneCheck: Disabling flying.  Didn't past the first check.")
+			end --if
+			GoGo_Variables.CanFly = false
+		end --if
+	end --if
+	
 	if (GoGo_InNorthrend()) then
 		if not (GoGo_InBook(GoGo_Variables.Localize.ColdWeatherFlying)) then
 			if GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.SholazarBasin then
