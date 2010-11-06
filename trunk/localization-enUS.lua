@@ -45,6 +45,7 @@
 				TheFrozenSea = "The Frozen Sea",
 				TheOculus = "The Oculus",
 				TheStormPeaks = "The Storm Peaks",
+				TheTempleOfAtalHakkar = "The Temple of Atal'Hakkar",
 				TheUnderbelly = "The Underbelly",
 				TheVioletCitadel = "The Violet Citadel",
 				TolBarad = "Tol Barad",
