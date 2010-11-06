@@ -1197,6 +1197,16 @@ function GoGo_ZoneCheck()
 		else  -- don't have flight master's license
 			GoGo_Variables.CanFly = false
 		end --if
+	elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.TheTempleOfAtalHakkar then
+		GoGo_Variables.CanFly = true
+	elseif IsInInstance() then
+		if GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.TheOculus then
+			-- do nothing
+		else
+			GoGo_Variables.CanFly = false
+		end --if
+	elseif GoGo_IsInBattleGround() then
+		GoGo_Variables.CanFly = false
 	end --if
 	
 	if GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.AQ40 then
@@ -1208,6 +1218,17 @@ function GoGo_ZoneCheck()
 
 	GoGo_Variables.ZoneExclude.AQ40 = true  -- TEMPORARY UNTIL BLIZZARD FIXES BUG MOUNTS IN AQ40 - FLAGGING THEM AS ALWAYS NOT AVAILABLE
 
+end --function
+
+---------
+function GoGo_IsInBattleGround()
+---------
+  for GoGo_TempCount = 1, MAX_BATTLEFIELD_QUEUES do
+    local Status, MapName = GetBattlefieldStatus(GoGo_TempCount);
+    if(Status=="active")then
+      return MapName;
+    end --if
+  end --if
 end --function
 
 ---------
