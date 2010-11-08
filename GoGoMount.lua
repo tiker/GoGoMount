@@ -375,6 +375,10 @@ function GoGo_ChooseMount()
 		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 52) or {}
 	end --if
 
+	if GoGo_Variables.ZoneExclude.TheOculus then
+		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 54)
+	end --if
+	
 	if GoGo_Variables.ZoneExclude.AQ40 then
 		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 50) or {}
 	end --if
@@ -392,6 +396,10 @@ function GoGo_ChooseMount()
 	end --if
 	
 	GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 9999) or {}
+	
+	if GoGo_Variables.ZoneExclude.CanFly or not GoGo_Variables.SkipFlyingMount or not GoGo_Variables.NoFlying then
+		GoGo_Variables.CanFly = true
+	end --if 
 	
 	if GoGo_Variables.Debug then
 		GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated mounts we can't use, forced shape forms if no mounts found.  Now we select a mount.")
@@ -472,7 +480,7 @@ function GoGo_ChooseMount()
 
 	GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 53)
 
-	if (table.getn(mounts) == 0) and not GoGo_Variables.SkipFlyingMount and GoGo_Variables.CanFly then
+	if (table.getn(mounts) == 0) and GoGo_Variables.CanFly then
 		if GoGo_Variables.Debug then
 			GoGo_DebugAddLine("GoGo_ChooseMount: Looking for flying mounts since we past flight checks.")
 		end --if
@@ -486,11 +494,9 @@ function GoGo_ChooseMount()
 
 	
 	-- Set the oculus mounts as the only mounts available if we're in the oculus, not skiping flying and have them in inventory
-	local GoGo_TempMounts = {}
-	if (table.getn(mounts) == 0) and (table.getn(GoGo_FilteredMounts) >= 1) and (GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.TheOculus) and not GoGo_Variables.SkipFlyingMount then
-		GoGo_TempMounts = GoGo_FilterMountsIn(GoGo_FilteredMounts, 54) or {}
-		if (table.getn(GoGo_TempMounts) >= 1) then
-			mounts = GoGo_TempMounts
+	if (table.getn(mounts) == 0) and (table.getn(GoGo_FilteredMounts) >= 1) and not GoGo_Variables.ZoneExclude.TheOculus and GoGo_Variables.CanFly then
+		mounts = GoGo_FilterMountsIn(GoGo_FilteredMounts, 54) or {}
+		if (table.getn(mounts) > 0) then
 			if GoGo_Variables.Debug then
 				GoGo_DebugAddLine("GoGo_ChooseMount: In the Oculus, Oculus only mount found, using.")
 			end --if
@@ -498,11 +504,6 @@ function GoGo_ChooseMount()
 			if GoGo_Variables.Debug then
 				GoGo_DebugAddLine("GoGo_ChooseMount: In the Oculus, no oculus mount found in inventory.")
 			end --if
-		end --if
-	else
-		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 54)
-		if GoGo_Variables.Debug then
-			GoGo_DebugAddLine("GoGo_ChooseMount: Not in Oculus or forced ground mount only.")
 		end --if
 	end --if
 	
@@ -1107,16 +1108,10 @@ function GoGo_ZoneCheck()
 --------- 
 	--Resetting zone flags (if true then don't use)
 	GoGo_Variables.ZoneExclude.NorthrendLoanedMounts = true
+	GoGo_Variables.ZoneExclude.TheOculus = true
 	GoGo_Variables.ZoneExclude.AQ40 = true
-	
-	if not GoGo_InNorthrend() and not GoGo_InOutlands() and not GoGo_InAzeroth() and not GoGo_InMaelstrom() then
-		if GoGo_Variables.Player.Zone ~= GoGo_Variables.Localize.Zone.TheOculus then
-			if GoGo_Variables.Debug then
-				GoGo_DebugAddLine("GoGo_ZoneCheck: Disabling flying.  Didn't past the first check.")
-			end --if
-			GoGo_Variables.CanFly = false
-		end --if
-	end --if
+
+	GoGo_Variables.ZoneExclude.CanFly = false
 	
 	if (GoGo_InNorthrend()) then
 		if not (GoGo_InBook(GoGo_Variables.Localize.ColdWeatherFlying)) then
@@ -1137,7 +1132,7 @@ function GoGo_ZoneCheck()
 				GoGo_Variables.ZoneExclude.NorthrendLoanedMounts = false
 			end --if
 			if GoGo_Variables.ZoneExclude.NorthrendLoanedMounts then
-				GoGo_Variables.CanFly = false
+				GoGo_Variables.ZoneExclude.CanFly = false
 			end --if
 		elseif GoGo_InBook(GoGo_Variables.Localize.ColdWeatherFlying) then
 			if GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.Wintergrasp then
@@ -1145,21 +1140,26 @@ function GoGo_ZoneCheck()
 					if GoGo_Variables.Debug then
 						GoGo_DebugAddLine("GoGo_ZoneCheck: Player in Wintergrasp and battle ground is not active.")
 					end --if
-					-- timer ticking to start wg.. we can mount
+					GoGo_Variables.ZoneExclude.CanFly = true
 				else
 					if GoGo_Variables.Debug then
 						GoGo_DebugAddLine("GoGo_ZoneCheck: Failed - Player in Wintergrasp and battle ground is active.")
 					end --if
 					-- we should be in battle.. can't mount
-					GoGo_Variables.CanFly = false
+					GoGo_Variables.ZoneExclude.CanFly = false
 				end --if
 			elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.Dalaran then
 				if not IsFlyableArea() then  -- have to use this.. flying is different in sewers and is different between 4.x with and without cataclysm
 					if GoGo_Variables.Debug then
 						GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - Player in " .. GoGo_Variables.Localize.Zone.Dalaran .. " and not in flyable area.")
 					end --if
-					GoGo_Variables.CanFly = false
+					GoGo_Variables.ZoneExclude.CanFly = false
+				else
+					GoGo_Variables.ZoneExclude.CanFly = true
 				end --if
+			else
+				-- all other areas in northrend
+				GoGo_Variables.ZoneExclude.CanFly = true
 			end --if
 		end --if
 	elseif (GoGo_InMaelstrom()) then
@@ -1169,12 +1169,13 @@ function GoGo_ZoneCheck()
 					if GoGo_Variables.Debug then
 						GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Deepholm / Crumbling Depths.")
 					end --if
-					GoGo_Variables.CanRide = true
-					GoGo_Variables.CanFly = false
+					GoGo_Variables.ZoneExclude.CanFly = false
+				else
+					GoGo_Variables.ZoneExclude.CanFly = true
 				end --if
+			else
+				GoGo_Variables.ZoneExclude.CanFly = true
 			end --if
-		else  -- don't have Flight master's license
-			GoGo_Variables.CanFly = false
 		end --if
 	elseif (GoGo_InAzeroth()) then
 		if (GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense)) then
@@ -1182,28 +1183,31 @@ function GoGo_ZoneCheck()
 				if GoGo_Variables.Debug then
 					GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Tol Barad Peninsula.")
 				end --if
-				GoGo_Variables.CanFly = false
+				GoGo_Variables.ZoneExclude.CanFly = false
 			elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.TolBarad then
 				if GoGo_Variables.Debug then
 					GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Tol Barad.")
 				end --if
-				GoGo_Variables.CanFly = false
+				GoGo_Variables.ZoneExclude.CanFly = false
 			elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.DireMaul then
 				if GoGo_Variables.Debug then
 					GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Dire Maul area.")
 				end --if
-				GoGo_Variables.CanFly = false
+				GoGo_Variables.ZoneExclude.CanFly = false
+			else
+				GoGo_Variables.ZoneExclude.CanFly = true
 			end --if
 		else  -- don't have flight master's license
-			GoGo_Variables.CanFly = false
+			GoGo_Variables.ZoneExclude.CanFly = false
 		end --if
-	elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.TheTempleOfAtalHakkar then
-		GoGo_Variables.CanFly = true
+	elseif (GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.TheTempleOfAtalHakkar) and GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense) then
+		GoGo_Variables.ZoneExclude.CanFly = true
 	elseif IsInInstance() then
 		if GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.TheOculus then
-			-- do nothing
+			GoGo_Variables.ZoneExclude.CanFly = true
+			GoGo_Variables.ZoneExclude.TheOculus = false
 		else
-			GoGo_Variables.CanFly = false
+			GoGo_Variables.ZoneExclude.CanFly = false
 		end --if
 	elseif GoGo_IsInBattleGround() then
 		GoGo_Variables.CanFly = false
@@ -1305,7 +1309,7 @@ function GoGo_CheckSwimStatus()
 				if GoGo_Variables.Debug then
 					GoGo_DebugAddLine("GoGo_CheckSwimStatus: Breath timer bar found and it's slowly draining.  Disabling flying.")
 				end --if
-				GoGo_Variables.CanFly = false
+				GoGo_Variables.NoFlying = true
 			end --if
 		end --if	
 	end --for
