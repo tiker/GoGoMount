@@ -1169,6 +1169,8 @@ function GoGo_ZoneCheck()
 				GoGo_Variables.ZoneExclude.CanFly = true
 			end --if
 		end --if
+	elseif (GoGo_InOutlands()) then
+		GoGo_Variables.ZoneExclude.CanFly = true
 	elseif (GoGo_InMaelstrom()) then
 		if (GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense)) then
 			if GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.Deepholm then
