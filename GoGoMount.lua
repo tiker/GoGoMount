@@ -192,7 +192,6 @@ end --function
 function GoGo_ChooseMount()
 ---------
 	GoGo_Variables.CanRide = true  -- resetting canride flag
-	GoGo_Variables.CanFly = true  -- resetting canfly flag
 
 	local mounts = {}
 	local GoGo_FilteredMounts = {}
@@ -397,8 +396,10 @@ function GoGo_ChooseMount()
 	
 	GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 9999) or {}
 	
-	if GoGo_Variables.ZoneExclude.CanFly or not GoGo_Variables.SkipFlyingMount or not GoGo_Variables.NoFlying then
+	if GoGo_Variables.ZoneExclude.CanFly and not GoGo_Variables.SkipFlyingMount and not GoGo_Variables.NoFlying then
 		GoGo_Variables.CanFly = true
+	else
+		GoGo_Variables.CanFly = false
 	end --if 
 	
 	if GoGo_Variables.Debug then
@@ -1155,10 +1156,16 @@ function GoGo_ZoneCheck()
 					end --if
 					GoGo_Variables.ZoneExclude.CanFly = false
 				else
+					if GoGo_Variables.Debug then
+						GoGo_DebugAddLine("GoGo_ZoneCheck: Activating Flying - Player in " .. GoGo_Variables.Localize.Zone.Dalaran .. " and in flyable area.")
+					end --if
 					GoGo_Variables.ZoneExclude.CanFly = true
 				end --if
 			else
 				-- all other areas in northrend
+				if GoGo_Variables.Debug then
+					GoGo_DebugAddLine("GoGo_ZoneCheck: Activating Flying - Player in Northrend and in flyable area.")
+				end --if
 				GoGo_Variables.ZoneExclude.CanFly = true
 			end --if
 		end --if
