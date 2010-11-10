@@ -15,13 +15,17 @@
 				DisableUnknownMountNotices = "停用未知的坐騎通知",
 				DisableUpdateNotices = "停用更新通知",
 				DruidFlightPreference = "當角色移動時使用飛行型態取代座騎",
+				DruidOptions = "Druid Options", -- Requires localization
 				DruidSingleClick = "單擊後從變身形態轉換為旅行形態",
 				EnableAutoDismount = "啟用自動解除坐騎",
 				Favorites = "偏好",
 				GlobalFavorites = "總體偏好",
 				GlobalPreferences = "總體優先",
+				HunterOptions = "Hunter Options", -- Requires localization
 				NewVersionFound = "已有GoGoMount的更新版本",
+				NoShapeInRandom = "Do not randomize shape forms with mounts", -- Requires localization
 				UnknownMountFound = "在你的坐騎清單中找到未知的坐騎。請回報它，以便加入到GoGoMount的新版本中。",
+				UseAspectOfThePackInstead = "Use Aspect Of The Pack instead of Aspect Of The Cheeta", -- Requires localization
 			},
 			Talent = {
 				AncestralSwiftness = "先祖迅捷",
@@ -41,8 +45,10 @@
 				TheFrozenSea = "冰凍之海",
 				TheOculus = "奧核之眼",
 				TheStormPeaks = "風暴群山",
+				TheTempleOfAtalHakkar = "The Temple of Atal'Hakkar", -- Requires localization
 				TheUnderbelly = "城底區",
 				TheVioletCitadel = "紫羅蘭城塞",
+				TolBarad = "Tol Barad", -- Requires localization
 				TolBaradPeninsula = "托巴拉德半島",
 				TwistingNether = "扭曲虛空",
 				Vashjir = "瓦許爾",
