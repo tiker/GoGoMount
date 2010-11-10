@@ -386,7 +386,7 @@ function GoGo_ChooseMount()
 		GoGo_FilteredMounts = GoGo_GetInstantMounts(GoGo_FilteredMounts) or {}
 	end --if
 
-	if IsIndoors() then  -- only select what we can use in here..
+	if GoGo_Variables.ZoneExclude.RestrictedIndoorMounts then  -- only select what we can use in here..
 		GoGo_FilteredMounts = GoGo_GetIndoorMounts(GoGo_FilteredMounts) or {}
 	end --if
 
@@ -1198,11 +1198,6 @@ function GoGo_ZoneCheck()
 					GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Tol Barad.")
 				end --if
 				GoGo_Variables.ZoneExclude.CanFly = false
-			elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.DireMaul then
-				if GoGo_Variables.Debug then
-					GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Dire Maul area.")
-				end --if
-				GoGo_Variables.ZoneExclude.CanFly = false
 			else
 				GoGo_Variables.ZoneExclude.CanFly = true
 			end --if
@@ -1215,20 +1210,31 @@ function GoGo_ZoneCheck()
 		if GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.TheOculus then
 			GoGo_Variables.ZoneExclude.CanFly = true
 			GoGo_Variables.ZoneExclude.TheOculus = false
-		else
-			GoGo_Variables.ZoneExclude.CanFly = false
+		elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.AQ40 then
+			if GoGo_Variables.Debug then
+				GoGo_DebugAddLine("GoGo_ZoneCheck: Removing AQ40 mounts since we are not in AQ40.")
+			end --if
+			GoGo_Variables.ZoneExclude.AQ40 = false
 		end --if
 	elseif GoGo_IsInBattleGround() then
-		GoGo_Variables.CanFly = false
-	end --if
-	
-	if GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.AQ40 then
-		if GoGo_Variables.Debug then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Removing AQ40 mounts since we are not in AQ40.")
-		end --if
-		GoGo_Variables.ZoneExclude.AQ40 = false
+		GoGo_Variables.ZoneExclude.CanFly = false
 	end --if
 
+	if GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.DireMaul then
+		if GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense) then
+			if not IsInInstance() then
+				if GoGo_Variables.Debug then
+					GoGo_DebugAddLine("GoGo_ZoneCheck: Activating Flying - in Dire Maul area not part of Azeroth.")
+				end --if
+				GoGo_Variables.ZoneExclude.CanFly = true
+			end --if
+		end --if
+	end --if
+
+	if IsIndoors() then	-- indoor zone exclusions go here
+		GoGo_Variables.ZoneExclude.RestrictedIndoorMounts = true -- restricting mounts to indoor mounts only unless something below says otherwise
+	end --if
+	
 	GoGo_Variables.ZoneExclude.AQ40 = true  -- TEMPORARY UNTIL BLIZZARD FIXES BUG MOUNTS IN AQ40 - FLAGGING THEM AS ALWAYS NOT AVAILABLE
 
 end --function
