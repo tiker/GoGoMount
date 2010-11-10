@@ -1281,7 +1281,6 @@ function GoGo_GetProfSkillLevel(searchname)
 			return rank
 		end --if
 	end --if
-	
 
 	if prof2 then
 		local name, _, rank, maxrank, numspells, spelloffset, skillline = GetProfessionInfo(prof2)
@@ -1325,6 +1324,10 @@ function GoGo_CheckSwimStatus()
 					GoGo_DebugAddLine("GoGo_CheckSwimStatus: Breath timer bar found and it's slowly draining.  Disabling flying.")
 				end --if
 				GoGo_Variables.NoFlying = true
+			else
+				if GoGo_Variables.Debug then
+					GoGo_DebugAddLine("GoGo_CheckSwimStatus: Breath timer not bar found.  Looks like we can fly here.")
+				end --if
 			end --if
 		end --if	
 	end --for
