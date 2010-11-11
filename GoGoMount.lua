@@ -408,18 +408,7 @@ function GoGo_ChooseMount()
 
 	if IsSwimming() and not GoGo_Variables.CanFly then  -- find a mount to use in water
 		if not IsIndoors() then
-			if (table.getn(mounts) == 0) then
-				mounts = GoGo_GetSwimmingMounts450(GoGo_FilteredMounts) or {}
-			end --if
-			if (table.getn(mounts) == 0) then
-				mounts = GoGo_GetSwimmingMounts100(GoGo_FilteredMounts) or {}
-			end --if
-			if (table.getn(mounts) == 0) then
-				mounts = GoGo_GetSwimmingMounts60(GoGo_FilteredMounts) or {}
-			end --if
-			if (table.getn(mounts) == 0) then
-				mounts = GoGo_GetSwimmingMounts50(GoGo_FilteredMounts) or {}
-			end --if
+			mounts = GoGo_GetBestWaterMounts(GoGo_FilteredMounts)
 			if (table.getn(mounts) == 0) then
 				local GoGo_GroundMounts = GoGo_GetGroundMounts100(GoGo_FilteredMounts) or {}
 				if table.getn(GoGo_GroundMounts) > 0 then
@@ -477,6 +466,9 @@ function GoGo_ChooseMount()
 		end --if
 	elseif IsSwimming() and GoGo_Variables.CanFly then
 		mounts = GoGo_GetBestAirMounts(GoGo_FilteredMounts) or {}
+		if table.getn(mounts) == 0 then	
+			mounts = GoGo_GetBestWaterMounts(GoGo_FilteredMounts)
+		end --if
 	end --if
 
 	GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 53)
@@ -1580,6 +1572,24 @@ function GoGo_GetBestAirMounts(GoGo_FilteredMounts)
 		end --if
 		
 		return mounts
+end --function
+
+---------
+function GoGo_GetBestWaterMounts(GoGo_FilteredMounts)
+---------
+	if (table.getn(mounts) == 0) then
+		mounts = GoGo_GetSwimmingMounts450(GoGo_FilteredMounts) or {}
+	end --if
+	if (table.getn(mounts) == 0) then
+		mounts = GoGo_GetSwimmingMounts100(GoGo_FilteredMounts) or {}
+	end --if
+	if (table.getn(mounts) == 0) then
+		mounts = GoGo_GetSwimmingMounts60(GoGo_FilteredMounts) or {}
+	end --if
+	if (table.getn(mounts) == 0) then
+		mounts = GoGo_GetSwimmingMounts50(GoGo_FilteredMounts) or {}
+	end --if
+	return mounts
 end --function
 
 ---------
