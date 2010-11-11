@@ -112,7 +112,7 @@ function GoGo_OnSlash(msg)
 		local FItemID = string.gsub(msg,".-\124H([^\124]*)\124h.*", "%1");
 		local idtype, itemid = strsplit(":",FItemID);
 		if string.find(msg, "exclude", 1, true) then
-			GoGo_GlobalExcludeModify(itemid)
+			GoGo_GlobalExcludeModify(tonumber(itemid))
 		else
 			GoGo_AddPrefMount(tonumber(itemid))
 			GoGo_Msg("pref")
@@ -192,6 +192,7 @@ end --function
 function GoGo_ChooseMount()
 ---------
 	GoGo_Variables.CanRide = true  -- resetting canride flag
+	GoGo_Variables.NoFlying = false -- resetting flag to prevent flying
 
 	local mounts = {}
 	local GoGo_FilteredMounts = {}
@@ -407,8 +408,11 @@ function GoGo_ChooseMount()
 	end --if
 
 	if IsSwimming() and not GoGo_Variables.CanFly then  -- find a mount to use in water
+		if GoGo_Variables.Debug then
+			GoGo_DebugAddLine("GoGo_ChooseMount: Swimming and can't fly.")
+		end --if
 		if not IsIndoors() then
-			mounts = GoGo_GetBestWaterMounts(GoGo_FilteredMounts)
+			mounts = GoGo_GetBestWaterMounts(GoGo_FilteredMounts) or {}
 			if (table.getn(mounts) == 0) then
 				local GoGo_GroundMounts = GoGo_GetGroundMounts100(GoGo_FilteredMounts) or {}
 				if table.getn(GoGo_GroundMounts) > 0 then
@@ -465,9 +469,12 @@ function GoGo_ChooseMount()
 			end --if
 		end --if
 	elseif IsSwimming() and GoGo_Variables.CanFly then
+		if GoGo_Variables.Debug then
+			GoGo_DebugAddLine("GoGo_ChooseMount: Swimming but can fly.")
+		end --if
 		mounts = GoGo_GetBestAirMounts(GoGo_FilteredMounts) or {}
 		if table.getn(mounts) == 0 then	
-			mounts = GoGo_GetBestWaterMounts(GoGo_FilteredMounts)
+			mounts = GoGo_GetBestWaterMounts(GoGo_FilteredMounts) or {}
 		end --if
 	end --if
 
@@ -1577,9 +1584,8 @@ end --function
 ---------
 function GoGo_GetBestWaterMounts(GoGo_FilteredMounts)
 ---------
-	if (table.getn(mounts) == 0) then
-		mounts = GoGo_GetSwimmingMounts450(GoGo_FilteredMounts) or {}
-	end --if
+	local mounts = {}
+	mounts = GoGo_GetSwimmingMounts450(GoGo_FilteredMounts) or {}
 	if (table.getn(mounts) == 0) then
 		mounts = GoGo_GetSwimmingMounts100(GoGo_FilteredMounts) or {}
 	end --if
