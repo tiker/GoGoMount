@@ -250,7 +250,7 @@ function GoGo_ChooseMount()
 	end --if
 
 	if GoGo_Variables.Debug then
-		GoGo_DebugAddLine("GoGo_ChooseMount: ** Searched all areas for mounts.")
+		GoGo_DebugAddLine("GoGo_ChooseMount: ** Searched all areas for mounts and found " .. (table.getn(GoGo_FilteredMounts) or 0) .. " mounts.")
 	end --if
 	
 --	if (table.getn(GoGo_FilteredMounts) == 0) then
@@ -404,7 +404,7 @@ function GoGo_ChooseMount()
 	end --if 
 	
 	if GoGo_Variables.Debug then
-		GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated mounts we can't use, forced shape forms if no mounts found.  Now we select a mount.")
+		GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated mounts we can't use; " .. (table.getn(GoGo_FilteredMounts) or 0) .. " mounts left.")
 	end --if
 
 	if IsSwimming() and not GoGo_Variables.CanFly then  -- find a mount to use in water
@@ -519,8 +519,14 @@ function GoGo_ChooseMount()
 --		else
 --			mounts = GoGo_TempMounts
 --		end --if
+		if GoGo_Variables.Debug then
+			GoGo_DebugAddLine("GoGo_ChooseMount: Ground mount count = " .. table.getn(GoGo_FilteredMounts) .. ".")
+		end --if
 		if (table.getn(mounts) == 0) then
 			mounts = GoGo_GetGroundMounts100(GoGo_FilteredMounts) or {}
+		end --if
+		if GoGo_Variables.Debug then
+			GoGo_DebugAddLine("GoGo_ChooseMount: Mount count of 100% = " .. table.getn(mounts) .. ".")
 		end --if
 		if (table.getn(mounts) == 0) then
 			mounts = GoGo_GetGroundMounts60(GoGo_FilteredMounts) or {}
@@ -1901,6 +1907,21 @@ function GoGo_Panel_Options()
 			GoGo_Panel_Okay("MAIN")
 		end --function
 	)
+	
+	local GoGo_Panel_ClearGlobalFavorites = CreateFrame("FRAME")
+	local GoGo_Panel_ClearGlobalFavorites_Text = GoGo_Panel_ClearGlobalFavorites:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
+	GoGo_Panel_ClearGlobalFavorites_Text:SetText(GoGo_Variables.Localize.String.ClearGlobalFavoriteMounts)
+	GoGo_Panel_ClearGlobalFavorites_Text:SetNonSpaceWrap(true)
+	GoGo_Panel_ClearGlobalFavorites_Text:SetJustifyH("LEFT")
+	GoGo_Panel_ClearGlobalFavorites_Text:SetJustifyV("TOP")
+	GoGo_Panel_ClearGlobalFavorites_Text:SetWidth(350)
+	GoGo_Panel_ClearGlobalFavorites_Text:SetPoint("BOTTOMLEFT", 16, 112)
+	GoGo_Panel_ClearGlobalFavorites_Button = CreateFrame("Button","GoGo_Panel_ClearGlobalFavorites_Button",GoGo_Panel,"UIPanelButtonTemplate")
+	GoGo_Panel_ClearGlobalFavorites_Button:SetPoint("BOTTOMLEFT",16,16)
+	GoGo_Panel_ClearGlobalFavorites_Button:SetWidth(80)
+	GoGo_Panel_ClearGlobalFavorites_Button:SetHeight(22)
+	GoGo_Panel_ClearGlobalFavorites_Button:SetText(GoGo_Variables.Localize.String.Clear)
+	
 end --function
 
 ---------
