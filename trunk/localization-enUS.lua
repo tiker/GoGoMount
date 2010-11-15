@@ -11,6 +11,8 @@
 			},
 			String = {
 				AutomaticallyRemoveBuffs = "Automatically remove buffs that prevent mounting",
+				Clear = "Clear",
+				ClearGlobalFavoriteMounts = "Clear global favorite mounts",
 				CurrentZoneFavorites = "Current Zone Favorites",
 				DisableUnknownMountNotices = "Disable unknown mount notices",
 				DisableUpdateNotices = "Disable update notices",
