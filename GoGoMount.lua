@@ -373,29 +373,50 @@ function GoGo_ChooseMount()
 
 	if GoGo_Variables.ZoneExclude.NorthrendLoanedMounts then
 		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 52) or {}
+		if GoGo_Variables.Debug then
+			GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated loaned mounts - " .. (table.getn(GoGo_FilteredMounts) or 0) .. " mounts left.")
+		end --if
 	end --if
 
 	if GoGo_Variables.ZoneExclude.TheOculus then
 		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 54)
+		if GoGo_Variables.Debug then
+			GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated Oculus mounts - " .. (table.getn(GoGo_FilteredMounts) or 0) .. " mounts left.")
+		end --if
 	end --if
 	
 	if GoGo_Variables.ZoneExclude.AQ40 then
 		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 50) or {}
+		if GoGo_Variables.Debug then
+			GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated AQ40 mounts - " .. (table.getn(GoGo_FilteredMounts) or 0) .. " mounts left.")
+		end --if
 	end --if
 
 	if IsFalling() then  -- we're falling.. save us  (only grab instant cast spells)
 		GoGo_FilteredMounts = GoGo_GetInstantMounts(GoGo_FilteredMounts) or {}
+		if GoGo_Variables.Debug then
+			GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated all mounts except instant casts - " .. (table.getn(GoGo_FilteredMounts) or 0) .. " mounts left.")
+		end --if
 	end --if
 
 	if GoGo_Variables.ZoneExclude.RestrictedIndoorMounts then  -- only select what we can use in here..
 		GoGo_FilteredMounts = GoGo_GetIndoorMounts(GoGo_FilteredMounts) or {}
+		if GoGo_Variables.Debug then
+			GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated all mounts except indoor mounts - " .. (table.getn(GoGo_FilteredMounts) or 0) .. " mounts left.")
+		end --if
 	end --if
 
 	if GoGo_IsMoving() then
 		GoGo_FilteredMounts = GoGo_GetInstantMounts(GoGo_FilteredMounts) or {}
+		if GoGo_Variables.Debug then
+			GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated all mounts except instant casts - " .. (table.getn(GoGo_FilteredMounts) or 0) .. " mounts left.")
+		end --if
 	end --if
 	
 	GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 9999) or {}
+	if GoGo_Variables.Debug then
+		GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated excluded mounts - " .. (table.getn(GoGo_FilteredMounts) or 0) .. " mounts left.")
+	end --if
 	
 	if GoGo_Variables.ZoneExclude.CanFly and not GoGo_Variables.SkipFlyingMount and not GoGo_Variables.NoFlying then
 		GoGo_Variables.CanFly = true
@@ -1116,7 +1137,7 @@ function GoGo_ZoneCheck()
 	GoGo_Variables.ZoneExclude.NorthrendLoanedMounts = true
 	GoGo_Variables.ZoneExclude.TheOculus = true
 	GoGo_Variables.ZoneExclude.AQ40 = true
-
+	
 	GoGo_Variables.ZoneExclude.CanFly = false
 	
 	if (GoGo_InNorthrend()) then
@@ -1238,6 +1259,8 @@ function GoGo_ZoneCheck()
 
 	if IsIndoors() then	-- indoor zone exclusions go here
 		GoGo_Variables.ZoneExclude.RestrictedIndoorMounts = true -- restricting mounts to indoor mounts only unless something below says otherwise
+	else
+		GoGo_Variables.ZoneExclude.RestrictedIndoorMounts = false
 	end --if
 	
 	GoGo_Variables.ZoneExclude.AQ40 = true  -- TEMPORARY UNTIL BLIZZARD FIXES BUG MOUNTS IN AQ40 - FLAGGING THEM AS ALWAYS NOT AVAILABLE
