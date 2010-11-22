@@ -11,10 +11,12 @@
 			},
 			String = {
 				AutomaticallyRemoveBuffs = "Supprimer automatiquement les buffs qui empêchent les montures",
+				Clear = "Effacer",
+				ClearGlobalFavoriteMounts = "Effacer les montures favorites globales",
 				CurrentZoneFavorites = "Favoris de la zone actuelle",
 				DisableUnknownMountNotices = "Désactiver les annonces de monture inconnue",
 				DisableUpdateNotices = "Désactiver les annonces de mise à jour",
-				DruidFlightPreference = "Always use flight forms instead of when moving only", -- Requires localization
+				DruidFlightPreference = "Toujours utiliser la forme de vol même sans se déplacer",
 				DruidOptions = "Options pour Druides",
 				DruidSingleClick = "Passer d'une forme à une forme de voyage en un seul clic",
 				EnableAutoDismount = "Activer la descente de monture automatique",
@@ -23,8 +25,8 @@
 				GlobalPreferences = "Préférences globales",
 				HunterOptions = "Options pour Chasseurs",
 				NewVersionFound = "Une nouvelle version de GoGoMount est disponible",
-				NoShapeInRandom = "Do not randomize shape forms with mounts", -- Requires localization
-				UnknownMountFound = "Une monture inconnue a été trouvée dans votre liste. Veuillez la communiquer afin qu'elle soit ajoutée à une future version de GoGoMount",
+				NoShapeInRandom = "Ne pas randomiser les formes avec les montures",
+				UnknownMountFound = "Une monture inconnue a été trouvée. Communiquez-le pour l'ajouter à une future version de GoGoMount.",
 				UseAspectOfThePackInstead = "Utiliser Aspect de la meute au lieu d'Aspect du guépard",
 			},
 			Talent = {
@@ -32,26 +34,26 @@
 				FeralSwiftness = "Célérité farouche",
 			},
 			Zone = {
-				AQ40 = "Temple d'Ahn'Qiraj", -- Needs review
-				CrumblingDepths = "Crumbling Depths", -- Requires localization
+				AQ40 = "Temple d'Ahn'Qiraj",
+				CrumblingDepths = "Crumbling Depths", -- Needs review
 				Dalaran = "Dalaran",
-				Deepholm = "Deepholm", -- Requires localization
-				DireMaul = "Hache-Tripes", -- Needs review
+				Deepholm = "Le Tréfonds ", -- Needs review
+				DireMaul = "Hache-Tripes",
 				Icecrown = "La Couronne de glace",
 				Ironforge = "Forgefer",
-				KrasusLanding = "Aire de Krasus", -- Needs review
-				SholazarBasin = "Bassin de Sholazar", -- Needs review
-				TempleOfEarth = "Temple of Earth", -- Requires localization
-				TheFrozenSea = "La mer Gelée", -- Needs review
-				TheOculus = "L'Oculus", -- Needs review
+				KrasusLanding = "Aire de Krasus",
+				SholazarBasin = "Bassin de Sholazar",
+				TempleOfEarth = "Temple de la Terre", -- Needs review
+				TheFrozenSea = "La mer Gelée",
+				TheOculus = "L'Oculus",
 				TheStormPeaks = "Les pics Foudroyés",
-				TheTempleOfAtalHakkar = "The Temple of Atal'Hakkar", -- Requires localization
-				TheUnderbelly = "Les Entrailles", -- Needs review
-				TheVioletCitadel = "Citadelle Pourpre", -- Needs review
-				TolBarad = "Tol Barad", -- Requires localization
-				TolBaradPeninsula = "Tol Barad Peninsula", -- Requires localization
-				TwistingNether = "Le Néant distordu", -- Needs review
-				Vashjir = "Vashj'ir", -- Requires localization
+				TheTempleOfAtalHakkar = "Le temple d'Atal'Hakkar",
+				TheUnderbelly = "Les Entrailles",
+				TheVioletCitadel = "Citadelle Pourpre",
+				TolBarad = "Tol Barad", -- Needs review
+				TolBaradPeninsula = "Péninsule de Tol Barad", -- Needs review
+				TwistingNether = "Le Néant distordu",
+				Vashjir = "Vashj'ir", -- Needs review
 				Wintergrasp = "Joug-d'hiver",
 			},
 }
