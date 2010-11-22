@@ -32,7 +32,7 @@ function GoGo_OnEvent(event)
 		end --if
 		GoGo_Prefs.UnknownMounts = {}
 		GoGo_Variables.VerMajor, GoGo_Variables.VerMinor, GoGo_Variables.VerBuild = tonumber(GetAddOnMetadata("GoGoMount", "Version"))
-		GoGo_Variables.TestVersion = false
+		GoGo_Variables.TestVersion = true
 		GoGo_Variables.Debug = false
 		_, GoGo_Variables.Player.Class = UnitClass("player")
 		_, GoGo_Variables.Player.Race = UnitRace("player")
@@ -1670,7 +1670,7 @@ function GoGo_UpdateMountData()
 		if GoGo_Variables.Debug then
 			GoGo_DebugAddLine("GoGo_UpdateMountData: We're a shaman with 2 Ancestral Swiftness points.  Modifying Ghost Wolf spell data.")
 		end --if
-	else
+	elseif (GoGo_Variables.Player.Class == "SHAMAN")
 		GoGo_Variables.MountDB[GoGo_Variables.Localize.GhostWolf][7] = false
 		if GoGo_Variables.Debug then
 			GoGo_DebugAddLine("GoGo_UpdateMountData: We're a shaman with 0 Ancestral Swiftness points.  Modifying Ghost Wolf spell data.")
