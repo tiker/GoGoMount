@@ -32,7 +32,7 @@ function GoGo_OnEvent(event)
 		end --if
 		GoGo_Prefs.UnknownMounts = {}
 		GoGo_Variables.VerMajor, GoGo_Variables.VerMinor, GoGo_Variables.VerBuild = tonumber(GetAddOnMetadata("GoGoMount", "Version"))
-		GoGo_Variables.TestVersion = true
+		GoGo_Variables.TestVersion = false
 		GoGo_Variables.Debug = false
 		_, GoGo_Variables.Player.Class = UnitClass("player")
 		_, GoGo_Variables.Player.Race = UnitRace("player")
@@ -56,7 +56,6 @@ function GoGo_OnEvent(event)
 		GoGo_Panel_UpdateViews()
 --		GoGo_Panel_GlobalFavorites_Populate()
 		GoGo_BuildExcludeList()
-		
 	elseif event == "PLAYER_REGEN_DISABLED" then
 		for i, button in ipairs({GoGoButton, GoGoButton2, GoGoButton3}) do
 			if GoGo_Variables.Player.Class == "SHAMAN" then
@@ -513,7 +512,6 @@ function GoGo_ChooseMount()
 		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 35)
 	end --if
 
-	
 	-- Set the oculus mounts as the only mounts available if we're in the oculus, not skiping flying and have them in inventory
 	if (table.getn(mounts) == 0) and (table.getn(GoGo_FilteredMounts) >= 1) and not GoGo_Variables.ZoneExclude.TheOculus and GoGo_Variables.CanFly then
 		mounts = GoGo_FilterMountsIn(GoGo_FilteredMounts, 54) or {}
@@ -527,8 +525,7 @@ function GoGo_ChooseMount()
 			end --if
 		end --if
 	end --if
-	
-	
+
 	-- Select ground mounts
 	if (table.getn(mounts) == 0) and GoGo_CanRide() and GoGo_Variables.CanRide then
 		if GoGo_Variables.Debug then
