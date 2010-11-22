@@ -1930,7 +1930,7 @@ function GoGo_Panel_Options()
 			GoGo_Panel_Okay("MAIN")
 		end --function
 	)
-	
+--[[	
 	local GoGo_Panel_ClearGlobalFavorites = CreateFrame("FRAME")
 	local GoGo_Panel_ClearGlobalFavorites_Text = GoGo_Panel_ClearGlobalFavorites:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
 	GoGo_Panel_ClearGlobalFavorites_Text:SetText(GoGo_Variables.Localize.String.ClearGlobalFavoriteMounts)
@@ -1944,7 +1944,7 @@ function GoGo_Panel_Options()
 	GoGo_Panel_ClearGlobalFavorites_Button:SetWidth(80)
 	GoGo_Panel_ClearGlobalFavorites_Button:SetHeight(22)
 	GoGo_Panel_ClearGlobalFavorites_Button:SetText(GoGo_Variables.Localize.String.Clear)
-	
+	]]
 end --function
 
 ---------
