@@ -32,7 +32,7 @@ function GoGo_OnEvent(event)
 		end --if
 		GoGo_Prefs.UnknownMounts = {}
 		GoGo_Variables.VerMajor, GoGo_Variables.VerMinor, GoGo_Variables.VerBuild = tonumber(GetAddOnMetadata("GoGoMount", "Version"))
-		GoGo_Variables.TestVersion = false
+		GoGo_Variables.TestVersion = true
 		GoGo_Variables.Debug = false
 		_, GoGo_Variables.Player.Class = UnitClass("player")
 		_, GoGo_Variables.Player.Race = UnitRace("player")
@@ -81,7 +81,8 @@ function GoGo_OnEvent(event)
 		end --if
 	elseif (event == "PLAYER_ENTERING_WORLD") then
 		GoGo_Variables.Player.Zone = GetRealZoneText()
-		GoGo_Variables.ExpansionNum = GetAccountExpansionLevel()
+		GoGo_Variables.ExpansionAccount = GetAccountExpansionLevel()
+		GoGo_Variables.ExpansionGame =  GetExpansionLevel()
 	elseif (event == "CHAT_MSG_ADDON") and (arg1 == "GoGoMountVER") and not GoGo_Prefs.DisableUpdateNotice then
 		local major, minor, build = tonumber(arg2)
 		if not GoGo_Variables.UpdateShown then
@@ -345,7 +346,7 @@ function GoGo_ChooseMount()
 		GoGo_Variables.CanFly = false
 	end --if
 
-	if GoGo_Variables.ExpansionNum == 3 then  -- only exists for 4.x with Cataclysm expansion
+	if GoGo_Variables.ExpansionAccount == 3 then  -- only exists for 4.x with Cataclysm expansion
 		if UnitBuff("player", GetSpellInfo(GoGo_Variables.Localize.SeaLegs)) then
 			if GoGo_Variables.Debug then
 				GoGo_DebugAddLine("GoGo_ChooseMount: Sea Legs buff found - not removing Vashj'ir mount.")
@@ -2138,15 +2139,25 @@ function GoGo_DebugCollectInformation()
 	elseif GetLocale() == "zhCN" then
 		GoGo_DebugAddLine("Information: Client locale is zhCN")
 	end --if
-	if GoGo_Variables.ExpansionNum == 0 then
-		GoGo_DebugAddLine("Information: World of Warcraft (Classic) enabled.")
-	elseif GoGo_Variables.ExpansionNum == 1 then
-		GoGo_DebugAddLine("Information: World of Warcraft: The Burning Crusade enabled.")
-	elseif GoGo_Variables.ExpansionNum == 2 then
-		GoGo_DebugAddLine("Information: World of Warcraft: Wrath of the Lich King enabled.")
-	elseif GoGo_Variables.ExpansionNum == 3 then
-		GoGo_DebugAddLine("Information: World of Warcraft: Cataclysm enabled.")
+	if GoGo_Variables.ExpansionAccount == 0 then
+		GoGo_DebugAddLine("Information: Account - World of Warcraft (Classic) enabled.")
+	elseif GoGo_Variables.ExpansionAccount == 1 then
+		GoGo_DebugAddLine("Information: Account - World of Warcraft: The Burning Crusade enabled.")
+	elseif GoGo_Variables.ExpansionAccount == 2 then
+		GoGo_DebugAddLine("Information: Account - World of Warcraft: Wrath of the Lich King enabled.")
+	elseif GoGo_Variables.ExpansionAccount == 3 then
+		GoGo_DebugAddLine("Information: Account - World of Warcraft: Cataclysm enabled.")
 	end --if
+	if GoGo_Variables.ExpansionGame == 0 then
+		GoGo_DebugAddLine("Information: Game - World of Warcraft (Classic) enabled.")
+	elseif GoGo_Variables.ExpansionGame == 1 then
+		GoGo_DebugAddLine("Information: Game - World of Warcraft: The Burning Crusade enabled.")
+	elseif GoGo_Variables.ExpansionGame == 2 then
+		GoGo_DebugAddLine("Information: Game - World of Warcraft: Wrath of the Lich King enabled.")
+	elseif GoGo_Variables.ExpansionGame == 3 then
+		GoGo_DebugAddLine("Information: Game - World of Warcraft: Cataclysm enabled.")
+	end --if
+	
 	GoGo_DebugAddLine("Information: Location = " .. GetRealZoneText() .. " - " .. GetZoneText() .. " - " ..GetSubZoneText() .. " - " .. GetMinimapZoneText())
 	GoGo_DebugAddLine("Information: Current unit speed is " .. GetUnitSpeed("player"))
 	local level = UnitLevel("player")
