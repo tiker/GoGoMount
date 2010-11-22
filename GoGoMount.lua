@@ -1760,6 +1760,10 @@ GOGO_COMMANDS = {
 		end --if
 		GoGo_Msg("pref")
 	end, --function
+	["debug"] = function()
+		GoGo_Variables.Debug=true
+		GoGo_Msg("debug")
+	end, --function
 	["updatenotice"] = function()
 		GoGo_Prefs.DisableUpdateNotice = not GoGo_Prefs.DisableUpdateNotice
 		GoGo_Msg("updatenotice")
@@ -1821,6 +1825,11 @@ GOGO_MESSAGES = {
 				msg = msg .. "\n" .. GoGo_Variables.Player.Zone ..": "..list.." - Disable global mount preferences to change."
 			end --if
 			return msg
+		end --if
+	end, --function
+	["debug"] = function()
+		if GoGo_Variables.Debug then
+			return "GoGoMount debugging enabled for 1 GoGoButton click."
 		end --if
 	end, --function
 	["globalexclude"] = function()
