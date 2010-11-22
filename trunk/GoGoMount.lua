@@ -32,7 +32,7 @@ function GoGo_OnEvent(event)
 		end --if
 		GoGo_Prefs.UnknownMounts = {}
 		GoGo_Variables.VerMajor, GoGo_Variables.VerMinor, GoGo_Variables.VerBuild = tonumber(GetAddOnMetadata("GoGoMount", "Version"))
-		GoGo_Variables.TestVersion = true
+		GoGo_Variables.TestVersion = false
 		GoGo_Variables.Debug = false
 		_, GoGo_Variables.Player.Class = UnitClass("player")
 		_, GoGo_Variables.Player.Race = UnitRace("player")
@@ -2234,11 +2234,11 @@ function GoGo_DebugCollectInformation()
 	GoGo_BuildMountItemList()
 	GoGo_BuildMountList()
 	GoGo_DebugAddLine("Information: End of information.")
-
+--[[
 	a,b,c,d,e = GetGuildPerkInfo(2)
 	aa = GetNumGuildPerks()
 	GoGo_DebugAddLine(a .. " " .. b)
 	GoGo_DebugAddLine(aa)
-	
+	]]
 	
 end --function
