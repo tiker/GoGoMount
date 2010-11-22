@@ -1589,10 +1589,16 @@ function GoGo_GetBestAirMounts(GoGo_FilteredMounts)
 			if GoGo_Variables.Debug then
 				GoGo_DebugAddLine("GoGo_ChooseMount: Druid with preferred flight forms option enabled.  Using flight form.")
 			end --if
-			return GoGo_InBook(GOGO_SPELLS["DRUID"])
+			if GoGo_FilteredMounts[GoGo_Variables.Localize.FastFlightForm] then
+				table.insert(mounts, GoGo_Variables.Localize.FastFlightForm)
+			elseif GoGo_FilteredMounts[GoGo_Variables.Localize.FlightForm] then
+				table.insert(mounts, GoGo_Variables.Localize.FlightForm)
+			end --if
 		end --if
 
-		mounts = GoGo_GetAirMounts310(GoGo_FilteredMounts)
+		if (table.getn(mounts) == 0) then
+			mounts = GoGo_GetAirMounts310(GoGo_FilteredMounts)
+		end --if
 
 		-- no epic flyers found - add druid swift flight if available
 		if (table.getn(mounts) == 0 and (GoGo_Variables.Player.Class == "Druid") and (GoGo_InBook(GoGo_Variables.Localize.FastFlightForm))) then
@@ -2113,7 +2119,6 @@ function GoGo_Settings_SetUpdates()
 	if not GoGo_Prefs.Zones then
 		GoGo_Prefs.Zones = {}
 	end --if
-	
 end --function
 
 ---------
@@ -2230,4 +2235,10 @@ function GoGo_DebugCollectInformation()
 	GoGo_BuildMountList()
 	GoGo_DebugAddLine("Information: End of information.")
 
+	a,b,c,d,e = GetGuildPerkInfo(2)
+	aa = GetNumGuildPerks()
+	GoGo_DebugAddLine(a .. " " .. b)
+	GoGo_DebugAddLine(aa)
+	
+	
 end --function
