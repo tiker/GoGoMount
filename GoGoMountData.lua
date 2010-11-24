@@ -20,6 +20,7 @@ GoGo_Variables.MountDB = {
 	[26054] = {[16] = true, [21] = true, [38] = true, [50] = true, [51] = true},  -- Red Qiraji Battle Tank
 	[26056] = {[16] = true, [21] = true, [38] = true, [50] = true, [51] = true},  -- Green Qiraji Battle Tank
 	[26656] = {[16] = true, [21] = true, [37] = true, [51] = true},  -- Black Qiraji Battle Tank
+	[92155] = {[16] = true, [21] = true, [37] = true},  -- Ultramarine Qiraji Battle Tank
 
 	[30174] = {[15] = true, [25] = true, [39] = true},  -- Riding Turtle
 	[64731] = {[15] = true, [31] = true, [27] = true, [39] = true},  -- Sea Turtle
@@ -110,6 +111,14 @@ GoGo_Variables.MountDB = {
 	[59650] = {[11] = true, [23] = true, [35] = true, [9] = true},  -- Black Drake
 	[60025] = {[11] = true, [23] = true, [35] = true, [9] = true},  -- Albino Drake
 	[69395] = {[11] = true, [23] = true, [35] = true, [9] = true},  -- Onyxian Drake
+	[88331] = {[9] = true, [11] = true, [23] = true}, -- Volcanic Stone Drake
+	[88335] = {[9] = true, [11] = true, [23] = true, [35] = true},  -- Drake of the East Wind
+	[88718] = {[9] = true, [11] = true, [23] = true, [35] = true},  -- Phosphorescent Stone Drake
+	[88741] = {[9] = true, [11] = true, [23] = true, [35] = true, [70] = true},  -- Drake of the West Wind
+	[88742] = {[9] = true, [11] = true, [23] = true, [35] = true},  -- Drake of the North Wind
+	[88744] = {[9] = true, [11] = true, [23] = true, [35] = true},  -- Drake of the South Wind
+	[88746] = {[9] = true, [11] = true, [23] = true, [35] = true},  -- Vitreous Stone Drake
+	[93623] = {[9] = true, [11] = true, [23] = true, [35] = true},  -- Mottled Drake
 
 	[59961] = {[11] = true, [23] = true, [35] = true, [9] = true},  -- Red Proto-Drake
 	[59976] = {[11] = true, [23] = true, [35] = true, [9] = true},  -- Black Proto-Drake
@@ -123,6 +132,7 @@ GoGo_Variables.MountDB = {
 
 	[32345] = {[11] = true, [23] = true, [9] = true},  -- Peep the Phoenix Mount
 	[40192] = {[11] = true, [23] = true, [35] = true, [9] = true},  -- Ashes of Al'ar
+	[88990] = {[9] = true, [11] = true, [23] = true, [35] = true},  -- Dark Phoenix
 
 	[54726] = {[12] = true, [29] = true, [9] = true, [36] = true, [22] = true, [23] = true},  -- Winged Steed of the Ebon Blade
 	[54727] = {[12] = true, [29] = true, [9] = true, [36] = true, [22] = true, [23] = true},  -- Winged Steed of the Ebon Blade
@@ -156,6 +166,7 @@ GoGo_Variables.MountDB = {
 	[64658] = {[14] = true, [20] = true, [21] = true, [38] = true},  -- Black Wolf
 	[65646] = {[16] = true, [21] = true, [37] = true},  -- Swift Burgundy Wolf
 	[68056] = {[16] = true, [21] = true, [37] = true},  -- Swift Horde Wolf
+	[92232] = {[11] = true, [16] = true, [35] = true, [71] = true},  -- Spectral Wolf
 
 	[18363] = {[14] = true, [20] = true, [21] = true, [38] = true},  -- Riding Kodo
 	[18989] = {[14] = true, [20] = true, [21] = true, [38] = true},  -- Gray Kodo
@@ -172,6 +183,8 @@ GoGo_Variables.MountDB = {
 	[63641] = {[16] = true, [21] = true, [37] = true},  -- Thunder Bluff Kodo (Great Mulgore Kodo)
 	[64657] = {[14] = true, [20] = true, [21] = true, [38] = true},  -- White Kodo
 	[65641] = {[16] = true, [21] = true, [37] = true},  -- Great Golden Kodo
+	[69820] = {[14] = true, [20] = true, [21] = true, [38] = true},  -- Sunwalker Kodo
+	[69826] = {[16] = true, [21] = true, [37] = true},  -- Great Sunwalker Kodo
 
 	[34795] = {[14] = true, [20] = true, [21] = true, [38] = true},  -- Red Hawkstrider
 	[35018] = {[14] = true, [20] = true, [21] = true, [38] = true},  -- Purple Hawkstrider
@@ -251,7 +264,8 @@ GoGo_Variables.MountDB = {
 	[63635] = {[16] = true, [21] = true, [37] = true},  -- Darkspear Raptor (Swift Darkspear Raptor)
 	[64659] = {[16] = true, [21] = true, [38] = true},  -- Venomhide Ravasaur
 	[65644] = {[16] = true, [21] = true, [37] = true},  -- Swift Purple Raptor
-	
+	[84751] = {[16] = true, [21] = true, [37] = true},  -- Fossilized Raptor
+
 	[43688] = {[11] = true, [21] = true, [37] = true},  -- Amani War Bear
 	[51412] = {[16] = true, [21] = true, [37] = true},  -- Big Battle Bear
 	[54753] = {[16] = true, [21] = true, [37] = true},  -- White Polar Bear Mount
@@ -331,7 +345,8 @@ GoGo_Variables.MountDB = {
 	[72286] = {[9] = true, [3] = true, [14] = true, [20] = true, [21] = true, [22] = true, [29] = true, [23] = true, [38] = true},  -- Invincible
 	[73313] = {[16] = true, [21] = true, [37] = true},  -- Crimson Deathcharger
 	[75614] = {[9] = true, [3] = true, [14] = true, [20] = true, [21] = true, [22] = true, [29] = true, [23] = true, [38] = true},  -- Celestial Steed
-	
+	[92231] = {[11] = true, [16] = true, [35] = true, [70] = true},  -- Spectral Steed
+
 	[34406] = {[14] = true, [20] = true, [21] = true, [38] = true},  -- Brown Elekk
 	[34407] = {[16] = true, [21] = true, [37] = true},  -- Great Elite Elekk
 	[35710] = {[14] = true, [20] = true, [21] = true, [38] = true},  -- Gray Elekk
@@ -343,6 +358,12 @@ GoGo_Variables.MountDB = {
 	[48027] = {[16] = true, [21] = true, [37] = true},  -- Black War Elekk
 	[63639] = {[16] = true, [21] = true, [37] = true},  -- Exodar Elekk  (Great Azuremyst Elekk)
 	[65637] = {[16] = true, [21] = true, [37] = true},  -- Grea Red Elekk (Blizzard typo on PTR?)
+	[73629] = {[14] = true, [20] = true, [21] = true, [38] = true},  -- Exarch's Elekk
+	[73630] = {[16] = true, [21] = true, [37] = true},  -- Great Exarch's Elekk
+
+	[88748] = {[16] = true, [21] = true, [37] = true, [72] = true},  -- Brown Riding Camel
+	[88749] = {[16] = true, [21] = true, [37] = true, [72] = true},  -- Tan Riding Camel
+	[88750] = {[16] = true, [21] = true, [37] = true, [72] = true},  -- Grey Riding Camel
 
 	[50281] = {[16] = true, [21] = true, [37] = true},  -- Black Warp Stalker
 
@@ -374,7 +395,8 @@ GoGo_Variables.MountDB = {
 	[55531] = {[17] = true, [21] = true, [37] = true, [2] = true},  -- Mechano-hog
 	[60424] = {[17] = true, [21] = true, [37] = true, [2] = true},  -- Mekgineer's Chopper
 	[63796] = {[11] = true, [23] = true, [35] = true, [9] = true},  -- Mimiron's Head
-	
+	[87090] = {[14] = true, [20] = true, [21] = true, [38] = true}, -- Goblin Trike
+	[87091] = {[16] = true, [21] = true, [37] = true}, -- Goblin Turbo-Trike
 
 	[61309] = {[11] = true, [23] = true, [49] = true, [9] = true, [35] = true},  -- Magnificent Flying Carpet
 	[61442] = {[11] = true, [47] = true, [9] = true, [23] = true, [35] = true},  -- Swift Mooncloth Carpet
@@ -388,10 +410,13 @@ GoGo_Variables.MountDB = {
 	[61997] = {[11] = true, [23] = true, [35] = true, [9] = true},  -- Red Dragonhawk
 	[62048] = {[11] = true, [23] = true, [35] = true, [9] = true},  -- Black Dragonhawk Mount
 	[66088] = {[11] = true, [23] = true, [35] = true, [9] = true},  -- Sunreaver Dragonhawk
-	
+
 	[74918] = {[16] = true, [21] = true, [37] = true},  -- Wooly White Rhino
-	
-	
+	[75207] = {[30] = true, [17] = true, [35] = true, [53] = true, [55] = true},  -- Abyssal Seahorse (was Abyssal Manta)
+	[90621] = {[16] = true, [21] = true, [37] = true},  -- Golden King
+	[93644] = {[11] = true, [16] = true, [35] = true},  -- Kron'Kar Annihilator
+	[87840] = {[14] = true, [20] = true, [21] = true, [29] = true, [38] = true},  -- Running Wild (Worgen Racial)
+
 --	[62087] = {[5] = true, [15] = true, [21] = true, [39] = true, [53] = true, [999] = true},  -- Aquatic Riding Ray   -- removed from the 3.1 PTR datafiles
 	
 -- Below are not used for detection, only used to prevent being reported as unknown mounts
@@ -403,36 +428,6 @@ GoGo_Variables.MountDB = {
 	[1066] = {[7] = true, [34] = true, [1000] = true},  -- Druid Aqua form
 	[5118] = {[7] = true, [8] = true, [26] = true},  -- Aspect of the Cheeta
 	[13159] = {[7] = true, [8] = true, [26] = true},  -- Aspect of the Pack
-	
--- Mounts for Cataclysm (keeping seperate as they may change before release)
-	[69820] = {[14] = true, [20] = true, [21] = true, [38] = true},  -- Sunwalker Kodo
-	[69826] = {[16] = true, [21] = true, [37] = true},  -- Great Sunwalker Kodo
-	[73629] = {[14] = true, [20] = true, [21] = true, [38] = true},  -- Exarch's Elekk
-	[73630] = {[16] = true, [21] = true, [37] = true},  -- Great Exarch's Elekk
-	[75207] = {[30] = true, [17] = true, [35] = true, [53] = true, [55] = true},  -- Abyssal Seahorse (was Abyssal Manta)
-	[84751] = {[16] = true, [21] = true, [37] = true},  -- Fossilized Raptor
-	[87090] = {[14] = true, [20] = true, [21] = true, [38] = true}, -- Goblin Trike
-	[87091] = {[16] = true, [21] = true, [37] = true}, -- Goblin Turbo-Trike
-	[88331] = {[9] = true, [11] = true, [23] = true}, -- Volcanic Stone Drake
-	[88335] = {[9] = true, [11] = true, [23] = true, [35] = true},  -- Drake of the East Wind
-	[88718] = {[9] = true, [11] = true, [23] = true, [35] = true},  -- Phosphorescent Stone Drake
-	[88741] = {[9] = true, [11] = true, [23] = true, [35] = true, [70] = true},  -- Drake of the West Wind
-	[88742] = {[9] = true, [11] = true, [23] = true, [35] = true},  -- Drake of the North Wind
-	[88744] = {[9] = true, [11] = true, [23] = true, [35] = true},  -- Drake of the South Wind
-	[88746] = {[9] = true, [11] = true, [23] = true, [35] = true},  -- Vitreous Stone Drake
-	[88748] = {[16] = true, [21] = true, [37] = true, [72] = true},  -- Brown Riding Camel
-	[88749] = {[16] = true, [21] = true, [37] = true, [72] = true},  -- Tan Riding Camel
-	[88750] = {[16] = true, [21] = true, [37] = true, [72] = true},  -- Grey Riding Camel
-	[88990] = {[9] = true, [11] = true, [23] = true, [35] = true},  -- Dark Phoenix
-	[90621] = {[16] = true, [21] = true, [37] = true},  -- Golden King
-	[92155] = {[16] = true, [21] = true, [37] = true},  -- Ultramarine Qiraji Battle Tank
-	[92231] = {[11] = true, [16] = true, [35] = true, [70] = true},  -- Spectral Steed
-	[92232] = {[11] = true, [16] = true, [35] = true, [71] = true},  -- Spectral Wolf
-	[93623] = {[9] = true, [11] = true, [23] = true, [35] = true},  -- Mottled Drake
-	[93644] = {[11] = true, [16] = true, [35] = true},  -- Kron'Kar Annihilator
-	
-	[87840] = {[14] = true, [20] = true, [21] = true, [29] = true, [38] = true},  -- Running Wild (Worgen Racial)
-	
 }
 	
 GoGo_MountsItems = {
