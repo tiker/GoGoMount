@@ -1069,9 +1069,9 @@ function GoGo_GetIDName(itemid)
 				end --if
 				ItemName = ItemName .. (GetSpellInfo(tempname) or "Unknown Mount") .. ", "
 			end --if
-				if GoGo_Variables.Debug then
-					GoGo_DebugAddLine("GoGo_GetIDName: Itemname string is " .. ItemName)
-				end --if
+			if GoGo_Variables.Debug then
+				GoGo_DebugAddLine("GoGo_GetIDName: Itemname string is " .. ItemName)
+			end --if
 		end --for
 		return ItemName
 	end --if
@@ -2139,6 +2139,8 @@ function GoGo_DebugCollectInformation()
 		GoGo_DebugAddLine("Information: Client locale is esMX")
 	elseif GetLocale() == "koKR" then
 		GoGo_DebugAddLine("Information: Client locale is koKR")
+	elseif GetLocale() == "ruRU" then
+		GoGo_DebugAddLine("Information: Client locale is ruRU")
 	elseif GetLocale() == "zhTW" then
 		GoGo_DebugAddLine("Information: Client locale is zhTW")
 	elseif GetLocale() == "zhCN" then
