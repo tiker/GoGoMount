@@ -524,7 +524,7 @@ function GoGo_ChooseMount()
 	end --if
 
 	-- Set the oculus mounts as the only mounts available if we're in the oculus, not skiping flying and have them in inventory
-	if (table.getn(mounts) == 0) and (table.getn(GoGo_FilteredMounts) > 0) and not GoGo_Variables.ZoneExclude.TheOculus and GoGo_Variables.CanFly then
+	if (table.getn(mounts) == 0) and (table.getn(GoGo_FilteredMounts) > 0) and not GoGo_Variables.ZoneExclude.TheOculus then
 		mounts = GoGo_FilterMountsIn(GoGo_FilteredMounts, 54) or {}
 		if (table.getn(mounts) > 0) then
 			if GoGo_Variables.Debug then
@@ -1242,7 +1242,7 @@ function GoGo_ZoneCheck()
 		GoGo_Variables.ZoneExclude.CanFly = true
 	elseif IsInInstance() then
 		if GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.TheOculus then
-			GoGo_Variables.ZoneExclude.CanFly = true
+			GoGo_Variables.ZoneExclude.CanFly = false
 			GoGo_Variables.ZoneExclude.TheOculus = false
 		elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.AQ40 then
 			if GoGo_Variables.Debug then
