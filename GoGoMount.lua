@@ -2126,6 +2126,10 @@ function GoGo_Settings_SetUpdates()
 	if not GoGo_Prefs.Zones then
 		GoGo_Prefs.Zones = {}
 	end --if
+	
+	-- old variables no longer used so we're removing them from the saved variables
+	GoGo_Prefs.preferflight = nil
+	
 end --function
 
 ---------
