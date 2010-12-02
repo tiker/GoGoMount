@@ -343,7 +343,7 @@ function GoGo_ChooseMount()
 		if GoGo_Variables.Debug then
 			GoGo_DebugAddLine("GoGo_ChooseMount: Disabling flying - under level 60")
 		end --if
-		GoGo_Variables.CanFly = false
+		GoGo_Variables.NoFlying = true
 	end --if
 
 	if GoGo_Variables.ExpansionAccount == 3 then  -- only exists for 4.x with Cataclysm expansion
