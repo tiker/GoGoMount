@@ -524,7 +524,7 @@ function GoGo_ChooseMount()
 	end --if
 
 	-- Set the oculus mounts as the only mounts available if we're in the oculus, not skiping flying and have them in inventory
-	if (table.getn(mounts) == 0) and (table.getn(GoGo_FilteredMounts) > 0) and not GoGo_Variables.ZoneExclude.TheOculus then
+	if (table.getn(mounts) == 0) and (table.getn(GoGo_FilteredMounts) > 0) and not GoGo_Variables.ZoneExclude.TheOculus and not GoGo_Variables.SkipFlyingMount then  -- skip flying is here because we already know we can't normally fly here
 		mounts = GoGo_FilterMountsIn(GoGo_FilteredMounts, 54) or {}
 		if (table.getn(mounts) > 0) then
 			if GoGo_Variables.Debug then
