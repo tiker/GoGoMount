@@ -390,21 +390,22 @@ GoGo_Variables.MountDB = {
 	[48954] = {[16] = true, [21] = true, [37] = true},  -- Swift Zhevra
 	[49322] = {[16] = true, [21] = true, [37] = true},  -- Swift Zhevra
 
-	[44151] = {[11] = true, [23] = true, [39] = true, [46] = true, [9] = true},  -- Turbo-Charged Flying Machine
-	[44153] = {[12] = true, [22] = true, [23] = true, [36] = true, [45] = true, [9] = true},  -- Flying Machine
+	[44151] = {[9] = true, [11] = true, [21] = true, [23] = true, [39] = true, [46] = true},  -- Turbo-Charged Flying Machine
+	[44153] = {[9] = true, [12] = true, [20] = true, [21] = true, [22] = true, [23] = true, [36] = true, [45] = true},  -- Flying Machine
 	[55531] = {[17] = true, [21] = true, [37] = true, [2] = true},  -- Mechano-hog
 	[60424] = {[17] = true, [21] = true, [37] = true, [2] = true},  -- Mekgineer's Chopper
-	[63796] = {[11] = true, [23] = true, [35] = true, [9] = true},  -- Mimiron's Head
+	[63796] = {[9] = true, [11] = true, [23] = true, [35] = true},  -- Mimiron's Head
 	[87090] = {[14] = true, [20] = true, [21] = true, [38] = true}, -- Goblin Trike
 	[87091] = {[16] = true, [21] = true, [37] = true}, -- Goblin Turbo-Trike
 
-	[61309] = {[11] = true, [23] = true, [49] = true, [9] = true, [35] = true},  -- Magnificent Flying Carpet
-	[61442] = {[11] = true, [47] = true, [9] = true, [23] = true, [35] = true},  -- Swift Mooncloth Carpet
-	[61444] = {[11] = true, [47] = true, [9] = true, [23] = true, [35] = true},  -- Swift Shadoweave Carpet
-	[61446] = {[11] = true, [47] = true, [9] = true, [23] = true, [35] = true},  -- Swift Spellfire Carpet
-	[61451] = {[12] = true, [48] = true, [9] = true, [22] = true, [23] = true, [36] = true},  -- Flying Carpet
-	[75596] = {[11] = true, [23] = true, [9] = true, [49] = true, [35] = true},  -- Frosty Flying Carpet
+	[61309] = {[3] = true, [9] = true, [11] = true, [21] = true, [23] = true, [49] = true, [35] = true},  -- Magnificent Flying Carpet
+	[61442] = {[3] = true, [9] = true, [11] = true, [47] = true, [21] = true, [23] = true, [35] = true},  -- Swift Mooncloth Carpet
+	[61444] = {[3] = true, [9] = true, [11] = true, [47] = true, [21] = true, [23] = true, [35] = true},  -- Swift Shadoweave Carpet
+	[61446] = {[3] = true, [9] = true, [11] = true, [47] = true, [21] = true, [23] = true, [35] = true},  -- Swift Spellfire Carpet
+	[61451] = {[3] = true, [9] = true, [12] = true, [48] = true, [20] = true, [21] = true, [22] = true, [23] = true, [36] = true},  -- Flying Carpet
+	[75596] = {[3] = true, [9] = true, [11] = true, [21] = true, [23] = true, [49] = true, [35] = true},  -- Frosty Flying Carpet
 	--	[????] = {[11] = true, [47] = true, [9] = true, [23] = true, [35] = true},  -- Swift Flying Carpet   --- item 39303
+--	[75614] = {[9] = true, [3] = true, [14] = true, [20] = true, [21] = true, [22] = true, [23] = true, [29] = true, [38] = true},  -- Celestial Steed
 
 	[61996] = {[11] = true, [23] = true, [35] = true, [9] = true},  -- Blue Dragonhawk
 	[61997] = {[11] = true, [23] = true, [35] = true, [9] = true},  -- Red Dragonhawk
