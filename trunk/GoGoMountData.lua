@@ -405,7 +405,6 @@ GoGo_Variables.MountDB = {
 	[61451] = {[3] = true, [9] = true, [12] = true, [48] = true, [20] = true, [21] = true, [22] = true, [23] = true, [36] = true},  -- Flying Carpet
 	[75596] = {[3] = true, [9] = true, [11] = true, [21] = true, [23] = true, [49] = true, [35] = true},  -- Frosty Flying Carpet
 	--	[????] = {[11] = true, [47] = true, [9] = true, [23] = true, [35] = true},  -- Swift Flying Carpet   --- item 39303
---	[75614] = {[9] = true, [3] = true, [14] = true, [20] = true, [21] = true, [22] = true, [23] = true, [29] = true, [38] = true},  -- Celestial Steed
 
 	[61996] = {[11] = true, [23] = true, [35] = true, [9] = true},  -- Blue Dragonhawk
 	[61997] = {[11] = true, [23] = true, [35] = true, [9] = true},  -- Red Dragonhawk

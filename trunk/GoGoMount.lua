@@ -509,15 +509,22 @@ function GoGo_ChooseMount()
 			GoGo_DebugAddLine("GoGo_ChooseMount: Looking for flying mounts since we past flight checks.")
 		end --if
 		mounts = GoGo_GetBestAirMounts(GoGo_FilteredMounts)
+	else
+		if GoGo_Variables.Debug then
+			GoGo_DebugAddLine("GoGo_ChooseMount: Not looking for flying mounts since we didn't past flight checks (or found a better mount to use).")
+		end --if
 	end --if
 	
 	if (table.getn(GoGo_FilteredMounts) >= 1) then
 		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 36)
 		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 35)
+		if GoGo_Variables.Debug then
+			GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated mounts that require skill 225 or 300 to use; " .. (table.getn(GoGo_FilteredMounts) or 0) .. " mounts left.")
+		end --if
 	end --if
 
 	-- Set the oculus mounts as the only mounts available if we're in the oculus, not skiping flying and have them in inventory
-	if (table.getn(mounts) == 0) and (table.getn(GoGo_FilteredMounts) >= 1) and not GoGo_Variables.ZoneExclude.TheOculus and GoGo_Variables.CanFly then
+	if (table.getn(mounts) == 0) and (table.getn(GoGo_FilteredMounts) > 0) and not GoGo_Variables.ZoneExclude.TheOculus and GoGo_Variables.CanFly then
 		mounts = GoGo_FilterMountsIn(GoGo_FilteredMounts, 54) or {}
 		if (table.getn(mounts) > 0) then
 			if GoGo_Variables.Debug then
@@ -531,7 +538,7 @@ function GoGo_ChooseMount()
 	end --if
 
 	-- Select ground mounts
-	if (table.getn(mounts) == 0) and GoGo_CanRide() and GoGo_Variables.CanRide then
+	if (table.getn(mounts) == 0) and GoGo_Variables.CanRide then
 		if GoGo_Variables.Debug then
 			GoGo_DebugAddLine("GoGo_ChooseMount: Looking for ground mounts since we can't fly.")
 		end --if
