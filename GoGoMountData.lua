@@ -489,3 +489,23 @@ GoGo_FlyCoOrds = {   -- x = west / east,  y = north / south
 	},
 }
 ]]
+
+GoGo_Variables.DebuffDB = {
+	24741,  -- Wisp Costume (from Hallowed Wand - Wisp during Halloween)
+	24858,  -- Moonkin Form (Druids)  -- apparently it doesn't cancel properly at the moment
+	--	45438,  -- Ice Block (Mages)  -- takes too long to cool down after removal
+	71484,  -- Strength of the Taunka (from Deathbringer's Will)
+	71485,  -- Agility of the Vrykul (from Deathbringer's Will)
+	71486,  -- Power of the Taunka (from Deathbringer's Will)
+	71487,  -- Precision of the Iron Dwarves (from Deathbringer's Will)
+	71491,  -- Aim of the Iron Dwarves (from Deathbringer's Will)
+	71492,  -- Speed of the Vrykul (from Deathbringer's Will)
+	71556,  -- Agility of the Vrykul (from Heroic Deathbringer's Will)
+	71557,  -- Precision of the Iron Dwarves (from Heroic Deathbringer's Will)
+	71558,  -- Power of the Taunka (from Heroic Deathbringer's Will)
+	71559,  -- Aim of the Iron Dwarves (from Heroic Deathbringer's Will)
+	71560,  -- Speed of the Vrykul (from Heroic Deathbringer's Will)
+	71561,  -- Strength of the Taunka (from Heroic Deathbringer's Will)
+	
+}
+

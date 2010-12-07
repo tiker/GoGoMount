@@ -32,7 +32,7 @@ function GoGo_OnEvent(event)
 		end --if
 		GoGo_Prefs.UnknownMounts = {}
 		GoGo_Variables.VerMajor, GoGo_Variables.VerMinor, GoGo_Variables.VerBuild = tonumber(GetAddOnMetadata("GoGoMount", "Version"))
-		GoGo_Variables.TestVersion = false
+		GoGo_Variables.TestVersion = true
 		GoGo_Variables.Debug = false
 		_, GoGo_Variables.Player.Class = UnitClass("player")
 		_, GoGo_Variables.Player.Race = UnitRace("player")
@@ -176,16 +176,20 @@ end --function
 ---------
 function GoGo_GetMount()
 ---------
-
 	local selectedmount = GoGo_ChooseMount()
-
---	if (GoGo_Variables.Player.Class == "PALADIN") and GoGo_Prefs.PaliUseCrusader and GoGo_InBook(GoGo_Variables.Localize.CrusaderAura) then
---		local modifier = GetSpellInfo(GoGo_Variables.Localize.CrusaderAura)
---		selectedmount = selectedmount .. "\n /stopcasting;\n /cast " .. modifier
---	end --if
-	
-	return selectedmount
-	
+	local macro = ""
+	local spellid = 0
+	if GoGo_Prefs.RemoveDebuffs then
+		for spellid = 1, table.getn(GoGo_Variables.DebuffDB) do
+			if UnitBuff("player", GetSpellInfo(GoGo_Variables.DebuffDB[spellid])) then
+				macro = "/cancelaura " .. GetSpellInfo(GoGo_Variables.DebuffDB[spellid]) .. " \n"
+			end --if
+		end --for
+	end --if
+	if macro ~= "" then
+		selectedmount = macro .. "/use " .. selectedmount
+	end --if
+	return selectedmount	
 end --function
 
 ---------
