@@ -1236,6 +1236,13 @@ function GoGo_ZoneCheck()
 					GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Tol Barad.")
 				end --if
 				GoGo_Variables.ZoneExclude.CanFly = false
+			elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.ShimmeringExpanse then
+				if GoGo_Variables.Player.SubZone == GoGo_Variables.Localize.Zone.SilverTideHollow then
+					if GoGo_Variables.Debug then
+						GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Shimmering Expanse / Silver Tide Hollow.")
+					end --if
+					GoGo_Variables.ZoneExclude.CanFly = false
+				end --if
 			else
 				GoGo_Variables.ZoneExclude.CanFly = true
 			end --if

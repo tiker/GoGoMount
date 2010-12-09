@@ -42,7 +42,9 @@
 				Icecrown = "La Couronne de glace",
 				Ironforge = "Forgefer",
 				KrasusLanding = "Aire de Krasus",
+				ShimmeringExpanse = "Étendues Chatoyantes",
 				SholazarBasin = "Bassin de Sholazar",
+				SilverTideHollow = "Creux des Flots argentés",
 				TempleOfEarth = "Temple de la Terre", -- Needs review
 				TheFrozenSea = "La mer Gelée",
 				TheOculus = "L'Oculus",
