@@ -42,6 +42,7 @@
 				Icecrown = "La Couronne de glace",
 				Ironforge = "Forgefer",
 				KrasusLanding = "Aire de Krasus",
+				Nespirah = "Nespirah",
 				ShimmeringExpanse = "Étendues Chatoyantes",
 				SholazarBasin = "Bassin de Sholazar",
 				SilverTideHollow = "Creux des Flots argentés",
