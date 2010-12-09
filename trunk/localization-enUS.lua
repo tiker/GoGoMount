@@ -1,4 +1,3 @@
-
 	BINDING_HEADER_GOGOHEADER = "GoGoMount"
 	BINDING_NAME_GOGOBINDING = "Mount/Dismount"
 	BINDING_NAME_GOGOBINDING2 = "Mount/Dismount (no flying)"
@@ -42,6 +41,7 @@
 				Icecrown = "Icecrown",
 				Ironforge = "Ironforge",
 				KrasusLanding = "Krasus' Landing",
+				Nespirah = "Nespirah",
 				ShimmeringExpanse = "Shimmering Expanse",
 				SholazarBasin = "Sholazar Basin",
 				SilverTideHollow = "Silver Tide Hollow",
