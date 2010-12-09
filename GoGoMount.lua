@@ -170,7 +170,7 @@ function GoGo_PreClick(button)
 --			SendAddonMessage("GoGoMountVER", GetAddOnMetadata("GoGoMount", "Version"), "BATTLEGROUND")
 --			SendAddonMessage("GoGoMountVER", GetAddOnMetadata("GoGoMount", "Version"), "RAID")
 	end --if
-	GoGo_Variables.Debug = false
+--	GoGo_Variables.Debug = false
 end --function
 
 ---------
@@ -2185,6 +2185,11 @@ function GoGo_DebugCollectInformation()
 	local level = UnitLevel("player")
 	GoGo_DebugAddLine("Information: We are level " .. level)
 	GoGo_DebugAddLine("Information: We are a " .. GoGo_Variables.Player.Race .. " " .. GoGo_Variables.Player.Class)
+	if InCombatLockdown() then
+		GoGo_DebugAddLine("Information: We are in combat as per InCombatLockdown()")
+	else
+		GoGo_DebugAddLine("Information: We are not in combat as per InCombatLockdown()")
+	end --if
 	if IsOutdoors() then
 		GoGo_DebugAddLine("Information: We are outdoors as per IsOutdoors()")
 	else
