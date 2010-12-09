@@ -1247,6 +1247,8 @@ function GoGo_ZoneCheck()
 						GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Shimmering Expanse / Nesphirah.")
 					end --if
 					GoGo_Variables.ZoneExclude.CanFly = false
+				else
+					GoGo_Variables.ZoneExclude.CanFly = true
 				end --if
 			else
 				GoGo_Variables.ZoneExclude.CanFly = true
