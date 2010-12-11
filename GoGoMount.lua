@@ -428,6 +428,13 @@ function GoGo_ChooseMount()
 		GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated excluded mounts - " .. (table.getn(GoGo_FilteredMounts) or 0) .. " mounts left.")
 	end --if
 	
+	if GoGo_Variables.ZoneExclude.UseMountGroup then
+		GoGo_FilteredMounts = GoGo_FilterMountsIn(GoGo_FilteredMounts, GoGo_Variables.ZoneExclude.UseMountGroup) or {}
+		if GoGo_Variables.Debug then
+			GoGo_DebugAddLine("GoGo_ChooseMount: Selected specific group of mounts - " .. GoGo_Variables.ZoneExclude.UseMountGroup .. " - " .. (table.getn(GoGo_FilteredMounts) or 0) .. " mounts left.")
+		end --if
+	end --if
+	
 	if GoGo_Variables.ZoneExclude.CanFly and not GoGo_Variables.SkipFlyingMount and not GoGo_Variables.NoFlying then
 		GoGo_Variables.CanFly = true
 	else
@@ -1152,8 +1159,8 @@ function GoGo_ZoneCheck()
 	GoGo_Variables.ZoneExclude.NorthrendLoanedMounts = true
 	GoGo_Variables.ZoneExclude.TheOculus = true
 	GoGo_Variables.ZoneExclude.AQ40 = true
-	
 	GoGo_Variables.ZoneExclude.CanFly = false
+	GoGo_Variables.ZoneExclude.UseMountGroup = nil
 	
 	if (GoGo_InNorthrend()) then
 		if not (GoGo_InBook(GoGo_Variables.Localize.ColdWeatherFlying)) then
@@ -1270,6 +1277,12 @@ function GoGo_ZoneCheck()
 				GoGo_DebugAddLine("GoGo_ZoneCheck: Removing AQ40 mounts since we are not in AQ40.")
 			end --if
 			GoGo_Variables.ZoneExclude.AQ40 = false
+		elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.TheVortexPinnacle then
+			if GoGo_Variables.Debug then
+				GoGo_DebugAddLine("GoGo_ZoneCheck: Can't fly.  Specifying mount group 'DefaultInstance'.")
+			end --if
+			GoGo_Variables.ZoneExclude.CanFly = false
+			GoGo_Variables.ZoneExclude.UseMountGroup = "DefaultInstance"
 		end --if
 	elseif GoGo_IsInBattleGround() then
 		GoGo_Variables.ZoneExclude.CanFly = false
