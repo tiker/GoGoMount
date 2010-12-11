@@ -1246,6 +1246,15 @@ function GoGo_ZoneCheck()
 					GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Tol Barad.")
 				end --if
 				GoGo_Variables.ZoneExclude.CanFly = false
+			elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.AbyssalDepths then
+				if GoGo_Variables.Player.SubZone == GoGo_Variables.Localize.Zone.Lghorek then
+					if GoGo_Variables.Debug then
+						GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Abyssal Depths / L'ghorek.")
+					end --if
+					GoGo_Variables.ZoneExclude.CanFly = false
+				else
+					GoGo_Variables.ZoneExclude.CanFly = true
+				end --if
 			elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.ShimmeringExpanse then
 				if GoGo_Variables.Player.SubZone == GoGo_Variables.Localize.Zone.SilverTideHollow then
 					if GoGo_Variables.Debug then
@@ -1987,6 +1996,16 @@ function GoGo_Panel_Options()
 			GoGo_Panel_Okay("MAIN")
 		end --function
 	)
+
+	GoGo_Panel_DisableWaterFlight = CreateFrame("CheckButton", "GoGo_Panel_DisableWaterFlight", GoGo_Panel, "OptionsCheckButtonTemplate")
+	GoGo_Panel_DisableWaterFlight:SetPoint("TOPLEFT", "GoGo_Panel_DisableMountNotice", "BOTTOMLEFT", 0, -4)
+	GoGo_Panel_DisableWaterFlightText:SetText(GoGo_Variables.Localize.String.DisableFlyingFromWater)
+	GoGo_Panel_DisableWaterFlight:SetScript("OnClick",
+		function(self)
+			GoGo_Panel_Okay("MAIN")
+		end --function
+	)
+	
 --[[	
 	local GoGo_Panel_ClearGlobalFavorites = CreateFrame("FRAME")
 	local GoGo_Panel_ClearGlobalFavorites_Text = GoGo_Panel_ClearGlobalFavorites:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
@@ -2083,6 +2102,7 @@ function GoGo_Panel_UpdateViews(Class)
 		GoGo_Panel_DisableUpdateNotice:SetChecked(GoGo_Prefs.DisableUpdateNotice)
 		GoGo_Panel_DisableMountNotice:SetChecked(GoGo_Prefs.DisableMountNotice)
 		GoGo_Panel_GlobalPrefMount:SetChecked(GoGo_Prefs.GlobalPrefMount)
+		GoGo_Panel_DisableWaterFlight:SetChecked(GoGo_Prefs.DisableWaterFlight)
 	end --if
 	
 	if GoGo_Prefs.autodismount then
@@ -2100,6 +2120,7 @@ function GoGo_Panel_Okay(Panel)
 		GoGo_Prefs.DisableUpdateNotice = GoGo_Panel_DisableUpdateNotice:GetChecked()
 		GoGo_Prefs.DisableMountNotice = GoGo_Panel_DisableMountNotice:GetChecked()
 		GoGo_Prefs.GlobalPrefMount = GoGo_Panel_GlobalPrefMount:GetChecked()
+		GoGo_Prefs.DisableWaterFlight = GoGo_Panel_DisableWaterFlight:GetChecked()
 	elseif Panel == "DRUID" then
 		GoGo_Prefs.DruidClickForm = GoGo_Druid_Panel_ClickForm:GetChecked()
 		GoGo_Prefs.DruidFlightForm = GoGo_Druid_Panel_FlightForm:GetChecked()
@@ -2123,6 +2144,7 @@ function GoGo_Settings_Default(Class)
 		GoGo_Prefs.DisableUpdateNotice = false
 		GoGo_Prefs.DisableMountNotice = false
 		GoGo_Prefs.GlobalPrefMount = false
+		GoGo_Prefs.DisableWaterFlight = true
 	else
 		GoGo_Prefs = {}
 		GoGo_Prefs.Zones = {}
@@ -2138,6 +2160,7 @@ function GoGo_Settings_Default(Class)
 		GoGo_Prefs.GlobalPrefMount = false
 		GoGo_Prefs.AspectPack = false
 		GoGo_Prefs.DruidFormNotRandomize = false
+		GoGo_Prefs.DisableWaterFlight = true
 	end --if
 end --function
 
@@ -2153,6 +2176,8 @@ function GoGo_Settings_SetUpdates()
 	if not GoGo_Prefs.GlobalPrefMount then GoGo_Prefs.GlobalPrefMount = false end
 	if not GoGo_Prefs.AspectPack then GoGo_Prefs.AspectPack = false end
 	if not GoGo_Prefs.DruidFormNotRandomize then GoGo_Prefs.DruidFormNotRandomize = false end
+	if not GoGo_Prefs.DisableWaterFlight then GoGo_Prefs.DisableWaterFlight = false end
+
 	GoGo_Prefs.UnknownMounts = {}
 	if not GoGo_Prefs.GlobalExclude then
 		GoGo_Prefs.GlobalExclude = {}
