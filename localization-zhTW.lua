@@ -11,7 +11,10 @@
 			},
 			String = {
 				AutomaticallyRemoveBuffs = "自動移除防止騎乘的增益",
+				Clear = "Clear", -- Requires localization
+				ClearGlobalFavoriteMounts = "Clear global favorite mounts", -- Requires localization
 				CurrentZoneFavorites = "當前地區的偏好",
+				DisableFlyingFromWater = "Disable flying from water", -- Requires localization
 				DisableUnknownMountNotices = "停用未知的坐騎通知",
 				DisableUpdateNotices = "停用更新通知",
 				DruidFlightPreference = "當角色移動時使用飛行型態取代座騎",
@@ -33,21 +36,30 @@
 			},
 			Zone = {
 				AQ40 = "安其拉",
+				AbyssalDepths = "Abyssal Depths", -- Requires localization
 				CrumblingDepths = "破碎深淵",
 				Dalaran = "達拉然",
+				DarkbreakCove = "Darkbreak Cove", -- Requires localization
 				Deepholm = "地深之源",
 				DireMaul = "厄運之槌",
 				Icecrown = "寒冰皇冠",
 				Ironforge = "鐵爐堡",
 				KrasusLanding = "卡薩斯平臺",
+				LegionsRest = "Legion's Rest", -- Requires localization
+				Lghorek = "L'ghorek", -- Requires localization
+				Nespirah = "Nespirah", -- Requires localization
+				ShimmeringExpanse = "Shimmering Expanse", -- Requires localization
 				SholazarBasin = "休拉薩盆地",
+				SilverTideHollow = "Silver Tide Hollow", -- Requires localization
 				TempleOfEarth = "大地神殿",
+				TenebrousCavern = "Tenebrous Cavern", -- Requires localization
 				TheFrozenSea = "冰凍之海",
 				TheOculus = "奧核之眼",
 				TheStormPeaks = "風暴群山",
 				TheTempleOfAtalHakkar = "The Temple of Atal'Hakkar", -- Requires localization
 				TheUnderbelly = "城底區",
 				TheVioletCitadel = "紫羅蘭城塞",
+				TheVortexPinnacle = "The Vortex Pinnacle", -- Requires localization
 				TolBarad = "Tol Barad", -- Requires localization
 				TolBaradPeninsula = "托巴拉德半島",
 				TwistingNether = "扭曲虛空",

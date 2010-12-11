@@ -14,6 +14,7 @@
 				Clear = "Effacer",
 				ClearGlobalFavoriteMounts = "Effacer les montures favorites globales",
 				CurrentZoneFavorites = "Favoris de la zone actuelle",
+				DisableFlyingFromWater = "Disable flying from water", -- Requires localization
 				DisableUnknownMountNotices = "Désactiver les annonces de monture inconnue",
 				DisableUpdateNotices = "Désactiver les annonces de mise à jour",
 				DruidFlightPreference = "Toujours utiliser la forme de vol même sans se déplacer",
@@ -35,28 +36,34 @@
 			},
 			Zone = {
 				AQ40 = "Temple d'Ahn'Qiraj",
-				CrumblingDepths = "Crumbling Depths", -- Needs review
+				AbyssalDepths = "Abyssal Depths", -- Requires localization
+				CrumblingDepths = "Les profondeurs Désagrégées",
 				Dalaran = "Dalaran",
-				Deepholm = "Le Tréfonds ", -- Needs review
+				DarkbreakCove = "Darkbreak Cove", -- Requires localization
+				Deepholm = "Le Tréfonds ",
 				DireMaul = "Hache-Tripes",
 				Icecrown = "La Couronne de glace",
 				Ironforge = "Forgefer",
 				KrasusLanding = "Aire de Krasus",
+				LegionsRest = "Legion's Rest", -- Requires localization
+				Lghorek = "L'ghorek", -- Requires localization
 				Nespirah = "Nespirah",
 				ShimmeringExpanse = "Étendues Chatoyantes",
 				SholazarBasin = "Bassin de Sholazar",
 				SilverTideHollow = "Creux des Flots argentés",
-				TempleOfEarth = "Temple de la Terre", -- Needs review
+				TempleOfEarth = "Temple de la Terre",
+				TenebrousCavern = "Tenebrous Cavern", -- Requires localization
 				TheFrozenSea = "La mer Gelée",
 				TheOculus = "L'Oculus",
 				TheStormPeaks = "Les pics Foudroyés",
 				TheTempleOfAtalHakkar = "Le temple d'Atal'Hakkar",
 				TheUnderbelly = "Les Entrailles",
 				TheVioletCitadel = "Citadelle Pourpre",
-				TolBarad = "Tol Barad", -- Needs review
-				TolBaradPeninsula = "Péninsule de Tol Barad", -- Needs review
+				TheVortexPinnacle = "La cime du Vortex",
+				TolBarad = "Tol Barad",
+				TolBaradPeninsula = "Péninsule de Tol Barad",
 				TwistingNether = "Le Néant distordu",
-				Vashjir = "Vashj'ir", -- Needs review
+				Vashjir = "Vashj'ir",
 				Wintergrasp = "Joug-d'hiver",
 			},
 }
