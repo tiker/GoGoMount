@@ -1252,6 +1252,12 @@ function GoGo_ZoneCheck()
 						GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Abyssal Depths / L'ghorek.")
 					end --if
 					GoGo_Variables.ZoneExclude.CanFly = false
+				elseif GoGo_Variables.Player.SubZone == GoGo_Variables.Localize.Zone.DarkbreakCove then
+					if GoGo_Variables.Debug then
+						GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Abyssal Depths / Darkbreak Cove.  Specifying mount group 'DefaultInstance'.")
+					end --if
+					GoGo_Variables.ZoneExclude.CanFly = false
+					GoGo_Variables.ZoneExclude.UseMountGroup = "DefaultInstance"
 				else
 					GoGo_Variables.ZoneExclude.CanFly = true
 				end --if
