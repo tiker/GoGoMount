@@ -423,11 +423,11 @@ GoGo_Variables.MountDB = {
 	[40120] = {[7] = true, [9] = true, [11] = true, [23] = true, [24] = true, [9998] = true},  -- Druid Fast Flight Form
 	[33943] = {[7] = true, [9] = true, [11] = true, [22] = true, [9998] = true},  -- Druid Flight Form
 	[783] = {[7] = true, [28] = true}, -- Druid Travel Form
-	[2645] = {[8] = true, [26] = true, [1000] = true}, -- Shaman Ghost Wolf Form
-	[768] = {[7] = true, [8] = true, [25] = true, [1000] = true},  -- Druid Cat Form
-	[1066] = {[7] = true, [34] = true, [1000] = true},  -- Druid Aqua form
-	[5118] = {[7] = true, [8] = true, [26] = true},  -- Aspect of the Cheeta
-	[13159] = {[7] = true, [8] = true, [26] = true},  -- Aspect of the Pack
+	[2645] = {[8] = true, [26] = true, [1000] = true, ["DefaultInstance"] = true}, -- Shaman Ghost Wolf Form
+	[768] = {[7] = true, [8] = true, [25] = true, [1000] = true, ["DefaultInstance"] = true},  -- Druid Cat Form
+	[1066] = {[7] = true, [34] = true, [1000] = true, ["DefaultInstance"] = true},  -- Druid Aqua form
+	[5118] = {[7] = true, [8] = true, [26] = true, ["DefaultInstance"] = true},  -- Aspect of the Cheeta
+	[13159] = {[7] = true, [8] = true, [26] = true, ["DefaultInstance"] = true},  -- Aspect of the Pack
 }
 	
 GoGo_MountsItems = {
