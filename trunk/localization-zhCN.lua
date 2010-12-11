@@ -11,7 +11,10 @@
 			},
 			String = {
 				AutomaticallyRemoveBuffs = "Automatically remove buffs that prevent mounting", -- Requires localization
+				Clear = "Clear", -- Requires localization
+				ClearGlobalFavoriteMounts = "Clear global favorite mounts", -- Requires localization
 				CurrentZoneFavorites = "当前地域收藏", -- Needs review
+				DisableFlyingFromWater = "Disable flying from water", -- Requires localization
 				DisableUnknownMountNotices = "关闭未知坐骑提示", -- Needs review
 				DisableUpdateNotices = "关闭更新提示", -- Needs review
 				DruidFlightPreference = "在角色移动的情况下总是使用飞行形态", -- Needs review
@@ -33,21 +36,30 @@
 			},
 			Zone = {
 				AQ40 = "安其拉神殿", -- Needs review
+				AbyssalDepths = "Abyssal Depths", -- Requires localization
 				CrumblingDepths = "Crumbling Depths", -- Requires localization
 				Dalaran = "达拉然", -- Needs review
+				DarkbreakCove = "Darkbreak Cove", -- Requires localization
 				Deepholm = "Deepholm", -- Requires localization
 				DireMaul = "Dire Maul", -- Requires localization
 				Icecrown = "冰冠冰川", -- Needs review
 				Ironforge = "Ironforge", -- Requires localization
 				KrasusLanding = "克拉苏斯平台", -- Needs review
+				LegionsRest = "Legion's Rest", -- Requires localization
+				Lghorek = "L'ghorek", -- Requires localization
+				Nespirah = "Nespirah", -- Requires localization
+				ShimmeringExpanse = "Shimmering Expanse", -- Requires localization
 				SholazarBasin = "索拉查盆地", -- Needs review
+				SilverTideHollow = "Silver Tide Hollow", -- Requires localization
 				TempleOfEarth = "Temple of Earth", -- Requires localization
+				TenebrousCavern = "Tenebrous Cavern", -- Requires localization
 				TheFrozenSea = "冰冻之海", -- Needs review
 				TheOculus = "魔环", -- Needs review
 				TheStormPeaks = "风暴峭壁", -- Needs review
 				TheTempleOfAtalHakkar = "The Temple of Atal'Hakkar", -- Requires localization
 				TheUnderbelly = "达拉然下水道", -- Needs review
 				TheVioletCitadel = "紫罗兰城堡", -- Needs review
+				TheVortexPinnacle = "The Vortex Pinnacle", -- Requires localization
 				TolBarad = "Tol Barad", -- Requires localization
 				TolBaradPeninsula = "Tol Barad Peninsula", -- Requires localization
 				TwistingNether = "扭曲虚空", -- Needs review

@@ -11,7 +11,10 @@
 			},
 			String = {
 				AutomaticallyRemoveBuffs = "Automatically remove buffs that prevent mounting", -- Requires localization
+				Clear = "Clear", -- Requires localization
+				ClearGlobalFavoriteMounts = "Clear global favorite mounts", -- Requires localization
 				CurrentZoneFavorites = "Favoritos de Zona Actual", -- Needs review
+				DisableFlyingFromWater = "Disable flying from water", -- Requires localization
 				DisableUnknownMountNotices = "Desactivar notificaciones de monturas desconocidas", -- Needs review
 				DisableUpdateNotices = "Desactivar notificaciones de actualizaciones", -- Needs review
 				DruidFlightPreference = "Always use flight forms instead of when moving only", -- Requires localization
@@ -33,21 +36,30 @@
 			},
 			Zone = {
 				AQ40 = "Templo de Ahn'Qiraj", -- Needs review
+				AbyssalDepths = "Abyssal Depths", -- Requires localization
 				CrumblingDepths = "Crumbling Depths", -- Requires localization
 				Dalaran = "Dalaran", -- Needs review
+				DarkbreakCove = "Darkbreak Cove", -- Requires localization
 				Deepholm = "Deepholm", -- Requires localization
 				DireMaul = "La Masacre", -- Needs review
 				Icecrown = "Corona de Hielo", -- Needs review
 				Ironforge = "Forjaz", -- Needs review
 				KrasusLanding = "Alto de Kraus", -- Needs review
+				LegionsRest = "Legion's Rest", -- Requires localization
+				Lghorek = "L'ghorek", -- Requires localization
+				Nespirah = "Nespirah", -- Requires localization
+				ShimmeringExpanse = "Shimmering Expanse", -- Requires localization
 				SholazarBasin = "Cuenca de Sholazar", -- Needs review
+				SilverTideHollow = "Silver Tide Hollow", -- Requires localization
 				TempleOfEarth = "Temple of Earth", -- Requires localization
+				TenebrousCavern = "Tenebrous Cavern", -- Requires localization
 				TheFrozenSea = "El Mar Gélido", -- Needs review
 				TheOculus = "El Oculus", -- Needs review
 				TheStormPeaks = "Las Cumbres Tormentosas", -- Needs review
 				TheTempleOfAtalHakkar = "The Temple of Atal'Hakkar", -- Requires localization
 				TheUnderbelly = "Los Bajos Fondos", -- Needs review
 				TheVioletCitadel = "La Ciudadela Violeta", -- Needs review
+				TheVortexPinnacle = "La Cumbre del Vórtice",
 				TolBarad = "Tol Barad", -- Requires localization
 				TolBaradPeninsula = "Tol Barad Peninsula", -- Requires localization
 				TwistingNether = "El Vacío Abisal", -- Needs review
