@@ -32,7 +32,7 @@ function GoGo_OnEvent(event)
 		end --if
 		GoGo_Prefs.UnknownMounts = {}
 		GoGo_Variables.VerMajor, GoGo_Variables.VerMinor, GoGo_Variables.VerBuild = tonumber(GetAddOnMetadata("GoGoMount", "Version"))
-		GoGo_Variables.TestVersion = true
+		GoGo_Variables.TestVersion = false
 		GoGo_Variables.Debug = false
 		_, GoGo_Variables.Player.Class = UnitClass("player")
 		_, GoGo_Variables.Player.Race = UnitRace("player")
@@ -170,7 +170,7 @@ function GoGo_PreClick(button)
 --			SendAddonMessage("GoGoMountVER", GetAddOnMetadata("GoGoMount", "Version"), "BATTLEGROUND")
 --			SendAddonMessage("GoGoMountVER", GetAddOnMetadata("GoGoMount", "Version"), "RAID")
 	end --if
---	GoGo_Variables.Debug = false
+	GoGo_Variables.Debug = false
 end --function
 
 ---------
@@ -1280,6 +1280,11 @@ function GoGo_ZoneCheck()
 			end --if
 		else  -- don't have flight master's license
 			GoGo_Variables.ZoneExclude.CanFly = false
+		end --if
+		if GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.AbyssalDepths then
+			if GoGo_Variables.Player.SubZone == GoGo_Variables.Localize.Zone.DarkbreakCove then
+				GoGo_Variables.ZoneExclude.UseMountGroup = "SeaTurtle"
+			end --if
 		end --if
 	elseif (GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.TheTempleOfAtalHakkar) and GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense) then
 		GoGo_Variables.ZoneExclude.CanFly = true

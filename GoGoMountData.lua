@@ -23,7 +23,7 @@ GoGo_Variables.MountDB = {
 	[92155] = {[16] = true, [21] = true, [37] = true},  -- Ultramarine Qiraji Battle Tank
 
 	[30174] = {[15] = true, [25] = true, [39] = true},  -- Riding Turtle
-	[64731] = {[15] = true, [31] = true, [27] = true, [39] = true},  -- Sea Turtle
+	[64731] = {[15] = true, [31] = true, [27] = true, [39] = true, ["SeaTurtle"] = true},  -- Sea Turtle
 	
 	[33189] = {[4] = true, [15] = true, [25] = true, [39] = true},  -- Rickety Magic Broom  --  itemid
 --	[42692] = {[15] = true, [25] = true, [39] = true, [999] = true},  -- Rickety Magic Broom
