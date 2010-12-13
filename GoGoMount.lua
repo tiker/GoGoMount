@@ -1416,6 +1416,11 @@ end --function
 ---------
 function GoGo_CheckSwimStatus()
 ---------
+
+	if GoGo_Prefs.DisableWaterFlight then  -- don't want to fly from water as per client option
+		return
+	end --if
+	
 	for GoGo_TempCount = 1, MIRRORTIMER_NUMTIMERS do
 		local timer, value, maxvalue, scale, paused, label = GetMirrorTimerInfo(GoGo_TempCount)
 		if timer == "BREATH" then
