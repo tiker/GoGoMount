@@ -52,6 +52,7 @@
 				SilverTideHollow = "Silver Tide Hollow",
 				TempleOfEarth = "Temple of Earth",
 				TenebrousCavern = "Tenebrous Cavern",
+				TheCerebrillum = "The Cerebrillum",
 				TheFrozenSea = "The Frozen Sea",
 				TheOculus = "The Oculus",
 				TheStormPeaks = "The Storm Peaks",

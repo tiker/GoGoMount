@@ -1246,21 +1246,6 @@ function GoGo_ZoneCheck()
 					GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Tol Barad.")
 				end --if
 				GoGo_Variables.ZoneExclude.CanFly = false
-			elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.AbyssalDepths then
-				if GoGo_Variables.Player.SubZone == GoGo_Variables.Localize.Zone.Lghorek then
-					if GoGo_Variables.Debug then
-						GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Abyssal Depths / L'ghorek.")
-					end --if
-					GoGo_Variables.ZoneExclude.CanFly = false
-				elseif GoGo_Variables.Player.SubZone == GoGo_Variables.Localize.Zone.DarkbreakCove then
-					if GoGo_Variables.Debug then
-						GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Abyssal Depths / Darkbreak Cove.  Specifying mount group 'DefaultInstance'.")
-					end --if
-					GoGo_Variables.ZoneExclude.CanFly = false
-					GoGo_Variables.ZoneExclude.UseMountGroup = "DefaultInstance"
-				else
-					GoGo_Variables.ZoneExclude.CanFly = true
-				end --if
 			elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.ShimmeringExpanse then
 				if GoGo_Variables.Player.SubZone == GoGo_Variables.Localize.Zone.SilverTideHollow then
 					if GoGo_Variables.Debug then
@@ -1283,7 +1268,32 @@ function GoGo_ZoneCheck()
 		end --if
 		if GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.AbyssalDepths then
 			if GoGo_Variables.Player.SubZone == GoGo_Variables.Localize.Zone.DarkbreakCove then
-				GoGo_Variables.ZoneExclude.UseMountGroup = "SeaTurtle"
+				if GoGo_Variables.Debug then
+					GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Abyssal Depths / Darkbreak Cove.  Specifying mount group 'TenebrousCavern'.")
+				end --if
+				GoGo_Variables.ZoneExclude.CanFly = false
+				GoGo_Variables.ZoneExclude.UseMountGroup = "TenebrousCavern"
+			elseif GoGo_Variables.Player.SubZone == GoGo_Variables.Localize.Zone.Lghorek then
+				if GoGo_Variables.Debug then
+					GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Abyssal Depths / L'ghorek.")
+				end --if
+				GoGo_Variables.ZoneExclude.CanFly = false
+			elseif GoGo_Variables.Player.SubZone == GoGo_Variables.Localize.Zone.TenebrousCavern then
+				if GoGo_Variables.Debug then
+					GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Abyssal Depths / Tenebrous Cavern.  Specifying mount group 'TenebrousCavern'.")
+				end --if
+				GoGo_Variables.ZoneExclude.CanFly = false
+				GoGo_Variables.ZoneExclude.UseMountGroup = "TenebrousCavern"
+			elseif GoGo_Variables.Player.SubZone == GoGo_Variables.Localize.Zone.TheCerebrillum then
+				if GoGo_Variables.Debug then
+					GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Abyssal Depths / The Cerebrillum.")
+				end --if
+				GoGo_Variables.ZoneExclude.CanFly = false
+			elseif GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense) then
+				if GoGo_Variables.Debug then
+					GoGo_DebugAddLine("GoGo_ZoneCheck: Activating Flying - in Abyssal Depths (not in known no fly area).")
+				end --if
+				GoGo_Variables.ZoneExclude.CanFly = true
 			end --if
 		end --if
 	elseif (GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.TheTempleOfAtalHakkar) and GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense) then
