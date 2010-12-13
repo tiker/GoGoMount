@@ -23,7 +23,7 @@ GoGo_Variables.MountDB = {
 	[92155] = {[16] = true, [21] = true, [37] = true},  -- Ultramarine Qiraji Battle Tank
 
 	[30174] = {[15] = true, [25] = true, [39] = true},  -- Riding Turtle
-	[64731] = {[15] = true, [31] = true, [27] = true, [39] = true, ["SeaTurtle"] = true},  -- Sea Turtle
+	[64731] = {[15] = true, [31] = true, [27] = true, [39] = true, ["SeaTurtle"] = true, ["TenebrousCavern"] = true},  -- Sea Turtle
 	
 	[33189] = {[4] = true, [15] = true, [25] = true, [39] = true},  -- Rickety Magic Broom  --  itemid
 --	[42692] = {[15] = true, [25] = true, [39] = true, [999] = true},  -- Rickety Magic Broom
@@ -423,11 +423,11 @@ GoGo_Variables.MountDB = {
 	[40120] = {[7] = true, [9] = true, [11] = true, [23] = true, [24] = true, [9998] = true},  -- Druid Fast Flight Form
 	[33943] = {[7] = true, [9] = true, [11] = true, [22] = true, [9998] = true},  -- Druid Flight Form
 	[783] = {[7] = true, [28] = true}, -- Druid Travel Form
-	[2645] = {[8] = true, [26] = true, [1000] = true, ["DefaultInstance"] = true}, -- Shaman Ghost Wolf Form
+	[2645] = {[8] = true, [26] = true, [1000] = true, ["DefaultInstance"] = true, ["TenebrousCavern"] = true}, -- Shaman Ghost Wolf Form
 	[768] = {[7] = true, [8] = true, [25] = true, [1000] = true, ["DefaultInstance"] = true},  -- Druid Cat Form
 	[1066] = {[7] = true, [34] = true, [1000] = true, ["DefaultInstance"] = true},  -- Druid Aqua form
-	[5118] = {[7] = true, [8] = true, [26] = true, ["DefaultInstance"] = true},  -- Aspect of the Cheeta
-	[13159] = {[7] = true, [8] = true, [26] = true, ["DefaultInstance"] = true},  -- Aspect of the Pack
+	[5118] = {[7] = true, [8] = true, [26] = true, ["DefaultInstance"] = true, ["TenebrousCavern"] = true},  -- Aspect of the Cheeta
+	[13159] = {[7] = true, [8] = true, [26] = true, ["DefaultInstance"] = true, ["TenebrousCavern"] = true},  -- Aspect of the Pack
 }
 	
 GoGo_MountsItems = {
