@@ -32,7 +32,7 @@ function GoGo_OnEvent(event)
 		end --if
 		GoGo_Prefs.UnknownMounts = {}
 		GoGo_Variables.VerMajor, GoGo_Variables.VerMinor, GoGo_Variables.VerBuild = tonumber(GetAddOnMetadata("GoGoMount", "Version"))
-		GoGo_Variables.TestVersion = false
+		GoGo_Variables.TestVersion = true
 		GoGo_Variables.Debug = false
 		_, GoGo_Variables.Player.Class = UnitClass("player")
 		_, GoGo_Variables.Player.Race = UnitRace("player")
@@ -179,7 +179,7 @@ function GoGo_GetMount()
 	local selectedmount = GoGo_ChooseMount()
 	local macro = ""
 	local spellid = 0
-	if GoGo_Prefs.RemoveDebuffs then
+	if GoGo_Prefs.RemoveDebuffs and selectedmount ~= nil then
 		for spellid = 1, table.getn(GoGo_Variables.DebuffDB) do
 			if GoGo_Variables.Debug then
 				GoGo_DebugAddLine("GoGo_GetMount: Checking for " .. GoGo_Variables.DebuffDB[spellid] .. " (" .. GetSpellInfo(GoGo_Variables.DebuffDB[spellid]) .. ")")
