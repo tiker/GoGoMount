@@ -181,9 +181,12 @@ function GoGo_GetMount()
 	local spellid = 0
 	if GoGo_Prefs.RemoveDebuffs then
 		for spellid = 1, table.getn(GoGo_Variables.DebuffDB) do
+			if GoGo_Variables.Debug then
+				GoGo_DebugAddLine("GoGo_GetMount: Checking for " .. GoGo_Variables.DebuffDB[spellid] .. " (" .. GetSpellInfo(GoGo_Variables.DebuffDB[spellid]) .. ")")
+			end --if
 			if UnitBuff("player", GetSpellInfo(GoGo_Variables.DebuffDB[spellid])) then
 				if GoGo_Variables.Debug then
-					GoGo_DebugAddLine("GoGo_GetMount: Removing buff " .. GoGo_Variables.DebuffDB[spellid] .. " (" .. GetSpellInfo(GoGo_Variables.DebuffDB[spellid]) .. ")")
+					GoGo_DebugAddLine("GoGo_GetMount: Found and removing buff " .. GoGo_Variables.DebuffDB[spellid] .. " (" .. GetSpellInfo(GoGo_Variables.DebuffDB[spellid]) .. ")")
 				end --if
 				macro = macro .. "/cancelaura " .. GetSpellInfo(GoGo_Variables.DebuffDB[spellid]) .. " \n"
 			end --if
