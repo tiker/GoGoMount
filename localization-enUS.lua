@@ -26,6 +26,7 @@
 				HunterOptions = "Hunter Options",
 				NewVersionFound = "A newer version of GoGoMount is available.",
 				NoShapeInRandom = "Do not randomize shape forms with mounts",
+				RemoveBuffs = "Remove buffs that can prevent mounting",
 				UnknownMountFound = "An unknown mount has been found in you list of mounts.  Please report this so that it can be added to future versions of GoGoMount.",
 				UseAspectOfThePackInstead = "Use Aspect Of The Pack instead of Aspect Of The Cheeta",
 			},
