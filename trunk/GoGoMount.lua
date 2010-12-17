@@ -2035,7 +2035,16 @@ function GoGo_Panel_Options()
 		end --function
 	)
 	
---[[	
+	GoGo_Panel_RemoveBuffs = CreateFrame("CheckButton", "GoGo_Panel_RemoveBuffs", GoGo_Panel, "OptionsCheckButtonTemplate")
+	GoGo_Panel_RemoveBuffs:SetPoint("TOPLEFT", "GoGo_Panel_DisableWaterFlight", "BOTTOMLEFT", 0, -4)
+	GoGo_Panel_RemoveBuffsText:SetText(GoGo_Variables.Localize.String.RemoveBuffs)
+	GoGo_Panel_RemoveBuffs:SetScript("OnClick",
+		function(self)
+			GoGo_Panel_Okay("MAIN")
+		end --function
+	)
+
+	--[[	
 	local GoGo_Panel_ClearGlobalFavorites = CreateFrame("FRAME")
 	local GoGo_Panel_ClearGlobalFavorites_Text = GoGo_Panel_ClearGlobalFavorites:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
 	GoGo_Panel_ClearGlobalFavorites_Text:SetText(GoGo_Variables.Localize.String.ClearGlobalFavoriteMounts)
@@ -2150,6 +2159,7 @@ function GoGo_Panel_Okay(Panel)
 		GoGo_Prefs.DisableMountNotice = GoGo_Panel_DisableMountNotice:GetChecked()
 		GoGo_Prefs.GlobalPrefMount = GoGo_Panel_GlobalPrefMount:GetChecked()
 		GoGo_Prefs.DisableWaterFlight = GoGo_Panel_DisableWaterFlight:GetChecked()
+		GoGo_Prefs.RemoveBuffs = GoGo_Panel_RemoveBuffs:GetChecked()
 	elseif Panel == "DRUID" then
 		GoGo_Prefs.DruidClickForm = GoGo_Druid_Panel_ClickForm:GetChecked()
 		GoGo_Prefs.DruidFlightForm = GoGo_Druid_Panel_FlightForm:GetChecked()
@@ -2174,6 +2184,7 @@ function GoGo_Settings_Default(Class)
 		GoGo_Prefs.DisableMountNotice = false
 		GoGo_Prefs.GlobalPrefMount = false
 		GoGo_Prefs.DisableWaterFlight = true
+		GoGo_Prefs.RemoveBuffs = true
 	else
 		GoGo_Prefs = {}
 		GoGo_Prefs.Zones = {}
@@ -2190,6 +2201,7 @@ function GoGo_Settings_Default(Class)
 		GoGo_Prefs.AspectPack = false
 		GoGo_Prefs.DruidFormNotRandomize = false
 		GoGo_Prefs.DisableWaterFlight = true
+		GoGo_Prefs.RemoveBuffs = true
 	end --if
 end --function
 
@@ -2206,6 +2218,7 @@ function GoGo_Settings_SetUpdates()
 	if not GoGo_Prefs.AspectPack then GoGo_Prefs.AspectPack = false end
 	if not GoGo_Prefs.DruidFormNotRandomize then GoGo_Prefs.DruidFormNotRandomize = false end
 	if not GoGo_Prefs.DisableWaterFlight then GoGo_Prefs.DisableWaterFlight = false end
+	if not GoGo_Prefs.RemoveBuffs then GoGo_Prefs.RemoveBuffs = false end
 
 	GoGo_Prefs.UnknownMounts = {}
 	if not GoGo_Prefs.GlobalExclude then
