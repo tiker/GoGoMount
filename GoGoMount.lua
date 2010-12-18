@@ -1313,6 +1313,18 @@ function GoGo_ZoneCheck()
 				end --if
 				GoGo_Variables.ZoneExclude.CanFly = true
 			end --if
+		elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.IsleOfQuelDanas then
+			GoGo_Variables.ZoneExclude.CanFly = false
+		elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.TheExodar then
+			GoGo_Variables.ZoneExclude.CanFly = false
+		elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.BloodmystIsle then
+			GoGo_Variables.ZoneExclude.CanFly = false
+		elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.EversongWoods then
+			GoGo_Variables.ZoneExclude.CanFly = false
+		elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.SilvermoonCity then
+			GoGo_Variables.ZoneExclude.CanFly = false
+		elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.Ghostlands then
+			GoGo_Variables.ZoneExclude.CanFly = false
 		end --if
 	elseif (GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.TheTempleOfAtalHakkar) and GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense) then
 		GoGo_Variables.ZoneExclude.CanFly = true
