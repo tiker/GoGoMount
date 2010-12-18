@@ -2248,6 +2248,7 @@ function GoGo_Settings_SetUpdates()
 	GoGo_Prefs.preferflight = nil
 	GoGo_Prefs.RemoveDebuffs = nil
 	GoGo_Prefs.checkspells = nil
+	GoGo_Prefs.PaliUseCrusader = nil
 	
 end --function
 

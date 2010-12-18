@@ -27,6 +27,7 @@
 				HunterOptions = "Options pour Chasseurs",
 				NewVersionFound = "Une nouvelle version de GoGoMount est disponible",
 				NoShapeInRandom = "Ne pas randomiser les formes avec les montures",
+				RemoveBuffs = "Remove buffs that can prevent mounting", -- Requires localization
 				UnknownMountFound = "Une monture inconnue a été trouvée. Communiquez-le pour l'ajouter à une future version de GoGoMount.",
 				UseAspectOfThePackInstead = "Utiliser Aspect de la meute au lieu d'Aspect du guépard",
 			},
@@ -53,6 +54,7 @@
 				SilverTideHollow = "Creux des Flots argentés",
 				TempleOfEarth = "Temple de la Terre",
 				TenebrousCavern = "Caverne Ténébreuse",
+				TheCerebrillum = "The Cerebrillum", -- Requires localization
 				TheFrozenSea = "La mer Gelée",
 				TheOculus = "L'Oculus",
 				TheStormPeaks = "Les pics Foudroyés",

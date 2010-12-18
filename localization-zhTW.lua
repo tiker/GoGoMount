@@ -27,6 +27,7 @@
 				HunterOptions = "Hunter Options", -- Requires localization
 				NewVersionFound = "已有GoGoMount的更新版本",
 				NoShapeInRandom = "Do not randomize shape forms with mounts", -- Requires localization
+				RemoveBuffs = "Remove buffs that can prevent mounting", -- Requires localization
 				UnknownMountFound = "在你的坐騎清單中找到未知的坐騎。請回報它，以便加入到GoGoMount的新版本中。",
 				UseAspectOfThePackInstead = "Use Aspect Of The Pack instead of Aspect Of The Cheeta", -- Requires localization
 			},
@@ -53,6 +54,7 @@
 				SilverTideHollow = "Silver Tide Hollow", -- Requires localization
 				TempleOfEarth = "大地神殿",
 				TenebrousCavern = "Tenebrous Cavern", -- Requires localization
+				TheCerebrillum = "The Cerebrillum", -- Requires localization
 				TheFrozenSea = "冰凍之海",
 				TheOculus = "奧核之眼",
 				TheStormPeaks = "風暴群山",

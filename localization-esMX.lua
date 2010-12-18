@@ -27,6 +27,7 @@
 				HunterOptions = "Hunter Options", -- Requires localization
 				NewVersionFound = "Una nueva actualización de GoGoMount está disponible y es usada por ", -- Needs review
 				NoShapeInRandom = "Do not randomize shape forms with mounts", -- Requires localization
+				RemoveBuffs = "Remove buffs that can prevent mounting", -- Requires localization
 				UnknownMountFound = "Una montura desconocida ha sido encontrada en la lista de tus monturas. Por favor, reporte esto para que pueda ser añadido en futuras versiones de GoGoMount.", -- Needs review
 				UseAspectOfThePackInstead = "Use Aspect Of The Pack instead of Aspect Of The Cheeta", -- Requires localization
 			},
@@ -53,6 +54,7 @@
 				SilverTideHollow = "Silver Tide Hollow", -- Requires localization
 				TempleOfEarth = "Temple of Earth", -- Requires localization
 				TenebrousCavern = "Tenebrous Cavern", -- Requires localization
+				TheCerebrillum = "The Cerebrillum", -- Requires localization
 				TheFrozenSea = "El Mar Gélido", -- Needs review
 				TheOculus = "El Oculus", -- Needs review
 				TheStormPeaks = "Las Cumbres Tormentosas", -- Needs review
