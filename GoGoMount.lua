@@ -177,24 +177,8 @@ end --function
 function GoGo_GetMount()
 ---------
 	local selectedmount = GoGo_ChooseMount()
-	local macro = ""
-	local spellid = 0
-	if GoGo_Prefs.RemoveDebuffs and selectedmount ~= nil then
-		for spellid = 1, table.getn(GoGo_Variables.DebuffDB) do
-			if GoGo_Variables.Debug then
-				GoGo_DebugAddLine("GoGo_GetMount: Checking for " .. GoGo_Variables.DebuffDB[spellid] .. " (" .. GetSpellInfo(GoGo_Variables.DebuffDB[spellid]) .. ")")
-			end --if
-			if UnitBuff("player", GetSpellInfo(GoGo_Variables.DebuffDB[spellid])) then
-				if GoGo_Variables.Debug then
-					GoGo_DebugAddLine("GoGo_GetMount: Found and removing buff " .. GoGo_Variables.DebuffDB[spellid] .. " (" .. GetSpellInfo(GoGo_Variables.DebuffDB[spellid]) .. ")")
-				end --if
-				macro = macro .. "/cancelaura " .. GetSpellInfo(GoGo_Variables.DebuffDB[spellid]) .. " \n"
-			end --if
-		end --for
-	end --if
-	if macro ~= "" then
-		selectedmount = macro .. "/use " .. selectedmount
-	end --if
+	selectedmount = GoGo_RemoveBuffs(selectedmount)
+	
 	return selectedmount	
 end --function
 
@@ -922,6 +906,37 @@ function GoGo_InMaelstrom()
 		return true
 	end --if
 end --function
+
+---------
+function GoGo_RemoveBuffs(mount)
+---------
+	if mount == nil then
+		return
+	end --if
+	if not GoGo_Prefs.RemoveDebuffs then
+		return mount
+	end --if
+	if GoGo_Variables.Debug then
+		GoGo_DebugAddLine("GoGo_RemoveBuffs: Removing buffs preventing mounting.")
+	end --if
+	local macro = ""
+	local spellid = 0
+	for spellid = 1, table.getn(GoGo_Variables.DebuffDB) do
+		if GoGo_Variables.Debug then
+			GoGo_DebugAddLine("GoGo_RemoveBuffs: Checking for " .. GoGo_Variables.DebuffDB[spellid] .. " (" .. GetSpellInfo(GoGo_Variables.DebuffDB[spellid]) .. ")")
+		end --if
+		if UnitBuff("player", GetSpellInfo(GoGo_Variables.DebuffDB[spellid])) then
+			if GoGo_Variables.Debug then
+				GoGo_DebugAddLine("GoGo_RemoveBuffs: Found and removing buff " .. GoGo_Variables.DebuffDB[spellid] .. " (" .. GetSpellInfo(GoGo_Variables.DebuffDB[spellid]) .. ")")
+			end --if
+			macro = macro .. "/cancelaura " .. GetSpellInfo(GoGo_Variables.DebuffDB[spellid]) .. " \n"
+		end --if
+	end --for
+	if macro ~= "" then
+		mount = macro .. "/use " .. mount
+	end --if
+	return mount
+end --if
 
 ---------
 function GoGo_GlobalExcludeClear()
