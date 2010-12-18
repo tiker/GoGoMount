@@ -2127,7 +2127,7 @@ function GoGo_Hunter_Panel()
 end --function
 
 ---------
-function GoGo_Panel_UpdateViews(Class)
+function GoGo_Panel_UpdateViews(Class)  -- check to see what's calling this (improve performance)
 ---------
 	if Class == "DRUID" then
 		GoGo_Druid_Panel_ClickForm:SetChecked(GoGo_Prefs.DruidClickForm)
@@ -2141,6 +2141,7 @@ function GoGo_Panel_UpdateViews(Class)
 		GoGo_Panel_DisableMountNotice:SetChecked(GoGo_Prefs.DisableMountNotice)
 		GoGo_Panel_GlobalPrefMount:SetChecked(GoGo_Prefs.GlobalPrefMount)
 		GoGo_Panel_DisableWaterFlight:SetChecked(GoGo_Prefs.DisableWaterFlight)
+		GoGo_Panel_RemoveBuffs:SetChecked(GoGo_Prefs.RemoveBuffs)
 	end --if
 	
 	if GoGo_Prefs.autodismount then
