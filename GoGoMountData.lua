@@ -412,7 +412,7 @@ GoGo_Variables.MountDB = {
 	[66088] = {[11] = true, [23] = true, [35] = true, [9] = true},  -- Sunreaver Dragonhawk
 
 	[74918] = {[16] = true, [21] = true, [37] = true},  -- Wooly White Rhino
-	[75207] = {[30] = true, [17] = true, [35] = true, [53] = true, [55] = true},  -- Abyssal Seahorse (was Abyssal Manta)
+	[75207] = {[30] = true, [17] = true, [35] = true, [53] = true, [55] = true, ["TenebrousCavern"] = true},  -- Abyssal Seahorse (was Abyssal Manta)
 	[90621] = {[16] = true, [21] = true, [37] = true},  -- Golden King
 	[93644] = {[11] = true, [16] = true, [35] = true},  -- Kron'Kar Annihilator
 	[87840] = {[14] = true, [20] = true, [21] = true, [29] = true, [38] = true},  -- Running Wild (Worgen Racial)
