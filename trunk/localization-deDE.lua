@@ -27,6 +27,7 @@
 				HunterOptions = "Jäger-Optionen",
 				NewVersionFound = "Eine aktualisierte Version von GoGoMount ist verfügbar und wird verwendet von ",
 				NoShapeInRandom = "Zufallsgeneration bei Gestaltwandelformen nicht gemeinsam mit Reittieren anwenden.",
+				RemoveBuffs = "Remove buffs that can prevent mounting", -- Requires localization
 				UnknownMountFound = "Ein unbekanntes Reittier wurde in deiner Liste entdeckt. Bitte melde es, damit es in zukünftige Versionen von GoGoMount integriert werden kann.",
 				UseAspectOfThePackInstead = "Aspekt des Rudels statt Aspekt des Geparden verwenden",
 			},
@@ -53,6 +54,7 @@
 				SilverTideHollow = "Silver Tide Hollow", -- Requires localization
 				TempleOfEarth = "Tempel der Erde",
 				TenebrousCavern = "Tenebrous Cavern", -- Requires localization
+				TheCerebrillum = "The Cerebrillum", -- Requires localization
 				TheFrozenSea = "Die gefrorene See",
 				TheOculus = "Das Oculus",
 				TheStormPeaks = "Die Sturmgipfel",
