@@ -1678,7 +1678,7 @@ function GoGo_GetBestAirMounts(GoGo_FilteredMounts)
 		-- Use flight forms if preferred
 		local mounts = {}
 		local GoGo_TempMounts = {}
-		local GoGo_SearchString = table.concat({GoGo_TempMounts = {}}, ":")
+		local GoGo_SearchString = table.concat({GoGo_FilteredMounts = {}}, ":")
 		if GoGo_Variables.Player.Class == "DRUID" and GoGo_Prefs.DruidFlightForm then
 			if GoGo_Variables.Debug then
 				GoGo_DebugAddLine("GoGo_GetBestAirMounts: Druid with preferred flight forms option enabled.  Using flight form.")
