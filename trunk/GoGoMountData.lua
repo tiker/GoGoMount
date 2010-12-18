@@ -495,7 +495,7 @@ GoGo_Variables.DebuffDB = {
 	24858,	-- Moonkin Form (Druids)  -- one of these two are right
 	24907,  -- Moonkin Form (Druids)  -- apparently it doesn't cancel properly at the moment (casted by spellid 24858)
 	--	45438,  -- Ice Block (Mages)  -- takes too long to cool down after removal
-	61316,	-- Arcane Brilliance (Mages) -- USED FOR TESTING PURPOSES ONLY
+	--	61316,	-- Arcane Brilliance (Mages) -- USED FOR TESTING PURPOSES ONLY
 	71484,  -- Strength of the Taunka (from Deathbringer's Will)
 	71485,  -- Agility of the Vrykul (from Deathbringer's Will)
 	71486,  -- Power of the Taunka (from Deathbringer's Will)
