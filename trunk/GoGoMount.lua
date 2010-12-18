@@ -176,10 +176,10 @@ end --function
 ---------
 function GoGo_GetMount()
 ---------
-	local selectedmount = GoGo_ChooseMount()
-	selectedmount = GoGo_RemoveBuffs(selectedmount)
+	local selectedmount = GoGo_ChooseMount()	-- find a mount to use
+	selectedmount = GoGo_RemoveBuffs(selectedmount)	-- remove buffs that could prevent us from mounting
 	
-	return selectedmount	
+	return selectedmount	-- returning the mount or macro to the button
 end --function
 
 ---------
@@ -913,7 +913,7 @@ function GoGo_RemoveBuffs(mount)
 	if mount == nil then
 		return
 	end --if
-	if not GoGo_Prefs.RemoveDebuffs then
+	if not GoGo_Prefs.RemoveBuffs then
 		return mount
 	end --if
 	if GoGo_Variables.Debug then
@@ -2246,6 +2246,8 @@ function GoGo_Settings_SetUpdates()
 	
 	-- old variables no longer used so we're removing them from the saved variables
 	GoGo_Prefs.preferflight = nil
+	GoGo_Prefs.RemoveDebuffs = nil
+	GoGo_Prefs.checkspells = nil
 	
 end --function
 
