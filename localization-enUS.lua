@@ -38,6 +38,7 @@
 				AQ40 = "Ahn'Qiraj",
 				AbyssalDepths = "Abyssal Depths",
 				AzuremystIsle = "Azuremyst Isle",
+				BloodmystIsle = "Bloodmyst Isle",
 				CrumblingDepths = "Crumbling Depths",
 				Dalaran = "Dalaran",
 				DarkbreakCove = "Darkbreak Cove",

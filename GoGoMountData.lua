@@ -492,8 +492,7 @@ GoGo_FlyCoOrds = {   -- x = west / east,  y = north / south
 
 GoGo_Variables.DebuffDB = {
 	24741,  -- Wisp Costume (from Hallowed Wand - Wisp during Halloween)
-	24858,	-- Moonkin Form (Druids)  -- one of these two are right
-	24907,  -- Moonkin Form (Druids)  -- apparently it doesn't cancel properly at the moment (casted by spellid 24858)
+	24858,	-- Moonkin Form (Druids)
 	--	45438,  -- Ice Block (Mages)  -- takes too long to cool down after removal
 	--	61316,	-- Arcane Brilliance (Mages) -- USED FOR TESTING PURPOSES ONLY
 	71484,  -- Strength of the Taunka (from Deathbringer's Will)
