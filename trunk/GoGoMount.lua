@@ -1448,6 +1448,7 @@ function GoGo_CheckSwimStatus()
 ---------
 
 	if GoGo_Prefs.DisableWaterFlight then  -- don't want to fly from water as per client option
+		GoGo_Variables.NoFlying = true
 		return
 	end --if
 	
@@ -1690,15 +1691,26 @@ function GoGo_GetBestAirMounts(GoGo_FilteredMounts)
 		-- Use flight forms if preferred
 		local mounts = {}
 		local GoGo_TempMounts = {}
-		local GoGo_SearchString = table.concat({GoGo_FilteredMounts = {}}, ":")
+		local GoGo_SearchString = table.concat(GoGo_FilteredMounts, ":")
 		if GoGo_Variables.Player.Class == "DRUID" and GoGo_Prefs.DruidFlightForm then
 			if GoGo_Variables.Debug then
 				GoGo_DebugAddLine("GoGo_GetBestAirMounts: Druid with preferred flight forms option enabled.  Using flight form.")
 			end --if
 			if string.find(GoGo_SearchString, GoGo_Variables.Localize.FastFlightForm, 1, true) then
+				if GoGo_Variables.Debug then
+					GoGo_DebugAddLine("GoGo_GetBestAirMounts: Found FastFlightForm")
+				end --if
 				table.insert(mounts, GoGo_Variables.Localize.FastFlightForm)
 			elseif string.find(GoGo_SearchString, GoGo_Variables.Localize.FlightForm, 1, true) then
+				if GoGo_Variables.Debug then
+					GoGo_DebugAddLine("GoGo_GetBestAirMounts: Found FlightForm")
+				end --if
 				table.insert(mounts, GoGo_Variables.Localize.FlightForm)
+			else
+				if GoGo_Variables.Debug then
+					GoGo_DebugAddLine("GoGo_GetBestAirMounts: No flight forms found")
+		            GoGo_DebugAddLine("GoGo_GetBestAirMounts: GoGo_SearchString: "..GoGo_SearchString)
+				end --if
 			end --if
 		end --if
 
