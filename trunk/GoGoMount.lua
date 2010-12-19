@@ -32,7 +32,7 @@ function GoGo_OnEvent(event)
 		end --if
 		GoGo_Prefs.UnknownMounts = {}
 		GoGo_Variables.VerMajor, GoGo_Variables.VerMinor, GoGo_Variables.VerBuild = tonumber(GetAddOnMetadata("GoGoMount", "Version"))
-		GoGo_Variables.TestVersion = true
+		GoGo_Variables.TestVersion = false
 		GoGo_Variables.Debug = false
 		_, GoGo_Variables.Player.Class = UnitClass("player")
 		_, GoGo_Variables.Player.Race = UnitRace("player")
