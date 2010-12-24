@@ -2277,27 +2277,6 @@ end --function
 function GoGo_DebugCollectInformation()
 ---------
 	GoGo_DebugAddLine("Information: GoGoMount Version " .. GetAddOnMetadata("GoGoMount", "Version"))
-	if GetLocale() == "enUS" then
-		GoGo_DebugAddLine("Information: Client locale is enUS")
-	elseif GetLocale() == "enGB" then
-		GoGo_DebugAddLine("Information: Client locale is enGB")
-	elseif GetLocale() == "frFR" then
-		GoGo_DebugAddLine("Information: Client locale is frFR")
-	elseif GetLocale() == "deDE" then
-		GoGo_DebugAddLine("Information: Client locale is deDE")
-	elseif GetLocale() == "esES" then
-		GoGo_DebugAddLine("Information: Client locale is esES")
-	elseif GetLocale() == "esMX" then
-		GoGo_DebugAddLine("Information: Client locale is esMX")
-	elseif GetLocale() == "koKR" then
-		GoGo_DebugAddLine("Information: Client locale is koKR")
-	elseif GetLocale() == "ruRU" then
-		GoGo_DebugAddLine("Information: Client locale is ruRU")
-	elseif GetLocale() == "zhTW" then
-		GoGo_DebugAddLine("Information: Client locale is zhTW")
-	elseif GetLocale() == "zhCN" then
-		GoGo_DebugAddLine("Information: Client locale is zhCN")
-	end --if
 	if GoGo_Variables.ExpansionAccount == 0 then
 		GoGo_DebugAddLine("Information: Account - World of Warcraft (Classic) enabled.")
 	elseif GoGo_Variables.ExpansionAccount == 1 then
@@ -2316,6 +2295,7 @@ function GoGo_DebugCollectInformation()
 	elseif GoGo_Variables.ExpansionGame == 3 then
 		GoGo_DebugAddLine("Information: Game - World of Warcraft: Cataclysm enabled.")
 	end --if
+	GoGo_DebugAddLine("Information: Client locale is " .. GetLocale())
 	
 	GoGo_DebugAddLine("Information: Location = " .. GetRealZoneText() .. " - " .. GetZoneText() .. " - " ..GetSubZoneText() .. " - " .. GetMinimapZoneText())
 	GoGo_DebugAddLine("Information: Current unit speed is " .. GetUnitSpeed("player"))
