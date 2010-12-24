@@ -166,7 +166,7 @@ GoGo_Variables.MountDB = {
 	[64658] = {[14] = true, [20] = true, [21] = true, [38] = true},  -- Black Wolf
 	[65646] = {[16] = true, [21] = true, [37] = true},  -- Swift Burgundy Wolf
 	[68056] = {[16] = true, [21] = true, [37] = true},  -- Swift Horde Wolf
-	[92232] = {[11] = true, [16] = true, [35] = true, [71] = true},  -- Spectral Wolf
+	[92232] = {[11] = true, [16] = true, [21] = true, [35] = true, [71] = true},  -- Spectral Wolf
 
 	[18363] = {[14] = true, [20] = true, [21] = true, [38] = true},  -- Riding Kodo
 	[18989] = {[14] = true, [20] = true, [21] = true, [38] = true},  -- Gray Kodo
@@ -345,7 +345,7 @@ GoGo_Variables.MountDB = {
 	[72286] = {[9] = true, [3] = true, [14] = true, [20] = true, [21] = true, [22] = true, [29] = true, [23] = true, [38] = true},  -- Invincible
 	[73313] = {[16] = true, [21] = true, [37] = true},  -- Crimson Deathcharger
 	[75614] = {[9] = true, [3] = true, [14] = true, [20] = true, [21] = true, [22] = true, [29] = true, [23] = true, [38] = true},  -- Celestial Steed
-	[92231] = {[11] = true, [16] = true, [35] = true, [70] = true},  -- Spectral Steed
+	[92231] = {[11] = true, [16] = true, [21] = true, [35] = true, [70] = true},  -- Spectral Steed
 
 	[34406] = {[14] = true, [20] = true, [21] = true, [38] = true},  -- Brown Elekk
 	[34407] = {[16] = true, [21] = true, [37] = true},  -- Great Elite Elekk
