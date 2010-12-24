@@ -119,6 +119,7 @@ GoGo_Variables.MountDB = {
 	[88744] = {[9] = true, [11] = true, [23] = true, [35] = true},  -- Drake of the South Wind
 	[88746] = {[9] = true, [11] = true, [23] = true, [35] = true},  -- Vitreous Stone Drake
 	[93623] = {[9] = true, [11] = true, [23] = true, [35] = true},  -- Mottled Drake
+	[93326] = {[2] = true, [9] = true, [11] = true, [23] = true, [36] = true},  -- Sandstone Drake
 
 	[59961] = {[11] = true, [23] = true, [35] = true, [9] = true},  -- Red Proto-Drake
 	[59976] = {[11] = true, [23] = true, [35] = true, [9] = true},  -- Black Proto-Drake
