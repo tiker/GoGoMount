@@ -1364,9 +1364,6 @@ function GoGo_ZoneCheck()
 	else
 		GoGo_Variables.ZoneExclude.RestrictedIndoorMounts = false
 	end --if
-	
-	GoGo_Variables.ZoneExclude.AQ40 = true  -- TEMPORARY UNTIL BLIZZARD FIXES BUG MOUNTS IN AQ40 - FLAGGING THEM AS ALWAYS NOT AVAILABLE
-
 end --function
 
 ---------
