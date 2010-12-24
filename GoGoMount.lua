@@ -2298,6 +2298,7 @@ function GoGo_DebugCollectInformation()
 	GoGo_DebugAddLine("Information: Client locale is " .. GetLocale())
 	
 	GoGo_DebugAddLine("Information: Location = " .. GetRealZoneText() .. " - " .. GetZoneText() .. " - " ..GetSubZoneText() .. " - " .. GetMinimapZoneText())
+	GoGo_DebugAddLine("Information: Current zone area ID as per GetCurrentMapAreaID(): " .. GetCurrentMapAreaID())
 	GoGo_DebugAddLine("Information: Current unit speed is " .. GetUnitSpeed("player"))
 	local level = UnitLevel("player")
 	GoGo_DebugAddLine("Information: We are level " .. level)
