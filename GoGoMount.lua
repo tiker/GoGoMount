@@ -18,8 +18,9 @@ function GoGo_OnLoad()
 end --function
 
 ---------
-function GoGo_OnEvent(event)
+function GoGo_OnEvent(self, event, ...)
 ---------
+	local arg1, arg2, arg3, arg4 = ...
 	if event == "VARIABLES_LOADED" then
 		GoGo_DebugLog = {}
 		if not GoGo_Prefs then
@@ -165,7 +166,14 @@ function GoGo_PreClick(button)
 	
 	if not GoGo_Variables.TestVersion then
 		if ( IsInGuild() ) then
+			if GoGo_Variables.Debug then
+				GoGo_DebugAddLine("GoGo_PreClick: Is in guild - sending GoGoMount version information to guild addon channel.")
+			end --if
 			SendAddonMessage("GoGoMountVER", GetAddOnMetadata("GoGoMount", "Version"), "GUILD")
+		else
+			if GoGo_Variables.Debug then
+				GoGo_DebugAddLine("GoGo_PreClick: Is not in guild - not sending GoGoMount version information to guild addon channel.")
+			end --if
 		end --if
 --			SendAddonMessage("GoGoMountVER", GetAddOnMetadata("GoGoMount", "Version"), "BATTLEGROUND")
 --			SendAddonMessage("GoGoMountVER", GetAddOnMetadata("GoGoMount", "Version"), "RAID")
@@ -2299,6 +2307,8 @@ function GoGo_DebugCollectInformation()
 	
 	GoGo_DebugAddLine("Information: Location = " .. GetRealZoneText() .. " - " .. GetZoneText() .. " - " ..GetSubZoneText() .. " - " .. GetMinimapZoneText())
 	GoGo_DebugAddLine("Information: Current zone area ID as per GetCurrentMapAreaID(): " .. GetCurrentMapAreaID())
+	local posX, posY = GetPlayerMapPosition("Player")
+	GoGo_DebugAddLine("Information: Player location: X = ".. posX .. ", Y = " .. posY)
 	GoGo_DebugAddLine("Information: Current unit speed is " .. GetUnitSpeed("player"))
 	local level = UnitLevel("player")
 	GoGo_DebugAddLine("Information: We are level " .. level)
@@ -2348,8 +2358,6 @@ function GoGo_DebugCollectInformation()
 	else
 		GoGo_DebugAddLine("Information: We are not moving as per GoGo_IsMoving()")
 	end --if
-	local posX, posY = GetPlayerMapPosition("Player")
-	GoGo_DebugAddLine("Information: Player location: X = ".. posX .. ", Y = " .. posY)
 	
 	local buffs, i = { }, 1
 	local buff = UnitBuff("player", i)
