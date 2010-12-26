@@ -17,7 +17,7 @@
 				GoGo_OnLoad();
 			</OnLoad>
 			<OnEvent>
-				GoGo_OnEvent(event);
+				GoGo_OnEvent(self, event, ...);
 			</OnEvent>
 		</Scripts>
 	</Frame>
