@@ -220,7 +220,7 @@ function GoGo_ChooseMount()
 	if (table.getn(mounts) == 0) then
 		if GoGo_Prefs.Zones[GoGo_Variables.Player.Zone] then
 			GoGo_FilteredMounts = GoGo_Prefs.Zones[GoGo_Variables.Player.Zone] or {}
---			GoGo_DisableUnknownMountNotice = true
+--			GoGo_Variables.UnknownMountMsgShown = true
 		end --if
 	end --if
 	if GoGo_Variables.Debug then
@@ -230,7 +230,7 @@ function GoGo_ChooseMount()
 	if (table.getn(mounts) == 0) and (table.getn(GoGo_FilteredMounts) == 0) then
 		if GoGo_Prefs.GlobalPrefMounts then
 			GoGo_FilteredMounts = GoGo_Prefs.GlobalPrefMounts or {}
---			GoGo_DisableUnknownMountNotice = true
+--			GoGo_Variables.UnknownMountMsgShown = true
 		end --if
 		if GoGo_Variables.Debug then
 			GoGo_DebugAddLine("GoGo_ChooseMount: Checked for global favorites.")
@@ -245,7 +245,7 @@ function GoGo_ChooseMount()
 		GoGo_BuildMountSpellList()
 		GoGo_BuildMountItemList()
 		GoGo_BuildMountList()
-		if not GoGo_Prefs.DisableMountNotice and not GoGo_DisableUnknownMountNotice then
+		if not GoGo_Prefs.DisableMountNotice and not GoGo_Variables.UnknownMountMsgShown then
 			GoGo_CheckForUnknownMounts()
 		end --if
 		GoGo_FilteredMounts = GoGo_Variables.MountList or {}
@@ -1077,8 +1077,8 @@ function GoGo_CheckForUnknownMounts()
 			if GoGo_Variables.Debug then
 				GoGo_DebugAddLine("GoGo_CheckForUnknownMounts: Unknown mount found:  " .. MountID)
 			end --if
-			if not GoGo_Prefs.DisableMountNotice and not GoGo_DisableUnknownMountNotice then
-				GoGo_DisableUnknownMountNotice = true
+			if not GoGo_Prefs.DisableMountNotice and not GoGo_Variables.UnknownMountMsgShown then
+				GoGo_Variables.UnknownMountMsgShown = true
 				GoGo_Msg("UnknownMount")
 			end --if
 		end --for
@@ -1363,9 +1363,12 @@ function GoGo_ZoneCheck()
 		GoGo_Variables.ZoneExclude.CanFly = false
 	end --if
 
-
 	if IsIndoors() then	-- indoor zone exclusions go here
-		GoGo_Variables.ZoneExclude.RestrictedIndoorMounts = true -- restricting mounts to indoor mounts only unless something below says otherwise
+		if GetCurrentMapAreaID() == 14 then		-- Blackrock Mountain
+			GoGo_Variables.ZoneExclude.CanFly = true
+		else
+			GoGo_Variables.ZoneExclude.RestrictedIndoorMounts = true -- restricting mounts to indoor mounts only unless something below says otherwise
+		end --if
 	else
 		GoGo_Variables.ZoneExclude.RestrictedIndoorMounts = false
 	end --if
