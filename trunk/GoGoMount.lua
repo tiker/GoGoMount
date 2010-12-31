@@ -525,8 +525,7 @@ function GoGo_ChooseMount()
 	end --if
 	
 	if (table.getn(GoGo_FilteredMounts) >= 1) then
-		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 36)
-		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 35)
+		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, "FlightOnly")
 		if GoGo_Variables.Debug then
 			GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated mounts that require skill 225 or 300 to use; " .. (table.getn(GoGo_FilteredMounts) or 0) .. " mounts left.")
 		end --if
