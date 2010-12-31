@@ -1336,6 +1336,13 @@ function GoGo_ZoneCheck()
 		end --if
 	elseif (GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.TheTempleOfAtalHakkar) and GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense) then
 		GoGo_Variables.ZoneExclude.CanFly = true
+	elseif (GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.DireMaul) and GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense) then
+		if not IsInInstance() then
+			if GoGo_Variables.Debug then
+				GoGo_DebugAddLine("GoGo_ZoneCheck: Activating Flying - in Dire Maul area not part of Azeroth.")
+			end --if
+			GoGo_Variables.ZoneExclude.CanFly = true
+		end --if
 	elseif IsInInstance() then
 		if GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.TheOculus then
 			GoGo_Variables.ZoneExclude.CanFly = false
@@ -1356,16 +1363,6 @@ function GoGo_ZoneCheck()
 		GoGo_Variables.ZoneExclude.CanFly = false
 	end --if
 
-	if GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.DireMaul then
-		if GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense) then
-			if not IsInInstance() then
-				if GoGo_Variables.Debug then
-					GoGo_DebugAddLine("GoGo_ZoneCheck: Activating Flying - in Dire Maul area not part of Azeroth.")
-				end --if
-				GoGo_Variables.ZoneExclude.CanFly = true
-			end --if
-		end --if
-	end --if
 
 	if IsIndoors() then	-- indoor zone exclusions go here
 		GoGo_Variables.ZoneExclude.RestrictedIndoorMounts = true -- restricting mounts to indoor mounts only unless something below says otherwise
