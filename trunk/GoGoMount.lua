@@ -32,7 +32,8 @@ function GoGo_OnEvent(self, event, ...)
 			GoGo_Settings_SetUpdates()
 		end --if
 		GoGo_Prefs.UnknownMounts = {}
-		GoGo_Variables.VerMajor, GoGo_Variables.VerMinor, GoGo_Variables.VerBuild = tonumber(GetAddOnMetadata("GoGoMount", "Version"))
+		GoGo_Variables.VerMajor, GoGo_Variables.VerMinor, GoGo_Variables.VerBuild = strsplit(".", GetAddOnMetadata("GoGoMount", "Version"))
+		GoGo_Variables.VerMajor, GoGo_Variables.VerMinor, GoGo_Variables.VerBuild = tonumber(GoGo_Variables.VerMajor), tonumber(GoGo_Variables.VerMinor), tonumber(GoGo_Variables.VerBuild)
 		GoGo_Variables.TestVersion = true
 		GoGo_Variables.Debug = false
 		_, GoGo_Variables.Player.Class = UnitClass("player")
@@ -719,16 +720,21 @@ function GoGo_BuildMountList()
 	GoGo_Variables.MountList = {}
 	if (table.getn(GoGo_Variables.MountSpellList) > 0) then
 		for a=1, table.getn(GoGo_Variables.MountSpellList) do
-			table.insert(GoGo_Variables.MountList, GoGo_Variables.MountSpellList[a])
+			if IsUsableSpell(GoGo_Variables.MountSpellList[a]) then
+				table.insert(GoGo_Variables.MountList, GoGo_Variables.MountSpellList[a])
+			end --if
 		end --for
 	end --if
 	
 	if (table.getn(GoGo_Variables.MountItemList) > 0) then
 		for a=1, table.getn(GoGo_Variables.MountItemList) do
-			table.insert(GoGo_Variables.MountList, GoGo_Variables.MountItemList[a])
+			if IsUsableItem(GoGo_Variables.MountItemList[a]) then
+				table.insert(GoGo_Variables.MountList, GoGo_Variables.MountItemList[a])
+			end --if
 		end --for
 	end --if
-
+	GoGo_Variables.MountItemList = {}
+	GoGo_Variables.MountSpellList = {}
 	return GoGo_Variables.MountList
 end  --function
 
