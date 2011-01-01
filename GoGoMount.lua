@@ -85,7 +85,9 @@ function GoGo_OnEvent(self, event, ...)
 		GoGo_Variables.ExpansionAccount = GetAccountExpansionLevel()
 		GoGo_Variables.ExpansionGame =  GetExpansionLevel()
 	elseif (event == "CHAT_MSG_ADDON") and (arg1 == "GoGoMountVER") and not GoGo_Prefs.DisableUpdateNotice then
-		local major, minor, build = tonumber(arg2)
+		local major, minor, build = strsplit(".", arg2)
+		local major, minor, build = tonumber(major), tonumber(minor), tonumber(build)
+		
 		if not GoGo_Variables.UpdateShown then
 			local GoGo_ShowUpdate = false
 			if major > GoGo_Variables.VerMajor then
@@ -1335,6 +1337,8 @@ function GoGo_ZoneCheck()
 		end --if
 	elseif (GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.TheTempleOfAtalHakkar) and GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense) then
 		GoGo_Variables.ZoneExclude.CanFly = true
+	elseif GetCurrentMapAreaID() == 14 and GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense) then		-- Blackrock Mountain
+		GoGo_Variables.ZoneExclude.CanFly = true
 	elseif (GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.DireMaul) and GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense) then
 		if not IsInInstance() then
 			if GoGo_Variables.Debug then
@@ -1363,11 +1367,7 @@ function GoGo_ZoneCheck()
 	end --if
 
 	if IsIndoors() then	-- indoor zone exclusions go here
-		if GetCurrentMapAreaID() == 14 then		-- Blackrock Mountain
-			GoGo_Variables.ZoneExclude.CanFly = true
-		else
-			GoGo_Variables.ZoneExclude.RestrictedIndoorMounts = true -- restricting mounts to indoor mounts only unless something below says otherwise
-		end --if
+		GoGo_Variables.ZoneExclude.RestrictedIndoorMounts = true -- restricting mounts to indoor mounts only unless something below says otherwise
 	else
 		GoGo_Variables.ZoneExclude.RestrictedIndoorMounts = false
 	end --if
