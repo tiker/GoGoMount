@@ -393,6 +393,7 @@ GoGo_Variables.MountDB = {
 
 	[44151] = {[9] = true, [11] = true, [21] = true, [23] = true, [39] = true, [46] = true},  -- Turbo-Charged Flying Machine
 	[44153] = {[9] = true, [12] = true, [20] = true, [21] = true, [22] = true, [23] = true, [36] = true, [45] = true},  -- Flying Machine
+	[55121] = {[4] = true, ["RequireWaterSurface"] = true, ["RequireThousandNeedles"] = true, ["RequireWater"] = true, [61] = true}  -- River Boat
 	[55531] = {[17] = true, [21] = true, [37] = true, [2] = true},  -- Mechano-hog
 	[60424] = {[17] = true, [21] = true, [37] = true, [2] = true},  -- Mekgineer's Chopper
 	[63796] = {[9] = true, [11] = true, [23] = true, [35] = true},  -- Mimiron's Head
@@ -443,6 +444,7 @@ GoGo_MountsItems = {
 	[9] = 37859,
 	[10] = 37860,
 	[11] = 37815,
+	[12] = 55121,
 }
 
 --[[

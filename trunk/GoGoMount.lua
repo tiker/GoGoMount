@@ -95,7 +95,7 @@ function GoGo_OnEvent(self, event, ...)
 				GoGo_ShowUpdate = true
 			elseif (major == GoGo_Variables.VerMajor) and (minor > GoGo_Variables.VerMinor) then
 				GoGo_ShowUpdate = true
-			elseif (major == GoGo_Variables.VerMajor) and (minor > GoGo_Variables.VerMinor) and (build > GoGo_Variables.VerBuild) then
+			elseif (major == GoGo_Variables.VerMajor) and (minor == GoGo_Variables.VerMinor) and (build > GoGo_Variables.VerBuild) then
 				GoGo_ShowUpdate = true
 			end --if
 			
@@ -339,7 +339,7 @@ function GoGo_ChooseMount()
 	end --if
 ]]
 	if IsSwimming() then
-		GoGo_CheckSwimStatus()
+		GoGo_CheckSwimSurface()
 	end --if
 
 	GoGo_ZoneCheck()  -- Checking to see what we can and can not do in zones
@@ -397,6 +397,20 @@ function GoGo_ChooseMount()
 		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 50) or {}
 		if GoGo_Variables.Debug then
 			GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated AQ40 mounts - " .. (table.getn(GoGo_FilteredMounts) or 0) .. " mounts left.")
+		end --if
+	end --if
+
+	if GoGo_Variables.ZoneExclude.ThousandNeedles then
+		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, "RequireThousandNeedles") or {}
+		if GoGo_Variables.Debug then
+			GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated Thousand Needles boat - " .. (table.getn(GoGo_FilteredMounts) or 0) .. " mounts left.")
+		end --if
+	end --if
+
+	if not GoGo_Variables.SwimSurface then
+		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, "RequireWaterSurface") or {}
+		if GoGo_Variables.Debug then
+			GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated mounts requiring water surface - " .. (table.getn(GoGo_FilteredMounts) or 0) .. " mounts left.")
 		end --if
 	end --if
 
@@ -1192,6 +1206,7 @@ function GoGo_ZoneCheck()
 	GoGo_Variables.ZoneExclude.NorthrendLoanedMounts = true
 	GoGo_Variables.ZoneExclude.TheOculus = true
 	GoGo_Variables.ZoneExclude.AQ40 = true
+	GoGo_Variables.ZoneExclude.ThousandNeedles = true
 	GoGo_Variables.ZoneExclude.CanFly = false
 	GoGo_Variables.ZoneExclude.UseMountGroup = nil
 	
@@ -1340,6 +1355,11 @@ function GoGo_ZoneCheck()
 			GoGo_Variables.ZoneExclude.CanFly = false
 		elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.Ghostlands then
 			GoGo_Variables.ZoneExclude.CanFly = false
+		elseif GetCurrentMapAreaID() == 14 then
+			if GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense) then
+				GoGo_Variables.ZoneExclude.CanFly = true
+			end --if
+			GoGo_Variables.ZoneExclude.ThousandNeedles = false
 		end --if
 	elseif (GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.TheTempleOfAtalHakkar) and GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense) then
 		GoGo_Variables.ZoneExclude.CanFly = true
@@ -1454,8 +1474,9 @@ function GoGo_GlyphActive(spellid)
 end --function
 
 ---------
-function GoGo_CheckSwimStatus()
+function GoGo_CheckSwimSurface()
 ---------
+	GoGo_Variables.SwimSurface = false
 
 	if GoGo_Prefs.DisableWaterFlight then  -- don't want to fly from water as per client option
 		GoGo_Variables.NoFlying = true
@@ -1467,13 +1488,14 @@ function GoGo_CheckSwimStatus()
 		if timer == "BREATH" then
 			if (scale == -1) then
 				if GoGo_Variables.Debug then
-					GoGo_DebugAddLine("GoGo_CheckSwimStatus: Breath timer bar found and it's slowly draining.  Disabling flying.")
+					GoGo_DebugAddLine("GoGo_CheckSwimSurface: Breath timer bar found and it's slowly draining.  Disabling flying.")
 				end --if
 				GoGo_Variables.NoFlying = true
 			else
 				if GoGo_Variables.Debug then
-					GoGo_DebugAddLine("GoGo_CheckSwimStatus: Breath timer not bar found.  Looks like we can fly here.")
+					GoGo_DebugAddLine("GoGo_CheckSwimSurface: Breath timer not bar found.  Looks like we can fly here.")
 				end --if
+				GoGo_Variables.SwimSurface = true
 			end --if
 		end --if	
 	end --for
@@ -1565,6 +1587,13 @@ end --function
 function GoGo_GetSwimmingMounts450(GoGo_FilteredMounts)
 ---------
 	GoGo_FilteredMounts = GoGo_FilterMountsIn(GoGo_FilteredMounts, 30) or {}
+	return GoGo_FilteredMounts
+end --function
+
+---------
+function GoGo_GetSwimmingMounts323(GoGo_FilteredMounts)
+---------
+	GoGo_FilteredMounts = GoGo_FilterMountsIn(GoGo_FilteredMounts, 61) or {}
 	return GoGo_FilteredMounts
 end --function
 
@@ -1750,6 +1779,9 @@ function GoGo_GetBestWaterMounts(GoGo_FilteredMounts)
 ---------
 	local mounts = {}
 	mounts = GoGo_GetSwimmingMounts450(GoGo_FilteredMounts) or {}
+	if (table.getn(mounts) == 0) then
+		mounts = GoGo_GetSwimmingMounts323(GoGo_FilteredMounts) or {}
+	end --if
 	if (table.getn(mounts) == 0) then
 		mounts = GoGo_GetSwimmingMounts100(GoGo_FilteredMounts) or {}
 	end --if
