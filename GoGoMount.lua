@@ -178,8 +178,24 @@ function GoGo_PreClick(button)
 				GoGo_DebugAddLine("GoGo_PreClick: Is not in guild - not sending GoGoMount version information to guild addon channel.")
 			end --if
 		end --if
---			SendAddonMessage("GoGoMountVER", GetAddOnMetadata("GoGoMount", "Version"), "BATTLEGROUND")
---			SendAddonMessage("GoGoMountVER", GetAddOnMetadata("GoGoMount", "Version"), "RAID")
+		if UnitInRaid("player") then
+			if GoGo_Variables.Debug then
+				GoGo_DebugAddLine("GoGo_PreClick: Is in raid - sending GoGoMount version information to raid addon channel.")
+			end --if
+			SendAddonMessage("GoGoMountVER", GetAddOnMetadata("GoGoMount", "Version"), "RAID")
+		end --if
+		if UnitInParty("player") then
+			if GoGo_Variables.Debug then
+				GoGo_DebugAddLine("GoGo_PreClick: Is in party - sending GoGoMount version information to party addon channel.")
+			end --if
+			SendAddonMessage("GoGoMountVER", GetAddOnMetadata("GoGoMount", "Version"), "PARTY")
+		end --if
+		if UnitInBattleground("player") then
+			if GoGo_Variables.Debug then
+				GoGo_DebugAddLine("GoGo_PreClick: Is in battle ground - sending GoGoMount version information to battle ground addon channel.")
+			end --if
+			SendAddonMessage("GoGoMountVER", GetAddOnMetadata("GoGoMount", "Version"), "BATTLEGROUND")
+		end --if
 	end --if
 	GoGo_Variables.Debug = false
 end --function
@@ -200,7 +216,9 @@ function GoGo_ChooseMount()
 	GoGo_Variables.NoFlying = false -- resetting flag to prevent flying
 
 	local mounts = {}
-	local GoGo_FilteredMounts = {}
+	GoGo_Variables.FilteredMounts = {}
+	GoGo_GetMountDB()
+	
 	GoGo_Variables.Player.Zone = GetRealZoneText()
 	GoGo_Variables.Player.SubZone = GetSubZoneText()
 	GoGo_Variables.EngineeringLevel = GoGo_GetProfSkillLevel(GoGo_Variables.Localize.Skill.Engineering)
@@ -222,7 +240,7 @@ function GoGo_ChooseMount()
 
 	if (table.getn(mounts) == 0) then
 		if GoGo_Prefs.Zones[GoGo_Variables.Player.Zone] then
-			GoGo_FilteredMounts = GoGo_Prefs.Zones[GoGo_Variables.Player.Zone] or {}
+			GoGo_Variables.FilteredMounts = GoGo_Prefs.Zones[GoGo_Variables.Player.Zone] or {}
 --			GoGo_Variables.UnknownMountMsgShown = true
 		end --if
 	end --if
@@ -230,9 +248,9 @@ function GoGo_ChooseMount()
 		GoGo_DebugAddLine("GoGo_ChooseMount: Checked for zone favorites.")
 	end --if
 
-	if (table.getn(mounts) == 0) and (table.getn(GoGo_FilteredMounts) == 0) then
+	if (table.getn(mounts) == 0) and (table.getn(GoGo_Variables.FilteredMounts) == 0) then
 		if GoGo_Prefs.GlobalPrefMounts then
-			GoGo_FilteredMounts = GoGo_Prefs.GlobalPrefMounts or {}
+			GoGo_Variables.FilteredMounts = GoGo_Prefs.GlobalPrefMounts or {}
 --			GoGo_Variables.UnknownMountMsgShown = true
 		end --if
 		if GoGo_Variables.Debug then
@@ -240,7 +258,7 @@ function GoGo_ChooseMount()
 		end --if
 	end --if
 
-	if (table.getn(mounts) == 0) and (table.getn(GoGo_FilteredMounts) == 0) then
+	if (table.getn(mounts) == 0) and (table.getn(GoGo_Variables.FilteredMounts) == 0) then
 		if GoGo_Variables.Debug then
 			GoGo_DebugAddLine("GoGo_ChooseMount: Checking for spell and item mounts.")
 		end --if
@@ -251,14 +269,18 @@ function GoGo_ChooseMount()
 		if not GoGo_Prefs.DisableMountNotice and not GoGo_Variables.UnknownMountMsgShown then
 			GoGo_CheckForUnknownMounts()
 		end --if
-		GoGo_FilteredMounts = GoGo_Variables.MountList or {}
+		GoGo_Variables.FilteredMounts = GoGo_Variables.MountList or {}
 	end --if
 
 	if GoGo_Variables.Debug then
-		GoGo_DebugAddLine("GoGo_ChooseMount: ** Searched all areas for mounts and found " .. (table.getn(GoGo_FilteredMounts) or 0) .. " mounts.")
+		GoGo_DebugAddLine("GoGo_ChooseMount: ** Searched all areas for mounts and found " .. (table.getn(GoGo_Variables.FilteredMounts) or 0) .. " mounts.")
 	end --if
-	
---	if (table.getn(GoGo_FilteredMounts) == 0) then
+		
+		if GoGo_Variables.Debug then
+			GoGo_DebugAddLine("GoGo_ChooseMount: Counting 1 - " .. (table.getn(GoGo_Variables.FilteredMounts) or 0) .. " mounts left.")
+		end --if
+
+--	if (table.getn(GoGo_Variables.FilteredMounts) == 0) then
 --		if GoGo_Variables.Player.Class == "SHAMAN" then
 --			if GoGo_Variables.Debug then
 --				GoGo_DebugAddLine("GoGo_ChooseMount: No mounts found. Forcing shaman shape form.")
@@ -276,46 +298,52 @@ function GoGo_ChooseMount()
 --			return nil
 --		end --if
 --	end --if
-
+	GoGo_ZoneCheck()  -- Checking to see what we can and can not do in zones
+		if GoGo_Variables.Debug then
+			GoGo_DebugAddLine("GoGo_ChooseMount: Counting 2 - " .. (table.getn(GoGo_Variables.FilteredMounts) or 0) .. " mounts left.")
+		end --if
 	GoGo_UpdateMountData()  -- update mount information with changes from talents, glyphs, etc.
+		if GoGo_Variables.Debug then
+			GoGo_DebugAddLine("GoGo_ChooseMount: Counting 3 - " .. (table.getn(GoGo_Variables.FilteredMounts) or 0) .. " mounts left.")
+		end --if
 
 	if GoGo_Variables.EngineeringLevel <= 299 then
-		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 45)
-		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 46)
+		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 45)
+		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 46)
 	elseif GoGo_Variables.EngineeringLevel >= 300 and GoGo_Variables.EngineeringLevel <= 374 then
-		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 46)
+		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 46)
 	elseif GoGo_Variables.EngineeringLevel >= 375 then
 		-- filter nothing
 	else
-		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 45)
-		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 46)
+		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 45)
+		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 46)
 	end --if
 	if GoGo_Variables.TailoringLevel <= 299 then
-		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 49)
-		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 48)
-		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 47)
+		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 49)
+		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 48)
+		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 47)
 	elseif GoGo_Variables.TailoringLevel >= 300 and GoGo_Variables.TailoringLevel <= 424 then
-		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 49)
-		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 47)
+		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 49)
+		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 47)
 	elseif GoGo_Variables.TailoringLevel >= 425 and GoGo_Variables.TailoringLevel <= 449 then
-		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 47)
+		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 47)
 	elseif GoGo_Variables.TailoringLevel >= 450 then
 		-- filter nothing
 	else
-		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 49)
-		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 48)
-		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 47)
+		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 49)
+		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 48)
+		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 47)
 	end --if
 	if GoGo_Variables.RidingLevel <= 224 then
-		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 36)
-		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 35)
+		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 36)
+		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 35)
 	elseif GoGo_Variables.RidingLevel >= 225 and GoGo_Variables.RidingLevel <= 299 then
-		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 35)
+		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 35)
 	elseif GoGo_Variables.RidingLevel >= 300 then
 		-- filter nothing
 	else
-		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 36)
-		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 35)
+		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 36)
+		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 35)
 	end --if
 
 	if GoGo_Variables.RidingLevel <= 149 then
@@ -323,10 +351,10 @@ function GoGo_ChooseMount()
 	end --if
 
 	if GoGo_Variables.RidingLevel <= 74 then
-		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 37)
-		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 38)
+		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 37)
+		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 38)
 	elseif GoGo_Variables.RidingLevel >= 75 and GoGo_Variables.RidingLevel <= 149 then
-		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 37)
+		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 37)
 	end --if
 
 	-- removing zone specific mounts
@@ -335,14 +363,22 @@ function GoGo_ChooseMount()
 		if GoGo_Variables.Debug then
 			GoGo_DebugAddLine("GoGo_ChooseMount: Removing Vashj'ir mounts since we are not in Vashj'ir.")
 		end --if
-		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 55)
+		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 401)
 	end --if
 ]]
+		if GoGo_Variables.Debug then
+			GoGo_DebugAddLine("GoGo_ChooseMount: Counting 4 - " .. (table.getn(GoGo_Variables.FilteredMounts) or 0) .. " mounts left.")
+		end --if
+
 	if IsSwimming() then
 		GoGo_CheckSwimSurface()
+	else
+		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 53)
 	end --if
+		if GoGo_Variables.Debug then
+			GoGo_DebugAddLine("GoGo_ChooseMount: Counting 5 - " .. (table.getn(GoGo_Variables.FilteredMounts) or 0) .. " mounts left.")
+		end --if
 
-	GoGo_ZoneCheck()  -- Checking to see what we can and can not do in zones
 
 	if (GoGo_Variables.Player.Level < 60) then
 		if GoGo_Variables.Debug then
@@ -350,6 +386,9 @@ function GoGo_ChooseMount()
 		end --if
 		GoGo_Variables.NoFlying = true
 	end --if
+		if GoGo_Variables.Debug then
+			GoGo_DebugAddLine("GoGo_ChooseMount: Counting 6 - " .. (table.getn(GoGo_Variables.FilteredMounts) or 0) .. " mounts left.")
+		end --if
 
 	if GoGo_Variables.ExpansionAccount == 3 then  -- only exists for 4.x with Cataclysm expansion
 		if UnitBuff("player", GetSpellInfo(GoGo_Variables.Localize.SeaLegs)) then
@@ -364,86 +403,89 @@ function GoGo_ChooseMount()
 			if GoGo_Variables.Debug then
 				GoGo_DebugAddLine("GoGo_ChooseMount: Sea Legs buff not found - removing Vashj'ir mount.")
 			end --if
-			GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 55)
+			GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 401)
 		end --if
 	end --if
+		if GoGo_Variables.Debug then
+			GoGo_DebugAddLine("GoGo_ChooseMount: Counting 7 - " .. (table.getn(GoGo_Variables.FilteredMounts) or 0) .. " mounts left.")
+		end --if
 
 	if (GoGo_Variables.Player.Class == "DRUID" and GoGo_Prefs.DruidFormNotRandomize and not GoGo_IsMoving() and not IsFalling()) then
-		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 9998)
+		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 9998)
 	end --if
 	
 	if GoGo_Variables.SelectPassengerMount then
 		if GoGo_Variables.Debug then
 			GoGo_DebugAddLine("GoGo_ChooseMount: Filtering out all mounts except passenger mounts since passenger mount only was requested.")
 		end --if
-		GoGo_FilteredMounts = GoGo_FilterMountsIn(GoGo_FilteredMounts, 2) or {}
+		GoGo_Variables.FilteredMounts = GoGo_FilterMountsIn(GoGo_Variables.FilteredMounts, 2) or {}
 	end --if
 
 	if GoGo_Variables.ZoneExclude.NorthrendLoanedMounts then
-		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 52) or {}
+		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 52) or {}
 		if GoGo_Variables.Debug then
-			GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated loaned mounts - " .. (table.getn(GoGo_FilteredMounts) or 0) .. " mounts left.")
+			GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated loaned mounts - " .. (table.getn(GoGo_Variables.FilteredMounts) or 0) .. " mounts left.")
 		end --if
 	end --if
 
 	if GoGo_Variables.ZoneExclude.TheOculus then
-		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 54)
+		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 54)
 		if GoGo_Variables.Debug then
-			GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated Oculus mounts - " .. (table.getn(GoGo_FilteredMounts) or 0) .. " mounts left.")
+			GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated Oculus mounts - " .. (table.getn(GoGo_Variables.FilteredMounts) or 0) .. " mounts left.")
 		end --if
 	end --if
 	
 	if GoGo_Variables.ZoneExclude.AQ40 then
-		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 50) or {}
+		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 50) or {}
 		if GoGo_Variables.Debug then
-			GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated AQ40 mounts - " .. (table.getn(GoGo_FilteredMounts) or 0) .. " mounts left.")
+			GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated AQ40 mounts - " .. (table.getn(GoGo_Variables.FilteredMounts) or 0) .. " mounts left.")
 		end --if
 	end --if
 
 	if GoGo_Variables.ZoneExclude.ThousandNeedles then
-		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, "RequireThousandNeedles") or {}
+		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 200) or {}
 		if GoGo_Variables.Debug then
-			GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated Thousand Needles boat - " .. (table.getn(GoGo_FilteredMounts) or 0) .. " mounts left.")
+			GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated Thousand Needles boat - " .. (table.getn(GoGo_Variables.FilteredMounts) or 0) .. " mounts left.")
 		end --if
 	end --if
 
 	if not GoGo_Variables.SwimSurface then
-		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, "RequireWaterSurface") or {}
+		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 55) or {}
 		if GoGo_Variables.Debug then
-			GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated mounts requiring water surface - " .. (table.getn(GoGo_FilteredMounts) or 0) .. " mounts left.")
+			GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated mounts requiring water surface - " .. (table.getn(GoGo_Variables.FilteredMounts) or 0) .. " mounts left.")
 		end --if
 	end --if
 
 	if IsFalling() then  -- we're falling.. save us  (only grab instant cast spells)
-		GoGo_FilteredMounts = GoGo_GetInstantMounts(GoGo_FilteredMounts) or {}
+		GoGo_Variables.FilteredMounts = GoGo_GetInstantMounts(GoGo_Variables.FilteredMounts) or {}
 		if GoGo_Variables.Debug then
-			GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated all mounts except instant casts - " .. (table.getn(GoGo_FilteredMounts) or 0) .. " mounts left.")
+			GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated all mounts except instant casts - " .. (table.getn(GoGo_Variables.FilteredMounts) or 0) .. " mounts left.")
 		end --if
 	end --if
 
 	if GoGo_Variables.ZoneExclude.RestrictedIndoorMounts then  -- only select what we can use in here..
-		GoGo_FilteredMounts = GoGo_GetIndoorMounts(GoGo_FilteredMounts) or {}
+		GoGo_Variables.FilteredMounts = GoGo_GetIndoorMounts(GoGo_Variables.FilteredMounts) or {}
 		if GoGo_Variables.Debug then
-			GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated all mounts except indoor mounts - " .. (table.getn(GoGo_FilteredMounts) or 0) .. " mounts left.")
+			GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated all mounts except indoor mounts - " .. (table.getn(GoGo_Variables.FilteredMounts) or 0) .. " mounts left.")
 		end --if
 	end --if
 
 	if GoGo_IsMoving() then
-		GoGo_FilteredMounts = GoGo_GetInstantMounts(GoGo_FilteredMounts) or {}
+		GoGo_Variables.FilteredMounts = GoGo_GetInstantMounts(GoGo_Variables.FilteredMounts) or {}
 		if GoGo_Variables.Debug then
-			GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated all mounts except instant casts - " .. (table.getn(GoGo_FilteredMounts) or 0) .. " mounts left.")
+			GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated all mounts except instant casts - " .. (table.getn(GoGo_Variables.FilteredMounts) or 0) .. " mounts left.")
 		end --if
 	end --if
 	
-	GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 9999) or {}
+	GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 9999) or {}
 	if GoGo_Variables.Debug then
-		GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated excluded mounts - " .. (table.getn(GoGo_FilteredMounts) or 0) .. " mounts left.")
+		GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated excluded mounts - " .. (table.getn(GoGo_Variables.FilteredMounts) or 0) .. " mounts left.")
 	end --if
 	
 	if GoGo_Variables.ZoneExclude.UseMountGroup then
-		GoGo_FilteredMounts = GoGo_FilterMountsIn(GoGo_FilteredMounts, GoGo_Variables.ZoneExclude.UseMountGroup) or {}
+		GoGo_Variables.FilteredMounts = GoGo_FilterMountsIn(GoGo_Variables.FilteredMounts, GoGo_Variables.ZoneExclude.UseMountGroup) or {}
 		if GoGo_Variables.Debug then
-			GoGo_DebugAddLine("GoGo_ChooseMount: Selected specific group of mounts - " .. GoGo_Variables.ZoneExclude.UseMountGroup .. " - " .. (table.getn(GoGo_FilteredMounts) or 0) .. " mounts left.")
+			GoGo_DebugAddLine("GoGo_ChooseMount: Selected specific group of mounts - " .. GoGo_Variables.ZoneExclude.UseMountGroup .. " - " .. (table.getn(GoGo_Variables.FilteredMounts) or 0) .. " mounts left.")
 		end --if
 	end --if
 	
@@ -454,7 +496,7 @@ function GoGo_ChooseMount()
 	end --if 
 	
 	if GoGo_Variables.Debug then
-		GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated mounts we can't use; " .. (table.getn(GoGo_FilteredMounts) or 0) .. " mounts left.")
+		GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated mounts we can't use; " .. (table.getn(GoGo_Variables.FilteredMounts) or 0) .. " mounts left.")
 	end --if
 
 	if IsSwimming() and not GoGo_Variables.CanFly then  -- find a mount to use in water
@@ -462,51 +504,51 @@ function GoGo_ChooseMount()
 			GoGo_DebugAddLine("GoGo_ChooseMount: Swimming and can't fly.")
 		end --if
 		if not IsIndoors() then
-			mounts = GoGo_GetBestWaterMounts(GoGo_FilteredMounts) or {}
+			mounts = GoGo_GetBestWaterMounts(GoGo_Variables.FilteredMounts) or {}
 			if (table.getn(mounts) == 0) then
-				local GoGo_GroundMounts = GoGo_GetGroundMounts100(GoGo_FilteredMounts) or {}
+				local GoGo_GroundMounts = GoGo_GetGroundMounts100(GoGo_Variables.FilteredMounts) or {}
 				if table.getn(GoGo_GroundMounts) > 0 then
 					for counter = 1, table.getn(GoGo_GroundMounts) do
 						table.insert(mounts, GoGo_GroundMounts[counter])
 					end --for
 				end --if
-				GoGo_GroundMounts = GoGo_GetGroundMounts60(GoGo_FilteredMounts) or {}
+				GoGo_GroundMounts = GoGo_GetGroundMounts60(GoGo_Variables.FilteredMounts) or {}
 				if table.getn(GoGo_GroundMounts) > 0 then
 					for counter = 1, table.getn(GoGo_GroundMounts) do
 						table.insert(mounts, GoGo_GroundMounts[counter])
 					end --for
 				end --if
-				GoGo_GroundMounts = GoGo_GetGroundMounts40(GoGo_FilteredMounts) or {}
+				GoGo_GroundMounts = GoGo_GetGroundMounts40(GoGo_Variables.FilteredMounts) or {}
 				if table.getn(GoGo_GroundMounts) > 0 then
 					for counter = 1, table.getn(GoGo_GroundMounts) do
 						table.insert(mounts, GoGo_GroundMounts[counter])
 					end --for
 				end --if
-				GoGo_GroundMounts = GoGo_GetGroundMounts35(GoGo_FilteredMounts) or {}
+				GoGo_GroundMounts = GoGo_GetGroundMounts35(GoGo_Variables.FilteredMounts) or {}
 				if table.getn(GoGo_GroundMounts) > 0 then
 					for counter = 1, table.getn(GoGo_GroundMounts) do
 						table.insert(mounts, GoGo_GroundMounts[counter])
 					end --for
 				end --if
-				GoGo_GroundMounts = GoGo_GetGroundMounts30(GoGo_FilteredMounts) or {}
+				GoGo_GroundMounts = GoGo_GetGroundMounts30(GoGo_Variables.FilteredMounts) or {}
 				if table.getn(GoGo_GroundMounts) > 0 then
 					for counter = 1, table.getn(GoGo_GroundMounts) do
 						table.insert(mounts, GoGo_GroundMounts[counter])
 					end --for
 				end --if
-				GoGo_GroundMounts = GoGo_GetGroundMounts15(GoGo_FilteredMounts) or {}
+				GoGo_GroundMounts = GoGo_GetGroundMounts15(GoGo_Variables.FilteredMounts) or {}
 				if table.getn(GoGo_GroundMounts) > 0 then
 					for counter = 1, table.getn(GoGo_GroundMounts) do
 						table.insert(mounts, GoGo_GroundMounts[counter])
 					end --for
 				end --if
-				GoGo_GroundMounts = GoGo_GetGroundMounts10(GoGo_FilteredMounts) or {}
+				GoGo_GroundMounts = GoGo_GetGroundMounts10(GoGo_Variables.FilteredMounts) or {}
 				if table.getn(GoGo_GroundMounts) > 0 then
 					for counter = 1, table.getn(GoGo_GroundMounts) do
 						table.insert(mounts, GoGo_GroundMounts[counter])
 					end --for
 				end --if
-				GoGo_GroundMounts = GoGo_GetGroundMounts0(GoGo_FilteredMounts) or {}
+				GoGo_GroundMounts = GoGo_GetGroundMounts0(GoGo_Variables.FilteredMounts) or {}
 				if table.getn(GoGo_GroundMounts) > 0 then
 					for counter = 1, table.getn(GoGo_GroundMounts) do
 						table.insert(mounts, GoGo_GroundMounts[counter])
@@ -522,35 +564,35 @@ function GoGo_ChooseMount()
 		if GoGo_Variables.Debug then
 			GoGo_DebugAddLine("GoGo_ChooseMount: Swimming but can fly.")
 		end --if
-		mounts = GoGo_GetBestAirMounts(GoGo_FilteredMounts) or {}
+		mounts = GoGo_GetBestAirMounts(GoGo_Variables.FilteredMounts) or {}
 		if table.getn(mounts) == 0 then	
-			mounts = GoGo_GetBestWaterMounts(GoGo_FilteredMounts) or {}
+			mounts = GoGo_GetBestWaterMounts(GoGo_Variables.FilteredMounts) or {}
 		end --if
 	end --if
 
-	GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 53)
+	GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 53)
 
 	if (table.getn(mounts) == 0) and GoGo_Variables.CanFly then
 		if GoGo_Variables.Debug then
 			GoGo_DebugAddLine("GoGo_ChooseMount: Looking for flying mounts since we past flight checks.")
 		end --if
-		mounts = GoGo_GetBestAirMounts(GoGo_FilteredMounts)
+		mounts = GoGo_GetBestAirMounts(GoGo_Variables.FilteredMounts)
 	else
 		if GoGo_Variables.Debug then
 			GoGo_DebugAddLine("GoGo_ChooseMount: Not looking for flying mounts since we didn't past flight checks (or found a better mount to use).")
 		end --if
 	end --if
 	
-	if (table.getn(GoGo_FilteredMounts) >= 1) then
-		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, "FlightOnly")
+	if (table.getn(GoGo_Variables.FilteredMounts) >= 1) then
+		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, "FlightOnly")
 		if GoGo_Variables.Debug then
-			GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated mounts that require skill 225 or 300 to use; " .. (table.getn(GoGo_FilteredMounts) or 0) .. " mounts left.")
+			GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated mounts that require skill 225 or 300 to use; " .. (table.getn(GoGo_Variables.FilteredMounts) or 0) .. " mounts left.")
 		end --if
 	end --if
 
 	-- Set the oculus mounts as the only mounts available if we're in the oculus, not skiping flying and have them in inventory
-	if (table.getn(mounts) == 0) and (table.getn(GoGo_FilteredMounts) > 0) and not GoGo_Variables.ZoneExclude.TheOculus and not GoGo_Variables.SkipFlyingMount then  -- skip flying is here because we already know we can't normally fly here
-		mounts = GoGo_FilterMountsIn(GoGo_FilteredMounts, 54) or {}
+	if (table.getn(mounts) == 0) and (table.getn(GoGo_Variables.FilteredMounts) > 0) and not GoGo_Variables.ZoneExclude.TheOculus and not GoGo_Variables.SkipFlyingMount then  -- skip flying is here because we already know we can't normally fly here
+		mounts = GoGo_FilterMountsIn(GoGo_Variables.FilteredMounts, 54) or {}
 		if (table.getn(mounts) > 0) then
 			if GoGo_Variables.Debug then
 				GoGo_DebugAddLine("GoGo_ChooseMount: In the Oculus, Oculus only mount found, using.")
@@ -567,69 +609,69 @@ function GoGo_ChooseMount()
 		if GoGo_Variables.Debug then
 			GoGo_DebugAddLine("GoGo_ChooseMount: Looking for ground mounts since we can't fly.")
 		end --if
-	--	GoGo_TempMounts = GoGo_FilterMountsIn(GoGo_FilteredMounts, 21)
+	--	GoGo_TempMounts = GoGo_FilterMountsIn(GoGo_Variables.FilteredMounts, 21)
 --		if GoGo_Variables.RidingLevel <= 225 and GoGo_CanFly() and GoGo_Variables.CanFly then
 --			mounts = GoGo_FilterMountsOut(GoGo_TempMounts, 3)
 --		else
 --			mounts = GoGo_TempMounts
 --		end --if
 		if GoGo_Variables.Debug then
-			GoGo_DebugAddLine("GoGo_ChooseMount: Ground mount count = " .. table.getn(GoGo_FilteredMounts) .. ".")
+			GoGo_DebugAddLine("GoGo_ChooseMount: Ground mount count = " .. table.getn(GoGo_Variables.FilteredMounts) .. ".")
 		end --if
 		if (table.getn(mounts) == 0) then
-			mounts = GoGo_GetGroundMounts100(GoGo_FilteredMounts) or {}
+			mounts = GoGo_GetGroundMounts100(GoGo_Variables.FilteredMounts) or {}
 		end --if
 		if GoGo_Variables.Debug then
 			GoGo_DebugAddLine("GoGo_ChooseMount: Mount count of 100% = " .. table.getn(mounts) .. ".")
 		end --if
 		if (table.getn(mounts) == 0) then
-			mounts = GoGo_GetGroundMounts60(GoGo_FilteredMounts) or {}
+			mounts = GoGo_GetGroundMounts60(GoGo_Variables.FilteredMounts) or {}
 		end --if
 		if (table.getn(mounts) == 0) then
-			mounts = GoGo_GetGroundMounts40(GoGo_FilteredMounts) or {}
+			mounts = GoGo_GetGroundMounts40(GoGo_Variables.FilteredMounts) or {}
 		end --if
 		if (table.getn(mounts) == 0) then
-			mounts = GoGo_GetGroundMounts35(GoGo_FilteredMounts) or {}
+			mounts = GoGo_GetGroundMounts35(GoGo_Variables.FilteredMounts) or {}
 		end --if
 		if (table.getn(mounts) == 0) then
-			mounts = GoGo_GetGroundMounts30(GoGo_FilteredMounts) or {}
+			mounts = GoGo_GetGroundMounts30(GoGo_Variables.FilteredMounts) or {}
 		end --if
 		if (table.getn(mounts) == 0) then
-			mounts = GoGo_GetGroundMounts15(GoGo_FilteredMounts) or {}
+			mounts = GoGo_GetGroundMounts15(GoGo_Variables.FilteredMounts) or {}
 		end --if
 		if (table.getn(mounts) == 0) then
-			mounts = GoGo_GetGroundMounts10(GoGo_FilteredMounts) or {}
+			mounts = GoGo_GetGroundMounts10(GoGo_Variables.FilteredMounts) or {}
 		end --if
 		if (table.getn(mounts) == 0) then
-			mounts = GoGo_GetGroundMounts0(GoGo_FilteredMounts) or {}
+			mounts = GoGo_GetGroundMounts0(GoGo_Variables.FilteredMounts) or {}
 		end --if
 	elseif IsIndoors() then  -- for druids / shaman mainly..
 		if (table.getn(mounts) == 0) then
-			mounts = GoGo_GetGroundMounts40(GoGo_FilteredMounts) or {}
+			mounts = GoGo_GetGroundMounts40(GoGo_Variables.FilteredMounts) or {}
 		end --if
 		if (table.getn(mounts) == 0) then
-			mounts = GoGo_GetGroundMounts35(GoGo_FilteredMounts) or {}
+			mounts = GoGo_GetGroundMounts35(GoGo_Variables.FilteredMounts) or {}
 		end --if
 		if (table.getn(mounts) == 0) then
-			mounts = GoGo_GetGroundMounts30(GoGo_FilteredMounts) or {}
+			mounts = GoGo_GetGroundMounts30(GoGo_Variables.FilteredMounts) or {}
 		end --if
 		if (table.getn(mounts) == 0) then
-			mounts = GoGo_GetGroundMounts15(GoGo_FilteredMounts) or {}
+			mounts = GoGo_GetGroundMounts15(GoGo_Variables.FilteredMounts) or {}
 		end --if
 		if (table.getn(mounts) == 0) then
-			mounts = GoGo_GetGroundMounts10(GoGo_FilteredMounts) or {}
+			mounts = GoGo_GetGroundMounts10(GoGo_Variables.FilteredMounts) or {}
 		end --if
 		if (table.getn(mounts) == 0) then
-			mounts = GoGo_GetGroundMounts0(GoGo_FilteredMounts) or {}
+			mounts = GoGo_GetGroundMounts0(GoGo_Variables.FilteredMounts) or {}
 		end --if
 	end --if
 	
-	if table.getn(GoGo_FilteredMounts) >= 1 then
-		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 37)
-		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 38)
-		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 21)
-		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 20)
-		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_FilteredMounts, 25)
+	if table.getn(GoGo_Variables.FilteredMounts) >= 1 then
+		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 37)
+		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 38)
+		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 21)
+		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 20)
+		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 25)
 	end --if
 	
 	if (table.getn(mounts) >= 1) then
@@ -659,6 +701,9 @@ function GoGo_FilterMountsOut(PlayerMounts, FilterID)
 	if table.getn(PlayerMounts) == 0 then
 		return GoGo_FilteringMounts
 	end --if
+	if Value == nil then
+		local Value = true
+	end --if
 	for a = 1, table.getn(PlayerMounts) do
 		local MountID = PlayerMounts[a]
 		for DBMountID, DBMountData in pairs(GoGo_Variables.MountDB) do
@@ -671,7 +716,34 @@ function GoGo_FilterMountsOut(PlayerMounts, FilterID)
 end --function
 
 ---------
-function GoGo_FilterMountsIn(PlayerMounts, FilterID)
+function GoGo_FilterMountsIn(PlayerMounts, FilterID, Value)
+---------
+	local GoGo_FilteringMounts = {}
+	if not PlayerMounts then PlayerMounts = {} end --if
+	if table.getn(PlayerMounts) == 0 then
+		return GoGo_FilteringMounts
+	end --if
+	if Value == nil then
+		local Value = true
+	end --if
+	for a = 1, table.getn(PlayerMounts) do
+		local MountID = PlayerMounts[a]
+		for DBMountID, DBMountData in pairs(GoGo_Variables.MountDB) do
+			if (DBMountID == MountID) and DBMountData[FilterID] then
+				if Value and DBMountData[FilterID] == Value then
+					table.insert(GoGo_FilteringMounts, MountID)
+				elseif Value == nil then
+					table.insert(GoGo_FilteringMounts, MountID)
+				end --if
+			end --if
+		end --for
+	end --for
+	return GoGo_FilteringMounts
+end --function
+
+--[[
+---------
+function GoGo_GetMountBySpeed(PlayerMounts, Type, Speed)
 ---------
 	local GoGo_FilteringMounts = {}
 	if not PlayerMounts then PlayerMounts = {} end --if
@@ -679,15 +751,17 @@ function GoGo_FilterMountsIn(PlayerMounts, FilterID)
 		return GoGo_FilteringMounts
 	end --if
 	for a = 1, table.getn(PlayerMounts) do
-		local MountID = PlayerMounts[a]
-		for DBMountID, DBMountData in pairs(GoGo_Variables.MountDB) do
-			if (DBMountID == MountID) and DBMountData[FilterID] then
-				table.insert(GoGo_FilteringMounts, MountID)
+		if GoGo_Variables.MountDB[a] then
+			if GoGo_Variables.MountDB[a][Type] then
+				if GoGo_Variables.MountDB[a][Type][Speed] then
+					table.insert(GoGo_FilteringMounts, PlayerMounts[a])
+				end --if
 			end --if
-		end --for
+		end --if
 	end --for
 	return GoGo_FilteringMounts
 end --function
+]]
 
 ---------
 function GoGo_Dismount(button)
@@ -1355,7 +1429,7 @@ function GoGo_ZoneCheck()
 			GoGo_Variables.ZoneExclude.CanFly = false
 		elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.Ghostlands then
 			GoGo_Variables.ZoneExclude.CanFly = false
-		elseif GetCurrentMapAreaID() == 14 then
+		elseif GetCurrentMapAreaID() == 61 then  -- Thousand Needles
 			if GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense) then
 				GoGo_Variables.ZoneExclude.CanFly = true
 			end --if
@@ -1476,10 +1550,11 @@ end --function
 ---------
 function GoGo_CheckSwimSurface()
 ---------
-	GoGo_Variables.SwimSurface = false
+	GoGo_Variables.SwimSurface = true
 
 	if GoGo_Prefs.DisableWaterFlight then  -- don't want to fly from water as per client option
 		GoGo_Variables.NoFlying = true
+		GoGo_Variables.SwimSurface = false
 		return
 	end --if
 	
@@ -1491,11 +1566,11 @@ function GoGo_CheckSwimSurface()
 					GoGo_DebugAddLine("GoGo_CheckSwimSurface: Breath timer bar found and it's slowly draining.  Disabling flying.")
 				end --if
 				GoGo_Variables.NoFlying = true
+				GoGo_Variables.SwimSurface = false
 			else
 				if GoGo_Variables.Debug then
 					GoGo_DebugAddLine("GoGo_CheckSwimSurface: Breath timer not bar found.  Looks like we can fly here.")
 				end --if
-				GoGo_Variables.SwimSurface = true
 			end --if
 		end --if	
 	end --for
@@ -1581,41 +1656,6 @@ function GoGo_Id(itemstring)
 		return spellid.." - "..itemstring
 	end --if
 
-end --function
-	
----------
-function GoGo_GetSwimmingMounts450(GoGo_FilteredMounts)
----------
-	GoGo_FilteredMounts = GoGo_FilterMountsIn(GoGo_FilteredMounts, 30) or {}
-	return GoGo_FilteredMounts
-end --function
-
----------
-function GoGo_GetSwimmingMounts323(GoGo_FilteredMounts)
----------
-	GoGo_FilteredMounts = GoGo_FilterMountsIn(GoGo_FilteredMounts, 61) or {}
-	return GoGo_FilteredMounts
-end --function
-
----------
-function GoGo_GetSwimmingMounts100(GoGo_FilteredMounts)
----------
-	GoGo_FilteredMounts = GoGo_FilterMountsIn(GoGo_FilteredMounts, 60) or {}
-	return GoGo_FilteredMounts
-end --function
-
----------
-function GoGo_GetSwimmingMounts60(GoGo_FilteredMounts)
----------
-	GoGo_FilteredMounts = GoGo_FilterMountsIn(GoGo_FilteredMounts, 27) or {}
-	return GoGo_FilteredMounts
-end --function
-
----------
-function GoGo_GetSwimmingMounts50(GoGo_FilteredMounts)
----------
-	GoGo_FilteredMounts = GoGo_FilterMountsIn(GoGo_FilteredMounts, 34) or {}
-	return GoGo_FilteredMounts
 end --function
 
 ---------
@@ -1778,18 +1818,28 @@ end --function
 function GoGo_GetBestWaterMounts(GoGo_FilteredMounts)
 ---------
 	local mounts = {}
-	mounts = GoGo_GetSwimmingMounts450(GoGo_FilteredMounts) or {}
-	if (table.getn(mounts) == 0) then
-		mounts = GoGo_GetSwimmingMounts323(GoGo_FilteredMounts) or {}
+	local GoGo_TempSwimSpeed = {371,135,108,101,68}
+	local GoGo_TempSwimSurfaceSpeed = {371,286}
+	local GoGo_TempLoopCount = 1
+	if not GoGo_Variables.SwimSurface then
+		if GoGo_Variables.Debug then
+			GoGo_DebugAddLine("GoGo_GetBestWaterMounts: Under water mount selection.")
+		end --if
+		while (table.getn(mounts) == 0) and (GoGo_TempLoopCount <= table.getn(GoGo_TempSwimSpeed)) do
+			mounts = GoGo_FilterMountsIn(GoGo_FilteredMounts, 10001, GoGo_TempSwimSpeed[GoGo_TempLoopCount])
+			GoGo_TempLoopCount = GoGo_TempLoopCount + 1
+		end --while
+	else
+		if GoGo_Variables.Debug then
+			GoGo_DebugAddLine("GoGo_GetBestWaterMounts: Water surface mount selection.")
+		end --if
+		while (table.getn(mounts) == 0) and (GoGo_TempLoopCount <= table.getn(GoGo_TempSwimSurfaceSpeed)) do
+			mounts = GoGo_FilterMountsIn(GoGo_FilteredMounts, 10004, GoGo_TempSwimSurfaceSpeed[GoGo_TempLoopCount])
+			GoGo_TempLoopCount = GoGo_TempLoopCount + 1
+		end --while
 	end --if
-	if (table.getn(mounts) == 0) then
-		mounts = GoGo_GetSwimmingMounts100(GoGo_FilteredMounts) or {}
-	end --if
-	if (table.getn(mounts) == 0) then
-		mounts = GoGo_GetSwimmingMounts60(GoGo_FilteredMounts) or {}
-	end --if
-	if (table.getn(mounts) == 0) then
-		mounts = GoGo_GetSwimmingMounts50(GoGo_FilteredMounts) or {}
+	if GoGo_Variables.Debug then
+		GoGo_DebugAddLine("GoGo_GetBestWaterMounts: " .. table.getn(mounts) .. " water mounts found in " .. (GoGo_TempLoopCount - 1) .. " loop count.")
 	end --if
 	return mounts
 end --function
@@ -1848,19 +1898,31 @@ function GoGo_UpdateMountData()
 	end --if
 
 	if (GoGo_Variables.Player.Class == "DRUID") and (GoGo_GlyphActive(GoGo_Variables.Localize.Glyph_AquaticForm)) then
-		GoGo_Variables.MountDB[GoGo_Variables.Localize.AquaForm][60] = true
-		GoGo_Variables.MountDB[GoGo_Variables.Localize.AquaForm][34] = true
+		GoGo_Variables.MountDB[GoGo_Variables.Localize.AquaForm][10001] = 135
+		GoGo_Variables.MountDB[GoGo_Variables.Localize.AquaForm][10004] = 135
 		if GoGo_Variables.Debug then
 			GoGo_DebugAddLine("GoGo_UpdateMountData: We're a druid with Glyph of Aquatic Form.  Modifying Aquatic Form speed data.")
 		end --if
-	elseif (GoGo_Variables.Player.Class == "DRUID") then
-		GoGo_Variables.MountDB[GoGo_Variables.Localize.AquaForm][34] = true
-		GoGo_Variables.MountDB[GoGo_Variables.Localize.AquaForm][60] = false
-		if GoGo_Variables.Debug then
-			GoGo_DebugAddLine("GoGo_UpdateMountData: We're a druid without Glyph of Aquatic Form.  Modifying Aquatic Form speed data.")
-		end --if
 	end --if
 
+	if not GoGo_Variables.ZoneExclude.ThousandNeedles then  -- we are in thousand needles - ground mounts swim faster with buff
+		local GoGo_TempMountDB = {}
+		local GoGo_TempLoopCounter
+		if UnitBuff("player", GetSpellInfo(75627)) and IsSwimming() then
+			if GoGo_Variables.Debug then
+				GoGo_DebugAddLine("GoGo_UpdateMountData: In Thousand Needles with buff.  Updating water speed of ground mounts.")
+			end --if
+
+			GoGo_TempMountDB = GoGo_FilterMountsIn(GoGo_Variables.FilteredMounts, 400)
+			if GoGo_Variables.Debug then
+				GoGo_DebugAddLine("GoGo_UpdateMountData: Number of mounts to increase water speed on:  " .. table.getn(GoGo_TempMountDB))
+			end --if
+			for GoGo_TempLoopCounter=1, table.getn(GoGo_TempMountDB) do
+				GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempLoopCounter]][10001] = 108
+				GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempLoopCounter]][10004] = 108
+			end --for
+		end --if
+	end --if
 end --function
 
 GOGO_ERRORS = {
