@@ -178,7 +178,7 @@ function GoGo_PreClick(button)
 				GoGo_DebugAddLine("GoGo_PreClick: Is not in guild - not sending GoGoMount version information to guild addon channel.")
 			end --if
 		end --if
-		if UnitInRaid("player") then
+		if UnitInRaid("player") and not UnitInBattleground("player") then
 			if GoGo_Variables.Debug then
 				GoGo_DebugAddLine("GoGo_PreClick: Is in raid - sending GoGoMount version information to raid addon channel.")
 			end --if
@@ -436,7 +436,7 @@ function GoGo_ChooseMount()
 	end --if
 	
 	if GoGo_Variables.ZoneExclude.AQ40 then
-		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 50) or {}
+		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 201) or {}
 		if GoGo_Variables.Debug then
 			GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated AQ40 mounts - " .. (table.getn(GoGo_Variables.FilteredMounts) or 0) .. " mounts left.")
 		end --if
@@ -505,56 +505,6 @@ function GoGo_ChooseMount()
 		end --if
 		if not IsIndoors() then
 			mounts = GoGo_GetBestWaterMounts(GoGo_Variables.FilteredMounts) or {}
-			if (table.getn(mounts) == 0) then
-				local GoGo_GroundMounts = GoGo_GetGroundMounts100(GoGo_Variables.FilteredMounts) or {}
-				if table.getn(GoGo_GroundMounts) > 0 then
-					for counter = 1, table.getn(GoGo_GroundMounts) do
-						table.insert(mounts, GoGo_GroundMounts[counter])
-					end --for
-				end --if
-				GoGo_GroundMounts = GoGo_GetGroundMounts60(GoGo_Variables.FilteredMounts) or {}
-				if table.getn(GoGo_GroundMounts) > 0 then
-					for counter = 1, table.getn(GoGo_GroundMounts) do
-						table.insert(mounts, GoGo_GroundMounts[counter])
-					end --for
-				end --if
-				GoGo_GroundMounts = GoGo_GetGroundMounts40(GoGo_Variables.FilteredMounts) or {}
-				if table.getn(GoGo_GroundMounts) > 0 then
-					for counter = 1, table.getn(GoGo_GroundMounts) do
-						table.insert(mounts, GoGo_GroundMounts[counter])
-					end --for
-				end --if
-				GoGo_GroundMounts = GoGo_GetGroundMounts35(GoGo_Variables.FilteredMounts) or {}
-				if table.getn(GoGo_GroundMounts) > 0 then
-					for counter = 1, table.getn(GoGo_GroundMounts) do
-						table.insert(mounts, GoGo_GroundMounts[counter])
-					end --for
-				end --if
-				GoGo_GroundMounts = GoGo_GetGroundMounts30(GoGo_Variables.FilteredMounts) or {}
-				if table.getn(GoGo_GroundMounts) > 0 then
-					for counter = 1, table.getn(GoGo_GroundMounts) do
-						table.insert(mounts, GoGo_GroundMounts[counter])
-					end --for
-				end --if
-				GoGo_GroundMounts = GoGo_GetGroundMounts15(GoGo_Variables.FilteredMounts) or {}
-				if table.getn(GoGo_GroundMounts) > 0 then
-					for counter = 1, table.getn(GoGo_GroundMounts) do
-						table.insert(mounts, GoGo_GroundMounts[counter])
-					end --for
-				end --if
-				GoGo_GroundMounts = GoGo_GetGroundMounts10(GoGo_Variables.FilteredMounts) or {}
-				if table.getn(GoGo_GroundMounts) > 0 then
-					for counter = 1, table.getn(GoGo_GroundMounts) do
-						table.insert(mounts, GoGo_GroundMounts[counter])
-					end --for
-				end --if
-				GoGo_GroundMounts = GoGo_GetGroundMounts0(GoGo_Variables.FilteredMounts) or {}
-				if table.getn(GoGo_GroundMounts) > 0 then
-					for counter = 1, table.getn(GoGo_GroundMounts) do
-						table.insert(mounts, GoGo_GroundMounts[counter])
-					end --for
-				end --if
-			end --if
 		else  -- we are indoors
 			if (table.getn(mounts) == 0) and (GoGo_Variables.Player.Class == "DRUID") and GoGo_InBook(GoGo_Variables.Localize.AquaForm) then
 				return GoGo_InBook(GoGo_Variables.Localize.AquaForm)
@@ -609,69 +559,20 @@ function GoGo_ChooseMount()
 		if GoGo_Variables.Debug then
 			GoGo_DebugAddLine("GoGo_ChooseMount: Looking for ground mounts since we can't fly.")
 		end --if
-	--	GoGo_TempMounts = GoGo_FilterMountsIn(GoGo_Variables.FilteredMounts, 21)
---		if GoGo_Variables.RidingLevel <= 225 and GoGo_CanFly() and GoGo_Variables.CanFly then
---			mounts = GoGo_FilterMountsOut(GoGo_TempMounts, 3)
---		else
---			mounts = GoGo_TempMounts
---		end --if
 		if GoGo_Variables.Debug then
 			GoGo_DebugAddLine("GoGo_ChooseMount: Ground mount count = " .. table.getn(GoGo_Variables.FilteredMounts) .. ".")
 		end --if
 		if (table.getn(mounts) == 0) then
-			mounts = GoGo_GetGroundMounts100(GoGo_Variables.FilteredMounts) or {}
+			mounts = GoGo_GetBestGroundMounts(GoGo_Variables.FilteredMounts) or {}
 		end --if
 		if GoGo_Variables.Debug then
 			GoGo_DebugAddLine("GoGo_ChooseMount: Mount count of 100% = " .. table.getn(mounts) .. ".")
-		end --if
-		if (table.getn(mounts) == 0) then
-			mounts = GoGo_GetGroundMounts60(GoGo_Variables.FilteredMounts) or {}
-		end --if
-		if (table.getn(mounts) == 0) then
-			mounts = GoGo_GetGroundMounts40(GoGo_Variables.FilteredMounts) or {}
-		end --if
-		if (table.getn(mounts) == 0) then
-			mounts = GoGo_GetGroundMounts35(GoGo_Variables.FilteredMounts) or {}
-		end --if
-		if (table.getn(mounts) == 0) then
-			mounts = GoGo_GetGroundMounts30(GoGo_Variables.FilteredMounts) or {}
-		end --if
-		if (table.getn(mounts) == 0) then
-			mounts = GoGo_GetGroundMounts15(GoGo_Variables.FilteredMounts) or {}
-		end --if
-		if (table.getn(mounts) == 0) then
-			mounts = GoGo_GetGroundMounts10(GoGo_Variables.FilteredMounts) or {}
-		end --if
-		if (table.getn(mounts) == 0) then
-			mounts = GoGo_GetGroundMounts0(GoGo_Variables.FilteredMounts) or {}
-		end --if
-	elseif IsIndoors() then  -- for druids / shaman mainly..
-		if (table.getn(mounts) == 0) then
-			mounts = GoGo_GetGroundMounts40(GoGo_Variables.FilteredMounts) or {}
-		end --if
-		if (table.getn(mounts) == 0) then
-			mounts = GoGo_GetGroundMounts35(GoGo_Variables.FilteredMounts) or {}
-		end --if
-		if (table.getn(mounts) == 0) then
-			mounts = GoGo_GetGroundMounts30(GoGo_Variables.FilteredMounts) or {}
-		end --if
-		if (table.getn(mounts) == 0) then
-			mounts = GoGo_GetGroundMounts15(GoGo_Variables.FilteredMounts) or {}
-		end --if
-		if (table.getn(mounts) == 0) then
-			mounts = GoGo_GetGroundMounts10(GoGo_Variables.FilteredMounts) or {}
-		end --if
-		if (table.getn(mounts) == 0) then
-			mounts = GoGo_GetGroundMounts0(GoGo_Variables.FilteredMounts) or {}
 		end --if
 	end --if
 	
 	if table.getn(GoGo_Variables.FilteredMounts) >= 1 then
 		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 37)
 		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 38)
-		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 21)
-		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 20)
-		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 25)
 	end --if
 	
 	if (table.getn(mounts) >= 1) then
@@ -1593,7 +1494,7 @@ end --function
 function GoGo_GetRidingSkillLevel()
 --------- 
 	if GoGo_InBook(GoGo_Variables.Localize.MasterRiding) then
-		return 300
+		return 325
 	elseif GoGo_InBook(GoGo_Variables.Localize.ArtisanRiding) then
 		return 300
 	elseif GoGo_InBook(GoGo_Variables.Localize.ExpertRiding) then
@@ -1659,90 +1560,6 @@ function GoGo_Id(itemstring)
 end --function
 
 ---------
-function GoGo_GetGroundMounts100(GoGo_FilteredMounts)
----------
-	GoGo_FilteredMounts = GoGo_FilterMountsIn(GoGo_FilteredMounts, 21) or {}
-	return GoGo_FilteredMounts
-end --function
-
----------
-function GoGo_GetGroundMounts60(GoGo_FilteredMounts)
----------
-	GoGo_FilteredMounts = GoGo_FilterMountsIn(GoGo_FilteredMounts, 20) or {}
-	return GoGo_FilteredMounts
-end --function
-
----------
-function GoGo_GetGroundMounts40(GoGo_FilteredMounts)
----------
-	GoGo_FilteredMounts = GoGo_FilterMountsIn(GoGo_FilteredMounts, 28) or {}
-	return GoGo_FilteredMounts
-end --function
-
----------
-function GoGo_GetGroundMounts35(GoGo_FilteredMounts)
----------
-	GoGo_FilteredMounts = GoGo_FilterMountsIn(GoGo_FilteredMounts, 33) or {}
-	return GoGo_FilteredMounts
-end --function
-
----------
-function GoGo_GetGroundMounts30(GoGo_FilteredMounts)
----------
-	GoGo_FilteredMounts = GoGo_FilterMountsIn(GoGo_FilteredMounts, 26) or {}
-	return GoGo_FilteredMounts
-end --function
-
----------
-function GoGo_GetGroundMounts15(GoGo_FilteredMounts)
----------
-	GoGo_FilteredMounts = GoGo_FilterMountsIn(GoGo_FilteredMounts, 32) or {}
-	return GoGo_FilteredMounts
-end --function
-
----------
-function GoGo_GetGroundMounts10(GoGo_FilteredMounts)
----------
-	GoGo_FilteredMounts = GoGo_FilterMountsIn(GoGo_FilteredMounts, 31) or {}
-	return GoGo_FilteredMounts
-end --function
-
----------
-function GoGo_GetGroundMounts0(GoGo_FilteredMounts)
----------
-	GoGo_FilteredMounts = GoGo_FilterMountsIn(GoGo_FilteredMounts, 25) or {}
-	return GoGo_FilteredMounts
-end --function
-
----------
-function GoGo_GetAirMounts310(GoGo_FilteredMounts)
----------
-	-- Grabs 280% / 300% / 310% mounts since they're all the same and scale with the same requirements
-	local GoGo_TempMounts = {}
-	GoGo_TempMounts = GoGo_FilterMountsIn(GoGo_FilteredMounts, 23) or {}
-	if GoGo_Variables.RidingLevel <= 299 then  -- if we only have a riding skill of 225 then we can only fly slowly - don't pick the fast mounts thinking we'll fly them fast
-		GoGo_FilteredMounts = GoGo_FilterMountsOut(GoGo_TempMounts, 29)
-	else
-		GoGo_FilteredMounts = GoGo_TempMounts
-	end --if
-	GoGo_TempMounts = GoGo_FilterMountsIn(GoGo_FilteredMounts, 24) or {}  -- picking up non-scaling 310% like fast flight form
-	if table.getn(GoGo_TempMounts) > 0 then
-		for GoGo_TempInt = 1, table.getn(GoGo_TempMounts) do
-			table.insert(GoGo_FilteredMounts, GoGo_TempMounts[GoGo_TempInt])
-		end --for
-	end --if
-	return GoGo_FilteredMounts
-end --function
-
----------
-function GoGo_GetAirMounts150(GoGo_FilteredMounts)
----------
-	-- Grabs 280% / 300% / 310% mounts since they're all the same and scale with the same requirements
-	GoGo_FilteredMounts = GoGo_FilterMountsIn(GoGo_FilteredMounts, 22) or {}
-	return GoGo_FilteredMounts
-end --function
-
----------
 function GoGo_GetInstantMounts(GoGo_FilteredMounts)
 ---------
 	-- Grab all mounts flagged as instant cast for falling or moving conditions
@@ -1767,59 +1584,81 @@ end --function
 ---------
 function GoGo_GetBestAirMounts(GoGo_FilteredMounts)
 ---------
-		-- Use flight forms if preferred
-		local mounts = {}
-		local GoGo_TempMounts = {}
-		local GoGo_SearchString = table.concat(GoGo_FilteredMounts, ":")
-		if GoGo_Variables.Player.Class == "DRUID" and GoGo_Prefs.DruidFlightForm then
+	-- Use flight forms if preferred
+	local mounts = {}
+	local GoGo_TempAirSpeed = {451,418,410,380,275,250}
+	--[[	451 = +310% + 10% Mount Up guild perk
+		418 = +280% + 10% Mount Up guild perk
+		410 = +310%  (Master flight)
+		380 = +280%  (300 riding)
+		275 = +150 + 10% Mount Up guild perk
+		250 = +150%  (225 riding)
+	]]
+	local GoGo_TempLoopCount = 1
+	local GoGo_SearchString = table.concat(GoGo_FilteredMounts, ":")
+	if GoGo_Variables.Player.Class == "DRUID" and GoGo_Prefs.DruidFlightForm then
+		if GoGo_Variables.Debug then
+			GoGo_DebugAddLine("GoGo_GetBestAirMounts: Druid with preferred flight forms option enabled.  Using flight form.")
+		end --if
+		if string.find(GoGo_SearchString, GoGo_Variables.Localize.FastFlightForm, 1, true) then
 			if GoGo_Variables.Debug then
-				GoGo_DebugAddLine("GoGo_GetBestAirMounts: Druid with preferred flight forms option enabled.  Using flight form.")
+				GoGo_DebugAddLine("GoGo_GetBestAirMounts: Found FastFlightForm")
 			end --if
-			if string.find(GoGo_SearchString, GoGo_Variables.Localize.FastFlightForm, 1, true) then
-				if GoGo_Variables.Debug then
-					GoGo_DebugAddLine("GoGo_GetBestAirMounts: Found FastFlightForm")
-				end --if
-				table.insert(mounts, GoGo_Variables.Localize.FastFlightForm)
-			elseif string.find(GoGo_SearchString, GoGo_Variables.Localize.FlightForm, 1, true) then
-				if GoGo_Variables.Debug then
-					GoGo_DebugAddLine("GoGo_GetBestAirMounts: Found FlightForm")
-				end --if
-				table.insert(mounts, GoGo_Variables.Localize.FlightForm)
-			else
-				if GoGo_Variables.Debug then
-					GoGo_DebugAddLine("GoGo_GetBestAirMounts: No flight forms found")
-		            GoGo_DebugAddLine("GoGo_GetBestAirMounts: GoGo_SearchString: "..GoGo_SearchString)
-				end --if
-			end --if
-		end --if
-
-		if (table.getn(mounts) == 0) then
-			mounts = GoGo_GetAirMounts310(GoGo_FilteredMounts)
-		end --if
-
-		-- no epic flyers found - add druid swift flight if available
-		if (table.getn(mounts) == 0 and (GoGo_Variables.Player.Class == "Druid") and (GoGo_InBook(GoGo_Variables.Localize.FastFlightForm))) then
 			table.insert(mounts, GoGo_Variables.Localize.FastFlightForm)
-		end --if
-
-		if (table.getn(mounts) == 0) then
-			mounts = GoGo_GetAirMounts150(GoGo_FilteredMounts)
-		end --if
-
-		-- no slow flying mounts found - add druid flight if available
-		if (table.getn(mounts) == 0 and (GoGo_Variables.Player.Class == "Druid") and (GoGo_InBook(GoGo_Variables.Localize.FlightForm))) then
+		elseif string.find(GoGo_SearchString, GoGo_Variables.Localize.FlightForm, 1, true) then
+			if GoGo_Variables.Debug then
+				GoGo_DebugAddLine("GoGo_GetBestAirMounts: Found FlightForm")
+			end --if
 			table.insert(mounts, GoGo_Variables.Localize.FlightForm)
+		else
+			if GoGo_Variables.Debug then
+				GoGo_DebugAddLine("GoGo_GetBestAirMounts: No flight forms found")
+				GoGo_DebugAddLine("GoGo_GetBestAirMounts: GoGo_SearchString: "..GoGo_SearchString)
+			end --if
 		end --if
-		
-		return mounts
+	end --if
+
+	while (table.getn(mounts) == 0) and (GoGo_TempLoopCount <= table.getn(GoGo_TempAirSpeed)) do
+		mounts = GoGo_FilterMountsIn(GoGo_FilteredMounts, 10003, GoGo_TempAirSpeed[GoGo_TempLoopCount])
+		GoGo_TempLoopCount = GoGo_TempLoopCount + 1
+	end --while
+
+	return mounts
+end --function
+
+---------
+function GoGo_GetBestGroundMounts(GoGo_FilteredMounts)
+---------
+	-- Use flight forms if preferred
+	local mounts = {}
+	local GoGo_TempGroundSpeed = {220,200,176,160,140,135,130,115,110,100}
+	--[[	220 = +100% + 10% Mount Up guild perk
+		200 = +100%  (150 riding)
+		176 = +60% + 10% Mount Up guild perk
+		160 = +60%  (75 riding)
+		140 = +40% (Druid Travel form)
+		135 = +35%  (Shaman wolf form with glyph)
+		130 = +30% (Druid with 2 Feral Swiftness talent points, Shaman wolf form, Hunter aspects)
+		115 = +15% (Druid with 1 Feral Swiftness talent point)
+		110 = +10% (Sea turtle)
+		100 = +0%  (Riding turtle, etc.)
+	]]
+	local GoGo_TempLoopCount = 1
+
+	while (table.getn(mounts) == 0) and (GoGo_TempLoopCount <= table.getn(GoGo_TempGroundSpeed)) do
+		mounts = GoGo_FilterMountsIn(GoGo_FilteredMounts, 10002, GoGo_TempGroundSpeed[GoGo_TempLoopCount])
+		GoGo_TempLoopCount = GoGo_TempLoopCount + 1
+	end --while
+
+	return mounts
 end --function
 
 ---------
 function GoGo_GetBestWaterMounts(GoGo_FilteredMounts)
 ---------
 	local mounts = {}
-	local GoGo_TempSwimSpeed = {371,135,108,101,68}
-	local GoGo_TempSwimSurfaceSpeed = {371,286}
+	local GoGo_TempSwimSpeed = {371,135,108,101,67}
+	local GoGo_TempSwimSurfaceSpeed = {371,286,67}
 	local GoGo_TempLoopCount = 1
 	if not GoGo_Variables.SwimSurface then
 		if GoGo_Variables.Debug then
@@ -1849,39 +1688,29 @@ function GoGo_UpdateMountData()
 ---------
 
 	if (GoGo_Variables.Player.Class == "DRUID") and (GoGo_GetTalentInfo(GoGo_Variables.Localize.Talent.FeralSwiftness) == 1) then
-		GoGo_Variables.MountDB[GoGo_Variables.Localize.CatForm][25] = true
-		GoGo_Variables.MountDB[GoGo_Variables.Localize.CatForm][32] = true
-		GoGo_Variables.MountDB[GoGo_Variables.Localize.CatForm][26] = false
+		GoGo_Variables.MountDB[GoGo_Variables.Localize.CatForm][10002] = 115
 		if GoGo_Variables.Debug then
 			GoGo_DebugAddLine("GoGo_UpdateMountData: We're a druid with 1 Feral Swiftness point.  Modifying Catform speed data.")
 		end --if
 	elseif (GoGo_Variables.Player.Class == "DRUID") and (GoGo_GetTalentInfo(GoGo_Variables.Localize.Talent.FeralSwiftness) == 2) then
-		GoGo_Variables.MountDB[GoGo_Variables.Localize.CatForm][25] = true
-		GoGo_Variables.MountDB[GoGo_Variables.Localize.CatForm][32] = true
-		GoGo_Variables.MountDB[GoGo_Variables.Localize.CatForm][26] = true
+		GoGo_Variables.MountDB[GoGo_Variables.Localize.CatForm][10002] = 130
 		if GoGo_Variables.Debug then
 			GoGo_DebugAddLine("GoGo_UpdateMountData: We're a druid with 2 Feral Swiftness points.  Modifying Catform speed data.")
 		end --if
 	elseif (GoGo_Variables.Player.Class == "DRUID") then
-		GoGo_Variables.MountDB[GoGo_Variables.Localize.CatForm][25] = true
-		GoGo_Variables.MountDB[GoGo_Variables.Localize.CatForm][32] = false
-		GoGo_Variables.MountDB[GoGo_Variables.Localize.CatForm][26] = false
 		if GoGo_Variables.Debug then
-			GoGo_DebugAddLine("GoGo_UpdateMountData: We're a druid with 0 Feral Swiftness points.  Modifying Catform speed data.")
+			GoGo_DebugAddLine("GoGo_UpdateMountData: We're a druid with 0 Feral Swiftness points.  Doing nothing.")
 		end --if
 	end --if
 
 	if (GoGo_Variables.Player.Class == "SHAMAN") and (GoGo_GlyphActive(GoGo_Variables.Localize.Glyph_GhostWolf)) then
-		GoGo_Variables.MountDB[GoGo_Variables.Localize.GhostWolf][33] = true
-		GoGo_Variables.MountDB[GoGo_Variables.Localize.GhostWolf][26] = true
+		GoGo_Variables.MountDB[GoGo_Variables.Localize.GhostWolf][10002] = 135
 		if GoGo_Variables.Debug then
 			GoGo_DebugAddLine("GoGo_UpdateMountData: We're a shaman with Glyph of Ghost Wolf.  Modifying Ghost Wolf speed data.")
 		end --if
 	elseif (GoGo_Variables.Player.Class == "SHAMAN") then
-		GoGo_Variables.MountDB[GoGo_Variables.Localize.GhostWolf][26] = true
-		GoGo_Variables.MountDB[GoGo_Variables.Localize.GhostWolf][33] = false
 		if GoGo_Variables.Debug then
-			GoGo_DebugAddLine("GoGo_UpdateMountData: We're a shaman without Glyph of Ghost Wolf.  Modifying Ghost Wolf speed data.")
+			GoGo_DebugAddLine("GoGo_UpdateMountData: We're a shaman without Glyph of Ghost Wolf.  Not doing anything.")
 		end --if
 	end --if
 
@@ -1915,7 +1744,7 @@ function GoGo_UpdateMountData()
 
 			GoGo_TempMountDB = GoGo_FilterMountsIn(GoGo_Variables.FilteredMounts, 400)
 			if GoGo_Variables.Debug then
-				GoGo_DebugAddLine("GoGo_UpdateMountData: Number of mounts to increase water speed on:  " .. table.getn(GoGo_TempMountDB))
+				GoGo_DebugAddLine("GoGo_UpdateMountData: Number of mounts to increase water speed on:  " .. (table.getn(GoGo_TempMountDB) or 0))
 			end --if
 			for GoGo_TempLoopCounter=1, table.getn(GoGo_TempMountDB) do
 				GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempLoopCounter]][10001] = 108
@@ -1923,6 +1752,45 @@ function GoGo_UpdateMountData()
 			end --for
 		end --if
 	end --if
+
+	-- flight stuff below
+	if GoGo_GetRidingSkillLevel() == 325 then  -- increase air mounts to 410
+		local GoGo_TempMountDB = {}
+		local GoGo_TempLoopCounter
+		GoGo_TempMountDB = GoGo_FilterMountsIn(GoGo_Variables.FilteredMounts, 300)
+		if GoGo_Variables.Debug then
+			GoGo_DebugAddLine("GoGo_UpdateMountData: Number of mounts to increase flight speed to 310%:  " .. (table.getn(GoGo_TempMountDB) or 0))
+		end --if
+		for GoGo_TempLoopCounter=1, table.getn(GoGo_TempMountDB) do
+			GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempLoopCounter]][10003] = 410
+		end --for
+	elseif GoGo_GetRidingSkillLevel() == 300 then  -- increase air mounts to 380
+		local GoGo_TempMountDB = {}
+		local GoGo_TempLoopCounter
+		GoGo_TempMountDB = GoGo_FilterMountsIn(GoGo_Variables.FilteredMounts, 301)
+		if GoGo_Variables.Debug then
+			GoGo_DebugAddLine("GoGo_UpdateMountData: Number of mounts to increase flight speed to 280%:  " .. (table.getn(GoGo_TempMountDB) or 0))
+		end --if
+		for GoGo_TempLoopCounter=1, table.getn(GoGo_TempMountDB) do
+			GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempLoopCounter]][10003] = 380
+		end --for
+	end --if
+	
+	-- end of flying changes
+	
+	-- start of ground changes
+
+	if GoGo_GetRidingSkillLevel() >= 150 then  -- increase ground mounts to 200
+		local GoGo_TempMountDB = {}
+		local GoGo_TempLoopCounter
+		GoGo_TempMountDB = GoGo_FilterMountsIn(GoGo_Variables.FilteredMounts, 330)
+		if GoGo_Variables.Debug then
+			GoGo_DebugAddLine("GoGo_UpdateMountData: Number of mounts to increase ground speed to 100%:  " .. (table.getn(GoGo_TempMountDB) or 0))
+		end --if
+		for GoGo_TempLoopCounter=1, table.getn(GoGo_TempMountDB) do
+			GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempLoopCounter]][10002] = 200
+		end --for
+	end --if	
 end --function
 
 GOGO_ERRORS = {
@@ -2477,9 +2345,6 @@ function GoGo_DebugCollectInformation()
 	GoGo_DebugAddLine("Information: Northrend Zones:  " .. GoGo_Variables.NorthrendZones)
 	GoGo_DebugAddLine("Information: Maelstrom Zones:  " .. GoGo_Variables.MaelstromZones)
 	GoGo_DebugAddLine("Information: Mount List:")
-	GoGo_BuildMountSpellList()
-	GoGo_BuildMountItemList()
-	GoGo_BuildMountList()
 	GoGo_DebugAddLine("Information: End of information.")
 --[[
 	a,b,c,d,e = GetGuildPerkInfo(2)
