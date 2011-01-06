@@ -205,7 +205,6 @@ function GoGo_GetMount()
 ---------
 	local selectedmount = GoGo_ChooseMount()	-- find a mount to use
 	selectedmount = GoGo_RemoveBuffs(selectedmount)	-- remove buffs that could prevent us from mounting
-	
 	return selectedmount	-- returning the mount or macro to the button
 end --function
 
@@ -581,7 +580,23 @@ function GoGo_ChooseMount()
 				GoGo_DebugAddLine("GoGo_ChooseMount: Found mount " .. mounts[a] .. " - included in random pick.")
 			end --for
 		end --if
-		selected = mounts[math.random(table.getn(mounts))]
+		local selected = mounts[math.random(table.getn(mounts))]
+
+		if GoGo_Variables.Debug then
+			if 	GoGo_Variables.MountDB[selected][10001] then
+				GoGo_DebugAddLine("GoGo_ChooseMount: Under water mount speed should be " .. GoGo_Variables.MountDB[selected][10001])
+			end --if
+			if 	GoGo_Variables.MountDB[selected][10002] then
+				GoGo_DebugAddLine("GoGo_ChooseMount: Ground mount speed should be " .. GoGo_Variables.MountDB[selected][10002])
+			end --if
+			if 	GoGo_Variables.MountDB[selected][10003] then
+				GoGo_DebugAddLine("GoGo_ChooseMount: Air mount speed should be " .. GoGo_Variables.MountDB[selected][10003])
+			end --if
+			if 	GoGo_Variables.MountDB[selected][10004] then
+				GoGo_DebugAddLine("GoGo_ChooseMount: Water surface mount speed should be " .. GoGo_Variables.MountDB[selected][10004])
+			end --if
+		end --if
+
 		if type(selected) == "string" then
 			if GoGo_Variables.Debug then
 				GoGo_DebugAddLine("GoGo_ChooseMount: Selected string " .. selected)
@@ -642,27 +657,20 @@ function GoGo_FilterMountsIn(PlayerMounts, FilterID, Value)
 	return GoGo_FilteringMounts
 end --function
 
---[[
 ---------
-function GoGo_GetMountBySpeed(PlayerMounts, Type, Speed)
+function GoGo_UpdateMountSpeedDB(PlayerMounts, FilterID, SpeedID, Value)  -- eg. mount list, select filter, speed id to set, value to set
 ---------
-	local GoGo_FilteringMounts = {}
-	if not PlayerMounts then PlayerMounts = {} end --if
-	if table.getn(PlayerMounts) == 0 then
-		return GoGo_FilteringMounts
+	local GoGo_TempMountDB = {}
+	local GoGo_TempLoopCounter
+	GoGo_TempMountDB = GoGo_FilterMountsIn(PlayerMounts, FilterID)
+	if GoGo_Variables.Debug then
+		GoGo_DebugAddLine("GoGo_UpdateMountSpeedDB: FilterID = " .. FilterID .. ", SpeedID = " .. SpeedID .. ", Value = " .. Value)
+		GoGo_DebugAddLine("GoGo_UpdateMountSpeedDB: Number of mounts to be modified:  " .. (table.getn(GoGo_TempMountDB) or 0))
 	end --if
-	for a = 1, table.getn(PlayerMounts) do
-		if GoGo_Variables.MountDB[a] then
-			if GoGo_Variables.MountDB[a][Type] then
-				if GoGo_Variables.MountDB[a][Type][Speed] then
-					table.insert(GoGo_FilteringMounts, PlayerMounts[a])
-				end --if
-			end --if
-		end --if
+	for GoGo_TempLoopCounter=1, table.getn(GoGo_TempMountDB) do
+		GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempLoopCounter]][SpeedID] = Value
 	end --for
-	return GoGo_FilteringMounts
 end --function
-]]
 
 ---------
 function GoGo_Dismount(button)
@@ -1640,7 +1648,7 @@ function GoGo_GetBestGroundMounts(GoGo_FilteredMounts)
 		135 = +35%  (Shaman wolf form with glyph)
 		130 = +30% (Druid with 2 Feral Swiftness talent points, Shaman wolf form, Hunter aspects)
 		115 = +15% (Druid with 1 Feral Swiftness talent point)
-		110 = +10% (Sea turtle)
+		110 = +0% +10% Mount Up guild perk (only effects sea turtle)
 		100 = +0%  (Riding turtle, etc.)
 	]]
 	local GoGo_TempLoopCount = 1
@@ -1753,44 +1761,54 @@ function GoGo_UpdateMountData()
 		end --if
 	end --if
 
-	-- flight stuff below
+	-- mount speed updates based on riding skill
 	if GoGo_GetRidingSkillLevel() == 325 then  -- increase air mounts to 410
-		local GoGo_TempMountDB = {}
-		local GoGo_TempLoopCounter
-		GoGo_TempMountDB = GoGo_FilterMountsIn(GoGo_Variables.FilteredMounts, 300)
-		if GoGo_Variables.Debug then
-			GoGo_DebugAddLine("GoGo_UpdateMountData: Number of mounts to increase flight speed to 310%:  " .. (table.getn(GoGo_TempMountDB) or 0))
-		end --if
-		for GoGo_TempLoopCounter=1, table.getn(GoGo_TempMountDB) do
-			GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempLoopCounter]][10003] = 410
-		end --for
+		GoGo_UpdateMountSpeedDB(GoGo_Variables.FilteredMounts, 300, 10003, 410)
 	elseif GoGo_GetRidingSkillLevel() == 300 then  -- increase air mounts to 380
-		local GoGo_TempMountDB = {}
-		local GoGo_TempLoopCounter
-		GoGo_TempMountDB = GoGo_FilterMountsIn(GoGo_Variables.FilteredMounts, 301)
-		if GoGo_Variables.Debug then
-			GoGo_DebugAddLine("GoGo_UpdateMountData: Number of mounts to increase flight speed to 280%:  " .. (table.getn(GoGo_TempMountDB) or 0))
-		end --if
-		for GoGo_TempLoopCounter=1, table.getn(GoGo_TempMountDB) do
-			GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempLoopCounter]][10003] = 380
-		end --for
+		GoGo_UpdateMountSpeedDB(GoGo_Variables.FilteredMounts, 301, 10003, 380)
 	end --if
-	
-	-- end of flying changes
-	
-	-- start of ground changes
 
 	if GoGo_GetRidingSkillLevel() >= 150 then  -- increase ground mounts to 200
-		local GoGo_TempMountDB = {}
-		local GoGo_TempLoopCounter
-		GoGo_TempMountDB = GoGo_FilterMountsIn(GoGo_Variables.FilteredMounts, 330)
-		if GoGo_Variables.Debug then
-			GoGo_DebugAddLine("GoGo_UpdateMountData: Number of mounts to increase ground speed to 100%:  " .. (table.getn(GoGo_TempMountDB) or 0))
-		end --if
-		for GoGo_TempLoopCounter=1, table.getn(GoGo_TempMountDB) do
-			GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempLoopCounter]][10002] = 200
-		end --for
+		GoGo_UpdateMountSpeedDB(GoGo_Variables.FilteredMounts, 330, 10002, 200)
 	end --if	
+
+	-- Mount Up guild perk updates
+	if IsInGuild() and GetGuildPerkInfo(2) then
+		if GoGo_Variables.Debug then
+			GoGo_DebugAddLine("GoGo_UpdateMountData: In guild, with Mount Up perk")
+		end --if
+		if not UnitInBattleground("player") then
+			if GoGo_Variables.Debug then
+				GoGo_DebugAddLine("GoGo_UpdateMountData: Increasing mount speed data because of Mount Up")
+			end --if
+			local GoGo_TempGround = {}
+			GoGo_TempMountDB = GoGo_FilterMountsIn(GoGo_Variables.FilteredMounts, 402) or {}  -- ground mounts to modify
+			for GoGo_TempCounter = 1, table.getn(GoGo_TempMountDB) do
+				if GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempLoopCounter]][10002] == 200 then
+					GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempLoopCounter]][10002] = 220
+				elseif GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempLoopCounter]][10002] == 160 then
+					GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempLoopCounter]][10002] = 176
+				elseif GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempLoopCounter]][10002] == 100 then
+					GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempLoopCounter]][10002] = 110
+				end --if
+			end --for
+			GoGo_TempMountDB = GoGo_FilterMountsIn(GoGo_Variables.FilteredMounts, 403) or {}  -- air mounts to modify
+			for GoGo_TempCounter = 1, table.getn(GoGo_TempMountDB) do
+				if GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempLoopCounter]][10002] == 250 then
+					GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempLoopCounter]][10002] = 275
+				elseif GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempLoopCounter]][10002] == 380 then
+					GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempLoopCounter]][10002] = 418
+				elseif GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempLoopCounter]][10002] == 410 then
+					GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempLoopCounter]][10002] = 451
+				end --if
+			end --for
+		else
+			if GoGo_Variables.Debug then
+				GoGo_DebugAddLine("GoGo_UpdateMountData: Not increasing mount speed data because of Mount Up - in battle ground")
+			end --if
+		end --if
+	end --if
+
 end --function
 
 GOGO_ERRORS = {
@@ -2280,6 +2298,9 @@ function GoGo_DebugCollectInformation()
 	local level = UnitLevel("player")
 	GoGo_DebugAddLine("Information: We are level " .. level)
 	GoGo_DebugAddLine("Information: We are a " .. GoGo_Variables.Player.Race .. " " .. GoGo_Variables.Player.Class)
+	if IsInGuild() and GetGuildPerkInfo(2) then
+		GoGo_DebugAddLine("Information: We are in a guild with the Mount Up perk")
+	end --if
 	if InCombatLockdown() then
 		GoGo_DebugAddLine("Information: We are in combat as per InCombatLockdown()")
 	else
@@ -2345,12 +2366,5 @@ function GoGo_DebugCollectInformation()
 	GoGo_DebugAddLine("Information: Northrend Zones:  " .. GoGo_Variables.NorthrendZones)
 	GoGo_DebugAddLine("Information: Maelstrom Zones:  " .. GoGo_Variables.MaelstromZones)
 	GoGo_DebugAddLine("Information: Mount List:")
-	GoGo_DebugAddLine("Information: End of information.")
---[[
-	a,b,c,d,e = GetGuildPerkInfo(2)
-	aa = GetNumGuildPerks()
-	GoGo_DebugAddLine(a .. " " .. b)
-	GoGo_DebugAddLine(aa)
-	]]
-	
+	GoGo_DebugAddLine("Information: End of information.")	
 end --function
