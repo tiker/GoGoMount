@@ -184,7 +184,7 @@ function GoGo_PreClick(button)
 			end --if
 			SendAddonMessage("GoGoMountVER", GetAddOnMetadata("GoGoMount", "Version"), "RAID")
 		end --if
-		if UnitInParty("player") then
+		if UnitInParty("player") and not UnitInBattleground("player") then
 			if GoGo_Variables.Debug then
 				GoGo_DebugAddLine("GoGo_PreClick: Is in party - sending GoGoMount version information to party addon channel.")
 			end --if
@@ -220,6 +220,7 @@ function GoGo_ChooseMount()
 	
 	GoGo_Variables.Player.Zone = GetRealZoneText()
 	GoGo_Variables.Player.SubZone = GetSubZoneText()
+	GoGo_Variables.Player.ZoneID = GetCurrentMapAreaID()
 	GoGo_Variables.EngineeringLevel = GoGo_GetProfSkillLevel(GoGo_Variables.Localize.Skill.Engineering)
 	GoGo_Variables.TailoringLevel = GoGo_GetProfSkillLevel(GoGo_Variables.Localize.Skill.Tailoring)
 	GoGo_Variables.RidingLevel = GoGo_GetRidingSkillLevel() or 0
@@ -275,36 +276,8 @@ function GoGo_ChooseMount()
 		GoGo_DebugAddLine("GoGo_ChooseMount: ** Searched all areas for mounts and found " .. (table.getn(GoGo_Variables.FilteredMounts) or 0) .. " mounts.")
 	end --if
 		
-		if GoGo_Variables.Debug then
-			GoGo_DebugAddLine("GoGo_ChooseMount: Counting 1 - " .. (table.getn(GoGo_Variables.FilteredMounts) or 0) .. " mounts left.")
-		end --if
-
---	if (table.getn(GoGo_Variables.FilteredMounts) == 0) then
---		if GoGo_Variables.Player.Class == "SHAMAN" then
---			if GoGo_Variables.Debug then
---				GoGo_DebugAddLine("GoGo_ChooseMount: No mounts found. Forcing shaman shape form.")
---			end --if
---			return GoGo_InBook(GOGO_SPELLS["SHAMAN"])
---		elseif GoGo_Variables.Player.Class == "DRUID" then
---			if GoGo_Variables.Debug then
---				GoGo_DebugAddLine("GoGo_ChooseMount: No mounts found. Forcing druid shape form.")
---			end --if
---			return GoGo_InBook(GOGO_SPELLS["DRUID"])
---		else
---			if GoGo_Variables.Debug then
---				GoGo_DebugAddLine("GoGo_ChooseMount: No mounts found.  Giving up.")
---			end --if
---			return nil
---		end --if
---	end --if
 	GoGo_ZoneCheck()  -- Checking to see what we can and can not do in zones
-		if GoGo_Variables.Debug then
-			GoGo_DebugAddLine("GoGo_ChooseMount: Counting 2 - " .. (table.getn(GoGo_Variables.FilteredMounts) or 0) .. " mounts left.")
-		end --if
 	GoGo_UpdateMountData()  -- update mount information with changes from talents, glyphs, etc.
-		if GoGo_Variables.Debug then
-			GoGo_DebugAddLine("GoGo_ChooseMount: Counting 3 - " .. (table.getn(GoGo_Variables.FilteredMounts) or 0) .. " mounts left.")
-		end --if
 
 	if GoGo_Variables.EngineeringLevel <= 299 then
 		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 45)
@@ -356,28 +329,11 @@ function GoGo_ChooseMount()
 		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 37)
 	end --if
 
-	-- removing zone specific mounts
---[[	Checking for buff below rather than zone now
-	if GoGo_Variables.Player.Zone ~= GoGo_Variables.Localize.Zone.Vashjir then
-		if GoGo_Variables.Debug then
-			GoGo_DebugAddLine("GoGo_ChooseMount: Removing Vashj'ir mounts since we are not in Vashj'ir.")
-		end --if
-		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 401)
-	end --if
-]]
-		if GoGo_Variables.Debug then
-			GoGo_DebugAddLine("GoGo_ChooseMount: Counting 4 - " .. (table.getn(GoGo_Variables.FilteredMounts) or 0) .. " mounts left.")
-		end --if
-
 	if IsSwimming() then
 		GoGo_CheckSwimSurface()
 	else
 		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 53)
 	end --if
-		if GoGo_Variables.Debug then
-			GoGo_DebugAddLine("GoGo_ChooseMount: Counting 5 - " .. (table.getn(GoGo_Variables.FilteredMounts) or 0) .. " mounts left.")
-		end --if
-
 
 	if (GoGo_Variables.Player.Level < 60) then
 		if GoGo_Variables.Debug then
@@ -385,9 +341,6 @@ function GoGo_ChooseMount()
 		end --if
 		GoGo_Variables.NoFlying = true
 	end --if
-		if GoGo_Variables.Debug then
-			GoGo_DebugAddLine("GoGo_ChooseMount: Counting 6 - " .. (table.getn(GoGo_Variables.FilteredMounts) or 0) .. " mounts left.")
-		end --if
 
 	if GoGo_Variables.ExpansionAccount == 3 then  -- only exists for 4.x with Cataclysm expansion
 		if UnitBuff("player", GetSpellInfo(GoGo_Variables.Localize.SeaLegs)) then
@@ -405,9 +358,6 @@ function GoGo_ChooseMount()
 			GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 401)
 		end --if
 	end --if
-		if GoGo_Variables.Debug then
-			GoGo_DebugAddLine("GoGo_ChooseMount: Counting 7 - " .. (table.getn(GoGo_Variables.FilteredMounts) or 0) .. " mounts left.")
-		end --if
 
 	if (GoGo_Variables.Player.Class == "DRUID" and GoGo_Prefs.DruidFormNotRandomize and not GoGo_IsMoving() and not IsFalling()) then
 		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 9998)
@@ -1338,7 +1288,7 @@ function GoGo_ZoneCheck()
 			GoGo_Variables.ZoneExclude.CanFly = false
 		elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.Ghostlands then
 			GoGo_Variables.ZoneExclude.CanFly = false
-		elseif GetCurrentMapAreaID() == 61 then  -- Thousand Needles
+		elseif GoGo_Variables.Player.ZoneID == 61 then  -- Thousand Needles
 			if GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense) then
 				GoGo_Variables.ZoneExclude.CanFly = true
 			end --if
@@ -1346,7 +1296,7 @@ function GoGo_ZoneCheck()
 		end --if
 	elseif (GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.TheTempleOfAtalHakkar) and GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense) then
 		GoGo_Variables.ZoneExclude.CanFly = true
-	elseif GetCurrentMapAreaID() == 14 and GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense) then		-- Blackrock Mountain
+	elseif GoGo_Variables.Player.ZoneID == 14 and GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense) then		-- Blackrock Mountain
 		GoGo_Variables.ZoneExclude.CanFly = true
 	elseif (GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.DireMaul) and GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense) then
 		if not IsInInstance() then
@@ -1665,8 +1615,8 @@ end --function
 function GoGo_GetBestWaterMounts(GoGo_FilteredMounts)
 ---------
 	local mounts = {}
-	local GoGo_TempSwimSpeed = {371,135,108,101,67}
-	local GoGo_TempSwimSurfaceSpeed = {371,286,67}
+	local GoGo_TempSwimSpeed = {371,270,135,108,101,67}
+	local GoGo_TempSwimSurfaceSpeed = {371,286,270,67}
 	local GoGo_TempLoopCount = 1
 	if not GoGo_Variables.SwimSurface then
 		if GoGo_Variables.Debug then
@@ -1760,7 +1710,16 @@ function GoGo_UpdateMountData()
 			end --for
 		end --if
 	end --if
-
+	
+	if (GoGo_Variables.Player.ZoneID == 610) or (GoGo_Variables.Player.ZoneID == 614) or (GoGo_Variables.Player.ZoneID == 615) then
+		if GoGo_Variables.ExpansionAccount == 3 then  -- only exists for 4.x with Cataclysm expansion
+			if UnitBuff("player", GetSpellInfo(GoGo_Variables.Localize.SeaLegs)) then
+				GoGo_UpdateMountSpeedDB(GoGo_Variables.FilteredMounts, 404, 10001, 270)
+				GoGo_UpdateMountSpeedDB(GoGo_Variables.FilteredMounts, 404, 10004, 270)
+			end --if
+		end --if
+	end --if
+	
 	-- mount speed updates based on riding skill
 	if GoGo_GetRidingSkillLevel() == 325 then  -- increase air mounts to 410
 		GoGo_UpdateMountSpeedDB(GoGo_Variables.FilteredMounts, 300, 10003, 410)
@@ -1781,25 +1740,25 @@ function GoGo_UpdateMountData()
 			if GoGo_Variables.Debug then
 				GoGo_DebugAddLine("GoGo_UpdateMountData: Increasing mount speed data because of Mount Up")
 			end --if
-			local GoGo_TempGround = {}
+			local GoGo_TempMountDB = {}
 			GoGo_TempMountDB = GoGo_FilterMountsIn(GoGo_Variables.FilteredMounts, 402) or {}  -- ground mounts to modify
 			for GoGo_TempCounter = 1, table.getn(GoGo_TempMountDB) do
-				if GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempLoopCounter]][10002] == 200 then
-					GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempLoopCounter]][10002] = 220
-				elseif GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempLoopCounter]][10002] == 160 then
-					GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempLoopCounter]][10002] = 176
-				elseif GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempLoopCounter]][10002] == 100 then
-					GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempLoopCounter]][10002] = 110
+				if GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempCounter]][10002] == 200 then
+					GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempCounter]][10002] = 220
+				elseif GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempCounter]][10002] == 160 then
+					GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempCounter]][10002] = 176
+				elseif GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempCounter]][10002] == 100 then
+					GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempCounter]][10002] = 110
 				end --if
 			end --for
 			GoGo_TempMountDB = GoGo_FilterMountsIn(GoGo_Variables.FilteredMounts, 403) or {}  -- air mounts to modify
 			for GoGo_TempCounter = 1, table.getn(GoGo_TempMountDB) do
-				if GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempLoopCounter]][10002] == 250 then
-					GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempLoopCounter]][10002] = 275
-				elseif GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempLoopCounter]][10002] == 380 then
-					GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempLoopCounter]][10002] = 418
-				elseif GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempLoopCounter]][10002] == 410 then
-					GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempLoopCounter]][10002] = 451
+				if GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempCounter]][10003] == 250 then
+					GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempCounter]][10003] = 275
+				elseif GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempCounter]][10003] == 380 then
+					GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempCounter]][10003] = 418
+				elseif GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempCounter]][10003] == 410 then
+					GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempCounter]][10003] = 451
 				end --if
 			end --for
 		else
