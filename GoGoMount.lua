@@ -1315,9 +1315,9 @@ function GoGo_ZoneCheck()
 		if GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.TheOculus then
 			GoGo_Variables.ZoneExclude.CanFly = false
 			GoGo_Variables.ZoneExclude.TheOculus = false
-		elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.AQ40 then
+		elseif GoGo_Variables.Player.ZoneID == 766 then  -- AQ40
 			if GoGo_Variables.Debug then
-				GoGo_DebugAddLine("GoGo_ZoneCheck: Removing AQ40 mounts since we are not in AQ40.")
+				GoGo_DebugAddLine("GoGo_ZoneCheck: Including AQ40 mounts since we are not in AQ40.")
 			end --if
 			GoGo_Variables.ZoneExclude.AQ40 = false
 		elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.TheVortexPinnacle then
