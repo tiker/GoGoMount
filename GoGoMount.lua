@@ -57,7 +57,6 @@ function GoGo_OnEvent(self, event, ...)
 		GoGo_Panel_Options()
 		GoGo_Panel_UpdateViews()
 --		GoGo_Panel_GlobalFavorites_Populate()
-		GoGo_BuildExcludeList()
 	elseif event == "PLAYER_REGEN_DISABLED" then
 		for i, button in ipairs({GoGoButton, GoGoButton2, GoGoButton3}) do
 			if GoGo_Variables.Player.Class == "SHAMAN" then
@@ -426,7 +425,8 @@ function GoGo_ChooseMount()
 			GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated all mounts except instant casts - " .. (table.getn(GoGo_Variables.FilteredMounts) or 0) .. " mounts left.")
 		end --if
 	end --if
-	
+
+	GoGo_BuildExcludeList()
 	GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 9999) or {}
 	if GoGo_Variables.Debug then
 		GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated excluded mounts - " .. (table.getn(GoGo_Variables.FilteredMounts) or 0) .. " mounts left.")
