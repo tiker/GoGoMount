@@ -220,6 +220,7 @@ function GoGo_ChooseMount()
 	
 	GoGo_Variables.Player.Zone = GetRealZoneText()
 	GoGo_Variables.Player.SubZone = GetSubZoneText()
+	GoGo_Variables.Player.MiniSubZone = GetMinimapZoneText()
 	GoGo_Variables.Player.ZoneID = GetCurrentMapAreaID()
 	GoGo_Variables.EngineeringLevel = GoGo_GetProfSkillLevel(GoGo_Variables.Localize.Skill.Engineering)
 	GoGo_Variables.TailoringLevel = GoGo_GetProfSkillLevel(GoGo_Variables.Localize.Skill.Tailoring)
@@ -1204,6 +1205,11 @@ function GoGo_ZoneCheck()
 		if (GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense)) then
 			if GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.Deepholm then
 				if GoGo_Variables.Player.SubZone == GoGo_Variables.Localize.Zone.CrumblingDepths then
+					if GoGo_Variables.Debug then
+						GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Deepholm / Crumbling Depths.")
+					end --if
+					GoGo_Variables.ZoneExclude.CanFly = false
+				elseif GoGo_Variables.Player.MiniSubZone == GoGo_Variables.Localize.Zone.CrumblingDepths then
 					if GoGo_Variables.Debug then
 						GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Deepholm / Crumbling Depths.")
 					end --if
