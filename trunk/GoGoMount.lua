@@ -1294,6 +1294,12 @@ function GoGo_ZoneCheck()
 			GoGo_Variables.ZoneExclude.CanFly = false
 		elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.Ghostlands then
 			GoGo_Variables.ZoneExclude.CanFly = false
+		elseif GoGo_Variables.Player.ZoneID == 13 then  -- The Steam Pools
+			if GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense) then
+				GoGo_Variables.ZoneExclude.CanFly = true
+			else
+				GoGo_Variables.ZoneExclude.CanFly = false
+			end --if
 		elseif GoGo_Variables.Player.ZoneID == 61 then  -- Thousand Needles
 			if GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense) then
 				GoGo_Variables.ZoneExclude.CanFly = true
