@@ -1144,6 +1144,10 @@ function GoGo_ZoneCheck()
 	GoGo_Variables.ZoneExclude.CanFly = false
 	GoGo_Variables.ZoneExclude.UseMountGroup = nil
 	
+	if GoGo_Variables.Debug then
+		GoGo_DebugAddLine("GoGo_ZoneCheck: Beginning function.")
+	end --if
+
 	if (GoGo_InNorthrend()) then
 		if not (GoGo_InBook(GoGo_Variables.Localize.ColdWeatherFlying)) then
 			if GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.SholazarBasin then
@@ -1221,6 +1225,11 @@ function GoGo_ZoneCheck()
 				GoGo_Variables.ZoneExclude.CanFly = true
 			end --if
 		end --if
+	elseif GoGo_Variables.Player.ZoneID == 766 then  -- AQ40
+		if GoGo_Variables.Debug then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Including AQ40 mounts since we are not in AQ40.")
+		end --if
+		GoGo_Variables.ZoneExclude.AQ40 = false
 	elseif (GoGo_InAzeroth()) then
 		if (GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense)) then
 			if GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.TolBaradPeninsula then
@@ -1321,11 +1330,6 @@ function GoGo_ZoneCheck()
 		if GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.TheOculus then
 			GoGo_Variables.ZoneExclude.CanFly = false
 			GoGo_Variables.ZoneExclude.TheOculus = false
-		elseif GoGo_Variables.Player.ZoneID == 766 then  -- AQ40
-			if GoGo_Variables.Debug then
-				GoGo_DebugAddLine("GoGo_ZoneCheck: Including AQ40 mounts since we are not in AQ40.")
-			end --if
-			GoGo_Variables.ZoneExclude.AQ40 = false
 		elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.TheVortexPinnacle then
 			if GoGo_Variables.Debug then
 				GoGo_DebugAddLine("GoGo_ZoneCheck: Can't fly.  Specifying mount group 'DefaultInstance'.")
