@@ -1232,12 +1232,12 @@ function GoGo_ZoneCheck()
 		GoGo_Variables.ZoneExclude.AQ40 = false
 	elseif (GoGo_InAzeroth()) then
 		if (GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense)) then
-			if GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.TolBaradPeninsula then
+			if GoGo_Variables.Player.ZoneID == 709 then  -- Tol Barad Peninsula
 				if GoGo_Variables.Debug then
 					GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Tol Barad Peninsula.")
 				end --if
 				GoGo_Variables.ZoneExclude.CanFly = false
-			elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.TolBarad then
+			elseif GoGo_Variables.Player.ZoneID == 708 then  -- Tol Barad
 				if GoGo_Variables.Debug then
 					GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Tol Barad.")
 				end --if
