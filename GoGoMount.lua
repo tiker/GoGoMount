@@ -1330,12 +1330,12 @@ function GoGo_ZoneCheck()
 		if GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.TheOculus then
 			GoGo_Variables.ZoneExclude.CanFly = false
 			GoGo_Variables.ZoneExclude.TheOculus = false
-		elseif GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.TheVortexPinnacle then
+		elseif GoGo_Variables.Player.ZoneID == 769 then  -- The Vortex Pinnacle
 			if GoGo_Variables.Debug then
-				GoGo_DebugAddLine("GoGo_ZoneCheck: Can't fly.  Specifying mount group 'DefaultInstance'.")
+				GoGo_DebugAddLine("GoGo_ZoneCheck: Can't fly.  In The Vortex Pinnacle.  Specifying mount group 500.")
 			end --if
 			GoGo_Variables.ZoneExclude.CanFly = false
-			GoGo_Variables.ZoneExclude.UseMountGroup = "DefaultInstance"
+			GoGo_Variables.ZoneExclude.UseMountGroup = 500
 		end --if
 	elseif GoGo_IsInBattleGround() then
 		GoGo_Variables.ZoneExclude.CanFly = false
