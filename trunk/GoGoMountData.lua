@@ -152,274 +152,274 @@ function GoGo_GetMountDB()
 		[55164] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Swift Spectral Gryphon
 		[61229] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Armored Snowy Gryphon
 
-		[578] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Black Wolf
-		[579] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Red Wolf
-		[580] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Timber Wolf
-		[581] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Winter Wolf
-		[6653] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Dire Wolf
-		[6654] = {[14] = true, [330]=true, [38] = true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Brown Wolf
-		[16080] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Red Wolf
-		[16081] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Winter Wolf
-		[22724] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Black War Wolf
-		[23250] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Brown Wolf
-		[23251] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Timber Wolf
-		[23252] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Gray Wolf
-		[23509] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Frostwolf Howler
-		[63640] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Origimmar Wolf (Swift Orgrimmar Wolf)
-		[64658] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Black Wolf
-		[65646] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Burgundy Wolf
-		[68056] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Horde Wolf
-		[92232] = {[11] = true, [16] = true, [35] = true, [71] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Spectral Wolf
+		[578] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Black Wolf
+		[579] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Red Wolf
+		[580] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Timber Wolf
+		[581] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Winter Wolf
+		[6653] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Dire Wolf
+		[6654] = {[14] = true, [330]=true, [38] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Brown Wolf
+		[16080] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Red Wolf
+		[16081] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Winter Wolf
+		[22724] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Black War Wolf
+		[23250] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Brown Wolf
+		[23251] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Timber Wolf
+		[23252] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Gray Wolf
+		[23509] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Frostwolf Howler
+		[63640] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Origimmar Wolf (Swift Orgrimmar Wolf)
+		[64658] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Black Wolf
+		[65646] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Burgundy Wolf
+		[68056] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Horde Wolf
+		[92232] = {[11] = true, [16] = true, [35] = true, [71] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Spectral Wolf
 
-		[18363] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Riding Kodo
-		[18989] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Gray Kodo
-		[18990] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Brown Kodo
-		[18991] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Green Kodo
-		[18992] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Teal Kodo
-		[22718] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Black War Kodo
-		[23247] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Great White Kodo
-		[23248] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Great Gray Kodo
-		[23249] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Great Brown Kodo
-		[49378] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Brewfest Riding Kodo
-		[49379] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Great Brewfest Kodo
-		[50869] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Brewfest Kodo
-		[63641] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Thunder Bluff Kodo (Great Mulgore Kodo)
-		[64657] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- White Kodo
-		[65641] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Great Golden Kodo
-		[69820] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Sunwalker Kodo
-		[69826] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Great Sunwalker Kodo
+		[18363] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Riding Kodo
+		[18989] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Gray Kodo
+		[18990] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Brown Kodo
+		[18991] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Green Kodo
+		[18992] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Teal Kodo
+		[22718] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Black War Kodo
+		[23247] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Great White Kodo
+		[23248] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Great Gray Kodo
+		[23249] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Great Brown Kodo
+		[49378] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Brewfest Riding Kodo
+		[49379] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Great Brewfest Kodo
+		[50869] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Brewfest Kodo
+		[63641] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Thunder Bluff Kodo (Great Mulgore Kodo)
+		[64657] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- White Kodo
+		[65641] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Great Golden Kodo
+		[69820] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Sunwalker Kodo
+		[69826] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Great Sunwalker Kodo
 
-		[34795] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Red Hawkstrider
-		[35018] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Purple Hawkstrider
-		[35020] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Blue Hawkstrider
-		[35022] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Black Hawkstrider
-		[33660] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Pink Hawkstrider
-		[35025] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Green Hawkstrider
-		[35027] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  --Swift Purple Hawkstrider
-		[35028] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Warstrider
-		[46628] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift White Hawkstrider
-		[41252] = {[11] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Raven Lord
-		[63642] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Silvermoon Hawkstrider (Swift Silvermoon Hawkstrider)
-		[65639] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Red Hawkstrider
-		[66091] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Sunreaver Hawkstrider
+		[34795] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Red Hawkstrider
+		[35018] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Purple Hawkstrider
+		[35020] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Blue Hawkstrider
+		[35022] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Black Hawkstrider
+		[33660] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Pink Hawkstrider
+		[35025] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Green Hawkstrider
+		[35027] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  --Swift Purple Hawkstrider
+		[35028] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Warstrider
+		[46628] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift White Hawkstrider
+		[41252] = {[11] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Raven Lord
+		[63642] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Silvermoon Hawkstrider (Swift Silvermoon Hawkstrider)
+		[65639] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Red Hawkstrider
+		[66091] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Sunreaver Hawkstrider
 
-		[65917] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Magic Rooster
-		[66122] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Magic Rooster
-		[66123] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Magic Rooster
-		[66124] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Magic Rooster
+		[65917] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Magic Rooster
+		[66122] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Magic Rooster
+		[66123] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Magic Rooster
+		[66124] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Magic Rooster
 
-		[34790] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Dark War Talbuk
-		[34896] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Cobalt War Talbuk
-		[34897] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- White War Talbuk
-		[34898] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Silver War Talbuk
-		[34899] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Tan War Talbuk
-		[39315] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Cobalt Riding Talbuk
-		[39316] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Dark Riding Talbuk
-		[39317] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Silver Riding Talbuk
-		[39318] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Tan Riding Talbuk
-		[39319] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- White Riding Talbuk
+		[34790] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Dark War Talbuk
+		[34896] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Cobalt War Talbuk
+		[34897] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- White War Talbuk
+		[34898] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Silver War Talbuk
+		[34899] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Tan War Talbuk
+		[39315] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Cobalt Riding Talbuk
+		[39316] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Dark Riding Talbuk
+		[39317] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Silver Riding Talbuk
+		[39318] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Tan Riding Talbuk
+		[39319] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- White Riding Talbuk
 
-		[6777] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Gray Ram
-		[6898] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- White Ram
-		[6899] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Brown Ram
-		[17460] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Frost Ram
-		[17461] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Black Ram
-		[22720] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Black War Ram
-		[23238] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Brown Ram
-		[23239] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Gray Ram
-		[23240] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift White Ram
-		[23510] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Stormpike Battle Charger
-		[43899] = {[14] = true, [38] = true, [330]=true, [402]=true, [400]=true, [10001]=67, [10002]=160, [10004]=67},  -- Brewfest Ram
-		[43900] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Brewfest Ram
-		[63636] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Ironforge Ram (Swift Ironforge Ram)
-		[65643] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Violet Ram
+		[6777] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Gray Ram
+		[6898] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- White Ram
+		[6899] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Brown Ram
+		[17460] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Frost Ram
+		[17461] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Black Ram
+		[22720] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Black War Ram
+		[23238] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Brown Ram
+		[23239] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Gray Ram
+		[23240] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift White Ram
+		[23510] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Stormpike Battle Charger
+		[43899] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Brewfest Ram
+		[43900] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Brewfest Ram
+		[63636] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Ironforge Ram (Swift Ironforge Ram)
+		[65643] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Violet Ram
 
-		[10873] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Red Mechanostrider
-		[10969] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Blue Mechanostrider
-		[15779] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- White Mechanostrider Mod B
-		[15780] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Green Mechanostrider
-		[15781] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Steel Mechanostrider
-		[17453] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Green Mechanostrider
-		[17454] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Unpainted Mechanostrider
-		[17455] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Purple Mechanostrider
-		[17456] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Red and Blue Mechanostrider
-		[17458] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Fluorescent Green Mechanostrider
-		[17459] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Icy Blue Mechanostrider Mod A
-		[22719] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Black Battlestrider
-		[23222] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Yellow Mechanostrider
-		[23223] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift White Mechanostrider
-		[23225] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Green Mechanostrider
-		[33630] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Blue Mechanostrider
-		[63638] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Gnomeregan Mechanostrider (Turbostrider)
-		[65642] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Turbostrider
+		[10873] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Red Mechanostrider
+		[10969] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Blue Mechanostrider
+		[15779] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- White Mechanostrider Mod B
+		[15780] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Green Mechanostrider
+		[15781] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Steel Mechanostrider
+		[17453] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Green Mechanostrider
+		[17454] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Unpainted Mechanostrider
+		[17455] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Purple Mechanostrider
+		[17456] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Red and Blue Mechanostrider
+		[17458] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Fluorescent Green Mechanostrider
+		[17459] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Icy Blue Mechanostrider Mod A
+		[22719] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Black Battlestrider
+		[23222] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Yellow Mechanostrider
+		[23223] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift White Mechanostrider
+		[23225] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Green Mechanostrider
+		[33630] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Blue Mechanostrider
+		[63638] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Gnomeregan Mechanostrider (Turbostrider)
+		[65642] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Turbostrider
 
-		[8395] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Emerald Raptor
-		[10795] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Ivory Raptor
-		[10796] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Turquoise Raptor
-		[10799] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Violet Raptor
-		[16084] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Mottled Red Raptor
-		[17450] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Ivory Raptor
-		[22721] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Black War Raptor
-		[23241] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Blue Raptor
-		[23242] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Olive Raptor
-		[23243] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Orange Raptor
-		[24242] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Razzashi Raptor
-		[63635] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Darkspear Raptor (Swift Darkspear Raptor)
-		[64659] = {[16] = true, [38] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Venomhide Ravasaur
-		[65644] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Purple Raptor
-		[84751] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Fossilized Raptor
+		[8395] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Emerald Raptor
+		[10795] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Ivory Raptor
+		[10796] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Turquoise Raptor
+		[10799] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Violet Raptor
+		[16084] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Mottled Red Raptor
+		[17450] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Ivory Raptor
+		[22721] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Black War Raptor
+		[23241] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Blue Raptor
+		[23242] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Olive Raptor
+		[23243] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Orange Raptor
+		[24242] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Razzashi Raptor
+		[63635] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Darkspear Raptor (Swift Darkspear Raptor)
+		[64659] = {[16] = true, [38] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Venomhide Ravasaur
+		[65644] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Purple Raptor
+		[84751] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Fossilized Raptor
 
-		[43688] = {[11] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Amani War Bear
-		[51412] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Big Battle Bear
-		[54753] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- White Polar Bear Mount
-		[58983] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Big Blizzard Bear  -------------------------------------------------------------
-		[59572] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Black Polar Bear
-		[59573] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Brown Polar Bear
-		[60114] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Armored Brown Bear
-		[60116] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Armored Brown Bear
-		[60118] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Black War Bear
-		[60119] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Black War Bear
-		--[64987] = {[14] = true, [29] = true, [38] = true, [999] = true, [400]=true, [402]=true, [10001]=67, [10004]=67},  --Big Blizzard Bear [PH] - ticket 211
+		[43688] = {[11] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Amani War Bear
+		[51412] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Big Battle Bear
+		[54753] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- White Polar Bear Mount
+		[58983] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Big Blizzard Bear  -------------------------------------------------------------
+		[59572] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Black Polar Bear
+		[59573] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Brown Polar Bear
+		[60114] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Armored Brown Bear
+		[60116] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Armored Brown Bear
+		[60118] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Black War Bear
+		[60119] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Black War Bear
+		--[64987] = {[14] = true, [29] = true, [38] = true, [999] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10004]=67},  --Big Blizzard Bear [PH] - ticket 211
 		
-		[8394] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Striped Frostsaber
-		[10789] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Spotted Frostsaber
-		[10793] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Striped Nightsaber
-		[16055] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Black Nightsaber
-		[16056] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Ancient Frostsaber
-		[16058] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Primal Leopard
-		[16059] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Tawny Sabercat
-		[16060] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Golden Sabercat
-		[17229] = {[16] = true, [38] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Winterspring Frostsaber
-		[22723] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Black War Tiger
-		[23219] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Mistsaber
-		[23220] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Dawnsaber
-		[23221] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Frostsaber
-		[23338] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Stormsaber
-		[24252] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Zulian Tiger
-		[42776] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Spectral Tiger
-		[42777] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Spectral Tiger
-		[63637] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Darnassian Nightsaber (Swift Darnassian Mistsaber)
-		[65638] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Moonsaber
-		[66847] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Striped Dawnsaber
+		[8394] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Striped Frostsaber
+		[10789] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Spotted Frostsaber
+		[10793] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Striped Nightsaber
+		[16055] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Black Nightsaber
+		[16056] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Ancient Frostsaber
+		[16058] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Primal Leopard
+		[16059] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Tawny Sabercat
+		[16060] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Golden Sabercat
+		[17229] = {[16] = true, [38] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Winterspring Frostsaber
+		[22723] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Black War Tiger
+		[23219] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Mistsaber
+		[23220] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Dawnsaber
+		[23221] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Frostsaber
+		[23338] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Stormsaber
+		[24252] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Zulian Tiger
+		[42776] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Spectral Tiger
+		[42777] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Spectral Tiger
+		[63637] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Darnassian Nightsaber (Swift Darnassian Mistsaber)
+		[65638] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Moonsaber
+		[66847] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Striped Dawnsaber
 		
-		[458] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Brown Horse
-		[468] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- White Stallion
-		[470] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Black Stallion
-		[471] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Palamino
-		[472] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Pinto
-		[5784] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Felsteed
-		[6648] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Chestnut Mare
-		[13819] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Warhorse
-		[16082] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Palomino
-		[16083] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- White Stallion
-		[17462] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Red Skeletal Horse
-		[17463] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Blue Skeletal Horse
-		[17464] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Brown Skeletal Horse
-		[17465] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Green Skeletal Warhorse
-		[17481] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Rivendare's Deathcharger
-		[22717] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Black War Steed
-		[22722] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Red Skeletal Warhorse
-		[23161] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Dreadsteed
-		[23214] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Charger
-		[23227] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Palomino
-		[23228] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift White Steed
-		[23229] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Brown Steed
-		[23246] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Purple Skeletal Warhorse
-		[34767] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Summon Charger
-		[34769] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Summon Warhorse
-		[36702] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Fiery Warhorse
-		[48025] = {[16] = true, [38] = true, [23] = true, [29] = true, [3] = true, [9] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Headless Horseman's Mount
-		[48778] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Acherus Deathcharger
-		[58819] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Brown Steed
-		[63232] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Stormwind Steed (Swift Stormwind Steed)
-		[63643] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Forsaken Warhorse
-		[64656] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Blue Skeletal Warhorse
-		[64977] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Black Skeletal Horse
-		[65640] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Gray Steed
-		[65645] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- White Skeletal Warhorse
-		[66090] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Quel'dorei Steed
-		[66846] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Ochre Skeletal Warhorse
-		[66906] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Argent Charger
-		[66907] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Argent Warhorse
-		[67466] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Argent Warhorse
-		[68057] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Alliance Steed
-		[68187] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Crusader's White Warhorse
-		[68188] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Crusader's Black Warhorse
-		[72286] = {[9] = true, [3] = true, [14] = true, [29] = true, [23] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Invincible
-		[73313] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Crimson Deathcharger
-		[75614] = {[9] = true, [3] = true, [14] = true, [29] = true, [23] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Celestial Steed
-		[92231] = {[11] = true, [16] = true, [35] = true, [70] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Spectral Steed
+		[458] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Brown Horse
+		[468] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- White Stallion
+		[470] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Black Stallion
+		[471] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Palamino
+		[472] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Pinto
+		[5784] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Felsteed
+		[6648] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Chestnut Mare
+		[13819] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Warhorse
+		[16082] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Palomino
+		[16083] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- White Stallion
+		[17462] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Red Skeletal Horse
+		[17463] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Blue Skeletal Horse
+		[17464] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Brown Skeletal Horse
+		[17465] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Green Skeletal Warhorse
+		[17481] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Rivendare's Deathcharger
+		[22717] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Black War Steed
+		[22722] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Red Skeletal Warhorse
+		[23161] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Dreadsteed
+		[23214] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Charger
+		[23227] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Palomino
+		[23228] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift White Steed
+		[23229] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Brown Steed
+		[23246] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Purple Skeletal Warhorse
+		[34767] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Summon Charger
+		[34769] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Summon Warhorse
+		[36702] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Fiery Warhorse
+		[48025] = {[16] = true, [38] = true, [23] = true, [29] = true, [3] = true, [9] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Headless Horseman's Mount
+		[48778] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Acherus Deathcharger
+		[58819] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Brown Steed
+		[63232] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Stormwind Steed (Swift Stormwind Steed)
+		[63643] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Forsaken Warhorse
+		[64656] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Blue Skeletal Warhorse
+		[64977] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Black Skeletal Horse
+		[65640] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Gray Steed
+		[65645] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- White Skeletal Warhorse
+		[66090] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Quel'dorei Steed
+		[66846] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Ochre Skeletal Warhorse
+		[66906] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Argent Charger
+		[66907] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Argent Warhorse
+		[67466] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Argent Warhorse
+		[68057] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Alliance Steed
+		[68187] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Crusader's White Warhorse
+		[68188] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Crusader's Black Warhorse
+		[72286] = {[9] = true, [3] = true, [14] = true, [29] = true, [23] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Invincible
+		[73313] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Crimson Deathcharger
+		[75614] = {[9] = true, [3] = true, [14] = true, [29] = true, [23] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Celestial Steed
+		[92231] = {[11] = true, [16] = true, [35] = true, [70] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Spectral Steed
 
-		[34406] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Brown Elekk
-		[34407] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Great Elite Elekk
-		[35710] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Gray Elekk
-		[35711] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Purple Elekk
-		[35712] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Great Green Elekk
-		[35713] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Great Blue Elekk
-		[35714] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Great Purple Elekk
-		[47037] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift War Elekk
-		[48027] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Black War Elekk
-		[63639] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Exodar Elekk  (Great Azuremyst Elekk)
-		[65637] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Grea Red Elekk (Blizzard typo on PTR?)
-		[73629] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Exarch's Elekk
-		[73630] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Great Exarch's Elekk
+		[34406] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Brown Elekk
+		[34407] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Great Elite Elekk
+		[35710] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Gray Elekk
+		[35711] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Purple Elekk
+		[35712] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Great Green Elekk
+		[35713] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Great Blue Elekk
+		[35714] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Great Purple Elekk
+		[47037] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift War Elekk
+		[48027] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Black War Elekk
+		[63639] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Exodar Elekk  (Great Azuremyst Elekk)
+		[65637] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Grea Red Elekk (Blizzard typo on PTR?)
+		[73629] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Exarch's Elekk
+		[73630] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Great Exarch's Elekk
 
-		[88748] = {[16] = true, [37] = true, [72] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Brown Riding Camel
-		[88749] = {[16] = true, [37] = true, [72] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Tan Riding Camel
-		[88750] = {[16] = true, [37] = true, [72] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Grey Riding Camel
+		[88748] = {[16] = true, [37] = true, [72] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Brown Riding Camel
+		[88749] = {[16] = true, [37] = true, [72] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Tan Riding Camel
+		[88750] = {[16] = true, [37] = true, [72] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Grey Riding Camel
 
-		[50281] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Black Warp Stalker
+		[50281] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Black Warp Stalker
 
-		[59785] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Black War Mammoth
-		[59788] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Black War Mammoth
-		[59791] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Wooly Mammoth
-		[59793] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Wooly Mammoth
-		[59797] = {[16] = true, [37] = true, [73] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Ice Mammoth
-		[59799] = {[16] = true, [37] = true, [73] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Ice Mammoth
-		[59802] = {[16] = true, [37] = true, [2] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Grand Ice Mammoth
-		[59804] = {[16] = true, [37] = true, [2] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Grand Ice Mammoth
-		[59810] = {[16] = true, [37] = true, [2] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Grand Black War Mammoth
-		[59811] = {[16] = true, [37] = true, [2] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Grand Black War Mammoth
-		[60136] = {[16] = true, [37] = true, [2] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Grand Caravan Mammoth
-		[60140] = {[16] = true, [37] = true, [2] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Grand Caravan Mammoth
-		[61425] = {[16] = true, [37] = true, [2] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Traveler's Tundra Mammoth
-		[61447] = {[16] = true, [37] = true, [2] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Traveler's Tundra Mammoth
-		[61465] = {[16] = true, [37] = true, [2] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Grand Black War Mammoth
-		[61466] = {[16] = true, [37] = true, [2] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Grand Black War Mammoth
-		[61467] = {[16] = true, [37] = true, [2] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Grand Black War Mammoth
-		[61469] = {[16] = true, [37] = true, [2] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Grand Ice Mammoth
-		[61470] = {[16] = true, [37] = true, [2] = true, [73] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Grand Ice Mammoth
+		[59785] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Black War Mammoth
+		[59788] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Black War Mammoth
+		[59791] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Wooly Mammoth
+		[59793] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Wooly Mammoth
+		[59797] = {[16] = true, [37] = true, [73] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Ice Mammoth
+		[59799] = {[16] = true, [37] = true, [73] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Ice Mammoth
+		[59802] = {[16] = true, [37] = true, [2] = true, [400]=true, [402]=true, [405]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Grand Ice Mammoth
+		[59804] = {[16] = true, [37] = true, [2] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Grand Ice Mammoth
+		[59810] = {[16] = true, [37] = true, [2] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Grand Black War Mammoth
+		[59811] = {[16] = true, [37] = true, [2] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Grand Black War Mammoth
+		[60136] = {[16] = true, [37] = true, [2] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Grand Caravan Mammoth
+		[60140] = {[16] = true, [37] = true, [2] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Grand Caravan Mammoth
+		[61425] = {[16] = true, [37] = true, [2] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Traveler's Tundra Mammoth
+		[61447] = {[16] = true, [37] = true, [2] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Traveler's Tundra Mammoth
+		[61465] = {[16] = true, [37] = true, [2] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Grand Black War Mammoth
+		[61466] = {[16] = true, [37] = true, [2] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Grand Black War Mammoth
+		[61467] = {[16] = true, [37] = true, [2] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Grand Black War Mammoth
+		[61469] = {[16] = true, [37] = true, [2] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Grand Ice Mammoth
+		[61470] = {[16] = true, [37] = true, [2] = true, [73] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Grand Ice Mammoth
 		
-		[48954] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Zhevra
-		[49322] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Zhevra
+		[48954] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Zhevra
+		[49322] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Zhevra
 
-		[44151] = {[9] = true, [11] = true, [23] = true, [39] = true, [46] = true, [300]=true, [400]=true, [402]=true, [403]=true, [10001]=67, [10002]=200, [10003]=380, [10004]=67},  -- Turbo-Charged Flying Machine
-		[44153] = {[9] = true, [12] = true, [23] = true, [36] = true, [45] = true, [300]=true, [301]=true, [400]=true, [402]=true, [403]=true, [10001]=67, [10002]=200, [10003]=250, [10004]=67},  -- Flying Machine
+		[44151] = {[9] = true, [11] = true, [23] = true, [39] = true, [46] = true, [300]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=380, [10004]=67},  -- Turbo-Charged Flying Machine
+		[44153] = {[9] = true, [12] = true, [23] = true, [36] = true, [45] = true, [300]=true, [301]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=250, [10004]=67},  -- Flying Machine
 		[55121] = {[4] = true, [55] = true, [200] = true, ["RequireWater"] = true, [10004]=286},  -- River Boat
-		[55531] = {[17] = true, [37] = true, [2] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Mechano-hog
-		[60424] = {[17] = true, [37] = true, [2] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Mekgineer's Chopper
+		[55531] = {[17] = true, [37] = true, [2] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Mechano-hog
+		[60424] = {[17] = true, [37] = true, [2] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Mekgineer's Chopper
 		[63796] = {[9] = true, [11] = true, [23] = true, [35] = true, [300]=true, [10003]=380},  -- Mimiron's Head
-		[87090] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67}, -- Goblin Trike
-		[87091] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67}, -- Goblin Turbo-Trike
+		[87090] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67}, -- Goblin Trike
+		[87091] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67}, -- Goblin Turbo-Trike
 
-		[61309] = {[3] = true, [9] = true, [11] = true, [23] = true, [49] = true, [35] = true, [300]=true, [400]=true, [402]=true, [403]=true, [10001]=67, [10002]=200, [10003]=380, [10004]=67},  -- Magnificent Flying Carpet
-		[61442] = {[3] = true, [9] = true, [11] = true, [47] = true, [23] = true, [35] = true, [300]=true, [400]=true, [402]=true, [403]=true, [10001]=67, [10002]=200, [10003]=380, [10004]=67},  -- Swift Mooncloth Carpet
-		[61444] = {[3] = true, [9] = true, [11] = true, [47] = true, [23] = true, [35] = true, [300]=true, [400]=true, [402]=true, [403]=true, [10001]=67, [10002]=200, [10003]=380, [10004]=67},  -- Swift Shadoweave Carpet
-		[61446] = {[3] = true, [9] = true, [11] = true, [47] = true, [23] = true, [35] = true, [300]=true, [400]=true, [402]=true, [403]=true, [10001]=67, [10002]=200, [10003]=380, [10004]=67},  -- Swift Spellfire Carpet
-		[61451] = {[3] = true, [9] = true, [12] = true, [48] = true, [23] = true, [36] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Flying Carpet
-		[75596] = {[3] = true, [9] = true, [11] = true, [23] = true, [49] = true, [35] = true, [300]=true, [400]=true, [402]=true, [403]=true, [10001]=67, [10002]=200, [10003]=380, [10004]=67},  -- Frosty Flying Carpet
-		--	[????] = {[11] = true, [47] = true, [9] = true, [23] = true, [35] = true, [400]=true, [402]=true, [10001]=67, [10004]=67},  -- Swift Flying Carpet   --- item 39303
+		[61309] = {[3] = true, [9] = true, [11] = true, [23] = true, [49] = true, [35] = true, [300]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=380, [10004]=67},  -- Magnificent Flying Carpet
+		[61442] = {[3] = true, [9] = true, [11] = true, [47] = true, [23] = true, [35] = true, [300]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=380, [10004]=67},  -- Swift Mooncloth Carpet
+		[61444] = {[3] = true, [9] = true, [11] = true, [47] = true, [23] = true, [35] = true, [300]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=380, [10004]=67},  -- Swift Shadoweave Carpet
+		[61446] = {[3] = true, [9] = true, [11] = true, [47] = true, [23] = true, [35] = true, [300]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=380, [10004]=67},  -- Swift Spellfire Carpet
+		[61451] = {[3] = true, [9] = true, [12] = true, [48] = true, [23] = true, [36] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Flying Carpet
+		[75596] = {[3] = true, [9] = true, [11] = true, [23] = true, [49] = true, [35] = true, [300]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=380, [10004]=67},  -- Frosty Flying Carpet
+		--	[????] = {[11] = true, [47] = true, [9] = true, [23] = true, [35] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10004]=67},  -- Swift Flying Carpet   --- item 39303
 
 		[61996] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Blue Dragonhawk
 		[61997] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Red Dragonhawk
 		[62048] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Black Dragonhawk Mount
 		[66088] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Sunreaver Dragonhawk
 
-		[74918] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Wooly White Rhino
+		[74918] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Wooly White Rhino
 		[75207] = {[17] = true, [36] = true, [53] = true, [401] = true, ["TenebrousCavern"] = true, [10001]=371, [10004]=371},  -- Abyssal Seahorse (was Abyssal Manta)
-		[90621] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Golden King
-		[93644] = {[11] = true, [16] = true, [35] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Kron'Kar Annihilator
-		[87840] = {[14] = true, [29] = true, [38] = true, [330]=true, [400]=true, [402]=true, [10001]=67, [10002]=160, [10004]=67},  -- Running Wild (Worgen Racial)
+		[90621] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Golden King
+		[93644] = {[11] = true, [16] = true, [35] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Kron'Kar Annihilator
+		[87840] = {[14] = true, [29] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Running Wild (Worgen Racial)
 
 	--	[62087] = {[5] = true, [15] = true, [39] = true, [53] = true, [999] = true},  -- Aquatic Riding Ray   -- removed from the 3.1 PTR datafiles
 		

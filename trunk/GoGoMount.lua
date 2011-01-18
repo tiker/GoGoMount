@@ -1727,6 +1727,20 @@ function GoGo_UpdateMountData()
 		end --if
 	end --if
 	
+	if UnitBuff("player", GetSpellInfo(80610)) and IsSwimming() then
+		if GoGo_Variables.Debug then
+			GoGo_DebugAddLine("GoGo_UpdateMountData: Swimming with Water Gliding buff.  Updating water speed of ground mounts - increasing by 50%.")
+		end --if
+		GoGo_TempMountDB = GoGo_FilterMountsIn(GoGo_Variables.FilteredMounts, 405)
+		if GoGo_Variables.Debug then
+			GoGo_DebugAddLine("GoGo_UpdateMountData: Number of mounts to increase water speed on:  " .. (table.getn(GoGo_TempMountDB) or 0))
+		end --if
+		for GoGo_TempLoopCounter=1, table.getn(GoGo_TempMountDB) do
+			GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempLoopCounter]][10001] = 101
+			GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempLoopCounter]][10004] = 101
+		end --for
+	end --if
+
 	if (GoGo_Variables.Player.ZoneID == 610) or (GoGo_Variables.Player.ZoneID == 614) or (GoGo_Variables.Player.ZoneID == 615) then
 		if GoGo_Variables.ExpansionAccount == 3 then  -- only exists for 4.x with Cataclysm expansion
 			if UnitBuff("player", GetSpellInfo(GoGo_Variables.Localize.SeaLegs)) then
