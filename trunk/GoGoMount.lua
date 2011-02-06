@@ -1958,6 +1958,11 @@ function GoGo_ZoneCheck()
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 		GoGo_Variables.ZoneExclude.AQ40 = false
+	elseif GoGo_Variables.Player.ZoneID == 768 then
+		if GoGo_Variables.Debug then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Stonecore (instance)")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
 	elseif GoGo_Variables.Player.ZoneID == 769 then
 		if GoGo_Variables.Debug then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Vortex Pinnacle")
