@@ -425,7 +425,7 @@ function GoGo_GetMountDB()
 		
 	-- Spells, shape forms, etc
 		[40120] = {[7] = true, [9] = true, [11] = true, [23] = true, [24] = true, [403] = true, [9998] = true, ["FlightOnly"] = true, [10003]=380},  -- Druid Fast Flight Form
-		[33943] = {[7] = true, [9] = true, [11] = true, [9998] = true, ["FlightOnly"] = true, [10003]=250},  -- Druid Flight Form
+		[33943] = {[7] = true, [9] = true, [11] = true, [403] = true, [9998] = true, ["FlightOnly"] = true, [10003]=250},  -- Druid Flight Form
 		[783] = {[7] = true, [500] = true, [10002]=140}, -- Druid Travel Form
 		[2645] = {[8] = true, [500] = true, [1000] = true, ["DefaultInstance"] = true, ["TenebrousCavern"] = true, [10002]=130}, -- Shaman Ghost Wolf Form
 		[768] = {[7] = true, [8] = true, [1000] = true, [500] = true, ["DefaultInstance"] = true, [10002]=100},  -- Druid Cat Form
