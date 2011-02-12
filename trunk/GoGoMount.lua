@@ -1708,19 +1708,21 @@ function GoGo_ZoneCheck()
 		if GoGo_Variables.Debug then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Wintergrasp")
 		end --if
-		if GetWintergraspWaitTime() then
+
+		local _, _, GOGO_WGACTIVE = GetWorldPVPAreaInfo(1)
+		if GOGO_WGACTIVE then
+			if GoGo_Variables.Debug then
+				GoGo_DebugAddLine("GoGo_ZoneCheck: Player in Wintergrasp and battle ground is active.")
+			end --if
+			-- we should be in battle.. can't mount
+			GoGo_Variables.ZoneExclude.CanFly = false
+		else
 			if GoGo_InBook(GoGo_Variables.Localize.ColdWeatherFlying) then
 				if GoGo_Variables.Debug then
 					GoGo_DebugAddLine("GoGo_ZoneCheck: Player in Wintergrasp and battle ground is not active.")
 				end --if
 				GoGo_Variables.ZoneExclude.CanFly = true
 			end --if
-		else
-			if GoGo_Variables.Debug then
-				GoGo_DebugAddLine("GoGo_ZoneCheck: Failed - Player in Wintergrasp and battle ground is active.")
-			end --if
-			-- we should be in battle.. can't mount
-			GoGo_Variables.ZoneExclude.CanFly = false
 		end --if
 	elseif GoGo_Variables.Player.ZoneID == 502 then
 		if GoGo_Variables.Debug then
