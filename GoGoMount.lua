@@ -317,9 +317,9 @@ function GoGo_ChooseMount()
 		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 35)
 	end --if
 
-	if GoGo_Variables.RidingLevel <= 149 then
-		GoGo_TempMounts = GoGo_FilterMountsOut(GoGo_TempMounts, 29)
-	end --if
+--	if GoGo_Variables.RidingLevel <= 149 then
+--		GoGo_TempMounts = GoGo_FilterMountsOut(GoGo_TempMounts, 29)
+--	end --if
 
 	if GoGo_Variables.RidingLevel <= 74 then
 		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 37)
@@ -1708,7 +1708,6 @@ function GoGo_ZoneCheck()
 		if GoGo_Variables.Debug then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Wintergrasp")
 		end --if
-
 		local _, _, GOGO_WGACTIVE = GetWorldPVPAreaInfo(1)
 		if GOGO_WGACTIVE then
 			if GoGo_Variables.Debug then
