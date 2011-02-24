@@ -83,8 +83,8 @@ function GoGo_GetMountDB()
 		[46199] = {[11] = true, [23] = true, [35] = true, [9] = true, [300]=true, [403]=true, [10003]=380},  -- X-51 Nether-Rocket X-TREME
 		[46197] = {[12] = true, [23] = true, [36] = true, [9] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- X-51 Nether-Rocket
 		[71342] = {[9] = true, [3] = true, [14] = true, [29] = true, [23] = true, [38] = true, [300]=true, [301]=true, [330]=true, [403]=true, [10002]=160, [10003]=250},  -- Big Love Rocket
-		[75973] = {[9] = true, [2] = true, [3] = true, [14] = true, [23] = false, [39] = true, [300]=true, [301]=true, [330]=true, [400]=true, [403]=true, [998] = true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- X-53 Touring Rocket
-		
+		[75973] = {[9] = true, [2] = true, [3] = true, [14] = true, [23] = false, [39] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- X-53 Touring Rocket
+
 		[43927] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Cenarion War Hippogryph
 		[63844] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Argent Hippogryph
 		[66087] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Silver Covenant Hippogryph
