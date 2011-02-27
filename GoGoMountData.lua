@@ -376,7 +376,7 @@ function GoGo_GetMountDB()
 		[59793] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Wooly Mammoth
 		[59797] = {[16] = true, [37] = true, [73] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Ice Mammoth
 		[59799] = {[16] = true, [37] = true, [73] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Ice Mammoth
-		[59802] = {[16] = true, [37] = true, [2] = true, [400]=true, [402]=true, [405]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Grand Ice Mammoth
+		[59802] = {[16] = true, [37] = true, [2] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Grand Ice Mammoth
 		[59804] = {[16] = true, [37] = true, [2] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Grand Ice Mammoth
 		[59810] = {[16] = true, [37] = true, [2] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Grand Black War Mammoth
 		[59811] = {[16] = true, [37] = true, [2] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Grand Black War Mammoth
