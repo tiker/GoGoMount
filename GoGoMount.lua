@@ -2102,8 +2102,13 @@ function GoGo_ZoneCheck()
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Throne Of The Four Winds (10 player instance")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.ZoneID == 781 then
+		if GoGo_Variables.Debug then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Zul'Aman (5 player instance")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
 	else
-		--GoGo_DebugAddLine("GoGo_ZoneCheck: Unconfigured ZoneID - " .. GoGo_Variables.Player.ZoneID)
+		GoGo_DebugAddLine("GoGo_ZoneCheck: Unconfigured ZoneID - " .. GoGo_Variables.Player.ZoneID)
 	end --if
 	
 	if IsIndoors() then	-- indoor zone exclusions go here
