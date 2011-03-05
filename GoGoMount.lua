@@ -2107,6 +2107,11 @@ function GoGo_ZoneCheck()
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Zul'Aman (5 player instance")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.ZoneID == 793 then
+		if GoGo_Variables.Debug then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Zul'Gurub (5 player instance")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
 	else
 		GoGo_DebugAddLine("GoGo_ZoneCheck: Unconfigured ZoneID - " .. GoGo_Variables.Player.ZoneID)
 	end --if
