@@ -2311,7 +2311,7 @@ function GoGo_Msg(msg)
 		else
 			msg = string.gsub(msg, "<", LIGHTYELLOW_FONT_COLOR_CODE)
 			msg = string.gsub(msg, ">", "|r")
-			DEFAULT_CHAT_FRAME:AddMessage(GREEN_FONT_COLOR_CODE.."GoGo: |r"..msg)
+			DEFAULT_CHAT_FRAME:AddMessage(GREEN_FONT_COLOR_CODE.."GoGo: |r"..tostring(msg))
 		end --if
 	end --if
 end --function
