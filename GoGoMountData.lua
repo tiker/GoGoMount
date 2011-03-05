@@ -31,7 +31,7 @@ function GoGo_GetMountDB()
 		[33189] = {[4] = true, [15] = true, [39] = true, [10002]=100},  -- Rickety Magic Broom  --  itemid
 	--	[42692] = {[15] = true, [39] = true, [999] = true, [10002]=100},  -- Rickety Magic Broom
 
-		[37011] = {[9] = true, [3] = true, [4] = true, [14] = true, [23] = true, [38] = true},  -- Magic Broom -- itemid
+		[37011] = {[9] = true, [3] = true, [4] = true, [14] = true, [38] = true},  -- Magic Broom -- itemid
 
 		[33183] = {[16] = true, [38] = true, [4] = true},  -- Magic Broom  --  itemid
 	--	[42680] = {[16] = true, [38] = true, [999] = true},  -- Magic Broom
@@ -42,115 +42,120 @@ function GoGo_GetMountDB()
 	--	[42683] = {[16] = true, [37] = true, [999] = true},  -- Swift Magic Broom
 	---	[42684] = {[16] = true, [37] = true, [999] = true},  -- Swift Magic Broom
 
-		[33176] = {[7] = true, [12] = true, [23] = true, [36] = true, [9] = true, [4] = true},  -- Flying Broom  --  itemid
+		[33176] = {[7] = true, [12] = true, [36] = true, [9] = true, [4] = true},  -- Flying Broom  --  itemid
 	--	[42667] = {[12] = true, [36] = true, [9] = true, [999] = true},  -- Flying Broom
 	---	[42673] = {[12] = true, [36] = true, [9] = true, [999] = true},  -- Flying Broom
 
-		[33182] = {[11] = true, [23] = true, [35] = true, [9] = true, [4] = true},  -- Swift Flying Broom  --  itemid
-		[33184] = {[16] = true, [23] = true, [37] = true, [9] = true, [4] = true, [999] = true},  -- Swift Magic Broom  --  itemid
-	--	[42668] = {[11] = true, [23] = true, [35] = true, [9] = true, [999] = true},  -- Swift Flying Broom
+		[33182] = {[11] = true, [35] = true, [9] = true, [4] = true},  -- Swift Flying Broom  --  itemid
+		[33184] = {[16] = true, [37] = true, [9] = true, [4] = true, [999] = true},  -- Swift Magic Broom  --  itemid
+	--	[42668] = {[11] = true, [35] = true, [9] = true, [999] = true},  -- Swift Flying Broom
 
-	---	[42679] = {[11] = true, [23] = true, [35] = true, [9] = true, [999] = true},  -- Swift Flying Broom
+	---	[42679] = {[11] = true, [35] = true, [9] = true, [999] = true},  -- Swift Flying Broom
 
-		[32243] = {[12] = true, [23] = true, [36] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Tawny Wind Rider
-		[32244] = {[12] = true, [23] = true, [36] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Blue Wind Rider
-		[32245] = {[12] = true, [23] = true, [36] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Green Wind Rider
-		[32246] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Swift Red Wind Rider
-		[32295] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Swift Green Wind Rider
-		[32296] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Swift Yellow Wind Rider
-		[32297] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Swift Purple Wind Rider
+		[32243] = {[12] = true, [36] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Tawny Wind Rider
+		[32244] = {[12] = true, [36] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Blue Wind Rider
+		[32245] = {[12] = true, [36] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Green Wind Rider
+		[32246] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Swift Red Wind Rider
+		[32295] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Swift Green Wind Rider
+		[32296] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Swift Yellow Wind Rider
+		[32297] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Swift Purple Wind Rider
 		[44229] = {[18] = true, [39] = true, [9] = true, [4] = true, [52] = true, ["FlightOnly"] = true, [10003]=250},  -- Loaned Wind Rider Reins
-		[61230] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Armored Blue Wind Rider
+		[61230] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Armored Blue Wind Rider
 
-		[37015] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Swift Nether Drake
-		[41513] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Onyx Netherwing Drake
-		[41514] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Azure Netherwing Drake
-		[41515] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Cobalt Netherwing Drake
-		[41516] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Purple Netherwing Drake
-		[41517] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Veridian Netherwing Drake
-		[41518] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Violet Netherwing Drake
-		[44317] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Merciless Nether Drake
-		[44744] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Merciless Nether Drake
-		[49193] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Vengeful Nether Drake
-		[58615] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Brutal Nether Drake
+		[37015] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Swift Nether Drake
+		[41513] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Onyx Netherwing Drake
+		[41514] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Azure Netherwing Drake
+		[41515] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Cobalt Netherwing Drake
+		[41516] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Purple Netherwing Drake
+		[41517] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Veridian Netherwing Drake
+		[41518] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Violet Netherwing Drake
+		[44317] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Merciless Nether Drake
+		[44744] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Merciless Nether Drake
+		[49193] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Vengeful Nether Drake
+		[58615] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Brutal Nether Drake
 
-		[39798] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Green Riding Nether Ray
-		[39800] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Red Riding Nether Ray
-		[39801] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Purple Riding Nether Ray
-		[39802] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Silver Riding Nether Ray
-		[39803] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Blue Riding Nether Ray
+		[39798] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Green Riding Nether Ray
+		[39800] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Red Riding Nether Ray
+		[39801] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Purple Riding Nether Ray
+		[39802] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Silver Riding Nether Ray
+		[39803] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Blue Riding Nether Ray
 
-		[46199] = {[11] = true, [23] = true, [35] = true, [9] = true, [300]=true, [403]=true, [10003]=380},  -- X-51 Nether-Rocket X-TREME
-		[46197] = {[12] = true, [23] = true, [36] = true, [9] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- X-51 Nether-Rocket
-		[71342] = {[3] = true, [14] = true, [9] = true, [23] = true, [38] = true, [300]=true, [301]=true, [330]=true, [403]=true, [10002]=160, [10003]=250},  -- Big Love Rocket
+		[46199] = {[11] = true, [35] = true, [9] = true, [300]=true, [403]=true, [10003]=380},  -- X-51 Nether-Rocket X-TREME
+		[46197] = {[12] = true, [36] = true, [9] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- X-51 Nether-Rocket
+		[71342] = {[3] = true, [14] = true, [9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [403]=true, [10002]=160, [10003]=250},  -- Big Love Rocket
 		[75973] = {[2] = true, [3] = true, [9] = true, [14] = true, [23] = false, [39] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- X-53 Touring Rocket
 
-		[43927] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Cenarion War Hippogryph
-		[63844] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Argent Hippogryph
-		[66087] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Silver Covenant Hippogryph
-		[74856] = {[3] = true, [9] = true, [14] = true, [23] = true, [38] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Blazing Hippogryph
+		[43927] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Cenarion War Hippogryph
+		[63844] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Argent Hippogryph
+		[66087] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Silver Covenant Hippogryph
+		[74856] = {[3] = true, [9] = true, [14] = true, [38] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Blazing Hippogryph
+		[97359] = {[9] = true, [11] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Flameward Hippogryph
 
-		[43810] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Frost Wyrm
-		[51960] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Frostwyrm Mount
-		[64927] = {[9] = true, [11] = true, [23] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Deadly Gladiator's Frostwyrm
-		[65439] = {[9] = true, [11] = true, [23] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Furious Gladiator's Frost Wyrm
-		[67336] = {[9] = true, [11] = true, [23] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Relentless Gladiator's Frost Wyrm
-		[71810] = {[9] = true, [11] = true, [23] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Wrathful Gladiator's Frost Wyrm
+		[43810] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Frost Wyrm
+		[51960] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Frostwyrm Mount
+		[64927] = {[9] = true, [11] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Deadly Gladiator's Frostwyrm
+		[65439] = {[9] = true, [11] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Furious Gladiator's Frost Wyrm
+		[67336] = {[9] = true, [11] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Relentless Gladiator's Frost Wyrm
+		[71810] = {[9] = true, [11] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Wrathful Gladiator's Frost Wyrm
 		
-		[72807] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Icebound Frostbrood Vanquisher
-		[72808] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Bloodbathed Frostbrood Vanquisher
+		[72807] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Icebound Frostbrood Vanquisher
+		[72808] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Bloodbathed Frostbrood Vanquisher
 
-		[3363] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Nether Drake
-		[28828] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Nether Drake
+		[3363] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Nether Drake
+		[28828] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Nether Drake
 		[37815] = {[11] = true, [9] = true, [4] = true, [54] = true, ["FlightOnly"] = true},  -- Emerald Drake
 		[37859] = {[11] = true, [9] = true, [4] = true, [54] = true, ["FlightOnly"] = true},  -- Amber Drake
 		[37860] = {[11] = true, [9] = true, [4] = true, [54] = true, ["FlightOnly"] = true},  -- Ruby Drake
-		[59567] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Azure Drake
-		[59568] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Blue Drake
-		[59569] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Bronze Drake
-		[59570] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Red Drake
-		[59571] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Twilight Drake
-		[59650] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Black Drake
-		[60025] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Albino Drake
-		[69395] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Onyxian Drake
-		[88331] = {[9] = true, [11] = true, [23] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380}, -- Volcanic Stone Drake
-		[88335] = {[9] = true, [11] = true, [23] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Drake of the East Wind
-		[88718] = {[9] = true, [11] = true, [23] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Phosphorescent Stone Drake
-		[88741] = {[9] = true, [11] = true, [23] = true, [35] = true, [70] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Drake of the West Wind
-		[88742] = {[9] = true, [11] = true, [23] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Drake of the North Wind
-		[88744] = {[9] = true, [11] = true, [23] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Drake of the South Wind
-		[88746] = {[9] = true, [11] = true, [23] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Vitreous Stone Drake
-		[93623] = {[9] = true, [11] = true, [23] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Mottled Drake
-		[93326] = {[2] = true, [9] = true, [11] = true, [23] = true, [36] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Sandstone Drake
+		[59567] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Azure Drake
+		[59568] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Blue Drake
+		[59569] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Bronze Drake
+		[59570] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Red Drake
+		[59571] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Twilight Drake
+		[59650] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Black Drake
+		[60025] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Albino Drake
+		[69395] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Onyxian Drake
+		[88331] = {[9] = true, [11] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380}, -- Volcanic Stone Drake
+		[88335] = {[9] = true, [11] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Drake of the East Wind
+		[88718] = {[9] = true, [11] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Phosphorescent Stone Drake
+		[88741] = {[9] = true, [11] = true, [35] = true, [70] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Drake of the West Wind
+		[88742] = {[9] = true, [11] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Drake of the North Wind
+		[88744] = {[9] = true, [11] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Drake of the South Wind
+		[88746] = {[9] = true, [11] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Vitreous Stone Drake
+		[93326] = {[2] = true, [9] = true, [11] = true, [36] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Sandstone Drake
+		[93463] = {[9] = true, [11] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Mottled Drake
+		[93623] = {[9] = true, [11] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Mottled Drake
 
-		[59961] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Red Proto-Drake
-		[59976] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Black Proto-Drake
-		[59996] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Blue Proto-Drake
-		[60002] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Time-Lost Proto-Drake
-		[60021] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Plagued Proto-Drake
-		[60024] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Violet Proto-Drake
-		[61294] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Green Proto-Drake
-		[63956] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Ironbound Proto-Drake
-		[63963] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Rusted Proto-Drake
+		[59961] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Red Proto-Drake
+		[59976] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Black Proto-Drake
+		[59996] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Blue Proto-Drake
+		[60002] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Time-Lost Proto-Drake
+		[60021] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Plagued Proto-Drake
+		[60024] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Violet Proto-Drake
+		[61294] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Green Proto-Drake
+		[63956] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Ironbound Proto-Drake
+		[63963] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Rusted Proto-Drake
 
-		[32345] = {[11] = true, [23] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Peep the Phoenix Mount
-		[40192] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Ashes of Al'ar
-		[88990] = {[9] = true, [11] = true, [23] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Dark Phoenix
+		[32345] = {[11] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Peep the Phoenix Mount
+		[40192] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Ashes of Al'ar
+		[88990] = {[9] = true, [11] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Dark Phoenix
 
-		[54726] = {[9] = true, [12] = true, [23] = true, [36] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Winged Steed of the Ebon Blade
-		[54727] = {[9] = true, [12] = true, [23] = true, [36] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Winged Steed of the Ebon Blade
-		[54729] = {[9] = true, [12] = true, [23] = true, [36] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Winged Steed of the Ebon Blade
+		[97493] = {[9] = true, [11] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Crimson Fire Hawk
+		[97501] = {[9] = true, [11] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Beryl Fire Hawk
 
-		[32235] = {[12] = true, [23] = true, [36] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Golden Gryphon
-		[32239] = {[12] = true, [23] = true, [36] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Ebon Gryphon
-		[32240] = {[12] = true, [23] = true, [36] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Snowy Gryphon
-		[32242] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Swift Blue Gryphon
-		[32289] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Swift Red Gryphon
-		[32290] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Swift Green Gryphon
-		[32292] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Swift Purple Gryphon
+		[54726] = {[9] = true, [12] = true, [36] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Winged Steed of the Ebon Blade
+		[54727] = {[9] = true, [12] = true, [36] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Winged Steed of the Ebon Blade
+		[54729] = {[9] = true, [12] = true, [36] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Winged Steed of the Ebon Blade
+
+		[32235] = {[12] = true, [36] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Golden Gryphon
+		[32239] = {[12] = true, [36] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Ebon Gryphon
+		[32240] = {[12] = true, [36] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Snowy Gryphon
+		[32242] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Swift Blue Gryphon
+		[32289] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Swift Red Gryphon
+		[32290] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Swift Green Gryphon
+		[32292] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Swift Purple Gryphon
 		[44221] = {[18] = true, [39] = true, [9] = true, [4] = true, [52] = true, ["FlightOnly"] = true, [10003]=250},  -- Loaned Gryphon Reins
-		[55164] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Swift Spectral Gryphon
-		[61229] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Armored Snowy Gryphon
+		[55164] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Swift Spectral Gryphon
+		[61229] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Armored Snowy Gryphon
 
 		[578] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Black Wolf
 		[579] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Red Wolf
@@ -268,6 +273,8 @@ function GoGo_GetMountDB()
 		[64659] = {[16] = true, [38] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Venomhide Ravasaur
 		[65644] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Purple Raptor
 		[84751] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Fossilized Raptor
+		[69228] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Savage Raptor
+		[96491] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Armored Razzashi Raptor
 
 		[43688] = {[11] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Amani War Bear
 		[51412] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Big Battle Bear
@@ -301,6 +308,7 @@ function GoGo_GetMountDB()
 		[63637] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Darnassian Nightsaber (Swift Darnassian Mistsaber)
 		[65638] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Moonsaber
 		[66847] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Striped Dawnsaber
+		[96499] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Zulian Panther
 		
 		[458] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Brown Horse
 		[468] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- White Stallion
@@ -328,7 +336,7 @@ function GoGo_GetMountDB()
 		[34767] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Summon Charger
 		[34769] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Summon Warhorse
 		[36702] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Fiery Warhorse
-		[48025] = {[16] = true, [38] = true, [23] = true, [3] = true, [9] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Headless Horseman's Mount
+		[48025] = {[16] = true, [38] = true, [3] = true, [9] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Headless Horseman's Mount
 		[48778] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Acherus Deathcharger
 		[58819] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Brown Steed
 		[63232] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Stormwind Steed (Swift Stormwind Steed)
@@ -345,9 +353,9 @@ function GoGo_GetMountDB()
 		[68057] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Alliance Steed
 		[68187] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Crusader's White Warhorse
 		[68188] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Crusader's Black Warhorse
-		[72286] = {[3] = true, [9] = true, [14] = true, [23] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Invincible
+		[72286] = {[3] = true, [9] = true, [14] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Invincible
 		[73313] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Crimson Deathcharger
-		[75614] = {[3] = true, [9] = true, [14] = true, [23] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Celestial Steed
+		[75614] = {[3] = true, [9] = true, [14] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Celestial Steed
 		[92231] = {[11] = true, [16] = true, [35] = true, [70] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Spectral Steed
 
 		[34406] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Brown Elekk
@@ -393,27 +401,28 @@ function GoGo_GetMountDB()
 		[48954] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Zhevra
 		[49322] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Zhevra
 
-		[44151] = {[9] = true, [11] = true, [23] = true, [39] = true, [46] = true, [300]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=380, [10004]=67},  -- Turbo-Charged Flying Machine
-		[44153] = {[9] = true, [12] = true, [23] = true, [36] = true, [45] = true, [300]=true, [301]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=250, [10004]=67},  -- Flying Machine
+		[44151] = {[9] = true, [11] = true, [39] = true, [46] = true, [300]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=380, [10004]=67},  -- Turbo-Charged Flying Machine
+		[44153] = {[9] = true, [12] = true, [36] = true, [45] = true, [300]=true, [301]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=250, [10004]=67},  -- Flying Machine
 		[55121] = {[4] = true, [55] = true, [200] = true, ["RequireWater"] = true, [10004]=286},  -- River Boat
 		[55531] = {[17] = true, [37] = true, [2] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Mechano-hog
 		[60424] = {[17] = true, [37] = true, [2] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Mekgineer's Chopper
-		[63796] = {[9] = true, [11] = true, [23] = true, [35] = true, [300]=true, [10003]=380},  -- Mimiron's Head
+		[63796] = {[9] = true, [11] = true, [35] = true, [300]=true, [10003]=380},  -- Mimiron's Head
 		[87090] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67}, -- Goblin Trike
 		[87091] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67}, -- Goblin Turbo-Trike
 
-		[61309] = {[3] = true, [9] = true, [11] = true, [23] = true, [49] = true, [35] = true, [300]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=380, [10004]=67},  -- Magnificent Flying Carpet
-		[61442] = {[3] = true, [9] = true, [11] = true, [47] = true, [23] = true, [35] = true, [300]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=380, [10004]=67},  -- Swift Mooncloth Carpet
-		[61444] = {[3] = true, [9] = true, [11] = true, [47] = true, [23] = true, [35] = true, [300]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=380, [10004]=67},  -- Swift Shadoweave Carpet
-		[61446] = {[3] = true, [9] = true, [11] = true, [47] = true, [23] = true, [35] = true, [300]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=380, [10004]=67},  -- Swift Spellfire Carpet
-		[61451] = {[3] = true, [9] = true, [12] = true, [48] = true, [23] = true, [36] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Flying Carpet
-		[75596] = {[3] = true, [9] = true, [11] = true, [23] = true, [49] = true, [35] = true, [300]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=380, [10004]=67},  -- Frosty Flying Carpet
-		--	[????] = {[11] = true, [47] = true, [9] = true, [23] = true, [35] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10004]=67},  -- Swift Flying Carpet   --- item 39303
+		[61309] = {[3] = true, [9] = true, [11] = true, [49] = true, [35] = true, [300]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=380, [10004]=67},  -- Magnificent Flying Carpet
+		[61442] = {[3] = true, [9] = true, [11] = true, [47] = true, [35] = true, [300]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=380, [10004]=67},  -- Swift Mooncloth Carpet
+		[61444] = {[3] = true, [9] = true, [11] = true, [47] = true, [35] = true, [300]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=380, [10004]=67},  -- Swift Shadoweave Carpet
+		[61446] = {[3] = true, [9] = true, [11] = true, [47] = true, [35] = true, [300]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=380, [10004]=67},  -- Swift Spellfire Carpet
+		[61451] = {[3] = true, [9] = true, [12] = true, [48] = true, [36] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Flying Carpet
+		[75596] = {[3] = true, [9] = true, [11] = true, [49] = true, [35] = true, [300]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=380, [10004]=67},  -- Frosty Flying Carpet
+		--	[????] = {[11] = true, [47] = true, [9] = true, [35] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10004]=67},  -- Swift Flying Carpet   --- item 39303
 
-		[61996] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Blue Dragonhawk
-		[61997] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Red Dragonhawk
-		[62048] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Black Dragonhawk Mount
-		[66088] = {[11] = true, [23] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Sunreaver Dragonhawk
+		[61996] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Blue Dragonhawk
+		[61997] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Red Dragonhawk
+		[62048] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Black Dragonhawk Mount
+		[66088] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Sunreaver Dragonhawk
+		[96503] = {[9] = true, [12] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Amani Dragonhawk
 
 		[74918] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Wooly White Rhino
 		[75207] = {[17] = true, [36] = true, [53] = true, [401] = true, ["TenebrousCavern"] = true, [10001]=371, [10004]=371},  -- Abyssal Seahorse (was Abyssal Manta)
@@ -424,7 +433,7 @@ function GoGo_GetMountDB()
 	--	[62087] = {[5] = true, [15] = true, [39] = true, [53] = true, [999] = true},  -- Aquatic Riding Ray   -- removed from the 3.1 PTR datafiles
 		
 	-- Spells, shape forms, etc
-		[40120] = {[7] = true, [9] = true, [11] = true, [23] = true, [24] = true, [403] = true, [9998] = true, ["FlightOnly"] = true, [10003]=380},  -- Druid Fast Flight Form
+		[40120] = {[7] = true, [9] = true, [11] = true, [24] = true, [403] = true, [9998] = true, ["FlightOnly"] = true, [10003]=380},  -- Druid Fast Flight Form
 		[33943] = {[7] = true, [9] = true, [11] = true, [403] = true, [9998] = true, ["FlightOnly"] = true, [10003]=250},  -- Druid Flight Form
 		[783] = {[7] = true, [500] = true, [10002]=140}, -- Druid Travel Form
 		[2645] = {[8] = true, [500] = true, [1000] = true, ["DefaultInstance"] = true, ["TenebrousCavern"] = true, [10002]=130}, -- Shaman Ghost Wolf Form
