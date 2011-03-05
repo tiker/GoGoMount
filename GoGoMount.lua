@@ -2559,7 +2559,7 @@ function GoGo_UpdateMountData()
 	end --if	
 
 	-- Mount Up guild perk updates
-	if IsInGuild() and GetGuildPerkInfo(2) then
+	if IsInGuild() and IsSpellKnown(78633) then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_UpdateMountData: In guild, with Mount Up perk")
 		end --if
