@@ -27,7 +27,7 @@
 		</Attributes>
 		<Scripts>
 			<PreClick>
-				if GoGo_Variables.Debug then GoGo_DebugAddLine("BUTTON: Button 1 pressed.") end --if
+				if GoGo_Variables.Debug >= 10 then GoGo_DebugAddLine("BUTTON: Button 1 pressed.") end --if
 				GoGo_Variables.SelectPassengerMount = false
 				GoGo_Variables.SkipFlyingMount = nil
 				GoGo_PreClick(self)
@@ -40,7 +40,7 @@
 		</Attributes>
 		<Scripts>
 			<PreClick>
-				if GoGo_Variables.Debug then GoGo_DebugAddLine("BUTTON: Button 2 pressed.") end --if
+				if GoGo_Variables.Debug >= 10 then GoGo_DebugAddLine("BUTTON: Button 2 pressed.") end --if
 				GoGo_Variables.SelectPassengerMount = false
 				GoGo_Variables.SkipFlyingMount = true
 				GoGo_PreClick(self)
@@ -53,7 +53,7 @@
 		</Attributes>
 		<Scripts>
 			<PreClick>
-				if GoGo_Variables.Debug then GoGo_DebugAddLine("BUTTON: Button 3 pressed.") end --if
+				if GoGo_Variables.Debug >= 10 then GoGo_DebugAddLine("BUTTON: Button 3 pressed.") end --if
 				GoGo_Variables.SelectPassengerMount = true
 				GoGo_Variables.SkipFlyingMount = false
 				GoGo_PreClick(self)
