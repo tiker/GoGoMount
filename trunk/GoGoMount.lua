@@ -35,7 +35,7 @@ function GoGo_OnEvent(self, event, ...)
 		GoGo_Variables.VerMajor, GoGo_Variables.VerMinor, GoGo_Variables.VerBuild = strsplit(".", GetAddOnMetadata("GoGoMount", "Version"))
 		GoGo_Variables.VerMajor, GoGo_Variables.VerMinor, GoGo_Variables.VerBuild = tonumber(GoGo_Variables.VerMajor), tonumber(GoGo_Variables.VerMinor), tonumber(GoGo_Variables.VerBuild)
 		GoGo_Variables.TestVersion = false
-		GoGo_Variables.Debug = 0
+		GoGo_Variables.Debug = 5
 		_, GoGo_Variables.Player.Class = UnitClass("player")
 		_, GoGo_Variables.Player.Race = UnitRace("player")
 		if (GoGo_Variables.Player.Class == "DRUID") then
@@ -534,7 +534,7 @@ function GoGo_ChooseMount()
 		end --if
 		local selected = mounts[math.random(table.getn(mounts))]
 
-		if GoGo_Variables.Debug >= 10 then
+		if GoGo_Variables.Debug >= 5 then
 			if 	GoGo_Variables.MountDB[selected][10001] then
 				GoGo_DebugAddLine("GoGo_ChooseMount: Under water mount speed should be " .. GoGo_Variables.MountDB[selected][10001])
 			end --if
@@ -2007,6 +2007,21 @@ function GoGo_ZoneCheck()
 	elseif GoGo_Variables.Player.ZoneID == 721 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Blackrock Spire (instance)")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.ZoneID == 722 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Auchenai Crypts (instance)")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.ZoneID == 723 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Sethekk Halls (instance)")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.ZoneID == 732 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Mana Tombs (instance)")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 	elseif GoGo_Variables.Player.ZoneID == 736 then
