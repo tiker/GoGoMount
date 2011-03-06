@@ -1804,6 +1804,11 @@ function GoGo_ZoneCheck()
 		else
 			GoGo_Variables.ZoneExclude.CanFly = false
 		end --if
+	elseif GoGo_Variables.Player.ZoneID == 604 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Icecrown Citadel (25 player instance)")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
 	elseif GoGo_Variables.Player.ZoneID == 605 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Kezan (Goblin starting area)")
@@ -2101,6 +2106,11 @@ function GoGo_ZoneCheck()
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 		GoGo_Variables.ZoneExclude.AQ40 = false
+	elseif GoGo_Variables.Player.ZoneID == 767 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Throne of the Tides (instance)")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
 	elseif GoGo_Variables.Player.ZoneID == 768 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Stonecore (instance)")
