@@ -26,7 +26,7 @@ function GoGo_GetMountDB()
 		[92155] = {[16] = true, [37] = true, [400]=true, [402]=true, [10001]=67, [10002]=200, [10004]=67},  -- Ultramarine Qiraji Battle Tank
 
 		[30174] = {[15] = true, [39] = true, [10001]=67, [10002]=100, [10004]=67},  -- Riding Turtle
-		[64731] = {[15] = true, [39] = true, ["SeaTurtle"] = true, ["TenebrousCavern"] = true, [402]=true, [404]=true, [10001]=108, [10002]=100, [10004]=108},  -- Sea Turtle
+		[64731] = {[15] = true, [39] = true, ["SeaTurtle"] = true, [402]=true, [404]=true, [10001]=108, [10002]=100, [10004]=108},  -- Sea Turtle
 		
 		[33189] = {[4] = true, [15] = true, [39] = true, [10002]=100},  -- Rickety Magic Broom  --  itemid
 	--	[42692] = {[15] = true, [39] = true, [999] = true, [10002]=100},  -- Rickety Magic Broom
@@ -425,7 +425,7 @@ function GoGo_GetMountDB()
 		[96503] = {[9] = true, [12] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Amani Dragonhawk
 
 		[74918] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Wooly White Rhino
-		[75207] = {[17] = true, [36] = true, [53] = true, [401] = true, ["TenebrousCavern"] = true, [10001]=371, [10004]=371},  -- Abyssal Seahorse (was Abyssal Manta)
+		[75207] = {[17] = true, [36] = true, [53] = true, [401] = true, [10001]=371, [10004]=371},  -- Abyssal Seahorse (was Abyssal Manta)
 		[90621] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Golden King
 		[93644] = {[11] = true, [16] = true, [35] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Kron'Kar Annihilator
 		[87840] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Running Wild (Worgen Racial)
@@ -436,11 +436,11 @@ function GoGo_GetMountDB()
 		[40120] = {[7] = true, [9] = true, [11] = true, [24] = true, [300] = true, [403] = true, [9998] = true, ["FlightOnly"] = true, [10003]=380},  -- Druid Fast Flight Form
 		[33943] = {[7] = true, [9] = true, [11] = true, [403] = true, [9998] = true, ["FlightOnly"] = true, [10003]=250},  -- Druid Flight Form
 		[783] = {[7] = true, [500] = true, [10002]=140}, -- Druid Travel Form
-		[2645] = {[8] = true, [500] = true, [1000] = true, ["DefaultInstance"] = true, ["TenebrousCavern"] = true, [10002]=130}, -- Shaman Ghost Wolf Form
+		[2645] = {[8] = true, [500] = true, [1000] = true, ["DefaultInstance"] = true, [10002]=130}, -- Shaman Ghost Wolf Form
 		[768] = {[7] = true, [8] = true, [1000] = true, [500] = true, ["DefaultInstance"] = true, [10002]=100},  -- Druid Cat Form
 		[1066] = {[7] = true, [53] = true, [500] = true, [1000] = true, [10001] = 101, [10004] = 101, ["DefaultInstance"] = true},  -- Druid Aqua form
-		[5118] = {[7] = true, [8] = true, [500] = true, ["DefaultInstance"] = true, ["TenebrousCavern"] = true, [10002]=130},  -- Aspect of the Cheeta
-		[13159] = {[7] = true, [8] = true, [500] = true, ["DefaultInstance"] = true, ["TenebrousCavern"] = true, [10002]=130},  -- Aspect of the Pack
+		[5118] = {[7] = true, [8] = true, [500] = true, ["DefaultInstance"] = true, [10002]=130},  -- Aspect of the Cheeta
+		[13159] = {[7] = true, [8] = true, [500] = true, ["DefaultInstance"] = true, [10002]=130},  -- Aspect of the Pack
 	}
 end --if
 
