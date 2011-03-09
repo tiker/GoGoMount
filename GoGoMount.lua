@@ -1854,10 +1854,9 @@ function GoGo_ZoneCheck()
 		end --if
 		if GoGo_Variables.Player.SubZone == GoGo_Variables.Localize.Zone.DarkbreakCove then
 			if GoGo_Variables.Debug >= 10 then
-				GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Abyssal Depths / Darkbreak Cove.  Specifying mount group 'TenebrousCavern'.")
+				GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Abyssal Depths / Darkbreak Cove.")
 			end --if
 			GoGo_Variables.ZoneExclude.CanFly = false
-			GoGo_Variables.ZoneExclude.UseMountGroup = "TenebrousCavern"
 		elseif GoGo_Variables.Player.SubZone == GoGo_Variables.Localize.Zone.Lghorek then
 			if GoGo_Variables.Debug >= 10 then
 				GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Abyssal Depths / L'ghorek.")
