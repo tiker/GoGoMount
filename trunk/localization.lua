@@ -21,3 +21,8 @@
 	GoGo_Variables.Localize.TravelForm = 783
 	GoGo_Variables.Localize.Glyph_GhostWolf = 59289
 	GoGo_Variables.Localize.Glyph_AquaticForm = 57856
+	GoGo_Variables.Localize.Skill.MasterRiding = 325
+	GoGo_Variables.Localize.Skill.ArtisanRiding = 300
+	GoGo_Variables.Localize.Skill.ExpertRiding = 225
+	GoGo_Variables.Localize.Skill.JourneymanRiding = 150
+	GoGo_Variables.Localize.Skill.ApprenticeRiding = 75
