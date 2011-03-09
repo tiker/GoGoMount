@@ -1884,12 +1884,7 @@ function GoGo_ZoneCheck()
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Shimmering Expanse")
 		end --if
-		if GoGo_Variables.Player.SubZone == GoGo_Variables.Localize.Zone.SilverTideHollow then
-			if GoGo_Variables.Debug >= 10 then
-				GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Shimmering Expanse / Silver Tide Hollow.")
-			end --if
-			GoGo_Variables.ZoneExclude.CanFly = false
-		elseif GoGo_Variables.Player.SubZone == GoGo_Variables.Localize.Zone.Nespirah then
+		if GoGo_Variables.Player.SubZone == GoGo_Variables.Localize.Zone.Nespirah then
 			if GoGo_Variables.Debug >= 10 then
 				GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Shimmering Expanse / Nesphirah.")
 			end --if
