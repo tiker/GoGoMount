@@ -1864,10 +1864,9 @@ function GoGo_ZoneCheck()
 			GoGo_Variables.ZoneExclude.CanFly = false
 		elseif GoGo_Variables.Player.SubZone == GoGo_Variables.Localize.Zone.TenebrousCavern then
 			if GoGo_Variables.Debug >= 10 then
-				GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Abyssal Depths / Tenebrous Cavern.  Specifying mount group 'TenebrousCavern'.")
+				GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Abyssal Depths / Tenebrous Cavern.")
 			end --if
 			GoGo_Variables.ZoneExclude.CanFly = false
-			GoGo_Variables.ZoneExclude.UseMountGroup = "TenebrousCavern"
 		elseif GoGo_Variables.Player.SubZone == GoGo_Variables.Localize.Zone.TheCerebrillum then
 			if GoGo_Variables.Debug >= 10 then
 				GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Abyssal Depths / The Cerebrillum.")
