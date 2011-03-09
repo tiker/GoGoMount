@@ -35,7 +35,7 @@ function GoGo_OnEvent(self, event, ...)
 		GoGo_Variables.VerMajor, GoGo_Variables.VerMinor, GoGo_Variables.VerBuild = strsplit(".", GetAddOnMetadata("GoGoMount", "Version"))
 		GoGo_Variables.VerMajor, GoGo_Variables.VerMinor, GoGo_Variables.VerBuild = tonumber(GoGo_Variables.VerMajor), tonumber(GoGo_Variables.VerMinor), tonumber(GoGo_Variables.VerBuild)
 		GoGo_Variables.TestVersion = false
-		GoGo_Variables.Debug = 5
+		GoGo_Variables.Debug = 0
 		_, GoGo_Variables.Player.Class = UnitClass("player")
 		_, GoGo_Variables.Player.Race = UnitRace("player")
 		if (GoGo_Variables.Player.Class == "DRUID") then
