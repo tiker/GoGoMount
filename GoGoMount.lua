@@ -2227,11 +2227,9 @@ end --function
 ---------
 function GoGo_GlyphActive(spellid)
 ---------
-	local TempSpellID = 0
---	for TempCount = 1, NUM_GLYPH_SLOTS do  -- NUM_GLYPH_SLOTS currently contains nil until glyph window is open in game
-	for TempCount = 1, 10 do
-		_, _, TempSpellID = GetGlyphSocketInfo(TempCount) or 0,0,0
-		if spellid == TempSpellID then
+	for TempCount = 1, NUM_GLYPH_SLOTS do
+		local enabled, _, _, TempSpellID = GetGlyphSocketInfo(TempCount)
+		if enabled and TempSpellID == spellid then
 			if GoGo_Variables.Debug >= 10 then
 				GoGo_DebugAddLine("GoGo_GlyphActive: Found active glyph " .. spellid .. " (" .. GetSpellInfo(spellid) .. ")")
 			end --if
