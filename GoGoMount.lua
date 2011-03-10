@@ -2164,7 +2164,9 @@ function GoGo_ZoneCheck()
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 	else
-		GoGo_DebugAddLine("GoGo_ZoneCheck: Unconfigured ZoneID - " .. GoGo_Variables.Player.ZoneID)
+		if GoGo_Variables.Debug >= 4 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Unconfigured ZoneID - " .. GoGo_Variables.Player.ZoneID)
+		end --if
 	end --if
 	
 	if IsIndoors() then	-- indoor zone exclusions go here
