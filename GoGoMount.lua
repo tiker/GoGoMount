@@ -1200,8 +1200,6 @@ function GoGo_ZoneCheck()
 			-- Outside Blackfathom Deeps
 			-- Wailing Caverns Cave before the instance
 			-- Maraudon cavern outside the instance
-			-- Black Morras
-			-- Old Hillsbrad Foothills
 			-- The Steam Pools
 		end --if
 		if not IsInInstance() then  -- for Caverns of Time instances
@@ -1558,7 +1556,6 @@ function GoGo_ZoneCheck()
 	elseif GoGo_Variables.Player.ZoneID == 465 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Hellfire Peninsula")
-			-- Hellfire Ramparts instance used this same id on the 4.1.0 PTR
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = true
 	elseif GoGo_Variables.Player.ZoneID == 466 then
@@ -1991,6 +1988,11 @@ function GoGo_ZoneCheck()
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Tol Barad Peninsula")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.ZoneID == 710 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Shattered Halls")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
 	elseif GoGo_Variables.Player.ZoneID == 717 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Ruins Of Ahn'Qiraj (10 player instance)")
@@ -2161,6 +2163,11 @@ function GoGo_ZoneCheck()
 	elseif GoGo_Variables.Player.ZoneID == 793 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Zul'Gurub (5 player instance")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.ZoneID == 797 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Hellfire Ramparts (5 player instance")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 	else
