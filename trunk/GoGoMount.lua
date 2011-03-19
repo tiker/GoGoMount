@@ -83,6 +83,7 @@ function GoGo_OnEvent(self, event, ...)
 		GoGo_Variables.Player.Zone = GetRealZoneText()
 		GoGo_Variables.ExpansionAccount = GetAccountExpansionLevel()
 		GoGo_Variables.ExpansionGame =  GetExpansionLevel()
+		local _ = RegisterAddonMessagePrefix("GoGoMountVER")
 	elseif (event == "CHAT_MSG_ADDON") and (arg1 == "GoGoMountVER") and not GoGo_Prefs.DisableUpdateNotice then
 		local major, minor, build = strsplit(".", arg2)
 		local major, minor, build = tonumber(major), tonumber(minor), tonumber(build)
@@ -2429,7 +2430,6 @@ end --function
 ---------
 function GoGo_GetBestAirMounts(GoGo_FilteredMounts)
 ---------
-	-- Use flight forms if preferred
 	local mounts = {}
 	local GoGo_TempAirSpeed = {451,418,410,380,275,250}
 	--[[	451 = +310% + 10% Mount Up guild perk
