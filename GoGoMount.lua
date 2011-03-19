@@ -1547,7 +1547,13 @@ function GoGo_ZoneCheck()
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Ghostlands")
 		end --if
-		GoGo_Variables.ZoneExclude.CanFly = false
+		if GoGo_Variables.Player.SubZone == GoGo_Variables.Localize.Zone.ThalassianPass then   -- valley leaving Ghostlands to EPL
+			GoGo_Variables.ZoneExclude.CanFly = false
+		elseif GoGo_Variables.Player.SubZone == GoGo_Variables.Localize.Zone.AmaniMountains then  -- area in front of Zul'Amen
+			GoGo_Variables.ZoneExclude.CanFly = false
+		elseif GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense) then
+			GoGo_Variables.ZoneExclude.CanFly = true
+		end --if
 	elseif GoGo_Variables.Player.ZoneID == 464 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Azuremyst Isle")
