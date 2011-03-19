@@ -1549,6 +1549,8 @@ function GoGo_ZoneCheck()
 		end --if
 		if GoGo_Variables.Player.SubZone == GoGo_Variables.Localize.Zone.ThalassianPass then   -- valley leaving Ghostlands to EPL
 			GoGo_Variables.ZoneExclude.CanFly = false
+		elseif GoGo_Variables.Player.SubZone == GoGo_Variables.Localize.Zone.ThalassianRange then  -- trying to fly over the wall from ghost lands to EPL
+			GoGo_Variables.ZoneExclude.CanFly = false
 		elseif GoGo_Variables.Player.SubZone == GoGo_Variables.Localize.Zone.AmaniMountains then  -- area in front of Zul'Amen
 			GoGo_Variables.ZoneExclude.CanFly = false
 		elseif GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense) then
