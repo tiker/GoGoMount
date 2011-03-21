@@ -31,7 +31,8 @@ function GoGo_GetMountDB()
 		[33189] = {[4] = true, [15] = true, [39] = true, [10002]=100},  -- Rickety Magic Broom  --  itemid
 	--	[42692] = {[15] = true, [39] = true, [999] = true, [10002]=100},  -- Rickety Magic Broom
 
-		[37011] = {[9] = true, [3] = true, [4] = true, [14] = true, [38] = true},  -- Magic Broom -- itemid
+		[37011] = {[3] = true, [4] = true, [7] = true, [9] = true, [14] = true, [38] = true, [300]=true, [301]=true, [330]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Magic Broom -- itemid
+--		[75973] = {[2] = true, [3] = true, [9] = true, [14] = true, [23] = false, [39] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- X-53 Touring Rocket
 
 		[33183] = {[16] = true, [38] = true, [4] = true},  -- Magic Broom  --  itemid
 	--	[42680] = {[16] = true, [38] = true, [999] = true},  -- Magic Broom
