@@ -42,7 +42,7 @@ function GoGo_GetMountDB()
 	--	[42683] = {[16] = true, [37] = true, [999] = true},  -- Swift Magic Broom
 	---	[42684] = {[16] = true, [37] = true, [999] = true},  -- Swift Magic Broom
 
-		[33176] = {[3] = true, [4] = true, [7] = true, [9] = true, [14] = true, [38] = true, [300]=true, [301]=true, [330]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Flying Broom  --  itemid
+		[33176] = {[3] = true, [4] = true, [7] = true, [9] = true, [14] = true, [38] = true, [300]=true, [301]=true, [330]=true, [10002]=160, [10003]=250},  -- Flying Broom  --  itemid
 	--	[42667] = {[12] = true, [36] = true, [9] = true, [999] = true},  -- Flying Broom
 	---	[42673] = {[12] = true, [36] = true, [9] = true, [999] = true},  -- Flying Broom
 
