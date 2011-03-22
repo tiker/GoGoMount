@@ -573,6 +573,9 @@ function GoGo_FilterMountsOut(PlayerMounts, FilterID)
 	if Value == nil then
 		local Value = true
 	end --if
+	if not GoGo_Variables.MountDB then
+		GoGo_GetMountDB()
+	end --if
 	for a = 1, table.getn(PlayerMounts) do
 		local MountID = PlayerMounts[a]
 		for DBMountID, DBMountData in pairs(GoGo_Variables.MountDB) do
@@ -595,6 +598,10 @@ function GoGo_FilterMountsIn(PlayerMounts, FilterID, Value)
 	if Value == nil then
 		local Value = true
 	end --if
+	if not GoGo_Variables.MountDB then
+		GoGo_GetMountDB()
+	end --if
+	
 	for a = 1, table.getn(PlayerMounts) do
 		local MountID = PlayerMounts[a]
 		for DBMountID, DBMountData in pairs(GoGo_Variables.MountDB) do
@@ -1049,21 +1056,24 @@ function GoGo_GetIDName(itemid)
 		end --if
 	elseif type(itemid) == "table" then
 		for a=1, table.getn(itemid) do
-			tempname = itemid[a]
 			local GoGo_TempTable = {}
-			table.insert(GoGo_TempTable, tempname)
+			table.insert(GoGo_TempTable, itemid[a])
+
+			GoGo_DebugAddLine("GoGo_GetIDName: " .. table.getn(itemid))
+			GoGo_DebugAddLine("GoGo_GetIDName: " .. itemid[a])
+			
 			if (table.getn(GoGo_FilterMountsIn(GoGo_TempTable, 4)) == 1) then
 --				tempname = GetItemInfo(tempname)
 				if GoGo_Variables.Debug >= 10 then
-					GoGo_DebugAddLine("GoGo_GetIDName: GetItemID for " .. tempname .. GetItemInfo(tempname))
+					GoGo_DebugAddLine("GoGo_GetIDName: GetItemID for " .. itemid[a] .. GetItemInfo(itemid[a]))
 				end --if
-				ItemName = ItemName .. (GetItemInfo(tempname) or "Unknown Mount") .. ", "
+				ItemName = ItemName .. (GetItemInfo(itemid[a]) or "Unknown Mount") .. ", "
 			else
 --				tempname = GetSpellInfo(tempname)
 				if GoGo_Variables.Debug >= 10 then
-					GoGo_DebugAddLine("GoGo_GetIDName: GetSpellID for " .. tempname .. GetSpellInfo(tempname))
+					GoGo_DebugAddLine("GoGo_GetIDName: GetSpellID for " .. itemid[a] .. GetSpellInfo(itemid[a]))
 				end --if
-				ItemName = ItemName .. (GetSpellInfo(tempname) or "Unknown Mount") .. ", "
+				ItemName = ItemName .. (GetSpellInfo(itemid[a]) or "Unknown Mount") .. ", "
 			end --if
 			if GoGo_Variables.Debug >= 10 then
 				GoGo_DebugAddLine("GoGo_GetIDName: Itemname string is " .. ItemName)
@@ -2786,8 +2796,9 @@ GOGO_MESSAGES = {
 				msg = GoGo_Variables.Player.Zone..": ?".." - </gogo ItemLink> or </gogo SpellName> to add"
 			end --if
 			if GoGo_Prefs.GlobalPrefMounts then
-				list = list .. GoGo_GetIDName(GoGo_Prefs.GlobalPrefMounts)
-				msg = msg .. "\nGlobal Preferred Mounts: "..list.." - Enable global mount preferences to change."
+				local listb = ""
+				listb = listb .. GoGo_GetIDName(GoGo_Prefs.GlobalPrefMounts)
+				msg = msg .. "\nGlobal Preferred Mounts: "..listb.." - Enable global mount preferences to change."
 			end --if
 			return msg
 		else
@@ -2799,8 +2810,9 @@ GOGO_MESSAGES = {
 				msg =  "Global Preferred Mounts: ?".." - </gogo ItemLink> or </gogo SpellName> to add"
 			end --if
 			if GoGo_Prefs.Zones[GoGo_Variables.Player.Zone] then
-				list = list .. GoGo_GetIDName(GoGo_Prefs.Zones[GoGo_Variables.Player.Zone])
-				msg = msg .. "\n" .. GoGo_Variables.Player.Zone ..": "..list.." - Disable global mount preferences to change."
+				local listb = ""
+				listb = listb .. GoGo_GetIDName(GoGo_Prefs.Zones[GoGo_Variables.Player.Zone])
+				msg = msg .. "\n" .. GoGo_Variables.Player.Zone ..": "..listb.." - Disable global mount preferences to change."
 			end --if
 			return msg
 		end --if
