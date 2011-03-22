@@ -523,6 +523,6 @@ GoGo_Variables.DebuffDB = {
 	71559,  -- Aim of the Iron Dwarves (from Heroic Deathbringer's Will)
 	71560,  -- Speed of the Vrykul (from Heroic Deathbringer's Will)
 	71561,  -- Strength of the Taunka (from Heroic Deathbringer's Will)
-	
+	91760,	-- Endure the Transformation (from Bones of Transformation)
 }
 
