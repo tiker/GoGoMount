@@ -222,15 +222,10 @@ function GoGo_ChooseMount()
 	GoGo_Variables.Player.Zone = GetRealZoneText()
 	GoGo_Variables.Player.SubZone = GetSubZoneText()
 	GoGo_Variables.Player.MiniSubZone = GetMinimapZoneText()
-	GoGo_Variables.Player.ZoneID = GetCurrentMapAreaID()
 	GoGo_Variables.EngineeringLevel = GoGo_GetProfSkillLevel(GoGo_Variables.Localize.Skill.Engineering)
 	GoGo_Variables.TailoringLevel = GoGo_GetProfSkillLevel(GoGo_Variables.Localize.Skill.Tailoring)
 	GoGo_Variables.RidingLevel = GoGo_GetRidingSkillLevel() or 0
 	GoGo_Variables.Player.Level = UnitLevel("player")
-
-	if GoGo_Variables.Debug >= 5 then
-		GoGo_DebugAddLine("GoGo_ChooseMount: Zone ID = " .. GoGo_Variables.Player.ZoneID)
-	end --if
 
 	if (GoGo_Variables.Player.Class == "DRUID") then
 		GoGo_Variables.Druid.FeralSwiftness, _ = GoGo_GetTalentInfo(GoGo_Variables.Localize.Talent.FeralSwiftness)
@@ -1148,9 +1143,13 @@ function GoGo_ZoneCheck()
 	GoGo_Variables.ZoneExclude.CanFly = false
 	GoGo_Variables.ZoneExclude.UseMountGroup = nil
 	GoGo_Variables.InBattleground = false
-	
+	GoGo_Variables.Player.ZoneID = GetCurrentMapAreaID()
+
 	if GoGo_Variables.Debug >= 10 then
 		GoGo_DebugAddLine("GoGo_ZoneCheck: Beginning function.")
+	end --if
+	if GoGo_Variables.Debug >= 5 then
+		GoGo_DebugAddLine("GoGo_ChooseMount: Zone ID = " .. GoGo_Variables.Player.ZoneID)
 	end --if
 
 	if (GoGo_InMaelstrom()) then
