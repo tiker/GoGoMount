@@ -287,6 +287,7 @@ function GoGo_GetMountDB()
 		[60118] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Black War Bear
 		[60119] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Black War Bear
 		--[64987] = {[14] = true, [38] = true, [999] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10004]=67},  --Big Blizzard Bear [PH] - ticket 211
+		[98204] = {[19] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Amani Battle Bear
 		
 		[8394] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Striped Frostsaber
 		[10789] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Spotted Frostsaber
