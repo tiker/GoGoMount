@@ -6,7 +6,6 @@ function GoGo_OnLoad()
 	SLASH_GOGOID1 = "/id"
 	SlashCmdList["GOGOID"] = function(msg) GoGo_Msg(GoGo_Id(msg)) end
 
-
 	GoGoFrame:RegisterEvent("VARIABLES_LOADED")
 	GoGoFrame:RegisterEvent("UPDATE_BINDINGS")
 	GoGoFrame:RegisterEvent("TAXIMAP_OPENED")
@@ -14,7 +13,6 @@ function GoGo_OnLoad()
 	GoGoFrame:RegisterEvent("COMPANION_LEARNED")
 	GoGoFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
 	GoGoFrame:RegisterEvent("ZONE_CHANGED_NEW_AREA")
---	GoGoFrame:RegisterEvent("BAG_UPDATE")
 end --function
 
 ---------
@@ -34,7 +32,7 @@ function GoGo_OnEvent(self, event, ...)
 		GoGo_Prefs.UnknownMounts = {}
 		GoGo_Variables.VerMajor, GoGo_Variables.VerMinor, GoGo_Variables.VerBuild = strsplit(".", GetAddOnMetadata("GoGoMount", "Version"))
 		GoGo_Variables.VerMajor, GoGo_Variables.VerMinor, GoGo_Variables.VerBuild = tonumber(GoGo_Variables.VerMajor), tonumber(GoGo_Variables.VerMinor), tonumber(GoGo_Variables.VerBuild)
-		GoGo_Variables.TestVersion = true
+		GoGo_Variables.TestVersion = false
 		GoGo_Variables.Debug = 0
 		_, GoGo_Variables.Player.Class = UnitClass("player")
 		_, GoGo_Variables.Player.Race = UnitRace("player")
@@ -83,7 +81,7 @@ function GoGo_OnEvent(self, event, ...)
 		GoGo_Variables.Player.Zone = GetRealZoneText()
 		GoGo_Variables.ExpansionAccount = GetAccountExpansionLevel()
 		GoGo_Variables.ExpansionGame =  GetExpansionLevel()
-		local _ = RegisterAddonMessagePrefix("GoGoMountVER")
+--		local _ = RegisterAddonMessagePrefix("GoGoMountVER")
 	elseif (event == "CHAT_MSG_ADDON") and (arg1 == "GoGoMountVER") and not GoGo_Prefs.DisableUpdateNotice then
 		local major, minor, build = strsplit(".", arg2)
 		local major, minor, build = tonumber(major), tonumber(minor), tonumber(build)
@@ -1557,15 +1555,7 @@ function GoGo_ZoneCheck()
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Ghostlands")
 		end --if
-		if GoGo_Variables.Player.SubZone == GoGo_Variables.Localize.Zone.ThalassianPass then   -- valley leaving Ghostlands to EPL
-			GoGo_Variables.ZoneExclude.CanFly = false
-		elseif GoGo_Variables.Player.SubZone == GoGo_Variables.Localize.Zone.ThalassianRange then  -- trying to fly over the wall from ghost lands to EPL
-			GoGo_Variables.ZoneExclude.CanFly = false
-		elseif GoGo_Variables.Player.SubZone == GoGo_Variables.Localize.Zone.AmaniMountains then  -- area in front of Zul'Amen
-			GoGo_Variables.ZoneExclude.CanFly = false
-		elseif GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense) then
-			GoGo_Variables.ZoneExclude.CanFly = true
-		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
 	elseif GoGo_Variables.Player.ZoneID == 464 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Azuremyst Isle")
