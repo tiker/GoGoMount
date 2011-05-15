@@ -32,8 +32,8 @@ function GoGo_OnEvent(self, event, ...)
 		GoGo_Prefs.UnknownMounts = {}
 		GoGo_Variables.VerMajor, GoGo_Variables.VerMinor, GoGo_Variables.VerBuild = strsplit(".", GetAddOnMetadata("GoGoMount", "Version"))
 		GoGo_Variables.VerMajor, GoGo_Variables.VerMinor, GoGo_Variables.VerBuild = tonumber(GoGo_Variables.VerMajor), tonumber(GoGo_Variables.VerMinor), tonumber(GoGo_Variables.VerBuild)
-		GoGo_Variables.TestVersion = false
-		GoGo_Variables.Debug = 0
+		GoGo_Variables.TestVersion = true
+		GoGo_Variables.Debug = 5
 		_, GoGo_Variables.Player.Class = UnitClass("player")
 		_, GoGo_Variables.Player.Race = UnitRace("player")
 		if (GoGo_Variables.Player.Class == "DRUID") then
@@ -1356,8 +1356,12 @@ function GoGo_ZoneCheck()
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Northern Stranglethorn")
 		end --if
-		if GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense) then
-			GoGo_Variables.ZoneExclude.CanFly = true
+		if GoGo_Variables.Player.SubZone == GoGo_Variables.Localize.Zone.TempleOfBethekk then
+			GoGo_Variables.ZoneExclude.CanFly = false
+		else
+			if GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense) then
+				GoGo_Variables.ZoneExclude.CanFly = true
+			end --if
 		end --if
 	elseif GoGo_Variables.Player.ZoneID == 38 then
 		if GoGo_Variables.Debug >= 10 then
