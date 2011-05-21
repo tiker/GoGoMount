@@ -124,6 +124,7 @@ function GoGo_GetMountDB()
 		[93326] = {[2] = true, [9] = true, [11] = true, [36] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Sandstone Drake
 		[93463] = {[9] = true, [11] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Mottled Drake
 		[93623] = {[9] = true, [11] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Mottled Drake
+		[101282] = {[9] = true, [11] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Vicious Gladiator's Twilight Drake
 
 		[59961] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Red Proto-Drake
 		[59976] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Black Proto-Drake
@@ -135,12 +136,12 @@ function GoGo_GetMountDB()
 		[63956] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Ironbound Proto-Drake
 		[63963] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Rusted Proto-Drake
 
-		[32345] = {[11] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Peep the Phoenix Mount
-		[40192] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Ashes of Al'ar
+		[32345] = {[9] = true, [11] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Peep the Phoenix Mount
+		[40192] = {[9] = true, [11] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Ashes of Al'ar
 		[88990] = {[9] = true, [11] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Dark Phoenix
 
-		[97493] = {[9] = true, [11] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Crimson Fire Hawk
-		[97501] = {[9] = true, [11] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Beryl Fire Hawk
+		[97493] = {[9] = true, [11] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Pureblood Fire Hawk / Crimson Fire Hawk
+		[97501] = {[9] = true, [11] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Green Fire Hawk / Beryl Fire Hawk
 
 		[54726] = {[9] = true, [12] = true, [36] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Winged Steed of the Ebon Blade
 		[54727] = {[9] = true, [12] = true, [36] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Winged Steed of the Ebon Blade
