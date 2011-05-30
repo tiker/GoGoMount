@@ -1356,12 +1356,8 @@ function GoGo_ZoneCheck()
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Northern Stranglethorn")
 		end --if
-		if GoGo_Variables.Player.SubZone == GoGo_Variables.Localize.Zone.TempleOfBethekk then
-			GoGo_Variables.ZoneExclude.CanFly = false
-		else
-			if GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense) then
-				GoGo_Variables.ZoneExclude.CanFly = true
-			end --if
+		if GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense) then
+			GoGo_Variables.ZoneExclude.CanFly = true
 		end --if
 	elseif GoGo_Variables.Player.ZoneID == 38 then
 		if GoGo_Variables.Debug >= 10 then
