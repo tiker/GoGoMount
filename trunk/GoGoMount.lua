@@ -2156,6 +2156,11 @@ function GoGo_ZoneCheck()
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Razorfen Downs (instance)")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.ZoneID == 761 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Razorfen Krawl (instance)")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
 	elseif GoGo_Variables.Player.ZoneID == 764 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Shadowfang Keep (heroic)")
