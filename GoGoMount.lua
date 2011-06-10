@@ -1205,7 +1205,6 @@ function GoGo_ZoneCheck()
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for unzoned areas of Kalimdor")
 			-- The Veiled Sea (docks outside of Exador waiting for boat)
-			-- Outside Blackfathom Deeps
 			-- Wailing Caverns Cave before the instance
 			-- Maraudon cavern outside the instance
 			-- The Steam Pools
@@ -2200,9 +2199,19 @@ function GoGo_ZoneCheck()
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Throne Of The Four Winds (10 player instance")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.ZoneID == 780 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Serpentshrine Caverns")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
 	elseif GoGo_Variables.Player.ZoneID == 781 then
 		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Zul'Aman (5 player instance")
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Zul'Aman (5 player instance)")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.ZoneID == 789 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Sunwell Plateau (25 player instance)")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 	elseif GoGo_Variables.Player.ZoneID == 793 then
