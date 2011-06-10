@@ -411,7 +411,7 @@ function GoGo_GetMountDB()
 		[55121] = {[4] = true, [55] = true, [200] = true, ["RequireWater"] = true, [10004]=286},  -- River Boat
 		[55531] = {[17] = true, [37] = true, [2] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Mechano-hog
 		[60424] = {[17] = true, [37] = true, [2] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Mekgineer's Chopper
-		[63796] = {[9] = true, [11] = true, [35] = true, [300]=true, [10003]=380},  -- Mimiron's Head
+		[63796] = {[9] = true, [11] = true, [35] = true, [300]=true, [403]=true, [10003]=380},  -- Mimiron's Head
 		[87090] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67}, -- Goblin Trike
 		[87091] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67}, -- Goblin Turbo-Trike
 
