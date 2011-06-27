@@ -210,6 +210,7 @@ end --function
 ---------
 function GoGo_ChooseMount()
 ---------
+	SetMapToCurrentZone()  -- ticket 488
 	GoGo_Variables.CanRide = true  -- resetting canride flag
 	GoGo_Variables.NoFlying = false -- resetting flag to prevent flying
 
