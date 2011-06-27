@@ -210,7 +210,8 @@ function GoGo_GetMountDB()
 		[63642] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Silvermoon Hawkstrider (Swift Silvermoon Hawkstrider)
 		[65639] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Red Hawkstrider
 		[66091] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Sunreaver Hawkstrider
-
+		[101542] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Flametalon of Alyzrazor
+		
 		[65917] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Magic Rooster
 		[66122] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Magic Rooster
 		[66123] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Magic Rooster
@@ -446,7 +447,7 @@ function GoGo_GetMountDB()
 		[783] = {[7] = true, [500] = true, [10002]=140}, -- Druid Travel Form
 		[2645] = {[8] = true, [500] = true, [1000] = true, ["DefaultInstance"] = true, [10002]=130}, -- Shaman Ghost Wolf Form
 		[768] = {[7] = true, [8] = true, [1000] = true, [500] = true, ["DefaultInstance"] = true, [10002]=100},  -- Druid Cat Form
-		[1066] = {[7] = true, [53] = true, [500] = true, [1000] = true, [10001] = 101, [10004] = 101, ["DefaultInstance"] = true},  -- Druid Aqua form
+		[1066] = {[7] = true, [53] = true, [500]=true, [1000]=true, [10001]=101, [10004]=101, ["DefaultInstance"] = true},  -- Druid Aqua form
 		[5118] = {[7] = true, [8] = true, [500] = true, ["DefaultInstance"] = true, [10002]=130},  -- Aspect of the Cheeta
 		[13159] = {[7] = true, [8] = true, [500] = true, ["DefaultInstance"] = true, [10002]=130},  -- Aspect of the Pack
 	}
