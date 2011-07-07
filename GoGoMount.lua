@@ -1918,12 +1918,20 @@ function GoGo_ZoneCheck()
 				if GoGo_Variables.Debug >= 10 then
 					GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Deepholm / Crumbling Depths.")
 				end --if
-				GoGo_Variables.ZoneExclude.CanFly = false
+				if IsFlyableArea() then
+					GoGo_Variables.ZoneExclude.CanFly = true
+				else
+					GoGo_Variables.ZoneExclude.CanFly = false
+				end --if
 			elseif GoGo_Variables.Player.MiniSubZone == GoGo_Variables.Localize.Zone.CrumblingDepths then
 				if GoGo_Variables.Debug >= 10 then
 					GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Deepholm / Crumbling Depths.")
 				end --if
-				GoGo_Variables.ZoneExclude.CanFly = false
+				if IsFlyableArea() then
+					GoGo_Variables.ZoneExclude.CanFly = true
+				else
+					GoGo_Variables.ZoneExclude.CanFly = false
+				end --if
 			else
 				GoGo_Variables.ZoneExclude.CanFly = true
 			end --if
