@@ -85,7 +85,7 @@ function GoGo_GetMountDB()
 		[71342] = {[3] = true, [14] = true, [9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [403]=true, [10002]=160, [10003]=250},  -- Big Love Rocket
 		[75973] = {[2] = true, [3] = true, [9] = true, [14] = true, [23] = false, [39] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- X-53 Touring Rocket
 
-		[43927] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Cenarion War Hippogryph
+		[43927] = {[9] = true, [11] = true, [35] = true, [300]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=380, [10004]=67},  -- Cenarion War Hippogryph
 		[63844] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Argent Hippogryph
 		[66087] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Silver Covenant Hippogryph
 		[74856] = {[3] = true, [9] = true, [14] = true, [38] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Blazing Hippogryph
@@ -148,16 +148,16 @@ function GoGo_GetMountDB()
 		[54727] = {[9] = true, [12] = true, [36] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Winged Steed of the Ebon Blade
 		[54729] = {[9] = true, [12] = true, [36] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Winged Steed of the Ebon Blade
 
-		[32235] = {[12] = true, [36] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Golden Gryphon
-		[32239] = {[12] = true, [36] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Ebon Gryphon
-		[32240] = {[12] = true, [36] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Snowy Gryphon
-		[32242] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Swift Blue Gryphon
-		[32289] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Swift Red Gryphon
-		[32290] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Swift Green Gryphon
-		[32292] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Swift Purple Gryphon
+		[32235] = {[9] = true, [12] = true, [36] = true, [300]=true, [301]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=250, [10004]=67},  -- Golden Gryphon
+		[32239] = {[9] = true, [12] = true, [36] = true, [300]=true, [301]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=250, [10004]=67},  -- Ebon Gryphon
+		[32240] = {[9] = true, [12] = true, [36] = true, [300]=true, [301]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=250, [10004]=67},  -- Snowy Gryphon
+		[32242] = {[9] = true, [11] = true, [35] = true, [300]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=380, [10004]=67},  -- Swift Blue Gryphon
+		[32289] = {[9] = true, [11] = true, [35] = true, [300]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=380, [10004]=67},  -- Swift Red Gryphon
+		[32290] = {[9] = true, [11] = true, [35] = true, [300]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=380, [10004]=67},  -- Swift Green Gryphon
+		[32292] = {[9] = true, [11] = true, [35] = true, [300]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=380, [10004]=67},  -- Swift Purple Gryphon
 		[44221] = {[18] = true, [39] = true, [9] = true, [4] = true, [52] = true, ["FlightOnly"] = true, [10003]=250},  -- Loaned Gryphon Reins
 		[55164] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Swift Spectral Gryphon
-		[61229] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Armored Snowy Gryphon
+		[61229] = {[9] = true, [11] = true, [35] = true, [300]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=380, [10004]=67},  -- Armored Snowy Gryphon
 
 		[578] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Black Wolf
 		[579] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Red Wolf
