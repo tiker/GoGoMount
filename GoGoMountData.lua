@@ -532,7 +532,9 @@ GoGo_Variables.DebuffDB = {
 	71559,  -- Aim of the Iron Dwarves (from Heroic Deathbringer's Will)
 	71560,  -- Speed of the Vrykul (from Heroic Deathbringer's Will)
 	71561,  -- Strength of the Taunka (from Heroic Deathbringer's Will)
+	75724,	-- Seeds of Discord (Mount Hyjal quest from item "Ogre Disguise" itemid 55137)
 	91760,	-- Endure the Transformation (from Bones of Transformation)
 	91771,	-- Wisp Form (from Wisp Amulet)
+
 	
 }

@@ -33,7 +33,7 @@ function GoGo_OnEvent(self, event, ...)
 		GoGo_Variables.VerMajor, GoGo_Variables.VerMinor, GoGo_Variables.VerBuild = strsplit(".", GetAddOnMetadata("GoGoMount", "Version"))
 		GoGo_Variables.VerMajor, GoGo_Variables.VerMinor, GoGo_Variables.VerBuild = tonumber(GoGo_Variables.VerMajor), tonumber(GoGo_Variables.VerMinor), tonumber(GoGo_Variables.VerBuild)
 		GoGo_Variables.TestVersion = false
-		GoGo_Variables.Debug = 0
+		GoGo_StartStopDebug(0)
 		_, GoGo_Variables.Player.Class = UnitClass("player")
 		_, GoGo_Variables.Player.Race = UnitRace("player")
 		if (GoGo_Variables.Player.Class == "DRUID") then
@@ -82,6 +82,26 @@ function GoGo_OnEvent(self, event, ...)
 		GoGo_Variables.ExpansionAccount = GetAccountExpansionLevel()
 		GoGo_Variables.ExpansionGame =  GetExpansionLevel()
 --		local _ = RegisterAddonMessagePrefix("GoGoMountVER")
+	elseif (event == "UNIT_TARGET" and arg1 == "player") then  -- find out what mount player is using - only enabled if debug level >= 6
+		local GoGo_PlayerName = UnitName("target")
+		local i = 1
+		GoGo_GetMountDB()  -- get the mount list
+		local buff, _, _, _, _, _, _, _, _, _, spellid = UnitAura("target", i)
+		while buff do
+			if GoGo_Variables.MountDB[spellid] then
+				GoGo_DebugAddLine("EVENT UNIT_TARGET: " .. GoGo_PlayerName .. " buffs = " .. buff .. " - " .. spellid)
+			end --if
+			i = i + 1
+			buff, _, _, _, _, _, _, _, _, _, spellid = UnitAura("target", i)
+		end --while
+--		if #buffs < 1 then
+--			buffs = "Target is unbuffed"
+--		else
+--			buffs[1] = "Target is buffed with: "..buffs[1]
+--			buffs = table.concat(buffs, ", ")
+--		end --if
+--		GoGo_DebugAddLine("EVENT PLAYER_TARGET_CHANGED: Target buffs = " .. buffs)
+--		GoGo_Variables.MountDB = nil
 	elseif (event == "CHAT_MSG_ADDON") and (arg1 == "GoGoMountVER") and not GoGo_Prefs.DisableUpdateNotice then
 		local major, minor, build = strsplit(".", arg2)
 		local major, minor, build = tonumber(major), tonumber(minor), tonumber(build)
@@ -2780,7 +2800,15 @@ GOGO_COMMANDS = {
 		GoGo_Msg("pref")
 	end, --function
 	["debug"] = function()
-		GoGo_Variables.Debug=10
+		GoGo_StartStopDebug(10)
+		GoGo_Msg("debug")
+	end, --function
+	["debug 6"] = function()
+		GoGo_StartStopDebug(6)
+		GoGo_Msg("debug")
+	end, --function
+	["debug 5"] = function()
+		GoGo_StartStopDebug(5)
 		GoGo_Msg("debug")
 	end, --function
 	["updatenotice"] = function()
@@ -2851,6 +2879,10 @@ GOGO_MESSAGES = {
 	["debug"] = function()
 		if GoGo_Variables.Debug >= 10 then
 			return "GoGoMount debugging enabled for 1 GoGoButton click."
+		elseif GoGo_Variables.Debug == 6 then
+			return "GoGoMount debugging level 6 set"
+		elseif GoGo_Variables.Debug == 5 then
+			return "GoGoMount debugging level 5 set"
 		end --if
 	end, --function
 	["globalexclude"] = function()
@@ -3269,4 +3301,19 @@ function GoGo_DebugCollectInformation()
 	GoGo_DebugAddLine("Information: Maelstrom Zones:  " .. GoGo_Variables.MaelstromZones)
 	GoGo_DebugAddLine("Information: Mount List:")
 	GoGo_DebugAddLine("Information: End of information.")	
+end --function
+
+function GoGo_StartStopDebug(level)
+
+	if level then
+		GoGo_Variables.Debug = level
+	else
+		GoGo_Variables.Debug = 10
+	end --if
+	
+	if GoGo_Variables.Debug >= 6 then
+		GoGoFrame:RegisterEvent("UNIT_TARGET")
+	else
+		GoGoFrame:UnregisterEvent("UNIT_TARGET")
+	end --if
 end --function
