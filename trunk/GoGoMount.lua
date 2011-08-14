@@ -3012,6 +3012,7 @@ function GoGo_Panel_Options()
 	GoGo_Panel_RemoveBuffs = CreateFrame("CheckButton", "GoGo_Panel_RemoveBuffs", GoGo_Panel, "OptionsCheckButtonTemplate")
 	GoGo_Panel_RemoveBuffs:SetPoint("TOPLEFT", "GoGo_Panel_DisableWaterFlight", "BOTTOMLEFT", 0, -4)
 	GoGo_Panel_RemoveBuffsText:SetText(GoGo_Variables.Localize.String.RemoveBuffs)
+	GoGo_Panel_RemoveBuffs.tooltipText = GoGo_Variables.Localize.String.RemoveBuffs_Long
 	GoGo_Panel_RemoveBuffs:SetScript("OnClick",
 		function(self)
 			GoGo_Panel_Okay("MAIN")
@@ -3092,6 +3093,7 @@ function GoGo_Hunter_Panel()
 	GoGo_Hunter_Panel_AspectOfPack = CreateFrame("CheckButton", "GoGo_Hunter_Panel_AspectOfPack", GoGo_Hunter_Panel, "OptionsCheckButtonTemplate")
 	GoGo_Hunter_Panel_AspectOfPack:SetPoint("TOPLEFT", 16, -16)
 	GoGo_Hunter_Panel_AspectOfPackText:SetText(GoGo_Variables.Localize.String.UseAspectOfThePackInstead)
+	GoGo_Hunter_Panel_AspectOfPack.tooltipText = GoGo_Variables.Localize.String.UseAspectOfThePackInstead_LongA .. " " .. GetSpellInfo(GoGo_Variables.Localize.AspectPack) .. " " .. GoGo_Variables.Localize.String.UseAspectOfThePackInstead_LongB .. " " .. GetSpellInfo(GoGo_Variables.Localize.AspectCheetah) .. " " .. UseAspectOfThePackInstead_LongC
 	GoGo_Hunter_Panel_AspectOfPack:SetScript("OnClick",
 		function(self)
 			GoGo_Panel_Okay("HUNTER")
