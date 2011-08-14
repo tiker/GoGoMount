@@ -20,7 +20,6 @@ function GoGo_OnEvent(self, event, ...)
 ---------
 	local arg1, arg2, arg3, arg4 = ...
 	if event == "VARIABLES_LOADED" then
-		GoGo_DebugLog = {}
 		if not GoGo_Prefs then
 			GoGo_Settings_Default()
 		end --if
@@ -29,6 +28,7 @@ function GoGo_OnEvent(self, event, ...)
 		elseif GoGo_Prefs.version ~= GetAddOnMetadata("GoGoMount", "Version") then
 			GoGo_Settings_SetUpdates()
 		end --if
+		GoGo_DebugLog = {}
 		GoGo_Prefs.UnknownMounts = {}
 		GoGo_Variables.VerMajor, GoGo_Variables.VerMinor, GoGo_Variables.VerBuild = strsplit(".", GetAddOnMetadata("GoGoMount", "Version"))
 		GoGo_Variables.VerMajor, GoGo_Variables.VerMinor, GoGo_Variables.VerBuild = tonumber(GoGo_Variables.VerMajor), tonumber(GoGo_Variables.VerMinor), tonumber(GoGo_Variables.VerBuild)
@@ -59,8 +59,12 @@ function GoGo_OnEvent(self, event, ...)
 			if GoGo_Variables.Player.Class == "SHAMAN" then
 				GoGo_FillButton(button, GoGo_InBook(GOGO_SPELLS["SHAMAN"]))
 			elseif GoGo_Variables.Player.Class == "DRUID" then
-				GoGo_ZoneCheck()  -- Checking to see what we can and can not do in zones
-				GoGo_FillButton(button, GoGo_InBook(GOGO_SPELLS["DRUID"]))
+				if not GoGo_Prefs.DruidDisableInCombat then
+					GoGo_ZoneCheck()  -- Checking to see what we can and can not do in zones
+					GoGo_FillButton(button, GoGo_InBook(GOGO_SPELLS["DRUID"]))
+				else
+					GoGo_FillButton(button)
+				end --if
 			end --if
 		end --for
 	elseif event == "ZONE_CHANGED_NEW_AREA" then
@@ -3078,6 +3082,16 @@ function GoGo_Druid_Panel()
 			GoGo_Panel_Okay("DRUID")
 		end --function
 	)
+	
+	GoGo_Druid_Panel_DisableInCombat = CreateFrame("CheckButton", "GoGo_Druid_Panel_DisableInCombat", GoGo_Druid_Panel, "OptionsCheckButtonTemplate")
+	GoGo_Druid_Panel_DisableInCombat:SetPoint("TOPLEFT", "GoGo_Druid_Panel_NoShapeInRandom", "BOTTOMLEFT", 0, -4)
+	GoGo_Druid_Panel_DisableInCombatText:SetText(GoGo_Variables.Localize.String.DisableInCombat)
+	GoGo_Druid_Panel_DisableInCombat.tooltipText = GoGo_Variables.Localize.String.DisableInCombat_Long
+	GoGo_Druid_Panel_ClickForm:SetScript("OnClick",
+		function(self)
+			GoGo_Panel_Okay("DRUID")
+		end --function
+	)
 end --function
 
 ---------
@@ -3109,6 +3123,7 @@ function GoGo_Panel_UpdateViews(Class)  -- check to see what's calling this (imp
 		GoGo_Druid_Panel_ClickForm:SetChecked(GoGo_Prefs.DruidClickForm)
 		GoGo_Druid_Panel_FlightForm:SetChecked(GoGo_Prefs.DruidFlightForm)
 		GoGo_Druid_Panel_NoShapeInRandom:SetChecked(GoGo_Prefs.DruidFormNotRandomize)
+		GoGo_Druid_Panel_DisableInCombat:SetChecked(GoGo_Prefs.DruidDisableInCombat)
 	elseif Class == "HUNTER" then
 		GoGo_Hunter_Panel_AspectOfPack:SetChecked(GoGo_Prefs.AspectPack)
 	else
@@ -3141,6 +3156,7 @@ function GoGo_Panel_Okay(Panel)
 		GoGo_Prefs.DruidClickForm = GoGo_Druid_Panel_ClickForm:GetChecked()
 		GoGo_Prefs.DruidFlightForm = GoGo_Druid_Panel_FlightForm:GetChecked()
 		GoGo_Prefs.DruidFormNotRandomize = GoGo_Druid_Panel_NoShapeInRandom:GetChecked()
+		GoGo_Prefs.DruidDisableInCombat = GoGo_Druid_Panel_DisableInCombat:GetChecked()
 	elseif Panel == "HUNTER" then
 		GoGo_Prefs.AspectPack = GoGo_Hunter_Panel_AspectOfPack:GetChecked()
 	end--if
@@ -3153,6 +3169,7 @@ function GoGo_Settings_Default(Class)
 		GoGo_Prefs.DruidClickForm = true
 		GoGo_Prefs.DruidFlightForm = false
 		GoGo_Prefs.DruidFormNotRandomize = false
+		GoGo_Prefs.DruidDisableInCombat = false
 	elseif Class == "HUNTER" then
 		GoGo_Prefs.AspectPack = false
 	elseif Class == "ALL" then
@@ -3179,6 +3196,7 @@ function GoGo_Settings_Default(Class)
 		GoGo_Prefs.DruidFormNotRandomize = false
 		GoGo_Prefs.DisableWaterFlight = true
 		GoGo_Prefs.RemoveBuffs = true
+		GoGo_Prefs.DruidDisableInCombat = false
 	end --if
 end --function
 
@@ -3196,7 +3214,8 @@ function GoGo_Settings_SetUpdates()
 	if not GoGo_Prefs.DruidFormNotRandomize then GoGo_Prefs.DruidFormNotRandomize = false end
 	if not GoGo_Prefs.DisableWaterFlight then GoGo_Prefs.DisableWaterFlight = false end
 	if not GoGo_Prefs.RemoveBuffs then GoGo_Prefs.RemoveBuffs = false end
-
+	if not GoGo_Prefs.DruidDisableInCombat then GoGo_Prefs.DruidDisableInCombat = false end
+	
 	GoGo_Prefs.UnknownMounts = {}
 	if not GoGo_Prefs.GlobalExclude then
 		GoGo_Prefs.GlobalExclude = {}
