@@ -3099,7 +3099,7 @@ function GoGo_Hunter_Panel()
 	GoGo_Hunter_Panel_AspectOfPack = CreateFrame("CheckButton", "GoGo_Hunter_Panel_AspectOfPack", GoGo_Hunter_Panel, "OptionsCheckButtonTemplate")
 	GoGo_Hunter_Panel_AspectOfPack:SetPoint("TOPLEFT", 16, -16)
 	GoGo_Hunter_Panel_AspectOfPackText:SetText(GoGo_Variables.Localize.String.UseAspectOfThePackInstead)
-	GoGo_Hunter_Panel_AspectOfPack.tooltipText = GoGo_Variables.Localize.String.UseAspectOfThePackInstead_LongA .. " " .. GetSpellInfo(GoGo_Variables.Localize.AspectPack) .. " " .. GoGo_Variables.Localize.String.UseAspectOfThePackInstead_LongB .. " " .. GetSpellInfo(GoGo_Variables.Localize.AspectCheetah) .. " " .. GoGo_Variables.Localize.String.UseAspectOfThePackInstead_LongC
+	GoGo_Hunter_Panel_AspectOfPack.tooltipText = GoGo_Variables.Localize.String.UseAspectOfThePackInstead_Long
 	GoGo_Hunter_Panel_AspectOfPack:SetScript("OnClick",
 		function(self)
 			GoGo_Panel_Okay("HUNTER")
