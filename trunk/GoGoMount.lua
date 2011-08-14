@@ -98,14 +98,6 @@ function GoGo_OnEvent(self, event, ...)
 			i = i + 1
 			buff, _, _, _, _, _, _, _, _, _, spellid = UnitAura("target", i)
 		end --while
---		if #buffs < 1 then
---			buffs = "Target is unbuffed"
---		else
---			buffs[1] = "Target is buffed with: "..buffs[1]
---			buffs = table.concat(buffs, ", ")
---		end --if
---		GoGo_DebugAddLine("EVENT PLAYER_TARGET_CHANGED: Target buffs = " .. buffs)
---		GoGo_Variables.MountDB = nil
 	elseif (event == "CHAT_MSG_ADDON") and (arg1 == "GoGoMountVER") and not GoGo_Prefs.DisableUpdateNotice then
 		local major, minor, build = strsplit(".", arg2)
 		local major, minor, build = tonumber(major), tonumber(minor), tonumber(build)
@@ -3107,7 +3099,7 @@ function GoGo_Hunter_Panel()
 	GoGo_Hunter_Panel_AspectOfPack = CreateFrame("CheckButton", "GoGo_Hunter_Panel_AspectOfPack", GoGo_Hunter_Panel, "OptionsCheckButtonTemplate")
 	GoGo_Hunter_Panel_AspectOfPack:SetPoint("TOPLEFT", 16, -16)
 	GoGo_Hunter_Panel_AspectOfPackText:SetText(GoGo_Variables.Localize.String.UseAspectOfThePackInstead)
-	GoGo_Hunter_Panel_AspectOfPack.tooltipText = GoGo_Variables.Localize.String.UseAspectOfThePackInstead_LongA .. " " .. GetSpellInfo(GoGo_Variables.Localize.AspectPack) .. " " .. GoGo_Variables.Localize.String.UseAspectOfThePackInstead_LongB .. " " .. GetSpellInfo(GoGo_Variables.Localize.AspectCheetah) .. " " .. UseAspectOfThePackInstead_LongC
+	GoGo_Hunter_Panel_AspectOfPack.tooltipText = GoGo_Variables.Localize.String.UseAspectOfThePackInstead_LongA .. " " .. GetSpellInfo(GoGo_Variables.Localize.AspectPack) .. " " .. GoGo_Variables.Localize.String.UseAspectOfThePackInstead_LongB .. " " .. GetSpellInfo(GoGo_Variables.Localize.AspectCheetah) .. " " .. GoGo_Variables.Localize.String.UseAspectOfThePackInstead_LongC
 	GoGo_Hunter_Panel_AspectOfPack:SetScript("OnClick",
 		function(self)
 			GoGo_Panel_Okay("HUNTER")
