@@ -52,15 +52,15 @@ function GoGo_GetMountDB()
 
 	---	[42679] = {[11] = true, [35] = true, [9] = true, [999] = true},  -- Swift Flying Broom
 
-		[32243] = {[12] = true, [36] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Tawny Wind Rider
-		[32244] = {[12] = true, [36] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Blue Wind Rider
-		[32245] = {[12] = true, [36] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Green Wind Rider
-		[32246] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Swift Red Wind Rider
-		[32295] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Swift Green Wind Rider
-		[32296] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Swift Yellow Wind Rider
-		[32297] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Swift Purple Wind Rider
+		[32243] = {[9] = true, [12] = true, [36] = true, [300]=true, [301]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=250, [10004]=67},  -- Tawny Wind Rider
+		[32244] = {[9] = true, [12] = true, [36] = true, [300]=true, [301]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=250, [10004]=67},  -- Blue Wind Rider
+		[32245] = {[9] = true, [12] = true, [36] = true, [300]=true, [301]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=250, [10004]=67},  -- Green Wind Rider
+		[32246] = {[9] = true, [11] = true, [35] = true, [300]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=380, [10004]=67},  -- Swift Red Wind Rider
+		[32295] = {[9] = true, [11] = true, [35] = true, [300]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=380, [10004]=67},  -- Swift Green Wind Rider
+		[32296] = {[9] = true, [11] = true, [35] = true, [300]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=380, [10004]=67},  -- Swift Yellow Wind Rider
+		[32297] = {[9] = true, [11] = true, [35] = true, [300]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=380, [10004]=67},  -- Swift Purple Wind Rider
 		[44229] = {[18] = true, [39] = true, [9] = true, [4] = true, [52] = true, ["FlightOnly"] = true, [10003]=250},  -- Loaned Wind Rider Reins
-		[61230] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Armored Blue Wind Rider
+		[61230] = {[9] = true, [11] = true, [35] = true, [300]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=380, [10004]=67},  -- Armored Blue Wind Rider
 
 		[37015] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Swift Nether Drake
 		[41513] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Onyx Netherwing Drake
