@@ -52,6 +52,9 @@ function GoGo_OnEvent(self, event, ...)
 		GoGo_Variables.MaelstromZones = table.concat({GetMapZones(5)}, ":")
 		GoGo_Panel_Options()
 		GoGo_Panel_UpdateViews()
+		GoGo_ZoneFavorites_Panel()
+		GoGo_GlobalFavorites_Panel()
+
 	elseif event == "PLAYER_REGEN_DISABLED" then
 		for i, button in ipairs({GoGoButton, GoGoButton2, GoGoButton3}) do
 			if GoGo_Variables.Player.Class == "SHAMAN" then
@@ -91,8 +94,6 @@ function GoGo_OnEvent(self, event, ...)
 		GoGo_Variables.Player.Zone = GetRealZoneText()
 		GoGo_Variables.ExpansionAccount = GetAccountExpansionLevel()
 		GoGo_Variables.ExpansionGame =  GetExpansionLevel()
-		GoGo_ZoneFavorites_Panel()
-		GoGo_GlobalFavorites_Panel()
 --		local _ = RegisterAddonMessagePrefix("GoGoMountVER")
 
 	elseif (event == "UNIT_TARGET" and arg1 == "player") then  -- find out what mount player is using - only enabled if debug level >= 6
