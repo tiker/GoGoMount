@@ -3392,7 +3392,7 @@ function GoGo_AddOptionCheckboxes(GoGo_FrameParentText)
 	local _G = getfenv()
 	GoGo_FrameParent = _G[GoGo_FrameParentText]
 	
-	GoGo_DebugAddLine("GoGo_AddOptionCheckboxes(): on show ran")
+--	GoGo_DebugAddLine("GoGo_AddOptionCheckboxes(): on show ran")
 
 	if GoGo_FrameParentText == "GoGo_ZoneFavorites_ContentFrame" then
 		_G["GoGo_ZoneFavorites_ContentFrame"]:SetHeight((16 * GoGo_MountCount)+44)
