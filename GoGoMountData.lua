@@ -14,6 +14,8 @@ GoGo_Variables.Localize.String = {}
 GoGo_Variables.Localize.Skill = {}
 GoGo_Variables.Localize.Talent = {}
 
+GoGo_Variables.Debug = 0
+
 ---------
 function GoGo_GetMountDB()
 ---------
