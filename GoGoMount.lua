@@ -33,7 +33,6 @@ function GoGo_OnEvent(self, event, ...)
 		GoGo_Variables.VerMajor, GoGo_Variables.VerMinor, GoGo_Variables.VerBuild = strsplit(".", GetAddOnMetadata("GoGoMount", "Version"))
 		GoGo_Variables.VerMajor, GoGo_Variables.VerMinor, GoGo_Variables.VerBuild = tonumber(GoGo_Variables.VerMajor), tonumber(GoGo_Variables.VerMinor), tonumber(GoGo_Variables.VerBuild)
 		GoGo_Variables.TestVersion = false
-		GoGo_StartStopDebug(0)
 		_, GoGo_Variables.Player.Class = UnitClass("player")
 		_, GoGo_Variables.Player.Race = UnitRace("player")
 		if (GoGo_Variables.Player.Class == "DRUID") then
@@ -53,7 +52,6 @@ function GoGo_OnEvent(self, event, ...)
 		GoGo_Variables.MaelstromZones = table.concat({GetMapZones(5)}, ":")
 		GoGo_Panel_Options()
 		GoGo_Panel_UpdateViews()
---		GoGo_Panel_GlobalFavorites_Populate()
 	elseif event == "PLAYER_REGEN_DISABLED" then
 		for i, button in ipairs({GoGoButton, GoGoButton2, GoGoButton3}) do
 			if GoGo_Variables.Player.Class == "SHAMAN" then
@@ -71,6 +69,12 @@ function GoGo_OnEvent(self, event, ...)
 		SetMapToCurrentZone()
 		GoGo_Variables.Player.Zone = GetRealZoneText()
 		GoGo_UpdateZonePrefs()
+		if _G["GoGo_ZoneFavorites_ContentFrame"]:IsShown() then
+			GoGo_AddOptionCheckboxes("GoGo_ZoneFavorites_ContentFrame")
+		elseif _G["GoGo_GlobalFavorites_ContentFrame"]:IsShown() then
+			GoGo_AddOptionCheckboxes("GoGo_GlobalFavorites_ContentFrame")
+		end --if
+
 	elseif event == "TAXIMAP_OPENED" then
 		GoGo_Dismount()
 	elseif event == "UPDATE_BINDINGS" then
@@ -82,10 +86,15 @@ function GoGo_OnEvent(self, event, ...)
 			GoGo_Dismount()
 		end --if
 	elseif (event == "PLAYER_ENTERING_WORLD") then
+		GoGo_StartStopDebug(0)
+		SetMapToCurrentZone()
 		GoGo_Variables.Player.Zone = GetRealZoneText()
 		GoGo_Variables.ExpansionAccount = GetAccountExpansionLevel()
 		GoGo_Variables.ExpansionGame =  GetExpansionLevel()
+		GoGo_ZoneFavorites_Panel()
+		GoGo_GlobalFavorites_Panel()
 --		local _ = RegisterAddonMessagePrefix("GoGoMountVER")
+
 	elseif (event == "UNIT_TARGET" and arg1 == "player") then  -- find out what mount player is using - only enabled if debug level >= 6
 		local GoGo_PlayerName = UnitName("target")
 		local i = 1
@@ -682,12 +691,14 @@ function GoGo_InCompanions(item)
 end --function
 
 ---------
-function GoGo_BuildMountList()
+function GoGo_BuildMountList(selection)  -- selection = all if we want all known mounts and not just usable mounts
 ---------
 	GoGo_Variables.MountList = {}
 	if (table.getn(GoGo_Variables.MountSpellList) > 0) then
 		for a=1, table.getn(GoGo_Variables.MountSpellList) do
-			if IsUsableSpell(GoGo_Variables.MountSpellList[a]) then
+			if selection == "ALL" then
+				table.insert(GoGo_Variables.MountList, GoGo_Variables.MountSpellList[a])
+			elseif IsUsableSpell(GoGo_Variables.MountSpellList[a]) then
 				table.insert(GoGo_Variables.MountList, GoGo_Variables.MountSpellList[a])
 			end --if
 		end --for
@@ -695,7 +706,9 @@ function GoGo_BuildMountList()
 	
 	if (table.getn(GoGo_Variables.MountItemList) > 0) then
 		for a=1, table.getn(GoGo_Variables.MountItemList) do
-			if IsUsableItem(GoGo_Variables.MountItemList[a]) then
+			if selection == "ALL" then
+				table.insert(GoGo_Variables.MountList, GoGo_Variables.MountItemList[a])
+			elseif IsUsableItem(GoGo_Variables.MountItemList[a]) then
 				table.insert(GoGo_Variables.MountList, GoGo_Variables.MountItemList[a])
 			end --if
 		end --for
@@ -972,7 +985,67 @@ function GoGo_GlobalExcludeModify(SpellID)
 end --function
 
 ---------
-function GoGo_AddPrefMount(SpellID)
+function GoGo_ZonePrefMount(SpellID)
+---------
+	if SpellID == nil then
+		return
+	else
+		SpellID = tonumber(SpellID)
+	end --if
+	
+	if GoGo_Variables.Debug >= 10 then 
+		GoGo_DebugAddLine("GoGo_ZonePrefMount: Preference ID " .. SpellID)
+	end --if
+
+	if not GoGo_Prefs.Zones[GoGo_Variables.Player.Zone] then
+		GoGo_Prefs.Zones[GoGo_Variables.Player.Zone] = {}
+		table.insert(GoGo_Prefs.Zones[GoGo_Variables.Player.Zone], SpellID)
+	else
+		for GoGo_CounterA = 1, table.getn(GoGo_Prefs.Zones[GoGo_Variables.Player.Zone]) do
+			if GoGo_Prefs.Zones[GoGo_Variables.Player.Zone][GoGo_CounterA] == SpellID then
+				table.remove(GoGo_Prefs.Zones[GoGo_Variables.Player.Zone], GoGo_CounterA)
+				if table.getn(GoGo_Prefs.Zones[GoGo_Variables.Player.Zone]) == 0 then
+					GoGo_Prefs.Zones[GoGo_Variables.Player.Zone] = nil
+				end --if
+				return -- mount found, removed and now returning
+			end --if
+		end --for
+		table.insert(GoGo_Prefs.Zones[GoGo_Variables.Player.Zone], SpellID)
+	end --if
+end --function
+
+---------
+function GoGo_GlobalPrefMount(SpellID)
+---------
+	if SpellID == nil then
+		return
+	else
+		SpellID = tonumber(SpellID)
+	end --if
+	
+	if GoGo_Variables.Debug >= 10 then 
+		GoGo_DebugAddLine("GoGo_GlobalPrefMount: Preference ID " .. SpellID)
+	end --if
+
+	if not GoGo_Prefs.GlobalPrefMounts then
+		GoGo_Prefs.GlobalPrefMounts = {}
+		table.insert(GoGo_Prefs.GlobalPrefMounts, SpellID)
+	else
+		for GoGo_CounterA = 1, table.getn(GoGo_Prefs.GlobalPrefMounts) do
+			if GoGo_Prefs.GlobalPrefMounts[GoGo_CounterA] == SpellID then
+				table.remove(GoGo_Prefs.GlobalPrefMounts, GoGo_CounterA)
+				if table.getn(GoGo_Prefs.GlobalPrefMounts) == 0 then
+					GoGo_Prefs.GlobalPrefMounts = nil
+				end --if
+				return -- mount found, removed and now returning
+			end --if
+		end --for
+		table.insert(GoGo_Prefs.GlobalPrefMounts, SpellID)
+	end --if
+end --function
+
+---------
+function GoGo_AddPrefMount(SpellID)  -- to be removed
 ---------
 	if GoGo_Variables.Debug >= 10 then 
 		GoGo_DebugAddLine("GoGo_AddPrefMount: Preference " .. spell)
@@ -1068,10 +1141,6 @@ function GoGo_GetIDName(itemid)
 		for a=1, table.getn(itemid) do
 			local GoGo_TempTable = {}
 			table.insert(GoGo_TempTable, itemid[a])
-
-			GoGo_DebugAddLine("GoGo_GetIDName: " .. table.getn(itemid))
-			GoGo_DebugAddLine("GoGo_GetIDName: " .. itemid[a])
-			
 			if (table.getn(GoGo_FilterMountsIn(GoGo_TempTable, 4)) == 1) then
 --				tempname = GetItemInfo(tempname)
 				if GoGo_Variables.Debug >= 10 then
@@ -3109,6 +3178,92 @@ function GoGo_Hunter_Panel()
 end --function
 
 ---------
+function GoGo_ZoneFavorites_Panel()
+---------
+	GoGo_ZoneFavorites_Panel = CreateFrame("Frame", nil, UIParent)
+	GoGo_ZoneFavorites_Panel.name = GoGo_Variables.Localize.String.CurrentZoneFavorites
+	GoGo_ZoneFavorites_Panel.parent = "GoGoMount"
+
+--	GoGo_ZoneFavorites_Panel.okay = function (self) GoGo_Panel_Okay("HUNTER"); end;  -- do nothing.. tracking changes with each click
+--	GoGo_ZoneFavorites_Panel.default = function (self) GoGo_Settings_Default("HUNTER"); GoGo_Panel_UpdateViews("HUNTER"); end;  -- use clear command with default button
+	InterfaceOptions_AddCategory(GoGo_ZoneFavorites_Panel)
+	
+	GoGo_ZoneFavorites_ScrollFrame = CreateFrame("ScrollFrame", "GoGo_ZoneFavorites_ScrollFrame", GoGo_ZoneFavorites_Panel, "UIPanelScrollFrameTemplate")
+	GoGo_ZoneFavorites_ScrollFrame:SetPoint("TOPLEFT", "GoGo_ZoneFavorites_Panel", "TOPLEFT", 0, -5)
+	GoGo_ZoneFavorites_ScrollFrame:SetPoint("BOTTOMLEFT", "GoGo_ZoneFavorites_Panel", "BOTTOMLEFT", 0, 5)
+	GoGo_ZoneFavorites_ScrollFrame:SetPoint("RIGHT", "GoGo_ZoneFavorites_Panel", "RIGHT", -2000)
+
+	GoGo_ZoneFavorites_Panel.ScrollFrame = GoGo_ZoneFavorites_ScrollFrame  --
+
+	GoGo_ZoneFavorites_ContentFrame = CreateFrame("Frame", "GoGo_ZoneFavorites_ContentFrame")
+	GoGo_ZoneFavorites_ContentFrame:SetWidth(600)
+	GoGo_ZoneFavorites_ContentFrame:SetHeight(1)
+	GoGo_ZoneFavorites_ContentFrame:SetPoint("TOPLEFT", "GoGo_ZoneFavorites_Panel", "TOPLEFT", 0, 0)
+
+	GoGo_ZoneFavorites_ScrollFrame:SetScrollChild(GoGo_ZoneFavorites_ContentFrame)
+
+	GoGo_ZoneFavorites_ContentFrameTitle = GoGo_ZoneFavorites_ContentFrame:CreateFontString("GoGo_ZoneFavorites_ContentFrameTitle", 'ARTWORK', 'GameFontHighlightMedium')
+	GoGo_ZoneFavorites_ContentFrameTitle:SetPoint('TOPLEFT', "GoGo_ZoneFavorites_ContentFrame", 'TOPLEFT', 16, -8)
+	GoGo_ZoneFavorites_ContentFrameTitle:SetJustifyH('LEFT')
+	GoGo_ZoneFavorites_ContentFrameTitle:SetJustifyV('TOP')
+	--GoGo_ZoneFavorites_ContentFrameTitle:SetText(GoGo_Variables.Localize.String.CurrentZone .. ":  " .. GoGo_Variables.Player.Zone)
+
+	local GoGo_ZoneFavorites_ContentFrameDescription = GoGo_ZoneFavorites_ContentFrame:CreateFontString(nil, 'ARTWORK', 'GameFontHighlightSmall')
+	GoGo_ZoneFavorites_ContentFrameDescription:SetHeight(32)
+	GoGo_ZoneFavorites_ContentFrameDescription:SetPoint('TOPLEFT', "GoGo_ZoneFavorites_ContentFrame", 'TOPLEFT', 16, -24)
+	GoGo_ZoneFavorites_ContentFrameDescription:SetPoint('RIGHT', "GoGo_ZoneFavorites_ScrollFrame", -32, 0)
+	GoGo_ZoneFavorites_ContentFrameDescription:SetWordWrap(true)
+	GoGo_ZoneFavorites_ContentFrameDescription:SetJustifyH('LEFT')
+	GoGo_ZoneFavorites_ContentFrameDescription:SetJustifyV('TOP')
+	GoGo_ZoneFavorites_ContentFrameDescription:SetText(GoGo_Variables.Localize.String.CurrentZoneDescription)
+
+	GoGo_ZoneFavorites_ContentFrame:SetScript("OnShow", function(self) GoGo_AddOptionCheckboxes("GoGo_ZoneFavorites_ContentFrame") end)
+end --function
+
+---------
+function GoGo_GlobalFavorites_Panel()
+---------
+	GoGo_GlobalFavorites_Panel = CreateFrame("Frame", nil, UIParent)
+	GoGo_GlobalFavorites_Panel.name = GoGo_Variables.Localize.String.GlobalFavorites
+	GoGo_GlobalFavorites_Panel.parent = "GoGoMount"
+--	GoGo_GlobalFavorites_Panel.okay = function (self) GoGo_Panel_Okay("HUNTER"); end;  -- do nothing.. tracking changes with each click
+--	GoGo_GlobalFavorites_Panel.default = function (self) GoGo_Settings_Default("HUNTER"); GoGo_Panel_UpdateViews("HUNTER"); end;  -- use clear command with default button
+	InterfaceOptions_AddCategory(GoGo_GlobalFavorites_Panel)
+	
+	GoGo_GlobalFavorites_ScrollFrame = CreateFrame("ScrollFrame", "GoGo_GlobalFavorites_ScrollFrame", GoGo_GlobalFavorites_Panel, "UIPanelScrollFrameTemplate")
+	GoGo_GlobalFavorites_ScrollFrame:SetPoint("TOPLEFT", "GoGo_GlobalFavorites_Panel", "TOPLEFT", 0, -5)
+	GoGo_GlobalFavorites_ScrollFrame:SetPoint("BOTTOMLEFT", "GoGo_GlobalFavorites_Panel", "BOTTOMLEFT", 0, 5)
+	GoGo_GlobalFavorites_ScrollFrame:SetPoint("RIGHT", "GoGo_GlobalFavorites_Panel", "RIGHT", -2000)
+
+	GoGo_GlobalFavorites_Panel.ScrollFrame = GoGo_GlobalFavorites_ScrollFrame  --
+
+	GoGo_GlobalFavorites_ContentFrame = CreateFrame("Frame", "GoGo_GlobalFavorites_ContentFrame")
+	GoGo_GlobalFavorites_ContentFrame:SetWidth(600)
+	GoGo_GlobalFavorites_ContentFrame:SetHeight(1)
+	GoGo_GlobalFavorites_ContentFrame:SetPoint("TOPLEFT", "GoGo_GlobalFavorites_Panel", "TOPLEFT", 0, 0)
+	GoGo_GlobalFavorites_ContentFrame:SetScript("OnShow", function(self) GoGo_AddOptionCheckboxes("GoGo_GlobalFavorites_ContentFrame") end)
+
+	GoGo_GlobalFavorites_ScrollFrame:SetScrollChild(GoGo_GlobalFavorites_ContentFrame)
+
+	local GoGo_GlobalFavorites_ContentFrameTitle = GoGo_GlobalFavorites_ContentFrame:CreateFontString(nil, 'ARTWORK', 'GameFontHighlightMedium')
+	GoGo_GlobalFavorites_ContentFrameTitle:SetPoint('TOPLEFT', "GoGo_GlobalFavorites_ContentFrame", 'TOPLEFT', 16, -8)
+	GoGo_GlobalFavorites_ContentFrameTitle:SetJustifyH('LEFT')
+	GoGo_GlobalFavorites_ContentFrameTitle:SetJustifyV('TOP')
+	GoGo_GlobalFavorites_ContentFrameTitle:SetText(GoGo_Variables.Localize.String.GlobalFavorites)
+
+	local GoGo_ZoneFavorites_ContentFrameDescription = GoGo_GlobalFavorites_ContentFrame:CreateFontString(nil, 'ARTWORK', 'GameFontHighlightSmall')
+	GoGo_ZoneFavorites_ContentFrameDescription:SetHeight(32)
+	GoGo_ZoneFavorites_ContentFrameDescription:SetPoint('TOPLEFT', "GoGo_GlobalFavorites_ContentFrame", 'TOPLEFT', 16, -24)
+	GoGo_ZoneFavorites_ContentFrameDescription:SetPoint('RIGHT', "GoGo_GlobalFavorites_ScrollFrame", -32, 0)
+	GoGo_ZoneFavorites_ContentFrameDescription:SetWordWrap(true)
+	GoGo_ZoneFavorites_ContentFrameDescription:SetJustifyH('LEFT')
+	GoGo_ZoneFavorites_ContentFrameDescription:SetJustifyV('TOP')
+	GoGo_ZoneFavorites_ContentFrameDescription:SetText(GoGo_Variables.Localize.String.GlobalZoneDescription)
+
+	--GoGo_AddOptionCheckboxes("GoGo_GlobalFavorites_ContentFrame")
+end --function
+
+---------
 function GoGo_Panel_UpdateViews(Class)  -- check to see what's calling this (improve performance)
 ---------
 	if Class == "DRUID" then
@@ -3222,6 +3377,89 @@ function GoGo_Settings_SetUpdates()
 	GoGo_Prefs.checkspells = nil
 	GoGo_Prefs.PaliUseCrusader = nil
 	
+end --function
+
+---------
+function GoGo_AddOptionCheckboxes(GoGo_FrameParentText)
+---------
+	-- GoGo_FrameParentText will contain a string to indicate which panel called this function
+		-- "GoGo_ZoneFavorites_ContentFrame" so far..
+		-- "GoGo_GlobalFavorites_ContentFrame" ..
+	GoGo_BuildMountSpellList()
+	GoGo_BuildMountItemList()
+	local GoGo_Mounts = GoGo_BuildMountList("ALL")
+	local GoGo_MountCount = table.getn(GoGo_Mounts) or 0
+	local _G = getfenv()
+	GoGo_FrameParent = _G[GoGo_FrameParentText]
+	
+	GoGo_DebugAddLine("GoGo_AddOptionCheckboxes(): on show ran")
+
+	if GoGo_FrameParentText == "GoGo_ZoneFavorites_ContentFrame" then
+		_G["GoGo_ZoneFavorites_ContentFrame"]:SetHeight((16 * GoGo_MountCount)+44)
+		GoGo_ZoneFavorites_ContentFrameTitle:SetText(GoGo_Variables.Localize.String.CurrentZone .. ":  " .. GoGo_Variables.Player.Zone)
+	elseif GoGo_FrameParentText == "GoGo_GlobalFavorites_ContentFrame" then
+		_G["GoGo_GlobalFavorites_ContentFrame"]:SetHeight((16 * GoGo_MountCount)+44)
+	end --if
+
+	if GoGo_MountCount == 0 then
+		return nil
+	else
+		for loopcount=1, GoGo_MountCount do
+			local GoGo_MountID = GoGo_Mounts[loopcount]
+			local GoGo_checkboxrow = (-44 + (-16 * loopcount))
+			local GoGo_CheckBoxName = GoGo_FrameParentText .. GoGo_MountID
+			if _G[GoGo_CheckBoxName] then
+				_G[GoGo_CheckBoxName]:SetPoint('TOP', GoGo_checkboxrow)
+				_G[GoGo_CheckBoxName]:SetChecked(0)
+			else
+				GoGo_CheckButton = CreateFrame("CheckButton", GoGo_CheckBoxName, GoGo_FrameParent, "ChatConfigCheckButtonTemplate")
+				GoGo_CheckButton:SetPoint("TOPLEFT", 16, GoGo_checkboxrow)
+				getglobal(GoGo_CheckButton:GetName() .. 'Text'):SetText(GoGo_GetIDName(GoGo_MountID))
+			end --if
+
+			if GoGo_Variables.Player.Class == "HUNTER" then
+				if GoGo_MountID == GoGo_Variables.Localize.AspectPack and _G[GoGo_FrameParentText .. GoGo_Variables.Localize.AspectCheetah] then
+					_G[GoGo_FrameParentText .. GoGo_Variables.Localize.AspectCheetah]:Hide()
+					_G[GoGo_FrameParentText .. GoGo_Variables.Localize.AspectPack]:Show()
+				elseif GoGo_MountID == GoGo_Variables.Localize.AspectCheetah and _G[GoGo_FrameParentText .. GoGo_Variables.Localize.AspectPack] then
+					_G[GoGo_FrameParentText .. GoGo_Variables.Localize.AspectCheetah]:Show()
+					_G[GoGo_FrameParentText .. GoGo_Variables.Localize.AspectPack]:Hide()
+				end --if
+			end --if
+			
+			if GoGo_FrameParentText == "GoGo_ZoneFavorites_ContentFrame" then
+				if GoGo_Prefs.Zones[GoGo_Variables.Player.Zone] then
+					--GoGo_DebugAddLine("GoGo_AddOptionCheckboxes(): zone exists ")
+					for GoGo_FavoriteCount = 1, table.getn(GoGo_Prefs.Zones[GoGo_Variables.Player.Zone]) do
+						if GoGo_Prefs.Zones[GoGo_Variables.Player.Zone][GoGo_FavoriteCount] == GoGo_MountID then
+							_G[GoGo_CheckBoxName]:SetChecked(1)
+--							GoGo_DebugAddLine("GoGo_AddOptionCheckboxes(): set checked ")
+						end --if
+					end --for
+				end --if
+				_G[GoGo_CheckBoxName]:SetScript("OnClick",
+					function(self)
+						GoGo_ZonePrefMount(GoGo_MountID)
+					end --function
+				)
+			elseif GoGo_FrameParentText == "GoGo_GlobalFavorites_ContentFrame" then
+				if GoGo_Prefs.GlobalPrefMounts then
+					--GoGo_DebugAddLine("GoGo_AddOptionCheckboxes(): zone exists ")
+					for GoGo_FavoriteCount = 1, table.getn(GoGo_Prefs.GlobalPrefMounts) do
+						if GoGo_Prefs.GlobalPrefMounts[GoGo_FavoriteCount] == GoGo_MountID then
+							_G[GoGo_CheckBoxName]:SetChecked(1)
+--							GoGo_DebugAddLine("GoGo_AddOptionCheckboxes(): set checked ")
+						end --if
+					end --for
+				end --if
+				_G[GoGo_CheckBoxName]:SetScript("OnClick",
+					function(self)
+						GoGo_GlobalPrefMount(GoGo_MountID)
+					end --function
+				)
+			end --if
+ 		end --for
+	end --if
 end --function
 
 ---------
