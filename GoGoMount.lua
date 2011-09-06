@@ -72,9 +72,9 @@ function GoGo_OnEvent(self, event, ...)
 		SetMapToCurrentZone()
 		GoGo_Variables.Player.Zone = GetRealZoneText()
 		GoGo_UpdateZonePrefs()
-		if _G["GoGo_ZoneFavorites_ContentFrame"]:IsShown() then
+		if _G["GoGo_ZoneFavorites_ContentFrame"] and _G["GoGo_ZoneFavorites_ContentFrame"]:IsShown() then
 			GoGo_AddOptionCheckboxes("GoGo_ZoneFavorites_ContentFrame")
-		elseif _G["GoGo_GlobalFavorites_ContentFrame"]:IsShown() then
+		elseif _G["GoGo_GlobalFavorites_ContentFrame"] and _G["GoGo_GlobalFavorites_ContentFrame"]:IsShown() then
 			GoGo_AddOptionCheckboxes("GoGo_GlobalFavorites_ContentFrame")
 		end --if
 
