@@ -47,9 +47,6 @@ function GoGo_OnEvent(self, event, ...)
 			GoGo_Hunter_Panel()
 			GoGo_Panel_UpdateViews("HUNTER")
 		end --if
-		GoGo_Variables.AzerothZones = table.concat({GetMapZones(1)}, ":")..":"..table.concat({GetMapZones(2)}, ":")
-		GoGo_Variables.NorthrendZones = table.concat({GetMapZones(4)}, ":")..":"..GoGo_Variables.Localize.Zone.TheFrozenSea
-		GoGo_Variables.MaelstromZones = table.concat({GetMapZones(5)}, ":")
 		GoGo_Panel_Options()
 		GoGo_Panel_UpdateViews()
 		GoGo_ZoneFavorites_Panel()
@@ -880,14 +877,6 @@ function GoGo_InNorthrend()
 	end --if
 end --function
 
----------
-function GoGo_InAzeroth()
----------
-	if string.find(GoGo_Variables.AzerothZones, GoGo_Variables.Player.Zone, 1, true) then
-		return true
-	end --if
-end --function
-
 function GoGo_InMaelstrom()
 ---------
 	if string.find(GoGo_Variables.MaelstromZones, GoGo_Variables.Player.Zone, 1, true) then
@@ -1235,34 +1224,6 @@ function GoGo_ZoneCheck()
 	end --if
 	if GoGo_Variables.Debug >= 5 then
 		GoGo_DebugAddLine("GoGo_ChooseMount: Zone ID = " .. GoGo_Variables.Player.ZoneID)
-	end --if
-
-	if (GoGo_InMaelstrom()) then
-		if (GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense)) then
-			GoGo_Variables.ZoneExclude.CanFly = true
-		end --if
-	elseif (GoGo_InAzeroth()) then
-		if (GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense)) then
-			GoGo_Variables.ZoneExclude.CanFly = true
-		else  -- don't have flight master's license
-			GoGo_Variables.ZoneExclude.CanFly = false
-		end --if
-	elseif (GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.TheTempleOfAtalHakkar) and GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense) then
-		GoGo_Variables.ZoneExclude.CanFly = true
-	elseif (GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.DireMaul) and GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense) then
-		if not IsInInstance() then
-			if GoGo_Variables.Debug >= 10 then
-				GoGo_DebugAddLine("GoGo_ZoneCheck: Activating Flying - in Dire Maul area not part of Azeroth.")
-			end --if
-			GoGo_Variables.ZoneExclude.CanFly = true
-		end --if
-	elseif IsInInstance() then
-		if GoGo_Variables.Player.Zone == GoGo_Variables.Localize.Zone.TheOculus then
-			GoGo_Variables.ZoneExclude.CanFly = false
-			GoGo_Variables.ZoneExclude.TheOculus = false
-		end --if
-	elseif GoGo_IsInBattleGround() then
-		GoGo_Variables.ZoneExclude.CanFly = false
 	end --if
 
 	if GoGo_Variables.Player.ZoneID == 1 then
@@ -1870,6 +1831,12 @@ function GoGo_ZoneCheck()
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Eye of Eternity (instance)")
 		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.ZoneID == 528 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Occulus (instance)")
+		end --if
+		GoGo_Variables.ZoneExclude.TheOculus = false
 		GoGo_Variables.ZoneExclude.CanFly = false
 	elseif GoGo_Variables.Player.ZoneID == 529 then
 		if GoGo_Variables.Debug >= 10 then
@@ -3558,9 +3525,6 @@ function GoGo_DebugCollectInformation()
 		buffs = table.concat(buffs, ", ")
 	end --if
 	GoGo_DebugAddLine("Information: " .. buffs)
-	GoGo_DebugAddLine("Information: Azeroth Zones:  " .. GoGo_Variables.AzerothZones)
-	GoGo_DebugAddLine("Information: Northrend Zones:  " .. GoGo_Variables.NorthrendZones)
-	GoGo_DebugAddLine("Information: Maelstrom Zones:  " .. GoGo_Variables.MaelstromZones)
 	GoGo_DebugAddLine("Information: Mount List:")
 	GoGo_DebugAddLine("Information: End of information.")	
 end --function
