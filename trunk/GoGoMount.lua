@@ -51,7 +51,7 @@ function GoGo_OnEvent(self, event, ...)
 		GoGo_Panel_UpdateViews()
 		GoGo_ZoneFavorites_Panel()
 		GoGo_GlobalFavorites_Panel()
-
+		GoGo_Exclusions_Panel()
 	elseif event == "PLAYER_REGEN_DISABLED" then
 		for i, button in ipairs({GoGoButton, GoGoButton2, GoGoButton3}) do
 			if GoGo_Variables.Player.Class == "SHAMAN" then
@@ -71,10 +71,7 @@ function GoGo_OnEvent(self, event, ...)
 		GoGo_UpdateZonePrefs()
 		if _G["GoGo_ZoneFavorites_ContentFrame"] and _G["GoGo_ZoneFavorites_ContentFrame"]:IsShown() then
 			GoGo_AddOptionCheckboxes("GoGo_ZoneFavorites_ContentFrame")
-		elseif _G["GoGo_GlobalFavorites_ContentFrame"] and _G["GoGo_GlobalFavorites_ContentFrame"]:IsShown() then
-			GoGo_AddOptionCheckboxes("GoGo_GlobalFavorites_ContentFrame")
 		end --if
-
 	elseif event == "TAXIMAP_OPENED" then
 		GoGo_Dismount()
 	elseif event == "UPDATE_BINDINGS" then
@@ -136,7 +133,7 @@ function GoGo_OnSlash(msg)
 		local FItemID = string.gsub(msg,".-\124H([^\124]*)\124h.*", "%1");
 		local idtype, itemid = strsplit(":",FItemID);
 		if string.find(msg, "exclude", 1, true) then
-			GoGo_GlobalExcludeModify(tonumber(itemid))
+			GoGo_GlobalExcludeMount(tonumber(itemid))
 		else
 			GoGo_AddPrefMount(tonumber(itemid))
 			GoGo_Msg("pref")
@@ -445,8 +442,7 @@ function GoGo_ChooseMount()
 		end --if
 	end --if
 
-	GoGo_BuildExcludeList()
-	GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 9999) or {}
+	GoGo_RemoveExcluded()
 	if GoGo_Variables.Debug >= 10 then
 		GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated excluded mounts - " .. (table.getn(GoGo_Variables.FilteredMounts) or 0) .. " mounts left.")
 	end --if
@@ -870,21 +866,6 @@ function GoGo_IsShifted()
 end --function
 
 ---------
-function GoGo_InNorthrend()
----------
-	if string.find(GoGo_Variables.NorthrendZones, GoGo_Variables.Player.Zone, 1, true) then
-		return true
-	end --if
-end --function
-
-function GoGo_InMaelstrom()
----------
-	if string.find(GoGo_Variables.MaelstromZones, GoGo_Variables.Player.Zone, 1, true) then
-		return true
-	end --if
-end --function
-
----------
 function GoGo_RemoveBuffs(mount)
 ---------
 	if mount == nil then
@@ -914,65 +895,6 @@ function GoGo_RemoveBuffs(mount)
 	end --if
 	return mount
 end --if
-
----------
-function GoGo_GlobalExcludeClear()
----------
-	local GoGo_TempID = "0"
-	if table.getn(GoGo_Prefs.GlobalExclude) > 0 then
-		for GoGo_TempCounter = 1, table.getn(GoGo_Prefs.GlobalExclude) do
-			GoGo_TempID = GoGo_Prefs.GlobalExclude[GoGo_TempCounter]
-			GoGo_Variables.MountDB[GoGo_TempID][9999] = false
-		end --for
-	end --if
-	GoGo_Prefs.GlobalExclude = {}
-end --function
-
----------
-function GoGo_GlobalExcludeAdd(SpellID)
----------
-	SpellID = tonumber(SpellID)
-	table.insert(GoGo_Prefs.GlobalExclude, SpellID)
-	GoGo_Variables.MountDB[SpellID][9999] = true
-end --function
-
----------
-function GoGo_BuildExcludeList()
----------
-	if table.getn(GoGo_Prefs.GlobalExclude) > 0 then
-		local GoGo_TempTable = {}
-		GoGo_TempTable = GoGo_Prefs.GlobalExclude
-		GoGo_Prefs.GlobalExclude = {}
-		for GoGo_TempCount = 1, table.getn(GoGo_TempTable) do
-			GoGo_GlobalExcludeAdd(GoGo_TempTable[GoGo_TempCount])
-		end --for
-	end --if
-end --function
-
----------
-function GoGo_GlobalExcludeModify(SpellID)
----------
-	local GoGo_RemovedFlag = false
-	SpellID = tonumber(SpellID)
-	if table.getn(GoGo_Prefs.GlobalExclude) > 0 then
-		for GoGo_TempCounter = 1, table.getn(GoGo_Prefs.GlobalExclude) do
-			if (GoGo_Prefs.GlobalExclude[GoGo_TempCounter] == SpellID) then
-				GoGo_TempID = GoGo_Prefs.GlobalExclude[GoGo_TempCounter]
-				if GoGo_Variables.Debug >= 10 then
-					GoGo_DebugAddLine("GoGo_GlobalExcludeModify: Removing from exclusion list: " .. SpellID .. " " .. GoGo_GetIDName(SpellID))
-				end --if
-				table.remove(GoGo_Prefs.GlobalExclude, GoGo_TempCounter)
-				--GoGo_Variables.MountDB[SpellID][9999] = false
-				GoGo_RemovedFlag = true
-			end --if
-		end --for
-	end --if
-	
-	if not GoGo_RemovedFlag then
-		GoGo_GlobalExcludeAdd(SpellID)
-	end --if
-	GoGo_Msg("globalexclude")
-end --function
 
 ---------
 function GoGo_ZonePrefMount(SpellID)
@@ -1031,6 +953,53 @@ function GoGo_GlobalPrefMount(SpellID)
 			end --if
 		end --for
 		table.insert(GoGo_Prefs.GlobalPrefMounts, SpellID)
+	end --if
+end --function
+
+---------
+function GoGo_GlobalExcludeMount(SpellID)
+---------
+	if SpellID == nil then
+		return
+	else
+		SpellID = tonumber(SpellID)
+	end --if
+	
+	if GoGo_Variables.Debug >= 10 then 
+		GoGo_DebugAddLine("GoGo_GlobalExcludeMount: Mount ID " .. SpellID)
+	end --if
+
+	if not GoGo_Prefs.GlobalExclude then
+		GoGo_Prefs.GlobalExclude = {}
+		table.insert(GoGo_Prefs.GlobalExclude, SpellID)
+	else
+		for GoGo_CounterA = 1, table.getn(GoGo_Prefs.GlobalExclude) do
+			if GoGo_Prefs.GlobalExclude[GoGo_CounterA] == SpellID then
+				table.remove(GoGo_Prefs.GlobalExclude, GoGo_CounterA)
+				if table.getn(GoGo_Prefs.GlobalExclude) == 0 then
+					GoGo_Prefs.GlobalExclude = nil
+				end --if
+				return -- mount found, removed and now returning
+			end --if
+		end --for
+		table.insert(GoGo_Prefs.GlobalExclude, SpellID)
+	end --if
+end --function
+
+---------
+function GoGo_RemoveExcluded()  -- removes excluded mounts from mount selection during mounting process
+---------
+	if GoGo_Variables.Debug >= 10 then 
+		GoGo_DebugAddLine("GoGo_RemoveExcluded: Executed")
+	end --if
+	if GoGo_Prefs.GlobalExclude and table.getn(GoGo_Variables.FilteredMounts) then
+		for a = 1, table.getn(GoGo_Prefs.GlobalExclude) do
+			for b = 1, table.getn(GoGo_Variables.FilteredMounts) do
+				if GoGo_Variables.FilteredMounts[b] == GoGo_Prefs.GlobalExclude[a] then
+					table.remove(GoGo_Variables.FilteredMounts, b)
+				end --if
+			end --for
+		end --for
 	end --if
 end --function
 
@@ -3218,17 +3187,56 @@ function GoGo_GlobalFavorites_Panel()
 	GoGo_GlobalFavorites_ContentFrameTitle:SetJustifyH('LEFT')
 	GoGo_GlobalFavorites_ContentFrameTitle:SetJustifyV('TOP')
 	GoGo_GlobalFavorites_ContentFrameTitle:SetText(GoGo_Variables.Localize.String.GlobalFavorites)
+	
+	local GoGo_GlobalFavorites_ContentFrameDescription = GoGo_GlobalFavorites_ContentFrame:CreateFontString(nil, 'ARTWORK', 'GameFontHighlightSmall')
+	GoGo_GlobalFavorites_ContentFrameDescription:SetHeight(32)
+	GoGo_GlobalFavorites_ContentFrameDescription:SetPoint('TOPLEFT', "GoGo_GlobalFavorites_ContentFrame", 'TOPLEFT', 16, -24)
+	GoGo_GlobalFavorites_ContentFrameDescription:SetPoint('RIGHT', "GoGo_GlobalFavorites_ScrollFrame", -32, 0)
+	GoGo_GlobalFavorites_ContentFrameDescription:SetWordWrap(true)
+	GoGo_GlobalFavorites_ContentFrameDescription:SetJustifyH('LEFT')
+	GoGo_GlobalFavorites_ContentFrameDescription:SetJustifyV('TOP')
+	GoGo_GlobalFavorites_ContentFrameDescription:SetText(GoGo_Variables.Localize.String.GlobalZoneDescription)
 
-	local GoGo_ZoneFavorites_ContentFrameDescription = GoGo_GlobalFavorites_ContentFrame:CreateFontString(nil, 'ARTWORK', 'GameFontHighlightSmall')
-	GoGo_ZoneFavorites_ContentFrameDescription:SetHeight(32)
-	GoGo_ZoneFavorites_ContentFrameDescription:SetPoint('TOPLEFT', "GoGo_GlobalFavorites_ContentFrame", 'TOPLEFT', 16, -24)
-	GoGo_ZoneFavorites_ContentFrameDescription:SetPoint('RIGHT', "GoGo_GlobalFavorites_ScrollFrame", -32, 0)
-	GoGo_ZoneFavorites_ContentFrameDescription:SetWordWrap(true)
-	GoGo_ZoneFavorites_ContentFrameDescription:SetJustifyH('LEFT')
-	GoGo_ZoneFavorites_ContentFrameDescription:SetJustifyV('TOP')
-	GoGo_ZoneFavorites_ContentFrameDescription:SetText(GoGo_Variables.Localize.String.GlobalZoneDescription)
+end --function
 
-	--GoGo_AddOptionCheckboxes("GoGo_GlobalFavorites_ContentFrame")
+---------
+function GoGo_Exclusions_Panel()
+---------
+	GoGo_Exclusions_Panel = CreateFrame("Frame", nil, UIParent)
+	GoGo_Exclusions_Panel.name = GoGo_Variables.Localize.String.GlobalExclusions
+	GoGo_Exclusions_Panel.parent = "GoGoMount"
+	InterfaceOptions_AddCategory(GoGo_Exclusions_Panel)
+	
+	GoGo_Exclusions_ScrollFrame = CreateFrame("ScrollFrame", "GoGo_Exclusions_ScrollFrame", GoGo_Exclusions_Panel, "UIPanelScrollFrameTemplate")
+	GoGo_Exclusions_ScrollFrame:SetPoint("TOPLEFT", "GoGo_Exclusions_Panel", "TOPLEFT", 0, -5)
+	GoGo_Exclusions_ScrollFrame:SetPoint("BOTTOMLEFT", "GoGo_Exclusions_Panel", "BOTTOMLEFT", 0, 5)
+	GoGo_Exclusions_ScrollFrame:SetPoint("RIGHT", "GoGo_Exclusions_Panel", "RIGHT", -2000)
+
+	GoGo_Exclusions_Panel.ScrollFrame = GoGo_Exclusions_ScrollFrame  --
+
+	GoGo_Exclusions_ContentFrame = CreateFrame("Frame", "GoGo_Exclusions_ContentFrame")
+	GoGo_Exclusions_ContentFrame:SetWidth(600)
+	GoGo_Exclusions_ContentFrame:SetHeight(1)
+	GoGo_Exclusions_ContentFrame:SetPoint("TOPLEFT", "GoGo_Exclusions_Panel", "TOPLEFT", 0, 0)
+	GoGo_Exclusions_ContentFrame:SetScript("OnShow", function(self) GoGo_AddOptionCheckboxes("GoGo_Exclusions_ContentFrame") end)
+
+	GoGo_Exclusions_ScrollFrame:SetScrollChild(GoGo_Exclusions_ContentFrame)
+
+	local GoGo_Exclusions_ContentFrameTitle = GoGo_Exclusions_ContentFrame:CreateFontString(nil, 'ARTWORK', 'GameFontHighlightMedium')
+	GoGo_Exclusions_ContentFrameTitle:SetPoint('TOPLEFT', "GoGo_Exclusions_ContentFrame", 'TOPLEFT', 16, -8)
+	GoGo_Exclusions_ContentFrameTitle:SetJustifyH('LEFT')
+	GoGo_Exclusions_ContentFrameTitle:SetJustifyV('TOP')
+	GoGo_Exclusions_ContentFrameTitle:SetText(GoGo_Variables.Localize.String.GlobalExclusions)
+
+	local GoGo_Exclusions_ContentFrameDescription = GoGo_Exclusions_ContentFrame:CreateFontString(nil, 'ARTWORK', 'GameFontHighlightSmall')
+	GoGo_Exclusions_ContentFrameDescription:SetHeight(32)
+	GoGo_Exclusions_ContentFrameDescription:SetPoint('TOPLEFT', "GoGo_Exclusions_ContentFrame", 'TOPLEFT', 16, -24)
+	GoGo_Exclusions_ContentFrameDescription:SetPoint('RIGHT', "GoGo_Exclusions_ScrollFrame", -32, 0)
+	GoGo_Exclusions_ContentFrameDescription:SetWordWrap(true)
+	GoGo_Exclusions_ContentFrameDescription:SetJustifyH('LEFT')
+	GoGo_Exclusions_ContentFrameDescription:SetJustifyV('TOP')
+	GoGo_Exclusions_ContentFrameDescription:SetText(GoGo_Variables.Localize.String.GlobalExclusionsDescription)
+
 end --function
 
 ---------
@@ -3353,6 +3361,8 @@ function GoGo_AddOptionCheckboxes(GoGo_FrameParentText)
 	-- GoGo_FrameParentText will contain a string to indicate which panel called this function
 		-- "GoGo_ZoneFavorites_ContentFrame" so far..
 		-- "GoGo_GlobalFavorites_ContentFrame" ..
+		-- "GoGo_Exclusions_ContentFrame" .
+		
 	GoGo_BuildMountSpellList()
 	GoGo_BuildMountItemList()
 	local GoGo_Mounts = GoGo_BuildMountList("ALL")
@@ -3367,6 +3377,8 @@ function GoGo_AddOptionCheckboxes(GoGo_FrameParentText)
 		GoGo_ZoneFavorites_ContentFrameTitle:SetText(GoGo_Variables.Localize.String.CurrentZone .. ":  " .. GoGo_Variables.Player.Zone)
 	elseif GoGo_FrameParentText == "GoGo_GlobalFavorites_ContentFrame" then
 		_G["GoGo_GlobalFavorites_ContentFrame"]:SetHeight((16 * GoGo_MountCount)+44)
+	elseif GoGo_FrameParentText == "GoGo_Exclusions_ContentFrame" then
+		_G["GoGo_Exclusions_ContentFrame"]:SetHeight((16 * GoGo_MountCount)+44)
 	end --if
 
 	if GoGo_MountCount == 0 then
@@ -3385,7 +3397,7 @@ function GoGo_AddOptionCheckboxes(GoGo_FrameParentText)
 				getglobal(GoGo_CheckButton:GetName() .. 'Text'):SetText(GoGo_GetIDName(GoGo_MountID))
 			end --if
 
-			if GoGo_Variables.Player.Class == "HUNTER" then
+			if GoGo_Variables.Player.Class == "HUNTER" then  -- clear aspect of cheetah / pack incase hunter option changes
 				if GoGo_MountID == GoGo_Variables.Localize.AspectPack and _G[GoGo_FrameParentText .. GoGo_Variables.Localize.AspectCheetah] then
 					_G[GoGo_FrameParentText .. GoGo_Variables.Localize.AspectCheetah]:Hide()
 					_G[GoGo_FrameParentText .. GoGo_Variables.Localize.AspectPack]:Show()
@@ -3423,6 +3435,21 @@ function GoGo_AddOptionCheckboxes(GoGo_FrameParentText)
 				_G[GoGo_CheckBoxName]:SetScript("OnClick",
 					function(self)
 						GoGo_GlobalPrefMount(GoGo_MountID)
+					end --function
+				)
+			elseif GoGo_FrameParentText == "GoGo_Exclusions_ContentFrame" then
+				if GoGo_Prefs.GlobalExclude then
+					--GoGo_DebugAddLine("GoGo_AddOptionCheckboxes(): zone exists ")
+					for GoGo_FavoriteCount = 1, table.getn(GoGo_Prefs.GlobalExclude) do
+						if GoGo_Prefs.GlobalExclude[GoGo_FavoriteCount] == GoGo_MountID then
+							_G[GoGo_CheckBoxName]:SetChecked(1)
+--							GoGo_DebugAddLine("GoGo_AddOptionCheckboxes(): set checked ")
+						end --if
+					end --for
+				end --if
+				_G[GoGo_CheckBoxName]:SetScript("OnClick",
+					function(self)
+						GoGo_GlobalExcludeMount(GoGo_MountID)
 					end --function
 				)
 			end --if
