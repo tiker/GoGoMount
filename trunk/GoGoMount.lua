@@ -2516,7 +2516,7 @@ function GoGo_GetBestAirMounts(GoGo_FilteredMounts)
 	local GoGo_TempAirSpeed = {451,418,410,380,275,250}
 	--[[	451 = +310% + 10% Mount Up guild perk
 		418 = +280% + 10% Mount Up guild perk
-		410 = +310%  (Master flight)
+		410 = +310%  (325 riding / Master flight)
 		380 = +280%  (300 riding)
 		275 = +150 + 10% Mount Up guild perk
 		250 = +150%  (225 riding)
@@ -3130,7 +3130,7 @@ function GoGo_ZoneFavorites_Panel()
 	GoGo_ZoneFavorites_Panel = CreateFrame("Frame", nil, UIParent)
 	GoGo_ZoneFavorites_Panel.name = GoGo_Variables.Localize.String.CurrentZoneFavorites
 	GoGo_ZoneFavorites_Panel.parent = "GoGoMount"
---	GoGo_ZoneFavorites_Panel.default = function (self) GoGo_Prefs.Zones[GoGo_Variables.Player.Zone]=nil; GoGo_AddOptionCheckboxes("GoGo_ZoneFavorites_ContentFrame"); end;  -- use clear command with default button
+	GoGo_ZoneFavorites_Panel.default = function (self) GoGo_Prefs.Zones[GoGo_Variables.Player.Zone]=nil; GoGo_AddOptionCheckboxes("GoGo_ZoneFavorites_ContentFrame"); end;  -- use clear command with default button
 
 --	GoGo_ZoneFavorites_Panel.okay = function (self) GoGo_Panel_Okay("HUNTER"); end;  -- do nothing.. tracking changes with each click
 	InterfaceOptions_AddCategory(GoGo_ZoneFavorites_Panel)
@@ -3173,8 +3173,9 @@ function GoGo_GlobalFavorites_Panel()
 	GoGo_GlobalFavorites_Panel = CreateFrame("Frame", nil, UIParent)
 	GoGo_GlobalFavorites_Panel.name = GoGo_Variables.Localize.String.GlobalFavorites
 	GoGo_GlobalFavorites_Panel.parent = "GoGoMount"
---	GoGo_GlobalFavorites_Panel.okay = function (self) GoGo_Panel_Okay("HUNTER"); end;  -- do nothing.. tracking changes with each click
---	GoGo_GlobalFavorites_Panel.default = function (self) GoGo_Settings_Default("HUNTER"); GoGo_Panel_UpdateViews("HUNTER"); end;  -- use clear command with default button
+	GoGo_GlobalFavorites_Panel.default = function (self) GoGo_Prefs.GlobalPrefMounts = nil; GoGo_AddOptionCheckboxes("GoGo_GlobalFavorites_ContentFrame"); end;  -- use clear command with default button
+
+	--	GoGo_GlobalFavorites_Panel.okay = function (self) GoGo_Panel_Okay("HUNTER"); end;  -- do nothing.. tracking changes with each click
 	InterfaceOptions_AddCategory(GoGo_GlobalFavorites_Panel)
 	
 	GoGo_GlobalFavorites_ScrollFrame = CreateFrame("ScrollFrame", "GoGo_GlobalFavorites_ScrollFrame", GoGo_GlobalFavorites_Panel, "UIPanelScrollFrameTemplate")
@@ -3215,6 +3216,7 @@ function GoGo_Exclusions_Panel()
 	GoGo_Exclusions_Panel = CreateFrame("Frame", nil, UIParent)
 	GoGo_Exclusions_Panel.name = GoGo_Variables.Localize.String.GlobalExclusions
 	GoGo_Exclusions_Panel.parent = "GoGoMount"
+	GoGo_Exclusions_Panel.default = function (self) GoGo_Prefs.GlobalExclude = nil; GoGo_AddOptionCheckboxes("GoGo_Exclusions_ContentFrame"); end;  -- use clear command with default button
 	InterfaceOptions_AddCategory(GoGo_Exclusions_Panel)
 	
 	GoGo_Exclusions_ScrollFrame = CreateFrame("ScrollFrame", "GoGo_Exclusions_ScrollFrame", GoGo_Exclusions_Panel, "UIPanelScrollFrameTemplate")
