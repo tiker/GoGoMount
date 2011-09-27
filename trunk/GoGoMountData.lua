@@ -30,12 +30,9 @@ function GoGo_GetMountDB()
 		[30174] = {[15] = true, [39] = true, [10001]=67, [10002]=100, [10004]=67},  -- Riding Turtle
 		[64731] = {[15] = true, [39] = true, ["SeaTurtle"] = true, [402]=true, [404]=true, [10001]=108, [10002]=100, [10004]=108},  -- Sea Turtle
 		
-		[33189] = {[4] = true, [15] = true, [39] = true, [10002]=100},  -- Rickety Magic Broom  --  itemid
 	--	[42692] = {[15] = true, [39] = true, [999] = true, [10002]=100},  -- Rickety Magic Broom
 
-		[37011] = {[9] = true, [3] = true, [4] = true, [14] = true, [38] = true},  -- Magic Broom -- itemid
 
-		[33183] = {[16] = true, [38] = true, [4] = true},  -- Magic Broom  --  itemid
 	--	[42680] = {[16] = true, [38] = true, [999] = true},  -- Magic Broom
 
 	---	[47977] = {[16] = true, [38] = true, [999] = true},  -- Magic Broom
@@ -44,16 +41,22 @@ function GoGo_GetMountDB()
 	--	[42683] = {[16] = true, [37] = true, [999] = true},  -- Swift Magic Broom
 	---	[42684] = {[16] = true, [37] = true, [999] = true},  -- Swift Magic Broom
 
-		[33176] = {[3] = true, [4] = true, [7] = true, [9] = true, [14] = true, [38] = true, [300]=true, [301]=true, [330]=true, [402]=true, [403]=true, [600]=true, [601]=true, [10002]=160, [10003]=250},  -- Flying Broom  --  itemid
 	--	[42667] = {[12] = true, [36] = true, [9] = true, [999] = true},  -- Flying Broom
 	---	[42673] = {[12] = true, [36] = true, [9] = true, [999] = true},  -- Flying Broom
 
-		[33182] = {[11] = true, [35] = true, [9] = true, [4] = true},  -- Swift Flying Broom  --  itemid
 		[33184] = {[16] = true, [37] = true, [9] = true, [4] = true, [999] = true},  -- Swift Magic Broom  --  itemid
 	--	[42668] = {[11] = true, [35] = true, [9] = true, [999] = true},  -- Swift Flying Broom
 
 	---	[42679] = {[11] = true, [35] = true, [9] = true, [999] = true},  -- Swift Flying Broom
 
+
+	--	[33183] = {[16] = true, [38] = true, [4] = true},  -- Magic Broom  --  itemid
+	--	[33189] = {[4] = true, [15] = true, [39] = true, [10002]=100},  -- Rickety Magic Broom  --  See item dable below
+		[42667] = {[3] = true, [7] = true, [9] = true, [14] = true, [38] = true, [300]=true, [301]=true, [330]=true, [402]=true, [403]=true, [600]=true, [601]=true, [10002]=160, [10003]=250, [50000]=33176},  -- Flying Broom  --  itemid
+		[42668] = {[9] = true, [11] = true, [35] = true, [50000]=33182},  -- Swift Flying Broom  --  [50000]=33184
+		[47977] = {[3] = true, [9] = true, [14] = true, [38] = true, [50000]=37011},  -- Magic Broom -- itemid
+
+	
 		[32243] = {[9] = true, [12] = true, [36] = true, [300]=true, [301]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=250, [10004]=67},  -- Tawny Wind Rider
 		[32244] = {[9] = true, [12] = true, [36] = true, [300]=true, [301]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=250, [10004]=67},  -- Blue Wind Rider
 		[32245] = {[9] = true, [12] = true, [36] = true, [300]=true, [301]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=250, [10004]=67},  -- Green Wind Rider
@@ -61,8 +64,8 @@ function GoGo_GetMountDB()
 		[32295] = {[9] = true, [11] = true, [35] = true, [300]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=380, [10004]=67},  -- Swift Green Wind Rider
 		[32296] = {[9] = true, [11] = true, [35] = true, [300]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=380, [10004]=67},  -- Swift Yellow Wind Rider
 		[32297] = {[9] = true, [11] = true, [35] = true, [300]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=380, [10004]=67},  -- Swift Purple Wind Rider
-		[44229] = {[18] = true, [39] = true, [9] = true, [4] = true, [52] = true, ["FlightOnly"] = true, [10003]=250},  -- Loaned Wind Rider Reins
 		[61230] = {[9] = true, [11] = true, [35] = true, [300]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=380, [10004]=67},  -- Armored Blue Wind Rider
+		[64762] = {[9] = true, [18] = true, [39] = true, [52] = true, ["FlightOnly"] = true, [10003]=250, [50000]=44229},  -- Loaned Wind Rider Reins
 
 		[37015] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Swift Nether Drake
 		[41513] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Onyx Netherwing Drake
@@ -105,9 +108,9 @@ function GoGo_GetMountDB()
 
 		[3363] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Nether Drake
 		[28828] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Nether Drake
-		[37815] = {[11] = true, [9] = true, [4] = true, [54] = true, ["FlightOnly"] = true},  -- Emerald Drake
-		[37859] = {[11] = true, [9] = true, [4] = true, [54] = true, ["FlightOnly"] = true},  -- Amber Drake
-		[37860] = {[11] = true, [9] = true, [4] = true, [54] = true, ["FlightOnly"] = true},  -- Ruby Drake
+		[49345] = {[9] = true, [11] = true, [54] = true, ["FlightOnly"] = true, [50000]=37815},  -- Emerald Drake
+		[49461] = {[9] = true, [11] = true, [54] = true, ["FlightOnly"] = true, [50000]=37859},  -- Amber Drake
+		[49462] = {[9] = true, [11] = true, [54] = true, ["FlightOnly"] = true, [50000]=37860},  -- Ruby Drake
 		[59567] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Azure Drake
 		[59568] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Blue Drake
 		[59569] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Bronze Drake
@@ -157,9 +160,9 @@ function GoGo_GetMountDB()
 		[32289] = {[9] = true, [11] = true, [35] = true, [300]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=380, [10004]=67},  -- Swift Red Gryphon
 		[32290] = {[9] = true, [11] = true, [35] = true, [300]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=380, [10004]=67},  -- Swift Green Gryphon
 		[32292] = {[9] = true, [11] = true, [35] = true, [300]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=380, [10004]=67},  -- Swift Purple Gryphon
-		[44221] = {[18] = true, [39] = true, [9] = true, [4] = true, [52] = true, ["FlightOnly"] = true, [10003]=250},  -- Loaned Gryphon Reins
 		[55164] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Swift Spectral Gryphon
 		[61229] = {[9] = true, [11] = true, [35] = true, [300]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=380, [10004]=67},  -- Armored Snowy Gryphon
+		[64749] = {[9] = true, [18] = true, [39] = true, [52] = true, ["FlightOnly"] = true, [10003]=250, [50000]=44221},  -- Loaned Gryphon Reins
 
 		[578] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Black Wolf
 		[579] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Red Wolf
@@ -411,10 +414,10 @@ function GoGo_GetMountDB()
 
 		[44151] = {[9] = true, [11] = true, [39] = true, [46] = true, [300]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=380, [10004]=67},  -- Turbo-Charged Flying Machine
 		[44153] = {[9] = true, [12] = true, [36] = true, [45] = true, [300]=true, [301]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=250, [10004]=67},  -- Flying Machine
-		[55121] = {[4] = true, [55] = true, [200] = true, ["RequireWater"] = true, [10004]=286},  -- River Boat
 		[55531] = {[17] = true, [37] = true, [2] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Mechano-hog
 		[60424] = {[17] = true, [37] = true, [2] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Mekgineer's Chopper
 		[63796] = {[9] = true, [11] = true, [35] = true, [300]=true, [403]=true, [10003]=380},  -- Mimiron's Head
+		[76203] = {[55] = true, [200] = true, [10004]=286, [50000]=55121},  -- River Boat
 		[87090] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67}, -- Goblin Trike
 		[87091] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67}, -- Goblin Turbo-Trike
 
@@ -455,20 +458,21 @@ function GoGo_GetMountDB()
 	}
 end --if
 
-GoGo_MountsItems = {
-	[1] = 33189,
-	[2] = 37011,
-	[3] = 33183,
-	[4] = 33176,
-	[5] = 33182,
-	[6] = 33184,
-	[7] = 44229,
-	[8] = 44221,
-	[9] = 37859,
-	[10] = 37860,
-	[11] = 37815,
-	[12] = 55121,
+GoGo_Variables.MountItemIDs = {
+	[33176] = {[50000]=42667, [51000] = true},  -- Flying Broom 
+	[33182] = {[50000]=42668, [51000] = true},  -- Swift Flying Broom
+	-- [33183] = {[51000] = true},  -- Old Magic Broom  -- no longer in game
+	[33184] = {[50000]=42668, [51000] = true},  -- Swift Flying Broom
+--	[33189] = {[51000] = true},  -- Rickety Magic Broom  -- no speed increase but doesn't seem to cast a spell either..
+	[37011] = {[50000]=47977, [51000] = true},
+	[37815] = {[50000]=49345, [51000] = true},  -- Emerald Essence
+	[37859] = {[50000]=49461, [51000] = true},  -- Amber Essence
+	[37860] = {[50000]=49462, [51000] = true},  -- Ruby Essence
+	[44221] = {[50000]=64749, [51000] = true},  -- Loaned Gryphon Reins
+	[44229] = {[50000]=64762, [51000] = true},  -- Loaned Wind Rider Reins
+	[55121] = {[50000]=76203, [51000] = true},  -- River Boat
 }
+
 
 --[[
 GoGo_FlyCoOrds = {   -- x = west / east,  y = north / south
