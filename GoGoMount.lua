@@ -770,13 +770,15 @@ function GoGo_BuildMountItemList()
 ---------
 	GoGo_Variables.MountItemList = {}
 	
-	for a = 1, table.getn(GoGo_MountsItems) do
-		local MountID = GoGo_MountsItems[a]
-		if GoGo_InBags(MountID) then
-			if GoGo_Variables.Debug >= 10 then 
-				GoGo_DebugAddLine("GoGo_BuildMountItemList: Found mount item ID " .. MountID .. " in a bag and added to known mount list.")
+	for MountItemID, MountItemData in pairs(GoGo_Variables.MountItemIDs) do
+		if GoGo_Variables.MountItemIDs[MountItemID][51000] then
+			if GoGo_InBags(MountItemID) then
+				if GoGo_Variables.Debug >= 10 then 
+					GoGo_DebugAddLine("GoGo_BuildMountItemList: Found mount item ID " .. MountItemID .. " in a bag and added to known mount list.")
+				end --if
+				local spellid = GoGo_Variables.MountItemIDs[MountItemID][50000]
+				table.insert(GoGo_Variables.MountItemList, spellid)
 			end --if
-			table.insert(GoGo_Variables.MountItemList, MountID)
 		end --if
 	end --for
 	return GoGo_Variables.MountItemList
@@ -1084,6 +1086,13 @@ function GoGo_CheckForUnknownMounts()
 end --function
 
 ---------
+function GoGo_GetMountID(mountid)
+---------
+	-- Pass mount IDs to this function will return the same spell ID if the ..
+
+end --function
+
+---------
 function GoGo_GetIDName(itemid)
 ---------
 	local tempname = ""
@@ -1091,8 +1100,8 @@ function GoGo_GetIDName(itemid)
 	if type(itemid) == "number" then
 		local GoGo_TempMount = {}
 		table.insert(GoGo_TempMount, itemid)
-		if (table.getn(GoGo_FilterMountsIn(GoGo_TempMount, 4)) == 1) then
-			return GetItemInfo(itemid) or "Unknown Mount"
+		if (table.getn(GoGo_FilterMountsIn(GoGo_TempMount, 50000)) == 1) then
+			return GetItemInfo(GoGo_Variables.MountDB[itemid][50000]) or "Unknown Mount"
 		else
 			return GetSpellInfo(itemid) or "Unknown Mount"
 		end --if
@@ -1100,12 +1109,12 @@ function GoGo_GetIDName(itemid)
 		for a=1, table.getn(itemid) do
 			local GoGo_TempTable = {}
 			table.insert(GoGo_TempTable, itemid[a])
-			if (table.getn(GoGo_FilterMountsIn(GoGo_TempTable, 4)) == 1) then
+			if (table.getn(GoGo_FilterMountsIn(GoGo_TempTable, 50000)) == 1) then
 --				tempname = GetItemInfo(tempname)
 				if GoGo_Variables.Debug >= 10 then
-					GoGo_DebugAddLine("GoGo_GetIDName: GetItemID for " .. itemid[a] .. GetItemInfo(itemid[a]))
+					GoGo_DebugAddLine("GoGo_GetIDName: GetItemID for " .. itemid[a] .. GetItemInfo(GoGo_Variables.MountDB[itemid[a]][50000]))
 				end --if
-				ItemName = ItemName .. (GetItemInfo(itemid[a]) or "Unknown Mount") .. ", "
+				ItemName = ItemName .. (GetItemInfo(GoGo_Variables.MountDB[itemid[a]][50000]) or "Unknown Mount") .. ", "
 			else
 --				tempname = GetSpellInfo(tempname)
 				if GoGo_Variables.Debug >= 10 then
@@ -2574,6 +2583,7 @@ end --function
 ---------
 function GoGo_GetBestWaterMounts(GoGo_FilteredMounts)
 ---------
+	GoGo_DebugAddLine("GoGo_GetBestWaterMounts: " .. table.getn(GoGo_FilteredMounts))
 	local mounts = {}
 	local GoGo_TempSwimSpeed = {371,270,135,108,101,67}
 	local GoGo_TempSwimSurfaceSpeed = {371,286,270,135,108,101,67}
@@ -3120,9 +3130,9 @@ function GoGo_ZoneFavorites_Panel()
 	GoGo_ZoneFavorites_Panel = CreateFrame("Frame", nil, UIParent)
 	GoGo_ZoneFavorites_Panel.name = GoGo_Variables.Localize.String.CurrentZoneFavorites
 	GoGo_ZoneFavorites_Panel.parent = "GoGoMount"
+--	GoGo_ZoneFavorites_Panel.default = function (self) GoGo_Prefs.Zones[GoGo_Variables.Player.Zone]=nil; GoGo_AddOptionCheckboxes("GoGo_ZoneFavorites_ContentFrame"); end;  -- use clear command with default button
 
 --	GoGo_ZoneFavorites_Panel.okay = function (self) GoGo_Panel_Okay("HUNTER"); end;  -- do nothing.. tracking changes with each click
---	GoGo_ZoneFavorites_Panel.default = function (self) GoGo_Settings_Default("HUNTER"); GoGo_Panel_UpdateViews("HUNTER"); end;  -- use clear command with default button
 	InterfaceOptions_AddCategory(GoGo_ZoneFavorites_Panel)
 	
 	GoGo_ZoneFavorites_ScrollFrame = CreateFrame("ScrollFrame", "GoGo_ZoneFavorites_ScrollFrame", GoGo_ZoneFavorites_Panel, "UIPanelScrollFrameTemplate")
