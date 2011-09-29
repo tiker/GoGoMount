@@ -32,7 +32,7 @@ function GoGo_OnEvent(self, event, ...)
 		GoGo_Prefs.UnknownMounts = {}
 		GoGo_Variables.VerMajor, GoGo_Variables.VerMinor, GoGo_Variables.VerBuild = strsplit(".", GetAddOnMetadata("GoGoMount", "Version"))
 		GoGo_Variables.VerMajor, GoGo_Variables.VerMinor, GoGo_Variables.VerBuild = tonumber(GoGo_Variables.VerMajor), tonumber(GoGo_Variables.VerMinor), tonumber(GoGo_Variables.VerBuild)
-		GoGo_Variables.TestVersion = true
+		GoGo_Variables.TestVersion = false
 		_, GoGo_Variables.Player.Class = UnitClass("player")
 		_, GoGo_Variables.Player.Race = UnitRace("player")
 		if (GoGo_Variables.Player.Class == "DRUID") then
@@ -88,7 +88,7 @@ function GoGo_OnEvent(self, event, ...)
 		GoGo_Variables.Player.Zone = GetRealZoneText()
 		GoGo_Variables.ExpansionAccount = GetAccountExpansionLevel()
 		GoGo_Variables.ExpansionGame =  GetExpansionLevel()
---		local _ = RegisterAddonMessagePrefix("GoGoMountVER")
+		local _ = RegisterAddonMessagePrefix("GoGoMountVER")
 
 	elseif (event == "UNIT_TARGET" and arg1 == "player") then  -- find out what mount player is using - only enabled if debug level >= 6
 		local GoGo_PlayerName = UnitName("target")
@@ -2583,7 +2583,6 @@ end --function
 ---------
 function GoGo_GetBestWaterMounts(GoGo_FilteredMounts)
 ---------
-	GoGo_DebugAddLine("GoGo_GetBestWaterMounts: " .. table.getn(GoGo_FilteredMounts))
 	local mounts = {}
 	local GoGo_TempSwimSpeed = {371,270,135,108,101,67}
 	local GoGo_TempSwimSurfaceSpeed = {371,286,270,135,108,101,67}
