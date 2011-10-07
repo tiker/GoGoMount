@@ -6,7 +6,7 @@ function GoGo_OnLoad()
 	SLASH_GOGOID1 = "/id"
 	SlashCmdList["GOGOID"] = function(msg) GoGo_Msg(GoGo_Id(msg)) end
 
-	GoGoFrame:RegisterEvent("VARIABLES_LOADED")
+	GoGoFrame:RegisterEvent("ADDON_LOADED")
 	GoGoFrame:RegisterEvent("UPDATE_BINDINGS")
 	GoGoFrame:RegisterEvent("TAXIMAP_OPENED")
 	GoGoFrame:RegisterEvent("CHAT_MSG_ADDON")
@@ -19,7 +19,7 @@ end --function
 function GoGo_OnEvent(self, event, ...)
 ---------
 	local arg1, arg2, arg3, arg4 = ...
-	if event == "VARIABLES_LOADED" then
+	if event == "ADDON_LOADED" and arg1 == "GoGoMount" then
 		if not GoGo_Prefs then
 			GoGo_Settings_Default()
 		end --if
