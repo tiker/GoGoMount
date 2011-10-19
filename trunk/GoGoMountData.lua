@@ -536,6 +536,7 @@ GoGo_FlyCoOrds = {   -- x = west / east,  y = north / south
 
 GoGo_Variables.DebuffDB = {
 	21848,	-- Snowman constume from Xmas time -- can't mount with the same click
+	24723,  -- Skeleton costume (from trick-or-treating in Inns)
 	24741,  -- Wisp Costume (from Hallowed Wand - Wisp during Halloween)
 	24858,	-- Moonkin Form (Druids)
 	--	45438,  -- Ice Block (Mages)  -- takes too long to cool down after removal
