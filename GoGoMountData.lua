@@ -54,7 +54,7 @@ function GoGo_GetMountDB()
 	--	[33189] = {[4] = true, [15] = true, [39] = true, [10002]=100},  -- Rickety Magic Broom  --  See item dable below
 		[42667] = {[3] = true, [7] = true, [9] = true, [14] = true, [38] = true, [300]=true, [301]=true, [330]=true, [402]=true, [403]=true, [600]=true, [601]=true, [10002]=160, [10003]=250, [50000]=33176},  -- Flying Broom  --  itemid
 		[42668] = {[9] = true, [11] = true, [35] = true, [50000]=33182},  -- Swift Flying Broom  --  [50000]=33184
-		[47977] = {[3] = true, [9] = true, [14] = true, [38] = true, [50000]=37011},  -- Magic Broom -- itemid
+		[47977] = {[3] = true, [9] = true, [10]=true, [38] = true, [300]=true, [301]=true, [330]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67, [50000]=37011},  -- Magic Broom -- itemid
 
 	
 		[32243] = {[9] = true, [12] = true, [36] = true, [300]=true, [301]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=250, [10004]=67},  -- Tawny Wind Rider
