@@ -130,14 +130,7 @@ function GoGo_OnSlash(msg)
 	if GOGO_COMMANDS[string.lower(msg)] then
 		GOGO_COMMANDS[string.lower(msg)]()
 	elseif string.find(msg, "spell:%d+") or string.find(msg, "item:%d+") then
-		local FItemID = string.gsub(msg,".-\124H([^\124]*)\124h.*", "%1");
-		local idtype, itemid = strsplit(":",FItemID);
-		if string.find(msg, "exclude", 1, true) then
-			GoGo_GlobalExcludeMount(tonumber(itemid))
-		else
-			GoGo_AddPrefMount(tonumber(itemid))
-			GoGo_Msg("pref")
-		end --if
+		GoGo_CmdLineLinkProcessing(msg)
 	else
 		GoGo_Msg("optiongui")
 		GoGo_Msg("auto")
@@ -1006,56 +999,29 @@ function GoGo_RemoveExcluded()  -- removes excluded mounts from mount selection 
 end --function
 
 ---------
-function GoGo_AddPrefMount(SpellID)  -- to be removed
+function GoGo_CmdLineLinkProcessing(msg)
 ---------
-	if GoGo_Variables.Debug >= 10 then 
-		GoGo_DebugAddLine("GoGo_AddPrefMount: Preference " .. spell)
+	local FItemID = string.gsub(msg,".-\124H([^\124]*)\124h.*", "%1");
+	local idtype, itemid = strsplit(":",FItemID);
+	itemid = tonumber(itemid)
+	if string.find(msg, "item:%d+") then
+		if GoGo_Variables.MountItemIDs[itemid] and GoGo_Variables.MountItemIDs[itemid][50000] then
+			itemid = GoGo_Variables.MountItemIDs[itemid][50000]
+		else
+			GoGo_Msg("Unknown mount details - not added")
+		end --if
 	end --if
-
-	local GoGo_RemovedFlag = false
-	SpellID = tonumber(SpellID)
-	if not GoGo_Prefs.GlobalPrefMount then
-		GoGo_Variables.Player.Zone = GetRealZoneText()
-		if not GoGo_Prefs.Zones[GoGo_Variables.Player.Zone] then GoGo_Prefs.Zones[GoGo_Variables.Player.Zone] = {} end
-		if table.getn(GoGo_Prefs.Zones[GoGo_Variables.Player.Zone]) > 0 then
-			for GoGo_TempCounter = 1, table.getn(GoGo_Prefs.Zones[GoGo_Variables.Player.Zone]) do
-				if (GoGo_Prefs.Zones[GoGo_Variables.Player.Zone][GoGo_TempCounter] == SpellID) then
-					local GoGo_TempID = GoGo_Prefs.Zones[GoGo_Variables.Player.Zone][GoGo_TempCounter]
-					if GoGo_Variables.Debug >= 10 then
-						GoGo_DebugAddLine("GoGo_AddPrefMount: Removing from exclusion list: " .. SpellID .. " " .. GoGo_GetIDName(SpellID))
-					end --if
-					table.remove(GoGo_Prefs.Zones[GoGo_Variables.Player.Zone], GoGo_TempCounter)
-					GoGo_RemovedFlag = true
-					if table.getn(GoGo_Prefs.Zones[GoGo_Variables.Player.Zone]) == 0 then
-						GoGo_Prefs.Zones[GoGo_Variables.Player.Zone] = nil
-					end --if
-				end --if
-			end --for
-		end --if
-		if not GoGo_RemovedFlag then
-			table.insert(GoGo_Prefs.Zones[GoGo_Variables.Player.Zone],SpellID)
-		end --if
+	
+	if string.find(msg, "exclude", 1, true) then
+		GoGo_GlobalExcludeMount(itemid)
 	else
-		if not GoGo_Prefs.GlobalPrefMounts then GoGo_Prefs.GlobalPrefMounts = {} end
-		if table.getn(GoGo_Prefs.GlobalPrefMounts) > 0 then
-			for GoGo_TempCounter = 1, table.getn(GoGo_Prefs.GlobalPrefMounts) do
-				if (GoGo_Prefs.GlobalPrefMounts[GoGo_TempCounter] == SpellID) then
-					local GoGo_TempID = GoGo_Prefs.GlobalPrefMounts[GoGo_TempCounter]
-					if GoGo_Variables.Debug >= 10 then
-						GoGo_DebugAddLine("GoGo_AddPrefMount: Removing from exclusion list: " .. SpellID .. " " .. GoGo_GetIDName(SpellID))
-					end --if
-					table.remove(GoGo_Prefs.GlobalPrefMounts, GoGo_TempCounter)
-					GoGo_RemovedFlag = true
-					if table.getn(GoGo_Prefs.GlobalPrefMounts) == 0 then
-						GoGo_Prefs.GlobalPrefMounts = nil
-					end --if
-				end --if
-			end --for
-		end --if
-		if not GoGo_RemovedFlag then
-			table.insert(GoGo_Prefs.GlobalPrefMounts,SpellID)
+		if GoGo_Prefs.GlobalPrefMount then
+			GoGo_GlobalPrefMount(itemid)
+		else
+			GoGo_ZonePrefMount(itemid)
 		end --if
 	end --if
+	GoGo_Msg("pref")
 end --function
 
 ---------
