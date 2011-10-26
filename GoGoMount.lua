@@ -3350,7 +3350,10 @@ function GoGo_AddOptionCheckboxes(GoGo_FrameParentText)
 		-- "GoGo_ZoneFavorites_ContentFrame" so far..
 		-- "GoGo_GlobalFavorites_ContentFrame" ..
 		-- "GoGo_Exclusions_ContentFrame" .
-		
+	if not GoGo_Variables.Player.Zone then
+		return
+	end --if
+	
 	local GoGo_Mounts = GoGo_BuildMountList()
 	local GoGo_MountCount = table.getn(GoGo_Mounts) or 0
 	local _G = getfenv()
