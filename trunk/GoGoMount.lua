@@ -32,7 +32,7 @@ function GoGo_OnEvent(self, event, ...)
 		GoGo_Prefs.UnknownMounts = {}
 		GoGo_Variables.VerMajor, GoGo_Variables.VerMinor, GoGo_Variables.VerBuild = strsplit(".", GetAddOnMetadata("GoGoMount", "Version"))
 		GoGo_Variables.VerMajor, GoGo_Variables.VerMinor, GoGo_Variables.VerBuild = tonumber(GoGo_Variables.VerMajor), tonumber(GoGo_Variables.VerMinor), tonumber(GoGo_Variables.VerBuild)
-		GoGo_Variables.TestVersion = false
+		GoGo_Variables.TestVersion = true
 		_, GoGo_Variables.Player.Class = UnitClass("player")
 		_, GoGo_Variables.Player.Race = UnitRace("player")
 		if (GoGo_Variables.Player.Class == "DRUID") then
@@ -275,20 +275,17 @@ function GoGo_ChooseMount()
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ChooseMount: Checking for spell and item mounts.")
 		end --if
-		-- Not updating bag items on bag changes right now so scan and update list
-		GoGo_BuildMountSpellList()
-		GoGo_BuildMountItemList()
-		GoGo_BuildMountList()
+		GoGo_Variables.FilteredMounts = GoGo_BuildMountList() or {}
 		if not GoGo_Prefs.DisableMountNotice and not GoGo_Variables.UnknownMountMsgShown then
 			GoGo_CheckForUnknownMounts()
 		end --if
-		GoGo_Variables.FilteredMounts = GoGo_Variables.MountList or {}
 	end --if
 
 	if GoGo_Variables.Debug >= 10 then
 		GoGo_DebugAddLine("GoGo_ChooseMount: ** Searched all areas for mounts and found " .. (table.getn(GoGo_Variables.FilteredMounts) or 0) .. " mounts.")
 	end --if
-		
+	
+	GoGo_Variables.FilteredMounts = GoGo_RemoveUnusableMounts(GoGo_Variables.FilteredMounts)  -- remove mounts blizzard says we can't use
 	GoGo_ZoneCheck()  -- Checking to see what we can and can not do in zones
 	GoGo_UpdateMountData()  -- update mount information with changes from talents, glyphs, etc.
 
@@ -678,72 +675,45 @@ function GoGo_InCompanions(item)
 end --function
 
 ---------
-function GoGo_BuildMountList(selection)  -- selection = all if we want all known mounts and not just usable mounts
+function GoGo_BuildMountList()
 ---------
-	GoGo_Variables.MountList = {}
-	if (table.getn(GoGo_Variables.MountSpellList) > 0) then
-		for a=1, table.getn(GoGo_Variables.MountSpellList) do
-			if selection == "ALL" then
-				table.insert(GoGo_Variables.MountList, GoGo_Variables.MountSpellList[a])
-			elseif IsUsableSpell(GoGo_Variables.MountSpellList[a]) then
-				table.insert(GoGo_Variables.MountList, GoGo_Variables.MountSpellList[a])
-			end --if
-		end --for
-	end --if
-	
-	if (table.getn(GoGo_Variables.MountItemList) > 0) then
-		for a=1, table.getn(GoGo_Variables.MountItemList) do
-			if selection == "ALL" then
-				table.insert(GoGo_Variables.MountList, GoGo_Variables.MountItemList[a])
-			elseif IsUsableItem(GoGo_Variables.MountItemList[a]) then
-				table.insert(GoGo_Variables.MountList, GoGo_Variables.MountItemList[a])
-			end --if
-		end --for
-	end --if
-	GoGo_Variables.MountItemList = {}
-	GoGo_Variables.MountSpellList = {}
-	return GoGo_Variables.MountList
-end  --function
+	local GoGo_MountList = {}
 
----------
-function GoGo_BuildMountSpellList()
----------
-	GoGo_Variables.MountSpellList = {}
 	if (GetNumCompanions("MOUNT") >= 1) then
 		for slot = 1, GetNumCompanions("MOUNT"),1 do
 			local _, _, SpellID = GetCompanionInfo("MOUNT", slot)
 			if GoGo_Variables.Debug >= 10 then 
 				GoGo_DebugAddLine("GoGo_BuildMountSpellList: Found mount spell ID " .. SpellID .. " at slot " .. slot .. " and added to known mount list.")
 			end --if
-			table.insert(GoGo_Variables.MountSpellList, SpellID)
+			table.insert(GoGo_MountList, SpellID)
 		end --for
 	end --if
-	
+
 	if GoGo_Variables.Player.Class == "DRUID" then
 		if GoGo_InBook(GoGo_Variables.Localize.AquaForm) then
-			table.insert(GoGo_Variables.MountSpellList, GoGo_Variables.Localize.AquaForm)
+			table.insert(GoGo_MountList, GoGo_Variables.Localize.AquaForm)
 		end --if
 		if GoGo_InBook(GoGo_Variables.Localize.CatForm) then
-			table.insert(GoGo_Variables.MountSpellList, GoGo_Variables.Localize.CatForm)
+			table.insert(GoGo_MountList, GoGo_Variables.Localize.CatForm)
 		end --if
 		if GoGo_InBook(GoGo_Variables.Localize.FlightForm) then
-			table.insert(GoGo_Variables.MountSpellList, GoGo_Variables.Localize.FlightForm)
+			table.insert(GoGo_MountList, GoGo_Variables.Localize.FlightForm)
 		end --if
 		if GoGo_InBook(GoGo_Variables.Localize.FastFlightForm) then
-			table.insert(GoGo_Variables.MountSpellList, GoGo_Variables.Localize.FastFlightForm)
+			table.insert(GoGo_MountList, GoGo_Variables.Localize.FastFlightForm)
 		end --if
 		if GoGo_InBook(GoGo_Variables.Localize.TravelForm) then
-			table.insert(GoGo_Variables.MountSpellList, GoGo_Variables.Localize.TravelForm)
+			table.insert(GoGo_MountList, GoGo_Variables.Localize.TravelForm)
 		end --if
 	elseif GoGo_Variables.Player.Class == "SHAMAN" then
 		if GoGo_InBook(GoGo_Variables.Localize.GhostWolf) then
-			table.insert(GoGo_Variables.MountSpellList, GoGo_Variables.Localize.GhostWolf)
+			table.insert(GoGo_MountList, GoGo_Variables.Localize.GhostWolf)
 		end --if
 	elseif GoGo_Variables.Player.Class == "HUNTER" then
 		if GoGo_InBook(GoGo_Variables.Localize.AspectPack) and GoGo_Prefs.AspectPack then
-			table.insert(GoGo_Variables.MountSpellList, GoGo_Variables.Localize.AspectPack)
+			table.insert(GoGo_MountList, GoGo_Variables.Localize.AspectPack)
 		elseif GoGo_InBook(GoGo_Variables.Localize.AspectCheetah) then
-			table.insert(GoGo_Variables.MountSpellList, GoGo_Variables.Localize.AspectCheetah)
+			table.insert(GoGo_MountList, GoGo_Variables.Localize.AspectCheetah)
 		end --if
 	end --if
 
@@ -752,29 +722,70 @@ function GoGo_BuildMountSpellList()
 			if GoGo_Variables.Debug >= 10 then 
 				GoGo_DebugAddLine("GoGo_BuildMountSpellList: We are a Worgen and have Running Wild - added to known mount list.")
 			end --if
-			table.insert(GoGo_Variables.MountSpellList, GoGo_Variables.Localize.RunningWild)
+			table.insert(GoGo_MountList, GoGo_Variables.Localize.RunningWild)
 		end --if
 	end --if
-	return GoGo_Variables.MountSpellList
-end  -- function
 
----------
-function GoGo_BuildMountItemList()
----------
-	GoGo_Variables.MountItemList = {}
-	
 	for MountItemID, MountItemData in pairs(GoGo_Variables.MountItemIDs) do
-		if GoGo_Variables.MountItemIDs[MountItemID][51000] then
+		local GoGo_SpellId = GoGo_Variables.MountItemIDs[MountItemID][50000]
+		if GoGo_Variables.MountItemIDs[MountItemID][51000] then  -- in bag items
 			if GoGo_InBags(MountItemID) then
 				if GoGo_Variables.Debug >= 10 then 
 					GoGo_DebugAddLine("GoGo_BuildMountItemList: Found mount item ID " .. MountItemID .. " in a bag and added to known mount list.")
 				end --if
-				local spellid = GoGo_Variables.MountItemIDs[MountItemID][50000]
-				table.insert(GoGo_Variables.MountItemList, spellid)
+				table.insert(GoGo_MountList, GoGo_SpellId)
+			end --if
+		elseif GoGo_Variables.MountItemIDs[MountItemID][51001] then  -- equipable items
+			if IsEquippedItem(MountItemID) then
+				table.insert(GoGo_MountList, GoGo_SpellId)
+			elseif GoGo_InBags(MountItemID) then
+				table.insert(GoGo_MountList, GoGo_SpellId)
 			end --if
 		end --if
 	end --for
-	return GoGo_Variables.MountItemList
+
+	return GoGo_MountList
+end  --function
+
+---------
+function GoGo_RemoveUnusableMounts(MountList)  -- Remove mounts Blizzard says we can't use due to location, timers, etc.
+---------
+	if not MountList or table.getn(MountList) == 0 then
+		return
+	end --if
+	
+	local GoGo_NewTable = {}
+	
+	for a=1, table.getn(MountList) do
+		local GoGo_SpellID = MountList[a]
+		if GoGo_Variables.MountDB[GoGo_SpellID][50000] then
+			-- item mount, check item status
+			local GoGo_ItemID = GoGo_Variables.MountDB[GoGo_SpellID][50000]  -- get item id
+			if GoGo_Variables.MountItemIDs[GoGo_ItemID][51000] then  -- if item should be in bags
+				if GoGo_InBags(GoGo_ItemID) then  -- if item is in bag
+					if GetItemCooldown(GoGo_ItemID) == 0 then  -- if item doens't have a cooldown timer
+						if IsUsableItem(GoGo_ItemID) then  -- if item can be used
+							table.insert(GoGo_NewTable, GoGo_SpellID)
+						end --if
+					end --if
+				end --if
+			elseif GoGo_Variables.MountItemIDs[GoGo_ItemID][51001] then  -- if item should be equiped
+				if IsEquippedItem(GoGo_ItemID) then  -- if item is equipped
+					if GetItemCooldown(GoGo_ItemID) == 0 then  -- if item doens't have a cooldown timer
+						if IsUsableItem(GoGo_ItemID) then  -- if item can be used
+							table.insert(GoGo_NewTable, GoGo_SpellID)
+						end --if
+					end --if
+				end --if
+			end --if
+		else  -- it's a mount spell or class shape form
+			if IsUsableSpell(GoGo_SpellID) then
+				table.insert(GoGo_NewTable, GoGo_SpellID)
+			end --if
+		end --if
+	end --for
+
+	return GoGo_NewTable
 end --function
 
 ---------
@@ -2550,8 +2561,8 @@ end --function
 function GoGo_GetBestWaterMounts(GoGo_FilteredMounts)
 ---------
 	local mounts = {}
-	local GoGo_TempSwimSpeed = {371,270,135,108,101,67}
-	local GoGo_TempSwimSurfaceSpeed = {371,286,270,135,108,101,67}
+	local GoGo_TempSwimSpeed = {371,270,135,108,101,91,67}
+	local GoGo_TempSwimSurfaceSpeed = {371,286,270,135,108,101,91,67}
 	local GoGo_TempLoopCount = 1
 	if not GoGo_Variables.SwimSurface then
 		if GoGo_Variables.Debug >= 10 then
@@ -3340,9 +3351,7 @@ function GoGo_AddOptionCheckboxes(GoGo_FrameParentText)
 		-- "GoGo_GlobalFavorites_ContentFrame" ..
 		-- "GoGo_Exclusions_ContentFrame" .
 		
-	GoGo_BuildMountSpellList()
-	GoGo_BuildMountItemList()
-	local GoGo_Mounts = GoGo_BuildMountList("ALL")
+	local GoGo_Mounts = GoGo_BuildMountList()
 	local GoGo_MountCount = table.getn(GoGo_Mounts) or 0
 	local _G = getfenv()
 	GoGo_FrameParent = _G[GoGo_FrameParentText]

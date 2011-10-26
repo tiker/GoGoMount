@@ -452,12 +452,13 @@ function GoGo_GetMountDB()
 		[75207] = {[17] = true, [36] = true, [53] = true, [401] = true, [10001]=371, [10004]=371},  -- Abyssal Seahorse (was Abyssal Manta)
 		[98718] = {[20] = true, [36] = true, [53] = true, [404] = true, [10001]=108, [10004]=108},  -- Subdued Seahorse
 
+		[24347] = {[7]=true, [8]=true, [10001]=91, [10004]=91, [50000]=19979},  -- Master Angler
 		[74918] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Wooly White Rhino
 		[90621] = {[14] = true, [38] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Golden King
 		[93644] = {[14] = true, [38] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Kor'kron Annihilator
 		[87840] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Running Wild (Worgen Racial)
-		[98727] = {[3] = true, [9] = true, [14] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Winged Guardian
-
+		[98727] = {[9] = true, [14] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Winged Guardian
+		[101641] = {[9] = true, [19] = true, [39] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67, [50000]=71086},  -- Tarecgosa's Visage
 	--	[62087] = {[5] = true, [15] = true, [39] = true, [53] = true, [999] = true},  -- Aquatic Riding Ray   -- removed from the 3.1 PTR datafiles
 		
 	-- Spells, shape forms, etc
@@ -473,6 +474,7 @@ function GoGo_GetMountDB()
 end --if
 
 GoGo_Variables.MountItemIDs = {
+	[19979] = {[50000]=24347, [51001]=true},  -- Hook of the Master Angler
 	[33176] = {[50000]=42667, [51000] = true},  -- Flying Broom 
 	[33182] = {[50000]=42668, [51000] = true},  -- Swift Flying Broom
 	-- [33183] = {[51000] = true},  -- Old Magic Broom  -- no longer in game
@@ -485,6 +487,7 @@ GoGo_Variables.MountItemIDs = {
 	[44221] = {[50000]=64749, [51000] = true},  -- Loaned Gryphon Reins
 	[44229] = {[50000]=64762, [51000] = true},  -- Loaned Wind Rider Reins
 	[55121] = {[50000]=76203, [51000] = true},  -- River Boat
+	[71086] = {[50000]=101641, [51001] = true},  -- Dragonwrath, Tarecgosa's Rest
 }
 
 
