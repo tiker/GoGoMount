@@ -271,14 +271,16 @@ function GoGo_ChooseMount()
 		end --if
 	end --if
 
+	GoGo_Variables.FilteredMounts = GoGo_RemoveUnusableMounts(GoGo_Variables.FilteredMounts)  -- remove mounts blizzard says we can't use
+	-- we do this twice - once here to eliminate mounts we can't use from our favorites list.. if this removes all favorite mounts then grab all mounts and check again
+	-- eliminates problem where only having a single favorite such as magic broom after halloween even ends causes GoGoMount to do nothing having a broom set as a favorite but not being able to use it.
+
 	if (table.getn(mounts) == 0) and (table.getn(GoGo_Variables.FilteredMounts) == 0) then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ChooseMount: Checking for spell and item mounts.")
 		end --if
 		GoGo_Variables.FilteredMounts = GoGo_BuildMountList() or {}
-		if not GoGo_Prefs.DisableMountNotice and not GoGo_Variables.UnknownMountMsgShown then
-			GoGo_CheckForUnknownMounts()
-		end --if
+		GoGo_CheckForUnknownMounts(GoGo_Variables.FilteredMounts)
 	end --if
 
 	if GoGo_Variables.Debug >= 10 then
@@ -683,7 +685,7 @@ function GoGo_BuildMountList()
 		for slot = 1, GetNumCompanions("MOUNT"),1 do
 			local _, _, SpellID = GetCompanionInfo("MOUNT", slot)
 			if GoGo_Variables.Debug >= 10 then 
-				GoGo_DebugAddLine("GoGo_BuildMountSpellList: Found mount spell ID " .. SpellID .. " at slot " .. slot .. " and added to known mount list.")
+				GoGo_DebugAddLine("GoGo_BuildMountList: Found mount spell ID " .. SpellID .. " at slot " .. slot .. " and added to known mount list.")
 			end --if
 			table.insert(GoGo_MountList, SpellID)
 		end --for
@@ -720,7 +722,7 @@ function GoGo_BuildMountList()
 	if GoGo_Variables.Player.Race == "Worgen" then
 		if (GoGo_InBook(GoGo_Variables.Localize.RunningWild)) then
 			if GoGo_Variables.Debug >= 10 then 
-				GoGo_DebugAddLine("GoGo_BuildMountSpellList: We are a Worgen and have Running Wild - added to known mount list.")
+				GoGo_DebugAddLine("GoGo_BuildMountList: We are a Worgen and have Running Wild - added to known mount list.")
 			end --if
 			table.insert(GoGo_MountList, GoGo_Variables.Localize.RunningWild)
 		end --if
@@ -731,7 +733,7 @@ function GoGo_BuildMountList()
 		if GoGo_Variables.MountItemIDs[MountItemID][51000] then  -- in bag items
 			if GoGo_InBags(MountItemID) then
 				if GoGo_Variables.Debug >= 10 then 
-					GoGo_DebugAddLine("GoGo_BuildMountItemList: Found mount item ID " .. MountItemID .. " in a bag and added to known mount list.")
+					GoGo_DebugAddLine("GoGo_BuildMountList: Found mount item ID " .. MountItemID .. " in a bag and added to known mount list.")
 				end --if
 				table.insert(GoGo_MountList, GoGo_SpellId)
 			end --if
@@ -751,7 +753,7 @@ end  --function
 function GoGo_RemoveUnusableMounts(MountList)  -- Remove mounts Blizzard says we can't use due to location, timers, etc.
 ---------
 	if not MountList or table.getn(MountList) == 0 then
-		return
+		return {}
 	end --if
 	
 	local GoGo_NewTable = {}
@@ -1045,10 +1047,11 @@ function GoGo_UpdateZonePrefs()
 end --function
 
 ---------
-function GoGo_CheckForUnknownMounts()
+function GoGo_CheckForUnknownMounts(MountList)
 ---------
-	for a = 1, table.getn(GoGo_Variables.MountSpellList) do
-		local MountID = GoGo_Variables.MountSpellList[a]
+	MountList = MountList or {}
+	for a = 1, table.getn(MountList) do
+		local MountID = MountList[a]
 		if not GoGo_Variables.MountDB[MountID] then
 			GoGo_Prefs.UnknownMounts[MountID] = true
 			if GoGo_Variables.Debug >= 10 then
