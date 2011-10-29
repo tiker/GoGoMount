@@ -32,7 +32,7 @@ function GoGo_OnEvent(self, event, ...)
 		GoGo_Prefs.UnknownMounts = {}
 		GoGo_Variables.VerMajor, GoGo_Variables.VerMinor, GoGo_Variables.VerBuild = strsplit(".", GetAddOnMetadata("GoGoMount", "Version"))
 		GoGo_Variables.VerMajor, GoGo_Variables.VerMinor, GoGo_Variables.VerBuild = tonumber(GoGo_Variables.VerMajor), tonumber(GoGo_Variables.VerMinor), tonumber(GoGo_Variables.VerBuild)
-		GoGo_Variables.TestVersion = true
+		GoGo_Variables.TestVersion = false
 		_, GoGo_Variables.Player.Class = UnitClass("player")
 		_, GoGo_Variables.Player.Race = UnitRace("player")
 		if (GoGo_Variables.Player.Class == "DRUID") then
@@ -3354,7 +3354,7 @@ function GoGo_AddOptionCheckboxes(GoGo_FrameParentText)
 		-- "GoGo_GlobalFavorites_ContentFrame" ..
 		-- "GoGo_Exclusions_ContentFrame" .
 	if not GoGo_Variables.Player.Zone then
-		return
+		return  -- some UI mods try to draw frames before game has loaded causing errors.. this is to stop the errors.
 	end --if
 	
 	local GoGo_Mounts = GoGo_BuildMountList()
