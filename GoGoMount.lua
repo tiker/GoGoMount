@@ -3147,7 +3147,7 @@ function GoGo_Paladin_Panel()
 	GoGo_Paladin_Panel.default = function (self) GoGo_Settings_Default("PALADIN"); GoGo_Panel_UpdateViews("PALADIN"); end;  -- use clear command with default button
 	InterfaceOptions_AddCategory(GoGo_Paladin_Panel)
 
-	GoGo_Paladin_Panel_AutoStartCrusaderAura = CreateFrame("CheckButton", "GoGo_Paladin_Panel_AutoStartCrusaderAura", GoGo_Hunter_Panel, "OptionsCheckButtonTemplate")
+	GoGo_Paladin_Panel_AutoStartCrusaderAura = CreateFrame("CheckButton", "GoGo_Paladin_Panel_AutoStartCrusaderAura", GoGo_Paladin_Panel, "OptionsCheckButtonTemplate")
 	GoGo_Paladin_Panel_AutoStartCrusaderAura:SetPoint("TOPLEFT", 16, -16)
 	GoGo_Paladin_Panel_AutoStartCrusaderAuraText:SetText(GoGo_Variables.Localize.String.AutoStartCrusaderAura)
 	GoGo_Paladin_Panel_AutoStartCrusaderAura.tooltipText = GoGo_Variables.Localize.String.AutoStartCrusaderAura_Long
@@ -3306,6 +3306,8 @@ function GoGo_Panel_UpdateViews(Class)  -- check to see what's calling this (imp
 		GoGo_Druid_Panel_DisableInCombat:SetChecked(GoGo_Prefs.DruidDisableInCombat)
 	elseif Class == "HUNTER" then
 		GoGo_Hunter_Panel_AspectOfPack:SetChecked(GoGo_Prefs.AspectPack)
+	elseif Class == "PALADIN" then
+		GoGo_Paladin_Panel_AutoStartCrusaderAura:SetChecked(GoGo_Prefs.PaladinUseCrusaderAura)
 	else
 		GoGo_Panel_AutoDismount:SetChecked(GoGo_Prefs.autodismount)
 		GoGo_Panel_DisableUpdateNotice:SetChecked(GoGo_Prefs.DisableUpdateNotice)
