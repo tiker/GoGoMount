@@ -134,6 +134,8 @@ function GoGo_GetMountDB()
 		[101282] = {[9] = true, [11] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Vicious Gladiator's Twilight Drake
 		[101821] = {[9] = true, [11] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Ruthless Gladiator's Twilight Drake
 		[107842] = {[9] = true, [11] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Blazing Drake
+		[107844] = {[9] = true, [19] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Twilight Harbinger
+		[107845] = {[9] = true, [19] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Life-Binder's Handmaiden
 
 		[59961] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Red Proto-Drake
 		[59976] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Black Proto-Drake
