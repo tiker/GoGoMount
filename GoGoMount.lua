@@ -32,7 +32,7 @@ function GoGo_OnEvent(self, event, ...)
 		GoGo_Prefs.UnknownMounts = {}
 		GoGo_Variables.VerMajor, GoGo_Variables.VerMinor, GoGo_Variables.VerBuild = strsplit(".", GetAddOnMetadata("GoGoMount", "Version"))
 		GoGo_Variables.VerMajor, GoGo_Variables.VerMinor, GoGo_Variables.VerBuild = tonumber(GoGo_Variables.VerMajor), tonumber(GoGo_Variables.VerMinor), tonumber(GoGo_Variables.VerBuild)
-		GoGo_Variables.TestVersion = false
+		GoGo_Variables.TestVersion = true
 		_, GoGo_Variables.Player.Class = UnitClass("player")
 		_, GoGo_Variables.Player.Race = UnitRace("player")
 		if (GoGo_Variables.Player.Class == "DRUID") then
@@ -46,6 +46,9 @@ function GoGo_OnEvent(self, event, ...)
 		elseif (GoGo_Variables.Player.Class == "HUNTER") then
 			GoGo_Hunter_Panel()
 			GoGo_Panel_UpdateViews("HUNTER")
+		elseif (GoGo_Variables.Player.Class == "PALADIN") then
+			GoGo_Paladin_Panel()
+--			GoGo_Panel_UpdateViews("HUNTER")
 		end --if
 		GoGo_Panel_Options()
 		GoGo_Panel_UpdateViews()
@@ -215,9 +218,17 @@ end --function
 ---------
 function GoGo_GetMount()
 ---------
-	local selectedmount = GoGo_ChooseMount()	-- find a mount to use
-	selectedmount = GoGo_RemoveBuffs(selectedmount)	-- remove buffs that could prevent us from mounting
-	return selectedmount	-- returning the mount or macro to the button
+	local GoGo_Mount = GoGo_ChooseMount()	-- find a mount to use
+	local GoGo_Macro = ""
+	if GoGo_Mount then	-- we have a mount to use so we are mounting
+		GoGo_Macro = GoGo_Macro .. GoGo_RemoveBuffs()	-- remove buffs that could prevent us from mounting
+		GoGo_Macro = GoGo_Macro .. GoGo_CrusaderAura()	-- start Crusader Aura if needed
+		-- if GoGo_Macro ~= "" then ...
+	end --if
+	if GoGo_Macro ~= "" then
+		GoGo_Mount = GoGo_Macro .. "/use " .. GoGo_Mount
+	end --if
+	return GoGo_Mount	-- returning the mount
 end --function
 
 ---------
@@ -874,18 +885,15 @@ function GoGo_IsShifted()
 end --function
 
 ---------
-function GoGo_RemoveBuffs(mount)
+function GoGo_RemoveBuffs()  -- adds lines to button macro to remove removable buffs
 ---------
-	if mount == nil then
-		return
-	end --if
 	if not GoGo_Prefs.RemoveBuffs then
-		return mount
+		return ""
 	end --if
 	if GoGo_Variables.Debug >= 10 then
 		GoGo_DebugAddLine("GoGo_RemoveBuffs: Removing buffs preventing mounting.")
 	end --if
-	local macro = ""
+	local GoGo_Macro = ""
 	local spellid = 0
 	for spellid = 1, table.getn(GoGo_Variables.DebuffDB) do
 		if GoGo_Variables.Debug >= 10 then
@@ -895,13 +903,27 @@ function GoGo_RemoveBuffs(mount)
 			if GoGo_Variables.Debug >= 10 then
 				GoGo_DebugAddLine("GoGo_RemoveBuffs: Found and removing buff " .. GoGo_Variables.DebuffDB[spellid] .. " (" .. GetSpellInfo(GoGo_Variables.DebuffDB[spellid]) .. ")")
 			end --if
-			macro = macro .. "/cancelaura " .. GetSpellInfo(GoGo_Variables.DebuffDB[spellid]) .. " \n"
+			GoGo_Macro = GoGo_Macro .. "/cancelaura " .. GetSpellInfo(GoGo_Variables.DebuffDB[spellid]) .. " \n"
 		end --if
 	end --for
-	if macro ~= "" then
-		mount = macro .. "/use " .. mount
+	return GoGo_Macro
+end --if
+
+---------
+function GoGo_CrusaderAura()
+---------  called when clicking GoGo Buttons as a Paladin
+	if not GoGo_Variables.Player.Class == "PALADIN" then
+		return ""
 	end --if
-	return mount
+	if not GoGo_Prefs.PaladinUseCrusaderAura then  -- auto cast Crusader Aura not enabled
+		return ""
+	end --if
+	if not GoGo_InBook(GoGo_Variables.Localize.CrusaderAura) then
+		return ""
+	end --if
+	local GoGo_Macro = ""
+	GoGo_Macro = "/cast [nomounted] !" .. GetSpellInfo(GoGo_Variables.Localize.CrusaderAura) .. " \n"
+	return GoGo_Macro
 end --if
 
 ---------
@@ -3087,7 +3109,7 @@ function GoGo_Hunter_Panel()
 	GoGo_Hunter_Panel = CreateFrame("Frame", nil, UIParent)
 	GoGo_Hunter_Panel.name = GoGo_Variables.Localize.String.HunterOptions
 	GoGo_Hunter_Panel.parent = "GoGoMount"
-	GoGo_Hunter_Panel.okay = function (self) GoGo_Panel_Okay("HUNTER"); end;
+--	GoGo_Hunter_Panel.okay = function (self) GoGo_Panel_Okay("HUNTER"); end;
 	GoGo_Hunter_Panel.default = function (self) GoGo_Settings_Default("HUNTER"); GoGo_Panel_UpdateViews("HUNTER"); end;  -- use clear command with default button
 	InterfaceOptions_AddCategory(GoGo_Hunter_Panel)
 
@@ -3097,10 +3119,56 @@ function GoGo_Hunter_Panel()
 	GoGo_Hunter_Panel_AspectOfPack.tooltipText = GoGo_Variables.Localize.String.UseAspectOfThePackInstead_Long
 	GoGo_Hunter_Panel_AspectOfPack:SetScript("OnClick",
 		function(self)
-			GoGo_Panel_Okay("HUNTER")
+			if GoGo_Hunter_Panel_AspectOfPack:GetChecked() then
+				GoGo_Prefs.AspectPack = true
+			else
+				GoGo_Prefs.AspectPack = false
+			end --if
 		end --function
 	)
-	
+	GoGo_Hunter_Panel_AspectOfPack:SetScript("OnShow",
+		function(self)
+			if GoGo_Prefs.AspectPack then
+				GoGo_Hunter_Panel_AspectOfPack:SetChecked(1)
+			else
+				GoGo_Hunter_Panel_AspectOfPack:SetChecked(0)
+			end --if
+		end --function
+	)
+end --function
+
+---------
+function GoGo_Paladin_Panel()
+---------
+	GoGo_Paladin_Panel = CreateFrame("Frame", nil, UIParent)
+	GoGo_Paladin_Panel.name = GoGo_Variables.Localize.String.PaladinOptions
+	GoGo_Paladin_Panel.parent = "GoGoMount"
+--	GoGo_Paladin_Panel.okay = function (self) GoGo_Panel_Okay("PALADIN"); end;
+	GoGo_Paladin_Panel.default = function (self) GoGo_Settings_Default("PALADIN"); GoGo_Panel_UpdateViews("PALADIN"); end;  -- use clear command with default button
+	InterfaceOptions_AddCategory(GoGo_Paladin_Panel)
+
+	GoGo_Paladin_Panel_AutoStartCrusaderAura = CreateFrame("CheckButton", "GoGo_Paladin_Panel_AutoStartCrusaderAura", GoGo_Hunter_Panel, "OptionsCheckButtonTemplate")
+	GoGo_Paladin_Panel_AutoStartCrusaderAura:SetPoint("TOPLEFT", 16, -16)
+	GoGo_Paladin_Panel_AutoStartCrusaderAuraText:SetText(GoGo_Variables.Localize.String.AutoStartCrusaderAura)
+	GoGo_Paladin_Panel_AutoStartCrusaderAura.tooltipText = GoGo_Variables.Localize.String.AutoStartCrusaderAura_Long
+	GoGo_Paladin_Panel_AutoStartCrusaderAura:SetScript("OnClick",
+		function(self)
+			if GoGo_Paladin_Panel_AutoStartCrusaderAura:GetChecked() then
+				GoGo_Prefs.PaladinUseCrusaderAura = true
+			else
+				GoGo_Prefs.PaladinUseCrusaderAura = false
+			end --if
+		end --function
+	)
+	GoGo_Paladin_Panel_AutoStartCrusaderAura:SetScript("OnShow",
+		function(self)
+			if GoGo_Prefs.PaladinUseCrusaderAura then
+				GoGo_Paladin_Panel_AutoStartCrusaderAura:SetChecked(1)
+			else
+				GoGo_Paladin_Panel_AutoStartCrusaderAura:SetChecked(0)
+			end --if
+		end --function
+	)
 end --function
 
 ---------
@@ -3111,7 +3179,6 @@ function GoGo_ZoneFavorites_Panel()
 	GoGo_ZoneFavorites_Panel.parent = "GoGoMount"
 	GoGo_ZoneFavorites_Panel.default = function (self) GoGo_Prefs.Zones[GoGo_Variables.Player.Zone]=nil; GoGo_AddOptionCheckboxes("GoGo_ZoneFavorites_ContentFrame"); end;  -- use clear command with default button
 
---	GoGo_ZoneFavorites_Panel.okay = function (self) GoGo_Panel_Okay("HUNTER"); end;  -- do nothing.. tracking changes with each click
 	InterfaceOptions_AddCategory(GoGo_ZoneFavorites_Panel)
 	
 	GoGo_ZoneFavorites_ScrollFrame = CreateFrame("ScrollFrame", "GoGo_ZoneFavorites_ScrollFrame", GoGo_ZoneFavorites_Panel, "UIPanelScrollFrameTemplate")
@@ -3154,7 +3221,6 @@ function GoGo_GlobalFavorites_Panel()
 	GoGo_GlobalFavorites_Panel.parent = "GoGoMount"
 	GoGo_GlobalFavorites_Panel.default = function (self) GoGo_Prefs.GlobalPrefMounts = nil; GoGo_AddOptionCheckboxes("GoGo_GlobalFavorites_ContentFrame"); end;  -- use clear command with default button
 
-	--	GoGo_GlobalFavorites_Panel.okay = function (self) GoGo_Panel_Okay("HUNTER"); end;  -- do nothing.. tracking changes with each click
 	InterfaceOptions_AddCategory(GoGo_GlobalFavorites_Panel)
 	
 	GoGo_GlobalFavorites_ScrollFrame = CreateFrame("ScrollFrame", "GoGo_GlobalFavorites_ScrollFrame", GoGo_GlobalFavorites_Panel, "UIPanelScrollFrameTemplate")
@@ -3271,8 +3337,6 @@ function GoGo_Panel_Okay(Panel)
 		GoGo_Prefs.DruidFlightForm = GoGo_Druid_Panel_FlightForm:GetChecked()
 		GoGo_Prefs.DruidFormNotRandomize = GoGo_Druid_Panel_NoShapeInRandom:GetChecked()
 		GoGo_Prefs.DruidDisableInCombat = GoGo_Druid_Panel_DisableInCombat:GetChecked()
-	elseif Panel == "HUNTER" then
-		GoGo_Prefs.AspectPack = GoGo_Hunter_Panel_AspectOfPack:GetChecked()
 	end--if
 end --function
 
@@ -3286,6 +3350,8 @@ function GoGo_Settings_Default(Class)
 		GoGo_Prefs.DruidDisableInCombat = false
 	elseif Class == "HUNTER" then
 		GoGo_Prefs.AspectPack = false
+	elseif Class == "PALADIN" then
+		GoGo_Prefs.PaladinUseCrusaderAura = false
 	elseif Class == "ALL" then
 		GoGo_Prefs.autodismount = true
 		GoGo_Prefs.DisableUpdateNotice = false
@@ -3311,6 +3377,7 @@ function GoGo_Settings_Default(Class)
 		GoGo_Prefs.DisableWaterFlight = true
 		GoGo_Prefs.RemoveBuffs = true
 		GoGo_Prefs.DruidDisableInCombat = false
+		GoGo_Prefs.PaladinUseCrusaderAura = false
 	end --if
 end --function
 
@@ -3329,6 +3396,7 @@ function GoGo_Settings_SetUpdates()
 	if not GoGo_Prefs.DisableWaterFlight then GoGo_Prefs.DisableWaterFlight = false end
 	if not GoGo_Prefs.RemoveBuffs then GoGo_Prefs.RemoveBuffs = false end
 	if not GoGo_Prefs.DruidDisableInCombat then GoGo_Prefs.DruidDisableInCombat = false end
+	if not GoGo_Prefs.PaladinUseCrusaderAura then GoGo_Prefs.PaladinUseCrusaderAura = false end
 	
 	GoGo_Prefs.UnknownMounts = {}
 	if not GoGo_Prefs.GlobalExclude then
