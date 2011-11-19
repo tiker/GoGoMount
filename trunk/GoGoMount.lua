@@ -32,7 +32,7 @@ function GoGo_OnEvent(self, event, ...)
 		GoGo_Prefs.UnknownMounts = {}
 		GoGo_Variables.VerMajor, GoGo_Variables.VerMinor, GoGo_Variables.VerBuild = strsplit(".", GetAddOnMetadata("GoGoMount", "Version"))
 		GoGo_Variables.VerMajor, GoGo_Variables.VerMinor, GoGo_Variables.VerBuild = tonumber(GoGo_Variables.VerMajor), tonumber(GoGo_Variables.VerMinor), tonumber(GoGo_Variables.VerBuild)
-		GoGo_Variables.TestVersion = false
+		GoGo_Variables.TestVersion = true
 		_, GoGo_Variables.Player.Class = UnitClass("player")
 		_, GoGo_Variables.Player.Race = UnitRace("player")
 		if (GoGo_Variables.Player.Class == "DRUID") then
@@ -168,7 +168,7 @@ function GoGo_PreClick(button)
 			GoGo_DebugAddLine("GoGo_PreClick: Player is a druid, is shifted and not in combat.")
 		end --if
 		GoGo_Dismount(button)
-	elseif GoGo_Variables.Player.Class == "SHAMAN" and UnitBuff("player", GoGo_InBook(GoGo_Variables.Localize.GhostWolf)) then
+	elseif GoGo_Variables.Player.Class == "SHAMAN" and UnitBuff("player", GetSpellInfo(GoGo_Variables.Localize.GhostWolf)) then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_PreClick: Player is a shaman and is in wolf form.  Standing up.")
 		end --if
@@ -664,7 +664,7 @@ function GoGo_Dismount(button)
 				GoGo_FillButton(button, GoGo_IsShifted())
 			end --if
 		end --if
-	elseif GoGo_Variables.Player.Class == "SHAMAN" and UnitBuff("player", GoGo_InBook(GoGo_Variables.Localize.GhostWolf)) and button then
+	elseif GoGo_Variables.Player.Class == "SHAMAN" and UnitBuff("player", GetSpellInfo(GoGo_Variables.Localize.GhostWolf)) and button then
 --		CancelUnitBuff("player", GoGo_InBook(GoGo_Variables.Localize.GhostWolf))
 		GoGo_FillButton(button, GoGo_InBook(GoGo_Variables.Localize.GhostWolf))
 	else
