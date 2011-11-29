@@ -383,7 +383,7 @@ function GoGo_GetMountDB()
 		[100332] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Vicious War Steed
 		[103195] = {[14]=true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Mountain Horse
 		[103196] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Mountain Horse
-		[107203] = {[3] = true, [9] = true, [14] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Space Charger
+		[107203] = {[3] = true, [9] = true, [14] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Tyrael's Charger
 
 		[34406] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Brown Elekk
 		[34407] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Great Elite Elekk
