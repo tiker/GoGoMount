@@ -15,6 +15,7 @@ GoGo_Variables.Localize.Skill = {}
 GoGo_Variables.Localize.Talent = {}
 
 GoGo_Variables.Debug = 0
+GoGo_Variables.TestVersion = true
 
 ---------
 function GoGo_GetMountDB()
@@ -136,6 +137,7 @@ function GoGo_GetMountDB()
 		[107842] = {[9] = true, [11] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Blazing Drake
 		[107844] = {[9] = true, [19] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Twilight Harbinger
 		[107845] = {[9] = true, [19] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Life-Binder's Handmaiden
+		[113120] = {[9]=true, [14]=true, [38]=true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Feldrake
 
 		[59961] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Red Proto-Drake
 		[59976] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Black Proto-Drake
