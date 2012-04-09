@@ -553,6 +553,7 @@ GoGo_Variables.DebuffDB = {
 	24858,	-- Moonkin Form (Druids)
 	--	45438,  -- Ice Block (Mages)  -- takes too long to cool down after removal
 	--	61316,	-- Arcane Brilliance (Mages) -- USED FOR TESTING PURPOSES ONLY
+	61734,  -- Noblegarden Bunny (from Brightly Colored Egg - Noblegarden / Easter)
 	71484,  -- Strength of the Taunka (from Deathbringer's Will)
 	71485,  -- Agility of the Vrykul (from Deathbringer's Will)
 	71486,  -- Power of the Taunka (from Deathbringer's Will)
