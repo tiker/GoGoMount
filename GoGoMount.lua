@@ -577,8 +577,11 @@ function GoGo_ChooseMount()
 			end --if
 			return selected
 		else
+			local GoGo_SpellTemp = {}
+			table.insert(GoGo_SpellTemp, selected)
+			GoGo_SpellTemp = GoGo_FilterMountsIn(GoGo_SpellTemp, 50000)
 			selected = GoGo_GetIDName(selected)
-			if selected == "Amani War Bear" then
+			if table.getn(GoGo_SpellTemp) == 0 then
 				selected = selected .. "()"
 			end --if
 			return selected
@@ -3688,7 +3691,6 @@ function GoGo_DebugCollectInformation()
 		GoGo_DebugAddLine("Information: Game - World of Warcraft: Mists of Pandaria enabled.")
 	end --if
 	GoGo_DebugAddLine("Information: Client locale is " .. GetLocale())
-	
 	GoGo_DebugAddLine("Information: Location = " .. GetRealZoneText() .. " - " .. GetZoneText() .. " - " ..GetSubZoneText() .. " - " .. GetMinimapZoneText())
 	GoGo_DebugAddLine("Information: Current zone area ID as per GetCurrentMapAreaID(): " .. GetCurrentMapAreaID())
 	local posX, posY = GetPlayerMapPosition("Player")
@@ -3735,6 +3737,11 @@ function GoGo_DebugCollectInformation()
 	else
 		GoGo_DebugAddLine("Information: We are not swimming as per IsSwimming()")
 	end --if
+	if IsSubmerged() then
+		GoGo_DebugAddLine("Information: We are swimming as per IsSubmerged()")
+	else
+		GoGo_DebugAddLine("Information: We are not swimming as per IsSubmerged()")
+	end --if
 	if IsFalling() then
 		GoGo_DebugAddLine("Information: We are falling as per IsFalling()")
 	else
@@ -3760,7 +3767,6 @@ function GoGo_DebugCollectInformation()
 		buffs = table.concat(buffs, ", ")
 	end --if
 	GoGo_DebugAddLine("Information: " .. buffs)
-	GoGo_DebugAddLine("Information: Mount List:")
 	GoGo_DebugAddLine("Information: End of information.")	
 end --function
 
