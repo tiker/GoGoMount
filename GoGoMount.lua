@@ -578,6 +578,9 @@ function GoGo_ChooseMount()
 			return selected
 		else
 			selected = GoGo_GetIDName(selected)
+			if selected == "Amani War Bear" then
+				selected = selected .. "()"
+			end --if
 			return selected
 		end --if
 	end --if
