@@ -15,7 +15,7 @@ GoGo_Variables.Localize.Skill = {}
 GoGo_Variables.Localize.Talent = {}
 
 GoGo_Variables.Debug = 0
-GoGo_Variables.TestVersion = false
+GoGo_Variables.TestVersion = true
 
 ---------
 function GoGo_GetMountDB()
@@ -569,6 +569,6 @@ GoGo_Variables.DebuffDB = {
 	75724,	-- Seeds of Discord (Mount Hyjal quest from item "Ogre Disguise" itemid 55137)
 	91760,	-- Endure the Transformation (from Bones of Transformation)
 	91771,	-- Wisp Form (from Wisp Amulet)
-
+	98445,  -- Trapped In Amber (from Ancient Amber)  -- requires 2 clicks to mount
 	
 }
