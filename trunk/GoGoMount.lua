@@ -38,19 +38,15 @@ function GoGo_OnEvent(self, event, ...)
 			GoGo_Variables.Druid = {}
 			GoGoFrame:RegisterEvent("PLAYER_REGEN_DISABLED")
 			GoGo_Druid_Panel()
-			GoGo_Panel_UpdateViews("DRUID")
 		elseif (GoGo_Variables.Player.Class == "SHAMAN") then
 			GoGo_Variables.Shaman = {}
 			GoGoFrame:RegisterEvent("PLAYER_REGEN_DISABLED")
 		elseif (GoGo_Variables.Player.Class == "HUNTER") then
 			GoGo_Hunter_Panel()
-			GoGo_Panel_UpdateViews("HUNTER")
 		elseif (GoGo_Variables.Player.Class == "PALADIN") then
 			GoGo_Paladin_Panel()
---			GoGo_Panel_UpdateViews("HUNTER")
 		end --if
 		GoGo_Panel_Options()
-		GoGo_Panel_UpdateViews()
 		GoGo_ZoneFavorites_Panel()
 		GoGo_GlobalFavorites_Panel()
 		GoGo_ZoneExclusions_Panel()
@@ -675,9 +671,15 @@ function GoGo_Dismount(button)
 				GoGo_FillButton(button, GoGo_IsShifted())
 			end --if
 		end --if
-	elseif GoGo_Variables.Player.Class == "SHAMAN" and UnitBuff("player", GetSpellInfo(GoGo_Variables.Localize.GhostWolf)) and button then
---		CancelUnitBuff("player", GoGo_InBook(GoGo_Variables.Localize.GhostWolf))
-		GoGo_FillButton(button, GoGo_InBook(GoGo_Variables.Localize.GhostWolf))
+	elseif GoGo_Variables.Player.Class == "SHAMAN" then
+		if UnitBuff("player", GetSpellInfo(GoGo_Variables.Localize.GhostWolf)) and button then
+			if GoGo_Prefs.ShamanClickForm then
+				GoGo_FillButton(button, GoGo_GetMount())
+			else
+		--		CancelUnitBuff("player", GoGo_InBook(GoGo_Variables.Localize.GhostWolf))
+				GoGo_FillButton(button, GoGo_InBook(GoGo_Variables.Localize.GhostWolf))
+			end --if
+		end --if
 	else
 		return nil
 	end --if
@@ -2886,7 +2888,11 @@ GOGO_COMMANDS = {
 	["auto"] = function()
 		GoGo_Prefs.autodismount = not GoGo_Prefs.autodismount
 		GoGo_Msg("auto")
-		GoGo_Panel_UpdateViews()
+		if GoGo_Prefs.autodismount then
+			GoGo_Panel_AutoDismount:SetChecked(1)
+		else
+			GoGo_Panel_AutoDismount:SetChecked(0)
+		end --if
 	end, --function
 	["clear"] = function()
 		if GoGo_Prefs.GlobalPrefMount then
@@ -2921,22 +2927,38 @@ GOGO_COMMANDS = {
 	["updatenotice"] = function()
 		GoGo_Prefs.DisableUpdateNotice = not GoGo_Prefs.DisableUpdateNotice
 		GoGo_Msg("updatenotice")
-		GoGo_Panel_UpdateViews()
+		if GoGo_Prefs.DisableUpdateNotice then
+			GoGo_Panel_DisableUpdateNotice:SetChecked(1)
+		else
+			GoGo_Panel_DisableUpdateNotice:SetChecked(0)
+		end --if
 	end, --function
 	["mountnotice"] = function()
 		GoGo_Prefs.DisableMountNotice = not GoGo_Prefs.DisableMountNotice
 		GoGo_Msg("mountnotice")
-		GoGo_Panel_UpdateViews()
+		if GoGo_Prefs.DisableMountNotice then
+			GoGo_Panel_DisableMountNotice:SetChecked(1)
+		else
+			GoGo_Panel_DisableMountNotice:SetChecked(0)
+		end --if
 	end, --function
 	["druidclickform"] = function()
 		GoGo_Prefs.DruidClickForm = not GoGo_Prefs.DruidClickForm
 		GoGo_Msg("druidclickform")
-		GoGo_Panel_UpdateViews()
+		if GoGo_Prefs.DruidClickForm then
+			GoGo_Druid_Panel_ClickForm:SetChecked(1)
+		else
+			GoGo_Druid_Panel_ClickForm:SetChecked(0)
+		end --if
 	end, --function
 	["druidflightform"] = function()
 		GoGo_Prefs.DruidFlightForm = not GoGo_Prefs.DruidFlightForm
 		GoGo_Msg("druidflightform")
-		GoGo_Panel_UpdateViews()
+		if GoGo_Prefs.DruidFlightForm then
+			GoGo_Druid_Panel_FlightForm:SetChecked(1)
+		else
+			GoGo_Druid_Panel_FlightForm:SetChecked(0)
+		end --if
 	end, --function
 	["options"] = function()
 		InterfaceOptionsFrame_OpenToCategory(GoGo_Panel)
@@ -3049,11 +3071,8 @@ end --function
 ---------
 function GoGo_Panel_OnLoad(GoGo_Panel)
 ---------
---	local GoGo_Panel = CreateFrame("FRAME", nil);
---	GoGo_Panel:SetScript("OnShow",function() GoGo_Panel_UpdateViews(); end);
 	GoGo_Panel.name = "GoGoMount"
-	GoGo_Panel.okay = function (self) GoGo_Panel_Okay("MAIN"); end;
-	GoGo_Panel.default = function (self) GoGo_Settings_Default("ALL"); GoGo_Panel_UpdateViews(); end;
+	GoGo_Panel.default = function (self) GoGo_Settings_Default("MAIN"); end;
 	InterfaceOptions_AddCategory(GoGo_Panel)
 	
 end --function
@@ -3066,7 +3085,20 @@ function GoGo_Panel_Options()
 	GoGo_Panel_AutoDismountText:SetText(GoGo_Variables.Localize.String.EnableAutoDismount)
 	GoGo_Panel_AutoDismount:SetScript("OnClick",
 		function(self)
-			GoGo_Panel_Okay("MAIN")
+			if GoGo_Panel_AutoDismount:GetChecked() then
+				GoGo_Prefs.autodismount = true
+			else
+				GoGo_Prefs.autodismount = false
+			end --if
+		end --function
+	)
+	GoGo_Panel_AutoDismount:SetScript("OnShow",
+		function(self)
+			if GoGo_Prefs.autodismount then
+				GoGo_Panel_AutoDismount:SetChecked(1)
+			else
+				GoGo_Panel_AutoDismount:SetChecked(0)
+			end --if
 		end --function
 	)
 
@@ -3075,7 +3107,20 @@ function GoGo_Panel_Options()
 	GoGo_Panel_GlobalPrefMountText:SetText("Preferred mount changes apply to global setting")
 	GoGo_Panel_GlobalPrefMount:SetScript("OnClick",
 		function(self)
-			GoGo_Panel_Okay("MAIN")
+			if GoGo_Panel_GlobalPrefMount:GetChecked() then
+				GoGo_Prefs.GlobalPrefMount = true
+			else
+				GoGo_Prefs.GlobalPrefMount = false
+			end --if
+		end --function
+	)
+	GoGo_Panel_GlobalPrefMount:SetScript("OnShow",
+		function(self)
+			if GoGo_Prefs.GlobalPrefMount then
+				GoGo_Panel_GlobalPrefMount:SetChecked(1)
+			else
+				GoGo_Panel_GlobalPrefMount:SetChecked(0)
+			end --if
 		end --function
 	)
 
@@ -3084,7 +3129,20 @@ function GoGo_Panel_Options()
 	GoGo_Panel_DisableUpdateNoticeText:SetText(GoGo_Variables.Localize.String.DisableUpdateNotices)
 	GoGo_Panel_DisableUpdateNotice:SetScript("OnClick",
 		function(self)
-			GoGo_Panel_Okay("MAIN")
+			if GoGo_Panel_DisableUpdateNotice:GetChecked() then
+				GoGo_Prefs.DisableUpdateNotice = true
+			else
+				GoGo_Prefs.DisableUpdateNotice = false
+			end --if
+		end --function
+	)
+	GoGo_Panel_DisableUpdateNotice:SetScript("OnShow",
+		function(self)
+			if GoGo_Prefs.DisableUpdateNotice then
+				GoGo_Panel_DisableUpdateNotice:SetChecked(1)
+			else
+				GoGo_Panel_DisableUpdateNotice:SetChecked(0)
+			end --if
 		end --function
 	)
 
@@ -3093,7 +3151,20 @@ function GoGo_Panel_Options()
 	GoGo_Panel_DisableMountNoticeText:SetText(GoGo_Variables.Localize.String.DisableUnknownMountNotices)
 	GoGo_Panel_DisableMountNotice:SetScript("OnClick",
 		function(self)
-			GoGo_Panel_Okay("MAIN")
+			if GoGo_Panel_DisableMountNotice:GetChecked() then
+				GoGo_Prefs.DisableMountNotice = true
+			else
+				GoGo_Prefs.DisableMountNotice = false
+			end --if
+		end --function
+	)
+	GoGo_Panel_DisableMountNotice:SetScript("OnShow",
+		function(self)
+			if GoGo_Prefs.DisableMountNotice then
+				GoGo_Panel_DisableMountNotice:SetChecked(1)
+			else
+				GoGo_Panel_DisableMountNotice:SetChecked(0)
+			end --if
 		end --function
 	)
 
@@ -3102,7 +3173,20 @@ function GoGo_Panel_Options()
 	GoGo_Panel_DisableWaterFlightText:SetText(GoGo_Variables.Localize.String.DisableFlyingFromWater)
 	GoGo_Panel_DisableWaterFlight:SetScript("OnClick",
 		function(self)
-			GoGo_Panel_Okay("MAIN")
+			if GoGo_Panel_DisableWaterFlight:GetChecked() then
+				GoGo_Prefs.DisableWaterFlight = true
+			else
+				GoGo_Prefs.DisableWaterFlight = false
+			end --if
+		end --function
+	)
+	GoGo_Panel_DisableWaterFlight:SetScript("OnShow",
+		function(self)
+			if GoGo_Prefs.DisableWaterFlight then
+				GoGo_Panel_DisableWaterFlight:SetChecked(1)
+			else
+				GoGo_Panel_DisableWaterFlight:SetChecked(0)
+			end --if
 		end --function
 	)
 	
@@ -3112,25 +3196,22 @@ function GoGo_Panel_Options()
 	GoGo_Panel_RemoveBuffs.tooltipText = GoGo_Variables.Localize.String.RemoveBuffs_Long
 	GoGo_Panel_RemoveBuffs:SetScript("OnClick",
 		function(self)
-			GoGo_Panel_Okay("MAIN")
+			if GoGo_Panel_RemoveBuffs:GetChecked() then
+				GoGo_Prefs.RemoveBuffs = true
+			else
+				GoGo_Prefs.RemoveBuffs = false
+			end --if
 		end --function
 	)
-
-	--[[	
-	local GoGo_Panel_ClearGlobalFavorites = CreateFrame("FRAME")
-	local GoGo_Panel_ClearGlobalFavorites_Text = GoGo_Panel_ClearGlobalFavorites:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
-	GoGo_Panel_ClearGlobalFavorites_Text:SetText(GoGo_Variables.Localize.String.ClearGlobalFavoriteMounts)
-	GoGo_Panel_ClearGlobalFavorites_Text:SetNonSpaceWrap(true)
-	GoGo_Panel_ClearGlobalFavorites_Text:SetJustifyH("LEFT")
-	GoGo_Panel_ClearGlobalFavorites_Text:SetJustifyV("TOP")
-	GoGo_Panel_ClearGlobalFavorites_Text:SetWidth(350)
-	GoGo_Panel_ClearGlobalFavorites_Text:SetPoint("BOTTOMLEFT", 16, 112)
-	GoGo_Panel_ClearGlobalFavorites_Button = CreateFrame("Button","GoGo_Panel_ClearGlobalFavorites_Button",GoGo_Panel,"UIPanelButtonTemplate")
-	GoGo_Panel_ClearGlobalFavorites_Button:SetPoint("BOTTOMLEFT",16,16)
-	GoGo_Panel_ClearGlobalFavorites_Button:SetWidth(80)
-	GoGo_Panel_ClearGlobalFavorites_Button:SetHeight(22)
-	GoGo_Panel_ClearGlobalFavorites_Button:SetText(GoGo_Variables.Localize.String.Clear)
-	]]
+	GoGo_Panel_RemoveBuffs:SetScript("OnShow",
+		function(self)
+			if GoGo_Prefs.RemoveBuffs then
+				GoGo_Panel_RemoveBuffs:SetChecked(1)
+			else
+				GoGo_Panel_RemoveBuffs:SetChecked(0)
+			end --if
+		end --function
+	)
 end --function
 
 ---------
@@ -3140,7 +3221,7 @@ function GoGo_Druid_Panel()
 	GoGo_Druid_Panel.name = GoGo_Variables.Localize.String.DruidOptions
 	GoGo_Druid_Panel.parent = "GoGoMount"
 	GoGo_Druid_Panel.okay = function (self) GoGo_Panel_Okay("DRUID"); end;
-	GoGo_Druid_Panel.default = function (self) GoGo_Settings_Default("DRUID"); GoGo_Panel_UpdateViews("DRUID"); end;  -- use clear command with default button
+	GoGo_Druid_Panel.default = function (self) GoGo_Settings_Default("DRUID"); end;  -- use clear command with default button
 	InterfaceOptions_AddCategory(GoGo_Druid_Panel)
 
 	GoGo_Druid_Panel_ClickForm = CreateFrame("CheckButton", "GoGo_Druid_Panel_ClickForm", GoGo_Druid_Panel, "OptionsCheckButtonTemplate")
@@ -3148,7 +3229,20 @@ function GoGo_Druid_Panel()
 	GoGo_Druid_Panel_ClickFormText:SetText(GoGo_Variables.Localize.String.DruidSingleClick)
 	GoGo_Druid_Panel_ClickForm:SetScript("OnClick",
 		function(self)
-			GoGo_Panel_Okay("DRUID")
+			if GoGo_Druid_Panel_ClickForm:GetChecked() then
+				GoGo_Prefs.DruidClickForm = true
+			else
+				GoGo_Prefs.DruidClickForm = false
+			end --if
+		end --function
+	)
+	GoGo_Druid_Panel_ClickForm:SetScript("OnShow",
+		function(self)
+			if GoGo_Prefs.DruidClickForm then
+				GoGo_Druid_Panel_ClickForm:SetChecked(1)
+			else
+				GoGo_Druid_Panel_ClickForm:SetChecked(0)
+			end --if
 		end --function
 	)
 
@@ -3157,32 +3251,66 @@ function GoGo_Druid_Panel()
 	GoGo_Druid_Panel_FlightFormText:SetText(GoGo_Variables.Localize.String.DruidFlightPreference)
 	GoGo_Druid_Panel_FlightForm:SetScript("OnClick",
 		function(self)
-			if self:GetChecked() then
-				GoGo_Druid_Panel_NoShapeInRandom:SetChecked(0)
-			end  --if
-			GoGo_Panel_Okay("DRUID")
+			if GoGo_Druid_Panel_FlightForm:GetChecked() then
+				GoGo_Prefs.DruidFlightForm = true
+			else
+				GoGo_Prefs.DruidFlightForm = false
+			end --if
 		end --function
 	)
-	
+	GoGo_Druid_Panel_FlightForm:SetScript("OnShow",
+		function(self)
+			if GoGo_Prefs.DruidFlightForm then
+				GoGo_Druid_Panel_FlightForm:SetChecked(1)
+			else
+				GoGo_Druid_Panel_FlightForm:SetChecked(0)
+			end --if
+		end --function
+	)
+
 	GoGo_Druid_Panel_NoShapeInRandom = CreateFrame("CheckButton", "GoGo_Druid_Panel_NoShapeInRandom", GoGo_Druid_Panel, "OptionsCheckButtonTemplate")
 	GoGo_Druid_Panel_NoShapeInRandom:SetPoint("TOPLEFT", "GoGo_Druid_Panel_FlightForm", "BOTTOMLEFT", 0, -4)
 	GoGo_Druid_Panel_NoShapeInRandomText:SetText(GoGo_Variables.Localize.String.NoShapeInRandom)
 	GoGo_Druid_Panel_NoShapeInRandom:SetScript("OnClick",
 		function(self)
-			if self:GetChecked() then
-				GoGo_Druid_Panel_FlightForm:SetChecked(0)
+			if GoGo_Druid_Panel_NoShapeInRandom:GetChecked() then
+				GoGo_Prefs.DruidFormNotRandomize = true
+			else
+				GoGo_Prefs.DruidFormNotRandomize = false
 			end --if
-			GoGo_Panel_Okay("DRUID")
 		end --function
 	)
-	
+	GoGo_Druid_Panel_NoShapeInRandom:SetScript("OnShow",
+		function(self)
+			if GoGo_Prefs.DruidFormNotRandomize then
+				GoGo_Druid_Panel_NoShapeInRandom:SetChecked(1)
+			else
+				GoGo_Druid_Panel_NoShapeInRandom:SetChecked(0)
+			end --if
+		end --function
+	)
+			GoGo_Prefs.DruidDisableInCombat = GoGo_Druid_Panel_DisableInCombat:GetChecked()
+
 	GoGo_Druid_Panel_DisableInCombat = CreateFrame("CheckButton", "GoGo_Druid_Panel_DisableInCombat", GoGo_Druid_Panel, "OptionsCheckButtonTemplate")
 	GoGo_Druid_Panel_DisableInCombat:SetPoint("TOPLEFT", "GoGo_Druid_Panel_NoShapeInRandom", "BOTTOMLEFT", 0, -4)
 	GoGo_Druid_Panel_DisableInCombatText:SetText(GoGo_Variables.Localize.String.DisableInCombat)
 	GoGo_Druid_Panel_DisableInCombat.tooltipText = GoGo_Variables.Localize.String.DisableInCombat_Long
 	GoGo_Druid_Panel_ClickForm:SetScript("OnClick",
 		function(self)
-			GoGo_Panel_Okay("DRUID")
+			if GoGo_Druid_Panel_DisableInCombat:GetChecked() then
+				GoGo_Prefs.DruidDisableInCombat = true
+			else
+				GoGo_Prefs.DruidDisableInCombat = false
+			end --if
+		end --function
+	)
+	GoGo_Druid_Panel_DisableInCombat:SetScript("OnShow",
+		function(self)
+			if GoGo_Prefs.DruidDisableInCombat then
+				GoGo_Druid_Panel_DisableInCombat:SetChecked(1)
+			else
+				GoGo_Druid_Panel_DisableInCombat:SetChecked(0)
+			end --if
 		end --function
 	)
 end --function
@@ -3194,7 +3322,7 @@ function GoGo_Hunter_Panel()
 	GoGo_Hunter_Panel.name = GoGo_Variables.Localize.String.HunterOptions
 	GoGo_Hunter_Panel.parent = "GoGoMount"
 --	GoGo_Hunter_Panel.okay = function (self) GoGo_Panel_Okay("HUNTER"); end;
-	GoGo_Hunter_Panel.default = function (self) GoGo_Settings_Default("HUNTER"); GoGo_Panel_UpdateViews("HUNTER"); end;  -- use clear command with default button
+	GoGo_Hunter_Panel.default = function (self) GoGo_Settings_Default("HUNTER"); end;  -- use clear command with default button
 	InterfaceOptions_AddCategory(GoGo_Hunter_Panel)
 
 	GoGo_Hunter_Panel_AspectOfPack = CreateFrame("CheckButton", "GoGo_Hunter_Panel_AspectOfPack", GoGo_Hunter_Panel, "OptionsCheckButtonTemplate")
@@ -3228,7 +3356,7 @@ function GoGo_Paladin_Panel()
 	GoGo_Paladin_Panel.name = GoGo_Variables.Localize.String.PaladinOptions
 	GoGo_Paladin_Panel.parent = "GoGoMount"
 --	GoGo_Paladin_Panel.okay = function (self) GoGo_Panel_Okay("PALADIN"); end;
-	GoGo_Paladin_Panel.default = function (self) GoGo_Settings_Default("PALADIN"); GoGo_Panel_UpdateViews("PALADIN"); end;  -- use clear command with default button
+	GoGo_Paladin_Panel.default = function (self) GoGo_Settings_Default("PALADIN"); end;  -- use clear command with default button
 	InterfaceOptions_AddCategory(GoGo_Paladin_Panel)
 
 	GoGo_Paladin_Panel_AutoStartCrusaderAura = CreateFrame("CheckButton", "GoGo_Paladin_Panel_AutoStartCrusaderAura", GoGo_Paladin_Panel, "OptionsCheckButtonTemplate")
@@ -3422,70 +3550,29 @@ function GoGo_ZoneExclusions_Panel()
 end --function
 
 ---------
-function GoGo_Panel_UpdateViews(Class)  -- check to see what's calling this (improve performance)
----------
-	if Class == "DRUID" then
-		GoGo_Druid_Panel_ClickForm:SetChecked(GoGo_Prefs.DruidClickForm)
-		GoGo_Druid_Panel_FlightForm:SetChecked(GoGo_Prefs.DruidFlightForm)
-		GoGo_Druid_Panel_NoShapeInRandom:SetChecked(GoGo_Prefs.DruidFormNotRandomize)
-		GoGo_Druid_Panel_DisableInCombat:SetChecked(GoGo_Prefs.DruidDisableInCombat)
-	elseif Class == "HUNTER" then
-		GoGo_Hunter_Panel_AspectOfPack:SetChecked(GoGo_Prefs.AspectPack)
-	elseif Class == "PALADIN" then
-		GoGo_Paladin_Panel_AutoStartCrusaderAura:SetChecked(GoGo_Prefs.PaladinUseCrusaderAura)
-	else
-		GoGo_Panel_AutoDismount:SetChecked(GoGo_Prefs.autodismount)
-		GoGo_Panel_DisableUpdateNotice:SetChecked(GoGo_Prefs.DisableUpdateNotice)
-		GoGo_Panel_DisableMountNotice:SetChecked(GoGo_Prefs.DisableMountNotice)
-		GoGo_Panel_GlobalPrefMount:SetChecked(GoGo_Prefs.GlobalPrefMount)
-		GoGo_Panel_DisableWaterFlight:SetChecked(GoGo_Prefs.DisableWaterFlight)
-		GoGo_Panel_RemoveBuffs:SetChecked(GoGo_Prefs.RemoveBuffs)
-	end --if
-	
-	if GoGo_Prefs.autodismount then
-		GoGoFrame:RegisterEvent("UI_ERROR_MESSAGE")
-	else
-		GoGoFrame:UnregisterEvent("UI_ERROR_MESSAGE")
-	end --if
-end -- function
-
----------
-function GoGo_Panel_Okay(Panel)
----------
-	if Panel == "MAIN" then
-		GoGo_Prefs.autodismount = GoGo_Panel_AutoDismount:GetChecked()
-		GoGo_Prefs.DisableUpdateNotice = GoGo_Panel_DisableUpdateNotice:GetChecked()
-		GoGo_Prefs.DisableMountNotice = GoGo_Panel_DisableMountNotice:GetChecked()
-		GoGo_Prefs.GlobalPrefMount = GoGo_Panel_GlobalPrefMount:GetChecked()
-		GoGo_Prefs.DisableWaterFlight = GoGo_Panel_DisableWaterFlight:GetChecked()
-		GoGo_Prefs.RemoveBuffs = GoGo_Panel_RemoveBuffs:GetChecked()
-	elseif Panel == "DRUID" then
-		GoGo_Prefs.DruidClickForm = GoGo_Druid_Panel_ClickForm:GetChecked()
-		GoGo_Prefs.DruidFlightForm = GoGo_Druid_Panel_FlightForm:GetChecked()
-		GoGo_Prefs.DruidFormNotRandomize = GoGo_Druid_Panel_NoShapeInRandom:GetChecked()
-		GoGo_Prefs.DruidDisableInCombat = GoGo_Druid_Panel_DisableInCombat:GetChecked()
-	end--if
-end --function
-
----------
 function GoGo_Settings_Default(Class)
 ---------
+	-- class should only be set if using the default button from the option gui
 	if Class == "DRUID" then
 		GoGo_Prefs.DruidClickForm = true
 		GoGo_Prefs.DruidFlightForm = false
 		GoGo_Prefs.DruidFormNotRandomize = false
 		GoGo_Prefs.DruidDisableInCombat = false
+		InterfaceOptionsFrame_OpenToCategory(GoGo_Druid_Panel)
 	elseif Class == "HUNTER" then
 		GoGo_Prefs.AspectPack = false
+		InterfaceOptionsFrame_OpenToCategory(GoGo_Hunter_Panel)
 	elseif Class == "PALADIN" then
 		GoGo_Prefs.PaladinUseCrusaderAura = false
-	elseif Class == "ALL" then
+		InterfaceOptionsFrame_OpenToCategory(GoGo_Paladin_Panel)
+	elseif Class == "MAIN" then
 		GoGo_Prefs.autodismount = true
 		GoGo_Prefs.DisableUpdateNotice = false
 		GoGo_Prefs.DisableMountNotice = false
 		GoGo_Prefs.GlobalPrefMount = false
 		GoGo_Prefs.DisableWaterFlight = true
 		GoGo_Prefs.RemoveBuffs = true
+		InterfaceOptionsFrame_OpenToCategory(GoGo_Panel)
 	else
 		GoGo_Prefs = {}
 		GoGo_Prefs.Zones = {}
