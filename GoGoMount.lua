@@ -3289,8 +3289,6 @@ function GoGo_Druid_Panel()
 			end --if
 		end --function
 	)
-			GoGo_Prefs.DruidDisableInCombat = GoGo_Druid_Panel_DisableInCombat:GetChecked()
-
 	GoGo_Druid_Panel_DisableInCombat = CreateFrame("CheckButton", "GoGo_Druid_Panel_DisableInCombat", GoGo_Druid_Panel, "OptionsCheckButtonTemplate")
 	GoGo_Druid_Panel_DisableInCombat:SetPoint("TOPLEFT", "GoGo_Druid_Panel_NoShapeInRandom", "BOTTOMLEFT", 0, -4)
 	GoGo_Druid_Panel_DisableInCombatText:SetText(GoGo_Variables.Localize.String.DisableInCombat)
