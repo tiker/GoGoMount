@@ -20,6 +20,7 @@ function GoGo_OnEvent(self, event, ...)
 ---------
 	local arg1, arg2, arg3, arg4 = ...
 	if event == "ADDON_LOADED" and arg1 == "GoGoMount" then
+		GoGoFrame:UnregisterEvent("ADDON_LOADED")
 		if not GoGo_Prefs then
 			GoGo_Settings_Default()
 		end --if
@@ -805,7 +806,7 @@ function GoGo_RemoveUnusableMounts(MountList)  -- Remove mounts Blizzard says we
 				end --if
 			end --if
 		else  -- it's a mount spell or class shape form
-			if IsUsableSpell(GoGo_SpellID) then
+			if IsUsableSpell(GoGo_SpellID) and IsSpellKnown(GoGo_SpellID) then
 				table.insert(GoGo_NewTable, GoGo_SpellID)
 			end --if
 		end --if
