@@ -26,3 +26,4 @@
 	GoGo_Variables.Localize.Skill.ExpertRiding = 225
 	GoGo_Variables.Localize.Skill.JourneymanRiding = 150
 	GoGo_Variables.Localize.Skill.ApprenticeRiding = 75
+	GoGo_Variables.Localize.WisdomOfTheFourWinds = 115913

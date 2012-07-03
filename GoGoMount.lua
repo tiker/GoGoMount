@@ -242,7 +242,7 @@ function GoGo_ChooseMount()
 	local mounts = {}
 	GoGo_Variables.FilteredMounts = {}
 	GoGo_GetMountDB()
-	
+
 	GoGo_Variables.Player.Zone = GetRealZoneText()
 	GoGo_Variables.Player.SubZone = GetSubZoneText()
 	GoGo_Variables.Player.MiniSubZone = GetMinimapZoneText()
@@ -269,6 +269,7 @@ function GoGo_ChooseMount()
 	if (table.getn(mounts) == 0) then
 		if table.getn(GoGo_Prefs.Zones[GoGo_Variables.Player.Zone]["Preferred"]) > 0 then
 			GoGo_Variables.FilteredMounts = GoGo_Prefs.Zones[GoGo_Variables.Player.Zone]["Preferred"] or {}
+			GoGo_CheckForUnknownMounts(GoGo_Variables.FilteredMounts)
 			GoGo_Variables.FilteredMounts = GoGo_RemoveUnusableMounts(GoGo_Variables.FilteredMounts)  -- remove mounts blizzard says we can't use
 --			GoGo_Variables.UnknownMountMsgShown = true
 		end --if
@@ -280,6 +281,7 @@ function GoGo_ChooseMount()
 	if (table.getn(mounts) == 0) and (table.getn(GoGo_Variables.FilteredMounts) == 0) then
 		if GoGo_Prefs.GlobalPrefMounts then
 			GoGo_Variables.FilteredMounts = GoGo_Prefs.GlobalPrefMounts or {}
+			GoGo_CheckForUnknownMounts(GoGo_Variables.FilteredMounts)
 			GoGo_Variables.FilteredMounts = GoGo_RemoveUnusableMounts(GoGo_Variables.FilteredMounts)  -- remove mounts blizzard says we can't use
 --			GoGo_Variables.UnknownMountMsgShown = true
 		end --if
@@ -782,32 +784,33 @@ function GoGo_RemoveUnusableMounts(MountList)  -- Remove mounts Blizzard says we
 	end --if
 	
 	local GoGo_NewTable = {}
-	
 	for a=1, table.getn(MountList) do
 		local GoGo_SpellID = MountList[a]
-		if GoGo_Variables.MountDB[GoGo_SpellID][50000] then
-			-- item mount, check item status
-			local GoGo_ItemID = GoGo_Variables.MountDB[GoGo_SpellID][50000]  -- get item id
-			if GoGo_Variables.MountItemIDs[GoGo_ItemID][51000] then  -- if item should be in bags
-				if GoGo_InBags(GoGo_ItemID) then  -- if item is in bag
-					if GetItemCooldown(GoGo_ItemID) == 0 then  -- if item doens't have a cooldown timer
-						if IsUsableItem(GoGo_ItemID) then  -- if item can be used
-							table.insert(GoGo_NewTable, GoGo_SpellID)
+		if not GoGo_SearchTable(GoGo_Prefs.UnknownMounts, GoGo_SpellID) then		-- if mount spell is unknown then don't search the database - it's not in it
+			if GoGo_Variables.MountDB[GoGo_SpellID][50000] then
+				-- item mount, check item status
+				local GoGo_ItemID = GoGo_Variables.MountDB[GoGo_SpellID][50000]  -- get item id
+				if GoGo_Variables.MountItemIDs[GoGo_ItemID][51000] then  -- if item should be in bags
+					if GoGo_InBags(GoGo_ItemID) then  -- if item is in bag
+						if GetItemCooldown(GoGo_ItemID) == 0 then  -- if item doens't have a cooldown timer
+							if IsUsableItem(GoGo_ItemID) then  -- if item can be used
+								table.insert(GoGo_NewTable, GoGo_SpellID)
+							end --if
+						end --if
+					end --if
+				elseif GoGo_Variables.MountItemIDs[GoGo_ItemID][51001] then  -- if item should be equiped
+					if IsEquippedItem(GoGo_ItemID) then  -- if item is equipped
+						if GetItemCooldown(GoGo_ItemID) == 0 then  -- if item doens't have a cooldown timer
+							if IsUsableItem(GoGo_ItemID) then  -- if item can be used
+								table.insert(GoGo_NewTable, GoGo_SpellID)
+							end --if
 						end --if
 					end --if
 				end --if
-			elseif GoGo_Variables.MountItemIDs[GoGo_ItemID][51001] then  -- if item should be equiped
-				if IsEquippedItem(GoGo_ItemID) then  -- if item is equipped
-					if GetItemCooldown(GoGo_ItemID) == 0 then  -- if item doens't have a cooldown timer
-						if IsUsableItem(GoGo_ItemID) then  -- if item can be used
-							table.insert(GoGo_NewTable, GoGo_SpellID)
-						end --if
-					end --if
+			else  -- it's a mount spell or class shape form
+				if IsUsableSpell(GoGo_SpellID) then
+					table.insert(GoGo_NewTable, GoGo_SpellID)
 				end --if
-			end --if
-		else  -- it's a mount spell or class shape form
-			if IsUsableSpell(GoGo_SpellID) and IsSpellKnown(GoGo_SpellID) then
-				table.insert(GoGo_NewTable, GoGo_SpellID)
 			end --if
 		end --if
 	end --for
@@ -899,6 +902,19 @@ function GoGo_IsShifted()
 end --function
 
 ---------
+function GoGo_SearchTable(GoGo_Table, GoGo_Value)
+---------
+	if type(GoGo_Table) == "table" and table.getn(GoGo_Table) > 0 then
+		for a=1, table.getn(GoGo_Table) do
+			if GoGo_Table[a] == GoGo_Value then
+				return true
+			end --if
+		end --for
+	end --if
+	return false
+end --function
+
+---------
 function GoGo_RemoveBuffs()  -- adds lines to button macro to remove removable buffs
 ---------
 	if not GoGo_Prefs.RemoveBuffs then
@@ -957,7 +973,9 @@ function GoGo_ZonePrefMount(SpellID)
 			return -- mount found, removed and now returning
 		end --if
 	end --for
-	table.insert(GoGo_Prefs.Zones[GoGo_Variables.Player.Zone]["Preferred"], SpellID)
+	if not GoGo_SearchTable(GoGo_Prefs.UnknownMounts, SpellID) then
+		table.insert(GoGo_Prefs.Zones[GoGo_Variables.Player.Zone]["Preferred"], SpellID)
+	end --if
 end --function
 
 ---------
@@ -995,7 +1013,6 @@ function GoGo_GlobalPrefMount(SpellID)
 
 	if not GoGo_Prefs.GlobalPrefMounts then
 		GoGo_Prefs.GlobalPrefMounts = {}
-		table.insert(GoGo_Prefs.GlobalPrefMounts, SpellID)
 	else
 		for GoGo_CounterA = 1, table.getn(GoGo_Prefs.GlobalPrefMounts) do
 			if GoGo_Prefs.GlobalPrefMounts[GoGo_CounterA] == SpellID then
@@ -1006,6 +1023,9 @@ function GoGo_GlobalPrefMount(SpellID)
 				return -- mount found, removed and now returning
 			end --if
 		end --for
+	end --if
+
+	if not GoGo_SearchTable(GoGo_Prefs.UnknownMounts, SpellID) then
 		table.insert(GoGo_Prefs.GlobalPrefMounts, SpellID)
 	end --if
 end --function
@@ -1132,7 +1152,11 @@ function GoGo_CheckForUnknownMounts(MountList)
 	for a = 1, table.getn(MountList) do
 		local MountID = MountList[a]
 		if not GoGo_Variables.MountDB[MountID] then
-			GoGo_Prefs.UnknownMounts[MountID] = true
+			if not GoGo_SearchTable(GoGo_Prefs.UnknownMounts, MountID) then
+				table.insert(GoGo_Prefs.UnknownMounts, MountID)
+			end --if
+			GoGo_ZonePrefMount(MountID)		-- to remove zone favorite flag if mount unknown
+			GoGo_GlobalPrefMount(MountID)		-- to remove global favorite flag if mount unknown
 			if GoGo_Variables.Debug >= 10 then
 				GoGo_DebugAddLine("GoGo_CheckForUnknownMounts: Unknown mount found:  " .. MountID)
 			end --if
@@ -2350,6 +2374,21 @@ function GoGo_ZoneCheck()
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Firelands (10 / 25 player instance")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.ZoneID == 807 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Valley of the Four Winds")
+			-- Stormstout Brewery using the same zone id?  (instanced scene)
+		end --if
+		if GoGo_InBook(GoGo_Variables.Localize.WisdomOfTheFourWinds) then
+			GoGo_Variables.ZoneExclude.CanFly = true
+		end --if
+	elseif GoGo_Variables.Player.ZoneID == 809 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for ...")
+		end --if
+		if GoGo_InBook(GoGo_Variables.Localize.WisdomOfTheFourWinds) then
+			GoGo_Variables.ZoneExclude.CanFly = true
+		end --if
 	elseif GoGo_Variables.Player.ZoneID == 816 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Well of Eternity (5 player instance")
@@ -2380,6 +2419,28 @@ function GoGo_ZoneCheck()
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 		-- can ride = true
+	elseif GoGo_Variables.Player.ZoneID == 857 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Krasarang Wilds")
+		end --if
+		if GoGo_InBook(GoGo_Variables.Localize.WisdomOfTheFourWinds) then
+			GoGo_Variables.ZoneExclude.CanFly = true
+		end --if
+	elseif GoGo_Variables.Player.ZoneID == 858 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Dread Wastes")
+		end --if
+		if GoGo_InBook(GoGo_Variables.Localize.WisdomOfTheFourWinds) then
+			GoGo_Variables.ZoneExclude.CanFly = true
+		end --if
+	elseif GoGo_Variables.Player.ZoneID == -1 then
+		-- Arenas:
+		-- -- Nagrand Arena
+		-- -- Ruins of Lordaeron
+		
+		if GoGo_Variables.Debug >= 4 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Arena??? - " .. GoGo_Variables.Player.ZoneID)
+		end --if
 	else
 		if GoGo_Variables.Debug >= 4 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Unconfigured ZoneID - " .. GoGo_Variables.Player.ZoneID)
