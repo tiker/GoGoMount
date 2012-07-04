@@ -165,6 +165,7 @@ function GoGo_GetMountDB()
 		[32345] = {[9] = true, [11] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Peep the Phoenix Mount
 		[40192] = {[9] = true, [11] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Ashes of Al'ar
 		[88990] = {[9] = true, [11] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Dark Phoenix
+		[129552] = {[9] = true, [21] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Crimson Pandaren Phoenix
 
 		[97493] = {[9] = true, [11] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Pureblood Fire Hawk / Crimson Fire Hawk
 		[97501] = {[9] = true, [11] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Green Fire Hawk / Beryl Fire Hawk
@@ -355,7 +356,11 @@ function GoGo_GetMountDB()
 		[65638] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Moonsaber
 		[66847] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Striped Dawnsaber
 		[96499] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Swift Zulian Panther
-		
+
+		[129932] = {[21] = true, [35] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Green Shado-Pan Riding Tiger
+		[129934] = {[21] = true, [35] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Blue Shado-Pan Riding Tiger
+		[129935] = {[21] = true, [35] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Red Shado-Pan Riding Tiger
+
 		[458] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Brown Horse
 		[468] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- White Stallion
 		[470] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Black Stallion
@@ -422,12 +427,12 @@ function GoGo_GetMountDB()
 		[73629] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Exarch's Elekk
 		[73630] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Great Exarch's Elekk
 
+		[122708] = {[2]=true, [19] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Grand Expedition Yak
 		[123182] = {[21] = true, [35] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- White Riding Yak
 		[127209] = {[21] = true, [35] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Black Riding Yak
 		[127213] = {[21] = true, [35] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Brown Riding Yak
 		[127216] = {[19] = true, [35] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Grey Riding Yak
 		[127220] = {[19] = true, [35] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Blonde Riding Yak
-
 		
 		[88748] = {[16] = true, [37] = true, [72] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Brown Riding Camel
 		[88749] = {[16] = true, [37] = true, [72] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Tan Riding Camel
@@ -436,6 +441,12 @@ function GoGo_GetMountDB()
 
 		[50281] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Black Warp Stalker
 
+		[118089] = {[21] = true, [35] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Azure Water Strider  (walks on water)
+		[127271] = {[21] = true, [35] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Crimson Water Strider  (walks on water)
+		[127272] = {[21] = true, [35] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Orange Water Strider  (walks on water)
+		[127274] = {[21] = true, [35] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Jade Water Strider  (walks on water)
+		[127278] = {[21] = true, [35] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Golden Water Strider  (walks on water)
+	
 		[59785] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Black War Mammoth
 		[59788] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Black War Mammoth
 		[59791] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Wooly Mammoth
@@ -494,21 +505,29 @@ function GoGo_GetMountDB()
 		[127165] = {[21] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Heavenly Jade Cloud Serpent
 		[127169] = {[21] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Heavenly Azure Cloud Serpent
 		[127170] = {[21] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Astral Cloud Serpent
+		[129918] = {[9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Thundering August Cloud Serpent
 
 		[75207] = {[17] = true, [36] = true, [53] = true, [401] = true, [10001]=371, [10004]=371},  -- Abyssal Seahorse (was Abyssal Manta)
 		[98718] = {[20] = true, [36] = true, [53] = true, [404] = true, [10001]=108, [10004]=108},  -- Subdued Seahorse
 
+		[121820] = {[2] = true, [9] = true, [14] = true, [38] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Obsidian Nightwing
+
+		[118737] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Pandaren Kite
+
+		[93644] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Kor'kron Annihilator
+		[123886] = {[11] = true, [35] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Amber Scorpion
+
 		[24347] = {[7]=true, [8]=true, [10001]=91, [10004]=91, [50000]=19979},  -- Master Angler
 		[74918] = {[16] = true, [37] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Wooly White Rhino
 		[90621] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Golden King
-		[93644] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Kor'kron Annihilator
+		
 		[87840] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Running Wild (Worgen Racial)
 		[98727] = {[9] = true, [14] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Winged Guardian
 		[101641] = {[9] = true, [19] = true, [39] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67, [50000]=71086},  -- Tarecgosa's Visage
 	--	[62087] = {[5] = true, [15] = true, [39] = true, [53] = true, [999] = true},  -- Aquatic Riding Ray   -- removed from the 3.1 PTR datafiles
 		[110039] = {[9] = true, [11] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Experiment 12-B
 		[110051] = {[9] = true, [14] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Heart of the Aspects
-		
+
 	-- Spells, shape forms, etc
 		[40120] = {[7] = true, [9] = true, [11] = true, [300] = true, [403] = true, [9998] = true, ["FlightOnly"] = true, [10003]=380},  -- Druid Fast Flight Form
 		[33943] = {[7] = true, [9] = true, [12] = true, [300] = true, [301] = true, [403] = true, [9998] = true, ["FlightOnly"] = true, [10003]=250},  -- Druid Flight Form
