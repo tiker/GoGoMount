@@ -1,9 +1,9 @@
 ## Interface: 40300
 ## Title: GoGoMount
-## Version: 4.3.14
+## Version: 4.3.15
 ## Notes: One-key solution for mounting/dismounting, supports spells, shapeshifting
 ## Notes-enGB: One-key solution for mounting/dismounting, supports spells, shapeshifting
-## Notes-deDE: Notes-deDE: Ein-Tasten-Lösung für das Auf- und Absitzen von Reittieren, unterstützt auch Zaubersprüche und Gestaltwandlung
+## Notes-deDE: Ein-Tasten-Lösung für das Auf- und Absitzen von Reittieren, unterstützt auch Zaubersprüche und Gestaltwandlung
 ## Notes-esES: Una clave para la solución de montaje / desmontaje, apoya hechizos, shapeshifting
 ## Notes-esMX: Una clave para la solución de montaje / desmontaje, apoya hechizos, shapeshifting
 ## Notes-frFR: Une solution clé pour le montage / démontage, soutient sorts, shapeshifting
