@@ -1333,6 +1333,7 @@ function GoGo_ZoneCheck()
 			-- The Forbidden Sea (east of Loch Modan)
 			-- Blackrock Mountains
 			-- Karazhan
+			-- Dread Wastes
 		end --if
 		if not IsInInstance() then
 			if GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense) then
@@ -2374,6 +2375,14 @@ function GoGo_ZoneCheck()
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Firelands (10 / 25 player instance")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.ZoneID == 806 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Jade Forest")
+			-- Stormstout Brewery using the same zone id?  (instanced scene)
+		end --if
+		if GoGo_InBook(GoGo_Variables.Localize.WisdomOfTheFourWinds) then
+			GoGo_Variables.ZoneExclude.CanFly = true
+		end --if
 	elseif GoGo_Variables.Player.ZoneID == 807 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Valley of the Four Winds")
@@ -2384,7 +2393,25 @@ function GoGo_ZoneCheck()
 		end --if
 	elseif GoGo_Variables.Player.ZoneID == 809 then
 		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for ...")
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Kun-Lai Summit")
+			-- Serpent's Spine
+		end --if
+		if GoGo_InBook(GoGo_Variables.Localize.WisdomOfTheFourWinds) then
+			GoGo_Variables.ZoneExclude.CanFly = true
+		end --if
+	elseif GoGo_Variables.Player.ZoneID == 810 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Townlong Steppes")
+		end --if
+		if GoGo_InBook(GoGo_Variables.Localize.WisdomOfTheFourWinds) then
+			GoGo_Variables.ZoneExclude.CanFly = true
+		end --if
+	elseif GoGo_Variables.Player.ZoneID == 811 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Vale of Eternal Blossoms")
+			-- Mogu'shan Palace
+			-- Shrine of Seven Stars?
+			-- Shrine of Two Moons
 		end --if
 		if GoGo_InBook(GoGo_Variables.Localize.WisdomOfTheFourWinds) then
 			GoGo_Variables.ZoneExclude.CanFly = true
@@ -2433,6 +2460,14 @@ function GoGo_ZoneCheck()
 		if GoGo_InBook(GoGo_Variables.Localize.WisdomOfTheFourWinds) then
 			GoGo_Variables.ZoneExclude.CanFly = true
 		end --if
+	elseif GoGo_Variables.Player.ZoneID == 862 then
+		-- New zone for Stormwind City??
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Stormwind City?????")
+		end --if
+--		if GoGo_InBook(GoGo_Variables.Localize.WisdomOfTheFourWinds) then
+--			GoGo_Variables.ZoneExclude.CanFly = true
+--		end --if
 	elseif GoGo_Variables.Player.ZoneID == 873 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Veiled Stair")
@@ -2440,6 +2475,16 @@ function GoGo_ZoneCheck()
 		if GoGo_InBook(GoGo_Variables.Localize.WisdomOfTheFourWinds) then
 			GoGo_Variables.ZoneExclude.CanFly = true
 		end --if
+	elseif GoGo_Variables.Player.ZoneID == 903 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Shrine of Two Moons")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.ZoneID == 905 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Shrine of Seven Stars")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
 	elseif GoGo_Variables.Player.ZoneID == -1 then
 		-- Arenas:
 		-- -- Nagrand Arena
