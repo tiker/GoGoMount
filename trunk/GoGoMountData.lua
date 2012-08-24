@@ -13,7 +13,10 @@ GoGo_Variables.Localize.Zone = {}
 GoGo_Variables.Localize.String = {}
 GoGo_Variables.Localize.Skill = {}
 GoGo_Variables.Localize.Talent = {}
-
+GoGo_Variables.GroundSpeed = {}
+GoGo_Variables.AirSpeed = {}
+GoGo_Variables.WaterSpeed = {}
+GoGo_Variables.WaterSurfaceSpeed = {}
 GoGo_Variables.Debug = 0
 GoGo_Variables.TestVersion = false
 
@@ -519,6 +522,7 @@ function GoGo_GetMountDB()
 		[121820] = {[2] = true, [9] = true, [14] = true, [38] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Obsidian Nightwing
 
 		[118737] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Pandaren Kite
+		[130985] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Pandaren Kite
 
 		[93644] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Kor'kron Annihilator
 		[123886] = {[11] = true, [35] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Amber Scorpion
@@ -538,8 +542,8 @@ function GoGo_GetMountDB()
 		[40120] = {[7] = true, [9] = true, [11] = true, [300] = true, [403] = true, [9998] = true, ["FlightOnly"] = true, [10003]=380},  -- Druid Fast Flight Form
 		[33943] = {[7] = true, [9] = true, [12] = true, [300] = true, [301] = true, [403] = true, [9998] = true, ["FlightOnly"] = true, [10003]=250},  -- Druid Flight Form
 		[783] = {[7] = true, [500] = true, [10002]=140}, -- Druid Travel Form
-		[2645] = {[8] = true, [500] = true, [1000] = true, ["DefaultInstance"] = true, [10002]=130}, -- Shaman Ghost Wolf Form
-		[768] = {[7] = true, [8] = true, [1000] = true, [500] = true, ["DefaultInstance"] = true, [10002]=100},  -- Druid Cat Form
+		[2645] = {[7] = true, [8] = true, [500] = true, [1000] = true, ["DefaultInstance"] = true, [10002]=130}, -- Shaman Ghost Wolf Form
+		[768] = {[7] = true, [8] = true, [1000] = true, [500] = true, ["DefaultInstance"] = true, [10002]=125},  -- Druid Cat Form
 		[1066] = {[7] = true, [53] = true, [500]=true, [1000]=true, [10001]=101, [10004]=101, ["DefaultInstance"] = true},  -- Druid Aqua form
 		[5118] = {[7] = true, [8] = true, [500] = true, ["DefaultInstance"] = true, [10002]=130},  -- Aspect of the Cheeta
 		[13159] = {[7] = true, [8] = true, [500] = true, ["DefaultInstance"] = true, [10002]=130},  -- Aspect of the Pack
