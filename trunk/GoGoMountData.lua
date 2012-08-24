@@ -176,9 +176,9 @@ function GoGo_GetMountDB()
 		[97501] = {[9] = true, [11] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Green Fire Hawk / Beryl Fire Hawk
 		[97560] = {[9] = true, [11] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Corrupted Fire Hawk
 
-		[54726] = {[9] = true, [12] = true, [36] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Winged Steed of the Ebon Blade
-		[54727] = {[9] = true, [12] = true, [36] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Winged Steed of the Ebon Blade
-		[54729] = {[9] = true, [12] = true, [36] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Winged Steed of the Ebon Blade
+		[54726] = {[9] = true, [12] = true, [36] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=250},  -- Winged Steed of the Ebon Blade
+		[54727] = {[9] = true, [12] = true, [36] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=250},  -- Winged Steed of the Ebon Blade
+		[54729] = {[9] = true, [12] = true, [36] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=250},  -- Winged Steed of the Ebon Blade
 
 		[32235] = {[9] = true, [12] = true, [36] = true, [300]=true, [301]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=250, [10004]=67},  -- Golden Gryphon
 		[32239] = {[9] = true, [12] = true, [36] = true, [300]=true, [301]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=200, [10003]=250, [10004]=67},  -- Ebon Gryphon
@@ -519,7 +519,7 @@ function GoGo_GetMountDB()
 		[75207] = {[17] = true, [36] = true, [53] = true, [401] = true, [10001]=371, [10004]=371},  -- Abyssal Seahorse (was Abyssal Manta)
 		[98718] = {[20] = true, [36] = true, [53] = true, [404] = true, [10001]=108, [10004]=108},  -- Subdued Seahorse
 
-		[121820] = {[2] = true, [9] = true, [14] = true, [38] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Obsidian Nightwing
+		[121820] = {[2] = true, [9] = true, [14] = true, [38] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=250},  -- Obsidian Nightwing
 
 		[118737] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Pandaren Kite
 		[130985] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Pandaren Kite
