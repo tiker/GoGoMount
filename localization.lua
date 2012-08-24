@@ -11,6 +11,7 @@
 	GoGo_Variables.Localize.CrusaderAura = 32223
 	GoGo_Variables.Localize.ExpertRiding = 34090  -- 225 Riding skill
 	GoGo_Variables.Localize.FastFlightForm = 40120
+	GoGo_Variables.Localize.FelineSwiftness = 131768  -- Druid talent
 	GoGo_Variables.Localize.FlightMastersLicense = 90267
 	GoGo_Variables.Localize.FlightForm = 33943
 	GoGo_Variables.Localize.GhostWolf = 2645
