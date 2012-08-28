@@ -171,6 +171,9 @@ function GoGo_GetMountDB()
 		[40192] = {[9] = true, [11] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Ashes of Al'ar
 		[88990] = {[9] = true, [11] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Dark Phoenix
 		[129552] = {[9] = true, [21] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Crimson Pandaren Phoenix
+		[132117] = {[9] = true, [21] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Ashen Pandaren Phoenix
+		[132118] = {[9] = true, [21] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Emerald Pandaren Phoenix
+		[132119] = {[9] = true, [21] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Violet Pandaren Phoenix
 
 		[97493] = {[9] = true, [11] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Pureblood Fire Hawk / Crimson Fire Hawk
 		[97501] = {[9] = true, [11] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Green Fire Hawk / Beryl Fire Hawk
@@ -502,19 +505,20 @@ function GoGo_GetMountDB()
 		[66088] = {[11] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Sunreaver Dragonhawk
 		[96503] = {[9] = true, [12] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Amani Dragonhawk
 
-		[113199] = {[21] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Jade Cloud Serpent
-		[123992] = {[21] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Azure Cloud Serpent
-		[123993] = {[21] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Golden Cloud Serpent
-		[124408] = {[19] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Thundering Jade Cloud Serpent
-		[127154] = {[21] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Onyx Cloud Serpent
-		[127156] = {[21] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Crimson Cloud Serpent
-		[127158] = {[21] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Heavenly Onyx Cloud Serpent
-		[127161] = {[21] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Heavenly Crimson Cloud Serpent
-		[127164] = {[21] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Heavenly Golden Cloud Serpent
-		[127165] = {[21] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Heavenly Jade Cloud Serpent
-		[127169] = {[21] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Heavenly Azure Cloud Serpent
-		[127170] = {[21] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Astral Cloud Serpent
-		[129918] = {[9] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Thundering August Cloud Serpent
+		[113199] = {[21] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [100]=true, [300]=true, [403]=true, [10003]=380},  -- Jade Cloud Serpent
+		[123992] = {[21] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [100]=true, [300]=true, [403]=true, [10003]=380},  -- Azure Cloud Serpent
+		[123993] = {[21] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [100]=true, [300]=true, [403]=true, [10003]=380},  -- Golden Cloud Serpent
+		[124408] = {[19] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [100]=true, [300]=true, [403]=true, [10003]=380},  -- Thundering Jade Cloud Serpent
+		[127154] = {[21] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [100]=true, [300]=true, [403]=true, [10003]=380},  -- Onyx Cloud Serpent
+		[127156] = {[21] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [100]=true, [300]=true, [403]=true, [10003]=380},  -- Crimson Cloud Serpent
+		[127158] = {[21] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [100]=true, [300]=true, [403]=true, [10003]=380},  -- Heavenly Onyx Cloud Serpent
+		[127161] = {[21] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [100]=true, [300]=true, [403]=true, [10003]=380},  -- Heavenly Crimson Cloud Serpent
+		[127164] = {[21] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [100]=true, [300]=true, [403]=true, [10003]=380},  -- Heavenly Golden Cloud Serpent
+		[127165] = {[21] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [100]=true, [300]=true, [403]=true, [10003]=380},  -- Heavenly Jade Cloud Serpent
+		[127169] = {[21] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [100]=true, [300]=true, [403]=true, [10003]=380},  -- Heavenly Azure Cloud Serpent
+		[127170] = {[21] = true, [35] = true, [9] = true, ["FlightOnly"] = true, [100]=true, [300]=true, [403]=true, [10003]=380},  -- Astral Cloud Serpent
+		[129918] = {[9] = true, [21]=true, [35]=true, ["FlightOnly"] = true, [100]=true, [300]=true, [403]=true, [10003]=380},  -- Thundering August Cloud Serpent
+		[132036] = {[9] = true, [21]=true, [35]=true, ["FlightOnly"] = true, [100]=true, [300]=true, [403]=true, [10003]=380},  -- Thundering Ruby Cloud Serpent
 
 		[75207] = {[17] = true, [36] = true, [53] = true, [401] = true, [10001]=371, [10004]=371},  -- Abyssal Seahorse (was Abyssal Manta)
 		[98718] = {[20] = true, [36] = true, [53] = true, [404] = true, [10001]=108, [10004]=108},  -- Subdued Seahorse
@@ -537,6 +541,9 @@ function GoGo_GetMountDB()
 	--	[62087] = {[5] = true, [15] = true, [39] = true, [53] = true, [999] = true},  -- Aquatic Riding Ray   -- removed from the 3.1 PTR datafiles
 		[110039] = {[9] = true, [11] = true, [35] = true, ["FlightOnly"] = true, [300]=true, [403]=true, [10003]=380},  -- Experiment 12-B
 		[110051] = {[9] = true, [14] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Heart of the Aspects
+		[124659] = {[9] = true, [14] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Imperial Quilen
+		[130092] = {[9] = true, [14] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Red Flying Cloud
+		[130965] = {[19] = true, [35] = true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=200, [10004]=67},  -- Son of Galleon
 
 	-- Spells, shape forms, etc
 		[40120] = {[7] = true, [9] = true, [11] = true, [300] = true, [403] = true, [9998] = true, ["FlightOnly"] = true, [10003]=380},  -- Druid Fast Flight Form
