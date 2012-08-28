@@ -439,6 +439,13 @@ function GoGo_ChooseMount()
 		end --if
 	end --if
 
+	if not GoGo_InBook(GoGo_Variables.Localize.CloudSerpentRiding) then
+		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 100) or {}
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated mounts requiring Cloud Serpent Riding - " .. (table.getn(GoGo_Variables.FilteredMounts) or 0) .. " mounts left.")
+		end --if
+	end --if
+	
 	if IsFalling() then  -- we're falling.. save us  (only grab instant cast spells)
 		GoGo_Variables.FilteredMounts = GoGo_GetInstantMounts(GoGo_Variables.FilteredMounts) or {}
 		if GoGo_Variables.Debug >= 10 then
@@ -2729,6 +2736,10 @@ function GoGo_Id(itemstring)
 	if spellid then
 		return spellid.." - "..itemstring
 	end --if
+	local _, _, glyphid = string.find(itemstring,"(glyph:%d+)")
+	if glyphid then
+		return glyphid.." - "..itemstring
+	end --if
 
 end --function
 
@@ -2864,6 +2875,11 @@ function GoGo_UpdateMountData()
 		end --if
 	end --if
 
+	if (GoGo_Variables.Player.Class == "DRUID") and (GoGo_GlyphActive(GoGo_Variables.Localize.Glyph_Stag) and not GoGo_GlyphActive(GoGo_Variables.Localize.Glyph_Cheetah)) then
+		-- Druid's travel form can carry a passenger
+		GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][2] = true
+	end --if
+	
 	if not GoGo_Variables.ZoneExclude.ThousandNeedles then  -- we are in thousand needles - ground mounts swim faster with buff
 		local GoGo_TempMountDB = {}
 		local GoGo_TempLoopCounter
