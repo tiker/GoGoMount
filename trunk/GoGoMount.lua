@@ -1,3 +1,4 @@
+local _
 ---------
 function GoGo_OnLoad()
 ---------
