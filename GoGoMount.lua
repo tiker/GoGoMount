@@ -2855,17 +2855,6 @@ function GoGo_UpdateMountData()
 		end --if
 	end --if
 
-	if (GoGo_Variables.Player.Class == "SHAMAN") and (GoGo_GlyphActive(GoGo_Variables.Localize.Glyph_GhostWolf)) then
-		GoGo_Variables.MountDB[GoGo_Variables.Localize.GhostWolf][10002] = 135
-		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_UpdateMountData: We're a shaman with Glyph of Ghost Wolf.  Modifying Ghost Wolf speed data.")
-		end --if
-	elseif (GoGo_Variables.Player.Class == "SHAMAN") then
-		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_UpdateMountData: We're a shaman without Glyph of Ghost Wolf.  Not doing anything.")
-		end --if
-	end --if
-
 	if (GoGo_Variables.Player.Class == "DRUID") and (GoGo_GlyphActive(GoGo_Variables.Localize.Glyph_AquaticForm)) then
 		GoGo_Variables.MountDB[GoGo_Variables.Localize.AquaForm][10001] = 135
 		GoGo_TableAddUnique(GoGo_Variables.WaterSpeed, 135)
