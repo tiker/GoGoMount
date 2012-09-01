@@ -222,6 +222,10 @@ function GoGo_GetMount()
 ---------
 	local GoGo_Mount = GoGo_ChooseMount()	-- find a mount to use
 	local GoGo_Macro = ""
+	if GoGo_Variables.Player.Class == "DRUID" and GoGo_Mount == GoGo_GetIDName(GoGo_Variables.Localize.RunningWild) .. "()" then
+		GoGo_Macro = GoGo_Macro .. GoGo_RemoveBuffs(24858)	-- remove moonkin form - can't use running wild in moonkin form
+	end --if
+	
 	if GoGo_Mount then	-- we have a mount to use so we are mounting
 		GoGo_Macro = GoGo_Macro .. GoGo_RemoveBuffs()	-- remove buffs that could prevent us from mounting
 		GoGo_Macro = GoGo_Macro .. GoGo_CrusaderAura()	-- start Crusader Aura if needed
@@ -937,7 +941,7 @@ function GoGo_SearchTable(GoGo_Table, GoGo_Value)
 end --function
 
 ---------
-function GoGo_RemoveBuffs()  -- adds lines to button macro to remove removable buffs
+function GoGo_RemoveBuffs(GoGo_Buff)  -- adds lines to button macro to remove removable buffs
 ---------
 	if not GoGo_Prefs.RemoveBuffs then
 		return ""
@@ -947,6 +951,19 @@ function GoGo_RemoveBuffs()  -- adds lines to button macro to remove removable b
 	end --if
 	local GoGo_Macro = ""
 	local spellid = 0
+	if GoGo_Buff then  -- specifying buff to remove
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_RemoveBuffs: Checking for " .. GoGo_Buff .. " (" .. GetSpellInfo(GoGo_Buff) .. ")")
+		end --if
+		if UnitBuff("player", GetSpellInfo(GoGo_Buff)) then
+			if GoGo_Variables.Debug >= 10 then
+				GoGo_DebugAddLine("GoGo_RemoveBuffs: Found and removing buff " .. GoGo_Buff .. " (" .. GetSpellInfo(GoGo_Buff) .. ")")
+			end --if
+			GoGo_Macro = GoGo_Macro .. "/cancelaura " .. GetSpellInfo(GoGo_Buff) .. " \n"
+		end --if
+		return GoGo_Macro
+	end --if
+	
 	for spellid = 1, table.getn(GoGo_Variables.DebuffDB) do
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_RemoveBuffs: Checking for " .. GoGo_Variables.DebuffDB[spellid] .. " (" .. GetSpellInfo(GoGo_Variables.DebuffDB[spellid]) .. ")")
