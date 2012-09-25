@@ -368,7 +368,7 @@ function GoGo_ChooseMount()
 		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 37)
 	end --if
 
-	if IsSwimming() then
+	if IsSubmerged() then
 		GoGo_CheckSwimSurface()
 	else
 		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 53)
@@ -387,7 +387,7 @@ function GoGo_ChooseMount()
 				GoGo_DebugAddLine("GoGo_ChooseMount: Sea Legs buff found - not removing Vashj'ir mount.")
 			end --if
 			-- do nothing, we can use the abyssal seahorse
-			if IsSwimming() then
+			if IsSubmerged() then
 				GoGo_Variables.NoFlying = true  -- block flying since we're swimming in vashir and most likely have water breathing buff
 			end --if
 		else
@@ -494,7 +494,7 @@ function GoGo_ChooseMount()
 		GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated mounts we can't use; " .. (table.getn(GoGo_Variables.FilteredMounts) or 0) .. " mounts left.")
 	end --if
 
-	if IsSwimming() and not GoGo_Variables.CanFly then  -- find a mount to use in water
+	if IsSubmerged() and not GoGo_Variables.CanFly then  -- find a mount to use in water
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ChooseMount: Swimming and can't fly.")
 		end --if
@@ -505,7 +505,7 @@ function GoGo_ChooseMount()
 				return GoGo_InBook(GoGo_Variables.Localize.AquaForm)
 			end --if
 		end --if
-	elseif IsSwimming() and GoGo_Variables.CanFly then
+	elseif IsSubmerged() and GoGo_Variables.CanFly then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ChooseMount: Swimming but can fly.")
 		end --if
@@ -2553,6 +2553,11 @@ function GoGo_ZoneCheck()
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Shrine of Seven Stars")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.ZoneID == 906 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Dustwallow Marsh (scenario - 85)")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
 	elseif GoGo_Variables.Player.ZoneID == -1 then
 		-- Arenas:
 		-- -- Nagrand Arena
@@ -2757,6 +2762,18 @@ function GoGo_Id(itemstring)
 	local _, _, glyphid = string.find(itemstring,"(glyph:%d+)")
 	if glyphid then
 		return glyphid.." - "..itemstring
+	end --if
+	local _, _, achievementid = string.find(itemstring,"(achievement:%d+)")
+	if achievementid then
+		return achievementid.." - "..itemstring
+	end --if
+	local _, _, battlepetid = string.find(itemstring,"(battlepet:%d+)")
+	if battlepetid then
+		return battlepetid.." - "..itemstring
+	end --if
+	local _, _, battlepetabilid = string.find(itemstring,"(battlePetAbil:%d+)")
+	if battlepetabilid then
+		return battlepetabilid.." - "..itemstring
 	end --if
 
 end --function
