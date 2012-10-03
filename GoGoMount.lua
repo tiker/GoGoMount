@@ -774,6 +774,11 @@ function GoGo_BuildMountList()
 			table.insert(GoGo_MountList, GoGo_Variables.Localize.AspectCheetah)
 			GoGo_TableAddUnique(GoGo_Variables.GroundSpeed, 130)
 		end --if
+	elseif GoGo_Variables.Player.Class == "MONK" then
+		if GoGo_InBook(GoGo_Variables.Localize.ZenFlight) then
+			table.insert(GoGo_MountList, GoGo_Variables.Localize.ZenFlight)
+			GoGo_TableAddUnique(GoGo_Variables.AirSpeed, 160)
+		end --if
 	end --if
 
 	if GoGo_Variables.Player.Race == "Worgen" then
@@ -2536,6 +2541,11 @@ function GoGo_ZoneCheck()
 --		if GoGo_InBook(GoGo_Variables.Localize.WisdomOfTheFourWinds) then
 --			GoGo_Variables.ZoneExclude.CanFly = true
 --		end --if
+	elseif GoGo_Variables.Player.ZoneID == 867 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Temple of the Jade Serpent (5 man instance)")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
 	elseif GoGo_Variables.Player.ZoneID == 873 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Veiled Stair")
@@ -2751,29 +2761,45 @@ end --function
 ---------
 function GoGo_Id(itemstring)
 ---------
-	local _, _, itemid = string.find(itemstring,"(item:%d+)")
-	if itemid then
-		return itemid.." - "..itemstring
+	local _, _, strType = string.find(itemstring,"(item:%d+)")
+	if strType then
+		return strType.." - "..itemstring
 	end --if
-	local _, _, spellid = string.find(itemstring,"(spell:%d+)")
-	if spellid then
-		return spellid.." - "..itemstring
+	local _, _, strType = string.find(itemstring,"(spell:%d+)")
+	if strType then
+		return strType.." - "..itemstring
 	end --if
-	local _, _, glyphid = string.find(itemstring,"(glyph:%d+)")
-	if glyphid then
-		return glyphid.." - "..itemstring
+	local _, _, strType = string.find(itemstring,"(glyph:%d+)")
+	if strType then
+		return strType.." - "..itemstring
 	end --if
-	local _, _, achievementid = string.find(itemstring,"(achievement:%d+)")
-	if achievementid then
-		return achievementid.." - "..itemstring
+	local _, _, strType = string.find(itemstring,"(achievement:%d+)")
+	if strType then
+		return strType.." - "..itemstring
 	end --if
-	local _, _, battlepetid = string.find(itemstring,"(battlepet:%d+)")
-	if battlepetid then
-		return battlepetid.." - "..itemstring
+	local _, _, strType = string.find(itemstring,"(battlepet:%d+)")
+	if strType then
+		return strType.." - "..itemstring
 	end --if
-	local _, _, battlepetabilid = string.find(itemstring,"(battlePetAbil:%d+)")
-	if battlepetabilid then
-		return battlepetabilid.." - "..itemstring
+	local _, _, strType = string.find(itemstring,"(battlePetAbil:%d+)")
+	if strType then
+		return strType.." - "..itemstring
+	end --if
+	local _, _, strType = string.find(itemstring,"(talent:%d+)")
+	if strType then
+		return strType.." - "..itemstring
+	end --if
+	local _, _, strType = string.find(itemstring,"(quest:%d+)")
+	if strType then
+		return strType.." - "..itemstring
+	end --if
+	local _, _, strType = string.find(itemstring,"(enchant:%d+)")
+	if strType then
+		return strType.." - "..itemstring
+	end --if
+	local _, _, strType = string.find(itemstring,"(currency:%d+)")
+	if strType then
+		return strType.." - "..itemstring
 	end --if
 
 end --function
@@ -2998,6 +3024,9 @@ function GoGo_UpdateMountData()
 				elseif GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempCounter]][10003] == 410 then
 					GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempCounter]][10003] = 451
 					GoGo_TableAddUnique(GoGo_Variables.AirSpeed, 451)
+				elseif GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempCounter]][10003] == 160 then  -- Monk's Zen Flight
+					GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempCounter]][10003] = 176
+					GoGo_TableAddUnique(GoGo_Variables.AirSpeed, 176)
 				end --if
 			end --for
 		else
