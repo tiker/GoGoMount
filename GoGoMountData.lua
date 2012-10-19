@@ -52,7 +52,6 @@ function GoGo_GetMountDB()
 
 	--	[42680] = {[38] = true, [999] = true},  -- Magic Broom
 
-	---	[47977] = {[38] = true, [999] = true},  -- Magic Broom
 	---	[42681] = {[38] = true, [999] = true},  -- Magic Broom
 
 	--	[42683] = {[38] = true, [999] = true},  -- Swift Magic Broom
@@ -71,7 +70,7 @@ function GoGo_GetMountDB()
 	--	[33189] = {[4] = true, [15] = true, [39] = true, [10002]=100},  -- Rickety Magic Broom  --  See item dable below
 		[42667] = {[7] = true, [9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [402]=true, [403]=true, [600]=true, [601]=true, [10002]=160, [10003]=250, [50000]=33176},  -- Flying Broom  --  itemid
 		[42668] = {[9] = true, [11] = true, [36] = true, [50000]=33182},  -- Swift Flying Broom  --  [50000]=33184
-		[47977] = {[6]=true, [9] = true, [10]=true, [38] = true, [300]=true, [301]=true, [330]=true, [402]=true, [403]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67, [50000]=37011},  -- Magic Broom -- itemid
+		[47977] = {[7]=true, [9] = true, [10]=true, [38] = true, [300]=true, [301]=true, [330]=true, [402]=true, [403]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67, [50000]=37011},  -- Magic Broom -- itemid
 
 	
 		[32243] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Tawny Wind Rider
@@ -573,7 +572,7 @@ GoGo_Variables.MountItemIDs = {
 	-- [33183] = {[51000] = true},  -- Old Magic Broom  -- no longer in game
 	[33184] = {[50000]=42668, [51000] = true},  -- Swift Flying Broom
 --	[33189] = {[51000] = true},  -- Rickety Magic Broom  -- no speed increase but doesn't seem to cast a spell either..
-	[37011] = {[50000]=47977, [51000] = true},
+	[37011] = {[50000]=47977, [51000] = true},	-- Magic Broom
 	[37815] = {[50000]=49345, [51000] = true},  -- Emerald Essence
 	[37859] = {[50000]=49461, [51000] = true},  -- Amber Essence
 	[37860] = {[50000]=49462, [51000] = true},  -- Ruby Essence
