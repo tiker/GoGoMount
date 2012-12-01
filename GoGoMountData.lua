@@ -85,6 +85,7 @@ function GoGo_GetMountDB()
 		[107517] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Spectral Wind Rider
 
 		[135418] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Grand Armored Wyvern
+		[136164] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Grand Wyvern
 
 		[37015] = {[9] = true, [36] = true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Swift Nether Drake
 		[41513] = {[9] = true, [36] = true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Onyx Netherwing Drake
@@ -189,6 +190,7 @@ function GoGo_GetMountDB()
 		[64749] = {[9] = true, [18] = true, [39] = true, [52] = true, ["FlightOnly"] = true, [10003]=250, [50000]=44221},  -- Loaned Gryphon Reins
 		[107516] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Spectral Gryphon
 		[135416] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Grand Armored Gryphon
+		[136163] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Grand Gryphon
 
 
 		[578] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Black Wolf
@@ -499,7 +501,7 @@ function GoGo_GetMountDB()
 		[76203] = {[55] = true, [200] = true, [10004]=286, [50000]=55121},  -- River Boat
 		[87090] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67}, -- Goblin Trike
 		[87091] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67}, -- Goblin Turbo-Trike
-		[134359] = {2] = true, [9] = true, [36] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- The Sky Claw
+		[134359] = {[2] = true, [9] = true, [36] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- The Sky Claw
 
 		[61309] = {[9] = true, [49] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Magnificent Flying Carpet
 		[61442] = {[9] = true, [47] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Swift Mooncloth Carpet
