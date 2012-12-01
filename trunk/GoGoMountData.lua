@@ -84,6 +84,8 @@ function GoGo_GetMountDB()
 		[64762] = {[9] = true, [39] = true, [52] = true, ["FlightOnly"] = true, [10003]=250, [50000]=44229},  -- Loaned Wind Rider Reins
 		[107517] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Spectral Wind Rider
 
+		[135418] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Grand Armored Wyvern
+
 		[37015] = {[9] = true, [36] = true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Swift Nether Drake
 		[41513] = {[9] = true, [36] = true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Onyx Netherwing Drake
 		[41514] = {[9] = true, [36] = true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Azure Netherwing Drake
@@ -101,13 +103,6 @@ function GoGo_GetMountDB()
 		[39801] = {[9] = true, [36] = true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Purple Riding Nether Ray
 		[39802] = {[9] = true, [36] = true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Silver Riding Nether Ray
 		[39803] = {[9] = true, [36] = true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Blue Riding Nether Ray
-
-		[46199] = {[9] = true, [36] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- X-51 Nether-Rocket X-TREME
-		[46197] = {[9] = true, [36] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- X-51 Nether-Rocket
-		[71342] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [403]=true, [10002]=160, [10003]=250},  -- Big Love Rocket
-		[75973] = {[2] = true, [9] = true, [39] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- X-53 Touring Rocket
-		[126507] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Depleted-Kyparium Rocket
-		[126508] = {[9] = true, [39] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Geosynchronous World Spinner
 
 		[43927] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Cenarion War Hippogryph
 		[63844] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Argent Hippogryph
@@ -193,6 +188,7 @@ function GoGo_GetMountDB()
 		[61229] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Armored Snowy Gryphon
 		[64749] = {[9] = true, [18] = true, [39] = true, [52] = true, ["FlightOnly"] = true, [10003]=250, [50000]=44221},  -- Loaned Gryphon Reins
 		[107516] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Spectral Gryphon
+		[135416] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Grand Armored Gryphon
 
 
 		[578] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Black Wolf
@@ -429,6 +425,7 @@ function GoGo_GetMountDB()
 		[103195] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Mountain Horse
 		[103196] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Swift Mountain Horse
 		[107203] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Tyrael's Charger
+		[134573] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Swift Windsteed
 
 		[34406] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Brown Elekk
 		[34407] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Great Elite Elekk
@@ -487,6 +484,13 @@ function GoGo_GetMountDB()
 		[48954] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Swift Zhevra
 		[49322] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Swift Zhevra
 
+		[46199] = {[9] = true, [36] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- X-51 Nether-Rocket X-TREME
+		[46197] = {[9] = true, [36] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- X-51 Nether-Rocket
+		[71342] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [403]=true, [10002]=160, [10003]=250},  -- Big Love Rocket
+		[75973] = {[2] = true, [9] = true, [39] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- X-53 Touring Rocket
+		[126507] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Depleted-Kyparium Rocket
+		[126508] = {[9] = true, [39] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Geosynchronous World Spinner
+
 		[44151] = {[9] = true, [39] = true, [46] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Turbo-Charged Flying Machine
 		[44153] = {[9] = true, [36] = true, [45] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Flying Machine
 		[55531] = {[2] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Mechano-hog
@@ -495,6 +499,7 @@ function GoGo_GetMountDB()
 		[76203] = {[55] = true, [200] = true, [10004]=286, [50000]=55121},  -- River Boat
 		[87090] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67}, -- Goblin Trike
 		[87091] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67}, -- Goblin Turbo-Trike
+		[134359] = {2] = true, [9] = true, [36] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- The Sky Claw
 
 		[61309] = {[9] = true, [49] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Magnificent Flying Carpet
 		[61442] = {[9] = true, [47] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Swift Mooncloth Carpet
@@ -532,6 +537,7 @@ function GoGo_GetMountDB()
 
 		[118737] = {[9] = true, [36] = true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Pandaren Kite
 		[130985] = {[9] = true, [36] = true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Pandaren Kite
+		[133023] = {[9] = true, [36] = true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Jade Pandaren Kite
 
 		[93644] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Kor'kron Annihilator
 		[123886] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Amber Scorpion
