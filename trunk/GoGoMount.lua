@@ -199,17 +199,17 @@ function GoGo_PreClick(button)
 			end --if
 			SendAddonMessage("GoGoMountVER", GetAddOnMetadata("GoGoMount", "Version"), "RAID")
 		end --if
-		if UnitInParty("player") and not UnitInBattleground("player") then
-			if GoGo_Variables.Debug >= 5 then
-				GoGo_DebugAddLine("GoGo_PreClick: Is in party - sending GoGoMount version information to party addon channel.")
-			end --if
-			SendAddonMessage("GoGoMountVER", GetAddOnMetadata("GoGoMount", "Version"), "PARTY")
-		end --if
+--		if UnitInParty("player") and not UnitInBattleground("player") then
+--			if GoGo_Variables.Debug >= 5 then
+--				GoGo_DebugAddLine("GoGo_PreClick: Is in party - sending GoGoMount version information to party addon channel.")
+--			end --if
+--			SendAddonMessage("GoGoMountVER", GetAddOnMetadata("GoGoMount", "Version"), "PARTY")
+--		end --if
 		if UnitInBattleground("player") then
 			if GoGo_Variables.Debug >= 5 then
 				GoGo_DebugAddLine("GoGo_PreClick: Is in battle ground - sending GoGoMount version information to battle ground addon channel.")
 			end --if
-			SendAddonMessage("GoGoMountVER", GetAddOnMetadata("GoGoMount", "Version"), "BATTLEGROUND")
+			SendAddonMessage("GoGoMountVER", GetAddOnMetadata("GoGoMount", "Version"), "RAID")
 		end --if
 	end --if
 	if GoGo_Variables.Debug >= 10 then
