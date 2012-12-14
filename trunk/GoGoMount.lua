@@ -271,7 +271,19 @@ function GoGo_ChooseMount()
 	GoGo_TableAddUnique(GoGo_Variables.WaterSurfaceSpeed, 371)  -- Abyssal Seahorse 
 	GoGo_TableAddUnique(GoGo_Variables.WaterSurfaceSpeed, 108)  -- Subdued Seahorse
 	GoGo_TableAddUnique(GoGo_Variables.WaterSurfaceSpeed, 91)  -- Master Angler
-	
+	if (GoGo_Variables.Player.Class == "DRUID") then
+		GoGo_TableAddUnique(GoGo_Variables.WaterSpeed, 101)  -- Aqua Form
+		GoGo_TableAddUnique(GoGo_Variables.WaterSurfaceSpeed, 101)  -- Aqua Form
+		GoGo_TableAddUnique(GoGo_Variables.GroundSpeed, 125)  -- Cat Form
+		GoGo_TableAddUnique(GoGo_Variables.GroundSpeed, 140)  -- Travel Form
+	elseif (GoGo_Variables.Player.Class == "SHAMAN") then
+		GoGo_TableAddUnique(GoGo_Variables.GroundSpeed, 130)  -- Ghost Wolf
+	elseif (GoGo_Variables.Player.Class == "HUNTER") then
+		GoGo_TableAddUnique(GoGo_Variables.GroundSpeed, 130) -- Aspects
+	elseif (GoGo_Variables.Player.Class == "MONK") then
+		GoGo_TableAddUnique(GoGo_Variables.AirSpeed, 160)  -- Zen Flight
+	end --if
+
  	if not GoGo_Prefs.Zones[GoGo_Variables.Player.Zone] or not GoGo_Prefs.Zones[GoGo_Variables.Player.Zone]["Preferred"] or not GoGo_Prefs.Zones[GoGo_Variables.Player.Zone]["Excluded"] then
 		GoGo_UpdateZonePrefs()  -- building zone template in GoGo_Prefs for preferred and excluded mounts (incase it doesn't exist such as trying to mount for the first time after installing mod without zoning)
 	end --if
@@ -744,12 +756,9 @@ function GoGo_BuildMountList()
 	if GoGo_Variables.Player.Class == "DRUID" then
 		if GoGo_InBook(GoGo_Variables.Localize.AquaForm) then
 			table.insert(GoGo_MountList, GoGo_Variables.Localize.AquaForm)
-			GoGo_TableAddUnique(GoGo_Variables.WaterSpeed, 101)
-			GoGo_TableAddUnique(GoGo_Variables.WaterSurfaceSpeed, 101)
 		end --if
 		if GoGo_InBook(GoGo_Variables.Localize.CatForm) then
 			table.insert(GoGo_MountList, GoGo_Variables.Localize.CatForm)
-			GoGo_TableAddUnique(GoGo_Variables.GroundSpeed, 125)
 		end --if
 		if GoGo_InBook(GoGo_Variables.Localize.FlightForm) then
 			table.insert(GoGo_MountList, GoGo_Variables.Localize.FlightForm)
@@ -759,12 +768,10 @@ function GoGo_BuildMountList()
 		end --if
 		if GoGo_InBook(GoGo_Variables.Localize.TravelForm) then
 			table.insert(GoGo_MountList, GoGo_Variables.Localize.TravelForm)
-			GoGo_TableAddUnique(GoGo_Variables.GroundSpeed, 140)
 		end --if
 	elseif GoGo_Variables.Player.Class == "SHAMAN" then
 		if GoGo_InBook(GoGo_Variables.Localize.GhostWolf) then
 			table.insert(GoGo_MountList, GoGo_Variables.Localize.GhostWolf)
-			GoGo_TableAddUnique(GoGo_Variables.GroundSpeed, 130)
 		end --if
 	elseif GoGo_Variables.Player.Class == "HUNTER" then
 		if GoGo_InBook(GoGo_Variables.Localize.AspectPack) and GoGo_Prefs.AspectPack then
