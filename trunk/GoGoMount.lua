@@ -328,7 +328,7 @@ function GoGo_ChooseMount()
 		GoGo_Variables.FilteredMounts = GoGo_RemoveUnusableMounts(GoGo_Variables.FilteredMounts)  -- remove mounts blizzard says we can't use
 	end --if
 
-	if ((GoGo_Variables.SelectPassengerMount) and (GoGo_Prefs.IncludeExtraPassengerMounts) and table.getn(GoGo_Prefs.ExtraPassengerMounts) > 0) then
+	if ((GoGo_Variables.SelectPassengerMount) and table.getn(GoGo_Prefs.ExtraPassengerMounts) > 0) then
 		for GoGo_TempLoopCounter=1, table.getn(GoGo_Prefs.ExtraPassengerMounts) do
 			if GoGo_Variables.Debug >= 10 then
 				GoGo_DebugAddLine("GoGo_ChooseMount: Passenger mount selected, extras to include.  Including them now.")
