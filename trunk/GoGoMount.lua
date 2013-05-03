@@ -43,6 +43,7 @@ function GoGo_OnEvent(self, event, ...)
 		elseif (GoGo_Variables.Player.Class == "SHAMAN") then
 			GoGo_Variables.Shaman = {}
 			GoGoFrame:RegisterEvent("PLAYER_REGEN_DISABLED")
+			GoGo_Shaman_Panel()
 		elseif (GoGo_Variables.Player.Class == "HUNTER") then
 			GoGo_Hunter_Panel()
 		elseif (GoGo_Variables.Player.Class == "PALADIN") then
@@ -3732,6 +3733,39 @@ function GoGo_Paladin_Panel()
 end --function
 
 ---------
+function GoGo_Shaman_Panel()
+---------
+	GoGo_Shaman_Panel = CreateFrame("Frame", nil, UIParent)
+	GoGo_Shaman_Panel.name = GoGo_Variables.Localize.String.ShamanOptions
+	GoGo_Shaman_Panel.parent = "GoGoMount"
+--	GoGo_Shaman_Panel.okay = function (self) GoGo_Panel_Okay("SHAMAN"); end;
+	GoGo_Shaman_Panel.default = function (self) GoGo_Settings_Default("SHAMAN"); end;  -- use clear command with default button
+	InterfaceOptions_AddCategory(GoGo_Shaman_Panel)
+
+	GoGo_Shaman_Panel_ClickForm = CreateFrame("CheckButton", "GoGo_Shaman_Panel_ClickForm", GoGo_Shaman_Panel, "OptionsCheckButtonTemplate")
+	GoGo_Shaman_Panel_ClickForm:SetPoint("TOPLEFT", 16, -16)
+	GoGo_Shaman_Panel_ClickFormText:SetText(GoGo_Variables.Localize.String.ShamanSingleClick)
+	GoGo_Shaman_Panel_ClickForm:SetScript("OnClick",
+		function(self)
+			if GoGo_Shaman_Panel_ClickForm:GetChecked() then
+				GoGo_Prefs.ShamanClickForm = true
+			else
+				GoGo_Prefs.ShamanClickForm = false
+			end --if
+		end --function
+	)
+	GoGo_Shaman_Panel_ClickForm:SetScript("OnShow",
+		function(self)
+			if GoGo_Prefs.ShamanClickForm then
+				GoGo_Shaman_Panel_ClickForm:SetChecked(1)
+			else
+				GoGo_Shaman_Panel_ClickForm:SetChecked(0)
+			end --if
+		end --function
+	)
+end --function
+
+---------
 function GoGo_ZoneFavorites_Panel()
 ---------
 	GoGo_ZoneFavorites_Panel = CreateFrame("Frame", nil, UIParent)
@@ -3951,6 +3985,8 @@ function GoGo_Settings_Default(Class)
 	elseif Class == "HUNTER" then
 		GoGo_Prefs.AspectPack = false
 		InterfaceOptionsFrame_OpenToCategory(GoGo_Hunter_Panel)
+	elseif Class == "SHAMAN" then
+		GoGo_Prefs.ShamanClickForm = false
 	elseif Class == "PALADIN" then
 		GoGo_Prefs.PaladinUseCrusaderAura = false
 		InterfaceOptionsFrame_OpenToCategory(GoGo_Paladin_Panel)
@@ -3982,6 +4018,7 @@ function GoGo_Settings_Default(Class)
 		GoGo_Prefs.RemoveBuffs = true
 		GoGo_Prefs.DruidDisableInCombat = false
 		GoGo_Prefs.PaladinUseCrusaderAura = false
+		GoGo_Prefs.ShamanClickForm = false
 	end --if
 end --function
 
@@ -4001,6 +4038,7 @@ function GoGo_Settings_SetUpdates()
 	if not GoGo_Prefs.RemoveBuffs then GoGo_Prefs.RemoveBuffs = false end
 	if not GoGo_Prefs.DruidDisableInCombat then GoGo_Prefs.DruidDisableInCombat = false end
 	if not GoGo_Prefs.PaladinUseCrusaderAura then GoGo_Prefs.PaladinUseCrusaderAura = false end
+	if not GoGo_Prefs.ShamanClickForm then GoGo_Prefs.ShamanClickForm = false end
 	
 	GoGo_Prefs.UnknownMounts = {}
 	if not GoGo_Prefs.GlobalExclude then
