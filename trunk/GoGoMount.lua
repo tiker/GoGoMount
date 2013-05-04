@@ -3247,7 +3247,7 @@ function GoGo_SetOptionAutoDismount(GoGo_Value)
 		GoGo_Panel_AutoDismount:SetChecked(1)
 		GoGo_Prefs.autodismount = true
 	elseif GoGo_Value == 0 then	
-		GoGoFrame:UnRegisterEvent("UI_ERROR_MESSAGE")
+		GoGoFrame:UnregisterEvent("UI_ERROR_MESSAGE")
 		GoGo_Panel_AutoDismount:SetChecked(0)
 		GoGo_Prefs.autodismount = false
 	end --if
