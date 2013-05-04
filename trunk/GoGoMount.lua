@@ -3196,6 +3196,7 @@ GOGO_ERRORS = {
 	[SPELL_FAILED_NOT_MOUNTED] = true,
 	[SPELL_FAILED_NOT_SHAPESHIFT] = true,
 	[ERR_ATTACK_MOUNTED] = true,
+	[SPELL_FAILED_NO_ACTIONS] = true,  -- Spell casting while in Zen Flight
 }
 
 GOGO_SPELLS = {
