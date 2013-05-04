@@ -55,6 +55,9 @@ function GoGo_OnEvent(self, event, ...)
 		GoGo_ExtraPassengerMounts_Panel()
 		GoGo_ZoneExclusions_Panel()
 		GoGo_GlobalExclusions_Panel()
+		if GoGo_Prefs.autodismount then
+			GoGo_SetOptionAutoDismount(1)
+		end --if
 	elseif event == "PLAYER_REGEN_DISABLED" then
 		for i, button in ipairs({GoGoButton, GoGoButton2, GoGoButton3}) do
 			if GoGo_Variables.Player.Class == "SHAMAN" then
@@ -3236,14 +3239,28 @@ GOGO_SPELLS = {
 	end, --function
 }
 
+---------
+function GoGo_SetOptionAutoDismount(GoGo_Value)
+---------
+	if GoGo_Value == 1 then
+		GoGoFrame:RegisterEvent("UI_ERROR_MESSAGE")
+		GoGo_Panel_AutoDismount:SetChecked(1)
+		GoGo_Prefs.autodismount = true
+	elseif GoGo_Value == 0 then	
+		GoGoFrame:UnRegisterEvent("UI_ERROR_MESSAGE")
+		GoGo_Panel_AutoDismount:SetChecked(0)
+		GoGo_Prefs.autodismount = false
+	end --if
+end --function
+
 GOGO_COMMANDS = {
 	["auto"] = function()
 		GoGo_Prefs.autodismount = not GoGo_Prefs.autodismount
 		GoGo_Msg("auto")
 		if GoGo_Prefs.autodismount then
-			GoGo_Panel_AutoDismount:SetChecked(1)
+			GoGo_SetOptionAutoDismount(1)
 		else
-			GoGo_Panel_AutoDismount:SetChecked(0)
+			GoGo_SetOptionAutoDismount(0)
 		end --if
 	end, --function
 	["clear"] = function()
@@ -3438,9 +3455,9 @@ function GoGo_Panel_Options()
 	GoGo_Panel_AutoDismount:SetScript("OnClick",
 		function(self)
 			if GoGo_Panel_AutoDismount:GetChecked() then
-				GoGo_Prefs.autodismount = true
+				GoGo_SetOptionAutoDismount(1)
 			else
-				GoGo_Prefs.autodismount = false
+				GoGo_SetOptionAutoDismount(0)
 			end --if
 		end --function
 	)
@@ -3992,7 +4009,8 @@ function GoGo_Settings_Default(Class)
 		GoGo_Prefs.PaladinUseCrusaderAura = false
 		InterfaceOptionsFrame_OpenToCategory(GoGo_Paladin_Panel)
 	elseif Class == "MAIN" then
-		GoGo_Prefs.autodismount = true
+		--GoGo_Prefs.autodismount = true
+		GoGo_SetOptionAutoDismount(1)
 		GoGo_Prefs.DisableUpdateNotice = false
 		GoGo_Prefs.DisableMountNotice = false
 		GoGo_Prefs.GlobalPrefMount = false
@@ -4005,7 +4023,8 @@ function GoGo_Settings_Default(Class)
 		GoGo_Prefs.ExtraPassengerMounts = {}
 		GoGo_Prefs.GlobalExclude = {}
 		GoGo_Prefs.version = GetAddOnMetadata("GoGoMount", "Version")
-		GoGo_Prefs.autodismount = true
+--		GoGo_Prefs.autodismount = true
+		GoGo_SetOptionAutoDismount(1)
 		GoGo_Prefs.DisableUpdateNotice = false
 		GoGo_Prefs.DisableMountNotice = false
 		GoGo_Prefs.DruidClickForm = true
