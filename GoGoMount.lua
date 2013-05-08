@@ -261,21 +261,6 @@ function GoGo_ChooseMount()
 	GoGo_Variables.RidingLevel = GoGo_GetRidingSkillLevel() or 0
 	GoGo_Variables.Player.Level = UnitLevel("player")
 
--- list of mount / movement speeds unmodified for mounts shown in mount data table
-	GoGo_TableAddUnique(GoGo_Variables.GroundSpeed, 160)  -- Ground slow
-	GoGo_TableAddUnique(GoGo_Variables.GroundSpeed, 200)  -- Ground fast
-	GoGo_TableAddUnique(GoGo_Variables.GroundSpeed, 100)  -- Ground really slow
-	GoGo_TableAddUnique(GoGo_Variables.AirSpeed, 250)  -- Air slow
-	GoGo_TableAddUnique(GoGo_Variables.AirSpeed, 380)  -- Air fast
-	GoGo_TableAddUnique(GoGo_Variables.AirSpeed, 410)  -- Air faster
-	GoGo_TableAddUnique(GoGo_Variables.WaterSpeed, 67)  -- water normal
-	GoGo_TableAddUnique(GoGo_Variables.WaterSpeed, 371)  -- Abyssal Seahorse 
-	GoGo_TableAddUnique(GoGo_Variables.WaterSpeed, 108)  -- Subdued Seahorse
-	GoGo_TableAddUnique(GoGo_Variables.WaterSpeed, 91)  -- Master Angler
-	GoGo_TableAddUnique(GoGo_Variables.WaterSurfaceSpeed, 67)  -- water normal
-	GoGo_TableAddUnique(GoGo_Variables.WaterSurfaceSpeed, 371)  -- Abyssal Seahorse 
-	GoGo_TableAddUnique(GoGo_Variables.WaterSurfaceSpeed, 108)  -- Subdued Seahorse
-	GoGo_TableAddUnique(GoGo_Variables.WaterSurfaceSpeed, 91)  -- Master Angler
 	if (GoGo_Variables.Player.Class == "DRUID") then
 		GoGo_TableAddUnique(GoGo_Variables.WaterSpeed, 101)  -- Aqua Form
 		GoGo_TableAddUnique(GoGo_Variables.WaterSurfaceSpeed, 101)  -- Aqua Form
@@ -2832,7 +2817,8 @@ function GoGo_CheckSwimSurface()
 
 	if GoGo_Prefs.DisableWaterFlight then  -- don't want to fly from water as per client option
 		GoGo_Variables.NoFlying = true
-		GoGo_Variables.SwimSurface = false
+		GoGo_DebugAddLine("GoGo_CheckSwimSurface: Don't want to fly from water surface.  Disabling flying.")
+		--GoGo_Variables.SwimSurface = false
 		return
 	end --if
 	
