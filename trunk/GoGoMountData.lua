@@ -18,7 +18,7 @@ GoGo_Variables.AirSpeed = {}
 GoGo_Variables.WaterSpeed = {}
 GoGo_Variables.WaterSurfaceSpeed = {}
 GoGo_Variables.Debug = 0
-GoGo_Variables.TestVersion = false
+GoGo_Variables.TestVersion = true
 
 ---------
 function GoGo_GetMountDB()
@@ -470,11 +470,11 @@ function GoGo_GetMountDB()
 
 		[50281] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Black Warp Stalker
 
-		[118089] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Azure Water Strider  (walks on water)
-		[127271] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Crimson Water Strider  (walks on water)
-		[127272] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Orange Water Strider  (walks on water)
-		[127274] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Jade Water Strider  (walks on water)
-		[127278] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Golden Water Strider  (walks on water)
+		[118089] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=200},  -- Azure Water Strider  (walks on water)
+		[127271] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=200},  -- Crimson Water Strider  (walks on water)
+		[127272] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=200},  -- Orange Water Strider  (walks on water)
+		[127274] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=200},  -- Jade Water Strider  (walks on water)
+		[127278] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=200},  -- Golden Water Strider  (walks on water)
 	
 		[59785] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Black War Mammoth
 		[59788] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Black War Mammoth
@@ -691,4 +691,31 @@ GoGo_Variables.DebuffDB = {
 	91771,	-- Wisp Form (from Wisp Amulet)
 	98445,  -- Trapped In Amber (from Ancient Amber)  -- requires 2 clicks to mount
 	
+}
+
+GoGo_Variables.GroundSpeed = {
+200,  -- Ground fast
+160,  -- Ground slow
+100,  -- Ground really slow
+}
+
+GoGo_Variables.AirSpeed = {
+410,  -- Air faster
+380,  -- Air fast
+250,  -- Air slow
+}
+
+GoGo_Variables.WaterSpeed = {
+371,  -- Abyssal Seahorse
+108,  -- Subdued Seahorse
+91,  -- Master Angler
+67,  -- Water normal
+}
+
+GoGo_Variables.WaterSurfaceSpeed = {
+371,  -- Abyssal Seahorse
+200,  -- Water surface ground mounts such as water striders
+108,  -- Subdued Seahorse
+91,  -- Master Angler
+67,  -- Water normal
 }
