@@ -18,7 +18,7 @@ GoGo_Variables.AirSpeed = {}
 GoGo_Variables.WaterSpeed = {}
 GoGo_Variables.WaterSurfaceSpeed = {}
 GoGo_Variables.Debug = 0
-GoGo_Variables.TestVersion = true
+GoGo_Variables.TestVersion = false
 
 ---------
 function GoGo_GetMountDB()
@@ -441,6 +441,7 @@ function GoGo_GetMountDB()
 		[107203] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Tyrael's Charger
 		[134573] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Swift Windsteed
 		[136505] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Ghastly Charger
+		[142073] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Hearthsteed
 
 		[34406] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Brown Elekk
 		[34407] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Great Elite Elekk
@@ -583,6 +584,7 @@ function GoGo_GetMountDB()
 		[130092] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Red Flying Cloud
 		[130965] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Son of Galleon
 		[139595] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Armored Bloodwing
+		[142641] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Brawler's Burly Mushan Beast
 		[142878] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Enchanted Fey Dragon
 
 	-- Spells, shape forms, etc
@@ -694,28 +696,28 @@ GoGo_Variables.DebuffDB = {
 }
 
 GoGo_Variables.GroundSpeed = {
-200,  -- Ground fast
-160,  -- Ground slow
-100,  -- Ground really slow
+	200,  -- Ground fast
+	160,  -- Ground slow
+	100,  -- Ground really slow
 }
 
 GoGo_Variables.AirSpeed = {
-410,  -- Air faster
-380,  -- Air fast
-250,  -- Air slow
+	410,  -- Air faster
+	380,  -- Air fast
+	250,  -- Air slow
 }
 
 GoGo_Variables.WaterSpeed = {
-371,  -- Abyssal Seahorse
-108,  -- Subdued Seahorse
-91,  -- Master Angler
-67,  -- Water normal
+	371,  -- Abyssal Seahorse
+	108,  -- Subdued Seahorse
+	91,  -- Master Angler
+	67,  -- Water normal
 }
 
 GoGo_Variables.WaterSurfaceSpeed = {
-371,  -- Abyssal Seahorse
-200,  -- Water surface ground mounts such as water striders
-108,  -- Subdued Seahorse
-91,  -- Master Angler
-67,  -- Water normal
+	371,  -- Abyssal Seahorse
+	200,  -- Water surface ground mounts such as water striders
+	108,  -- Subdued Seahorse
+	91,  -- Master Angler
+	67,  -- Water normal
 }
