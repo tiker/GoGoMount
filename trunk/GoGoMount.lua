@@ -2717,6 +2717,11 @@ function GoGo_ZoneCheck()
 			-- single player scenario from key obtained during thunder king isle dailies
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.ZoneID == 935 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Deepwind Gorge (Battleground)")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
 	elseif GoGo_Variables.Player.ZoneID == -1 then
 		-- Arenas:
 		-- -- Nagrand Arena
@@ -3237,7 +3242,9 @@ function GoGo_SetOptionAutoDismount(GoGo_Value)
 ---------
 	if GoGo_Value == 1 then
 		GoGoFrame:RegisterEvent("UI_ERROR_MESSAGE")
-		GoGo_Panel_AutoDismount:SetChecked(1)
+		if _G["GoGo_Panel_AutoDismount"] then  -- check before setting - (ticket 709)
+			GoGo_Panel_AutoDismount:SetChecked(1)
+		end --if
 		GoGo_Prefs.autodismount = true
 	elseif GoGo_Value == 0 then	
 		GoGoFrame:UnregisterEvent("UI_ERROR_MESSAGE")
