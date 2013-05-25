@@ -2822,7 +2822,9 @@ function GoGo_CheckSwimSurface()
 
 	if GoGo_Prefs.DisableWaterFlight then  -- don't want to fly from water as per client option
 		GoGo_Variables.NoFlying = true
-		GoGo_DebugAddLine("GoGo_CheckSwimSurface: Don't want to fly from water surface.  Disabling flying.")
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_CheckSwimSurface: Don't want to fly from water surface.  Disabling flying.")
+		end --if
 		--GoGo_Variables.SwimSurface = false
 		return
 	end --if
