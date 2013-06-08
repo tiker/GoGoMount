@@ -2586,12 +2586,12 @@ function GoGo_ZoneCheck()
 --		end --if
 	elseif GoGo_Variables.Player.ZoneID == 867 then
 		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Temple of the Jade Serpent (5 man instance)")
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Temple of the Jade Serpent (5 player instance)")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 	elseif GoGo_Variables.Player.ZoneID == 871 then
 		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Scarlet Halls (5 man instance)")
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Scarlet Halls (5 player instance)")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 	elseif GoGo_Variables.Player.ZoneID == 873 then
@@ -2603,47 +2603,47 @@ function GoGo_ZoneCheck()
 		end --if
 	elseif GoGo_Variables.Player.ZoneID == 874 then
 		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Scarlet Monastery (5 man instance)")
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Scarlet Monastery (5 player instance)")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 	elseif GoGo_Variables.Player.ZoneID == 875 then
 		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Gate of the Setting Sun (5 man instance)")
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Gate of the Setting Sun (5 player instance)")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 	elseif GoGo_Variables.Player.ZoneID == 877 then
 		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Shado-Pan Monastery (5 man instance)")
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Shado-Pan Monastery (5 player instance)")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 	elseif GoGo_Variables.Player.ZoneID == 878 then
 		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for A Brewing Storm (3 man scenario)")
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for A Brewing Storm (3 player scenario)")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 	elseif GoGo_Variables.Player.ZoneID == 880 then
 		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Jade Forest (3 man scenario)")
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Jade Forest (3 player scenario)")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 	elseif GoGo_Variables.Player.ZoneID == 882 then
 		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Unga Ingoo (3 man scenario)")
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Unga Ingoo (3 player scenario)")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 	elseif GoGo_Variables.Player.ZoneID == 884 then
 		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Brewmoon Festival (3 man scenario)")
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Brewmoon Festival (3 player scenario)")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 	elseif GoGo_Variables.Player.ZoneID == 885 then
 		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Mogu'shan Palace (5 man instance)")
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Mogu'shan Palace (5 player instance)")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 	elseif GoGo_Variables.Player.ZoneID == 887 then
 		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Siege of Niuzao Temple (5 man instance)")
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Siege of Niuzao Temple (5 player instance)")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 	elseif GoGo_Variables.Player.ZoneID == 888 then
@@ -2662,22 +2662,22 @@ function GoGo_ZoneCheck()
 		end --if
 	elseif GoGo_Variables.Player.ZoneID == 896 then
 		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Mogu'shan Vaults (25 man raid)")
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Mogu'shan Vaults (25 player raid)")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 	elseif GoGo_Variables.Player.ZoneID == 897 then
 		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Heart of Fear (25 man raid)")
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Heart of Fear (25 player raid)")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 	elseif GoGo_Variables.Player.ZoneID == 899 then
 		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Proving Grounds (3 man scenario)")
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Proving Grounds (3 player scenario)")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 	elseif GoGo_Variables.Player.ZoneID == 900 then
 		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Crypt of Forgotten Kings (3 man scenario)")
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Crypt of Forgotten Kings (3 player scenario)")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 	elseif GoGo_Variables.Player.ZoneID == 903 then
@@ -2697,10 +2697,16 @@ function GoGo_ZoneCheck()
 		GoGo_Variables.ZoneExclude.CanFly = false
 	elseif GoGo_Variables.Player.ZoneID == 911 then
 		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Krasarang Wilds (3 man scenario)")
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Krasarang Wilds (3 player scenario)")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 		-- can ride = true
+	elseif GoGo_Variables.Player.ZoneID == 919 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Black Temple (1 player scenario - Warlock quest)")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = false
 	elseif GoGo_Variables.Player.ZoneID == 928 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Isle of Thunder")
@@ -2711,9 +2717,15 @@ function GoGo_ZoneCheck()
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Isle of Giants")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.ZoneID == 930 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Throne of Thunder (10 / 25 player instance)")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = true
 	elseif GoGo_Variables.Player.ZoneID == 934 then
 		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Thunder King's Citadel (scenario)")
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Thunder King's Citadel (1 player scenario)")
 			-- single player scenario from key obtained during thunder king isle dailies
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
@@ -2722,6 +2734,12 @@ function GoGo_ZoneCheck()
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Deepwind Gorge (Battleground)")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.ZoneID == 937 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Vale of Eternal Blossoms (3 player scenario)")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = true
 	elseif GoGo_Variables.Player.ZoneID == -1 then
 		-- Arenas:
 		-- -- Nagrand Arena
@@ -2732,7 +2750,7 @@ function GoGo_ZoneCheck()
 		end --if
 	else
 		if GoGo_Variables.Debug >= 4 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Unconfigured ZoneID - " .. GoGo_Variables.Player.ZoneID)
+			GoGo_DebugCollectInformation()
 		end --if
 	end --if
 	

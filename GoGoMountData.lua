@@ -18,7 +18,7 @@ GoGo_Variables.AirSpeed = {}
 GoGo_Variables.WaterSpeed = {}
 GoGo_Variables.WaterSurfaceSpeed = {}
 GoGo_Variables.Debug = 0
-GoGo_Variables.TestVersion = false
+GoGo_Variables.TestVersion = true
 
 ---------
 function GoGo_GetMountDB()
@@ -500,8 +500,8 @@ function GoGo_GetMountDB()
 		[48954] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Swift Zhevra
 		[49322] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Swift Zhevra
 
-		[46199] = {[9] = true, [36] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- X-51 Nether-Rocket X-TREME
-		[46197] = {[9] = true, [36] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- X-51 Nether-Rocket
+		[46199] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- X-51 Nether-Rocket X-TREME
+		[46197] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- X-51 Nether-Rocket
 		[71342] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [403]=true, [10002]=160, [10003]=250},  -- Big Love Rocket
 		[75973] = {[2] = true, [9] = true, [39] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- X-53 Touring Rocket
 		[126507] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Depleted-Kyparium Rocket
