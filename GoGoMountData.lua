@@ -694,6 +694,7 @@ GoGo_Variables.DebuffDB = {
 	91760,	-- Endure the Transformation (from Bones of Transformation)
 	91771,	-- Wisp Form (from Wisp Amulet)
 	98445,  -- Trapped In Amber (from Ancient Amber)  -- requires 2 clicks to mount
+	122099,  -- Bamboozled (from /love Meng Meng in SW)
 	
 }
 
