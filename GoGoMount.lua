@@ -540,13 +540,6 @@ function GoGo_ChooseMount()
 		end --if
 	end --if
 	
-	if (table.getn(GoGo_Variables.FilteredMounts) >= 1) then
-		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, "FlightOnly")
-		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated mounts that require skill 225 or 300 to use; " .. (table.getn(GoGo_Variables.FilteredMounts) or 0) .. " mounts left.")
-		end --if
-	end --if
-
 	-- Set the oculus mounts as the only mounts available if we're in the oculus, not skiping flying and have them in inventory
 	if (table.getn(mounts) == 0) and (table.getn(GoGo_Variables.FilteredMounts) > 0) and not GoGo_Variables.ZoneExclude.TheOculus and not GoGo_Variables.SkipFlyingMount then  -- skip flying is here because we already know we can't normally fly here
 		mounts = GoGo_FilterMountsIn(GoGo_Variables.FilteredMounts, 54) or {}
@@ -558,6 +551,13 @@ function GoGo_ChooseMount()
 			if GoGo_Variables.Debug >= 10 then
 				GoGo_DebugAddLine("GoGo_ChooseMount: In the Oculus, no oculus mount found in inventory.")
 			end --if
+		end --if
+	end --if
+
+	if (table.getn(GoGo_Variables.FilteredMounts) >= 1) then
+		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, "FlightOnly")
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated mounts that require skill 225 or 300 to use; " .. (table.getn(GoGo_Variables.FilteredMounts) or 0) .. " mounts left.")
 		end --if
 	end --if
 
@@ -2711,6 +2711,12 @@ function GoGo_ZoneCheck()
 	elseif GoGo_Variables.Player.ZoneID == 919 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Black Temple (1 player scenario - Warlock quest)")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = false
+	elseif GoGo_Variables.Player.ZoneID == 922 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Deeprun Tram")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 		-- can ride = false
