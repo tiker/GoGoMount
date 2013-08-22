@@ -421,6 +421,13 @@ function GoGo_ChooseMount()
 		GoGo_Variables.FilteredMounts = GoGo_FilterMountsIn(GoGo_Variables.FilteredMounts, 2) or {}
 	end --if
 
+	if GoGo_Variables.SkipFlyingMount then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ChooseMount: Filtering out all mounts that can fly (button 2 pressed).")
+		end --if
+		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 10003) or {}
+	end --if
+
 	if GoGo_Variables.ZoneExclude.NorthrendLoanedMounts then
 		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 52) or {}
 		if GoGo_Variables.Debug >= 10 then
