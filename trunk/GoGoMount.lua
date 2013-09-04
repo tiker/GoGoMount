@@ -2375,7 +2375,7 @@ function GoGo_ZoneCheck()
 		GoGo_Variables.ZoneExclude.CanFly = false
 	elseif GoGo_Variables.Player.ZoneID == 758 then
 		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Bastion of Twilight (10 man)")
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Bastion of Twilight (10 man instance)")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 	elseif GoGo_Variables.Player.ZoneID == 759 then
@@ -2395,7 +2395,7 @@ function GoGo_ZoneCheck()
 		GoGo_Variables.ZoneExclude.CanFly = false
 	elseif GoGo_Variables.Player.ZoneID == 762 then
 		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Scarlet Monastery (instance)")
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Scarlet Monastery (5 man instance)")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 	elseif GoGo_Variables.Player.ZoneID == 764 then
@@ -2411,7 +2411,7 @@ function GoGo_ZoneCheck()
 		GoGo_Variables.ZoneExclude.AQ40 = false
 	elseif GoGo_Variables.Player.ZoneID == 767 then
 		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Throne of the Tides (instance)")
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Throne of the Tides (5 man instance)")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 	elseif GoGo_Variables.Player.ZoneID == 768 then
@@ -2591,6 +2591,14 @@ function GoGo_ZoneCheck()
 --		if GoGo_InBook(GoGo_Variables.Localize.WisdomOfTheFourWinds) then
 --			GoGo_Variables.ZoneExclude.CanFly = true
 --		end --if
+	elseif GoGo_Variables.Player.ZoneID == 864 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Northshire")
+		end --if
+		if GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense) then
+			GoGo_Variables.ZoneExclude.CanFly = true
+		end --if
+		-- can ride = true
 	elseif GoGo_Variables.Player.ZoneID == 867 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Temple of the Jade Serpent (5 player instance)")
@@ -2765,6 +2773,12 @@ function GoGo_ZoneCheck()
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Dun Morogh - Shimmer Ridge (3 player scenario)")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = true
+	elseif GoGo_Variables.Player.ZoneID == 951 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Timeless Isle")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false   -- shows Temperal Anomaly buff showing no-flying
 		-- can ride = true
 	elseif GoGo_Variables.Player.ZoneID == -1 then
 		-- Arenas:
