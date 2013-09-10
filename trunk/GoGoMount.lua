@@ -2492,6 +2492,12 @@ function GoGo_ZoneCheck()
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Firelands (10 / 25 player instance")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.ZoneID == 803 then
+		-- entered as part of the legendary quest - might be the same as the regular nexus instance
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Nexus (5 player instance")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
 	elseif GoGo_Variables.Player.ZoneID == 806 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Jade Forest")
