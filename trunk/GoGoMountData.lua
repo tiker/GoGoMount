@@ -18,7 +18,7 @@ GoGo_Variables.AirSpeed = {}
 GoGo_Variables.WaterSpeed = {}
 GoGo_Variables.WaterSurfaceSpeed = {}
 GoGo_Variables.Debug = 0
-GoGo_Variables.TestVersion = false
+GoGo_Variables.TestVersion = true
 
 ---------
 function GoGo_GetMountDB()
@@ -396,7 +396,7 @@ function GoGo_GetMountDB()
 		[470] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Black Stallion
 		[471] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Palamino
 		[472] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Pinto
-		[5784] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Felsteed
+		[5784] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [406]=true, [10001]=67, [10002]=160, [10004]=67},  -- Felsteed
 		[6648] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Chestnut Mare
 		[13819] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Warhorse
 		[16082] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Palomino
@@ -408,7 +408,7 @@ function GoGo_GetMountDB()
 		[17481] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Rivendare's Deathcharger
 		[22717] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Black War Steed
 		[22722] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Red Skeletal Warhorse
-		[23161] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Dreadsteed
+		[23161] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [406]=true, [10001]=67, [10002]=160, [10004]=67},  -- Dreadsteed
 		[23214] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Charger
 		[23227] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Swift Palomino
 		[23228] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Swift White Steed
@@ -446,6 +446,8 @@ function GoGo_GetMountDB()
 		[136505] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Ghastly Charger
 		[142073] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Hearthsteed
 		[146622] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Vicious Skeletal Warhorse
+		[148970] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [406]=true, [10001]=67, [10002]=160, [10004]=67},  -- Felsteed
+		[148972] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [406]=true, [10001]=67, [10002]=160, [10004]=67},  -- Dreadsteed
 
 		[34406] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Brown Elekk
 		[34407] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Great Elite Elekk
