@@ -59,12 +59,21 @@ function GoGo_OnEvent(self, event, ...)
 	elseif event == "PLAYER_REGEN_DISABLED" then
 		for i, button in ipairs({GoGoButton, GoGoButton2, GoGoButton3}) do
 			if GoGo_Variables.Player.Class == "SHAMAN" then
+				if GoGo_Variables.Debug >= 10 then 
+					GoGo_DebugAddLine("GoGo_OnEvent: Shaman entering combat.  Setting macro.")
+				end --if
 				GoGo_FillButton(button, GoGo_InBook(GOGO_SPELLS["SHAMAN"]))
 			elseif GoGo_Variables.Player.Class == "DRUID" then
 				if not GoGo_Prefs.DruidDisableInCombat then
 					GoGo_ZoneCheck()  -- Checking to see what we can and can not do in zones
 					GoGo_FillButton(button, GoGo_InBook(GOGO_SPELLS["DRUID"]))
+					if GoGo_Variables.Debug >= 10 then 
+						GoGo_DebugAddLine("GoGo_OnEvent: Druid entering combat.  Setting macro.")
+					end --if
 				else
+					if GoGo_Variables.Debug >= 10 then 
+						GoGo_DebugAddLine("GoGo_OnEvent: Druid entering combat.  Clearing macro because of set option.")
+					end --if
 					GoGo_FillButton(button)
 				end --if
 			end --if
@@ -1328,7 +1337,14 @@ end --function
 ---------
 function GoGo_FillButton(button, mount)
 ---------
-	if mount then
+	if InCombatLockdown() then
+		-- do nothing - macro should be filled already with available options
+		-- need to exclude calling :SetAttribute while in combat due to some bug collecting
+		-- mods flagging this as an error
+		if GoGo_Variables.Debug >= 10 then 
+			GoGo_DebugAddLine("GoGo_FillButton: In combat.  Casting pre-assigned mount")
+		end --if
+	elseif mount then
 		if GoGo_Variables.Debug >= 10 then 
 			GoGo_DebugAddLine("GoGo_FillButton: Casting " .. mount)
 		end --if
@@ -3399,7 +3415,7 @@ GOGO_COMMANDS = {
 		GoGo_Msg("druidflightform")
 	end, --function
 	["options"] = function()
-		InterfaceOptionsFrame_OpenToCategory(GoGo_Panel_Options)
+		InterfaceOptionsFrame_OpenToCategory(GoGo_Panel)
 	end, --function
 }
 
@@ -3722,22 +3738,12 @@ function GoGo_Hunter_Panel()
 	GoGo_Hunter_Panel_AspectOfPack:SetPoint("TOPLEFT", 16, -16)
 	GoGo_Hunter_Panel_AspectOfPackText:SetText(GoGo_Variables.Localize.String.UseAspectOfThePackInstead)
 	GoGo_Hunter_Panel_AspectOfPack.tooltipText = GoGo_Variables.Localize.String.UseAspectOfThePackInstead_Long
+	if GoGo_Prefs.AspectPack then
+		GoGo_Hunter_Panel_AspectOfPack:SetChecked(1)
+	end --if
 	GoGo_Hunter_Panel_AspectOfPack:SetScript("OnClick",
 		function(self)
-			if GoGo_Hunter_Panel_AspectOfPack:GetChecked() then
-				GoGo_Prefs.AspectPack = true
-			else
-				GoGo_Prefs.AspectPack = false
-			end --if
-		end --function
-	)
-	GoGo_Hunter_Panel_AspectOfPack:SetScript("OnShow",
-		function(self)
-			if GoGo_Prefs.AspectPack then
-				GoGo_Hunter_Panel_AspectOfPack:SetChecked(1)
-			else
-				GoGo_Hunter_Panel_AspectOfPack:SetChecked(0)
-			end --if
+			GoGo_SetPref("AspectPack", GoGo_Hunter_Panel_AspectOfPack:GetChecked())
 		end --function
 	)
 end --function
@@ -3997,6 +4003,9 @@ function GoGo_SetPref(strPref, intValue)
 	elseif strPref == "RemoveBuffs" then
 		GoGo_Prefs.RemoveBuffs = intValue
 		GoGo_Panel_RemoveBuffs:SetChecked(intValue)
+	elseif strPref == "AspectPack" then
+		GoGo_Prefs.AspectPack = intValue
+		GoGo_Hunter_Panel_AspectOfPack:SetChecked(intValue)
 	
 	end --if
 
@@ -4013,7 +4022,7 @@ function GoGo_Settings_Default(Class)
 		GoGo_SetPref("DruidDisableInCombat", false)
 		InterfaceOptionsFrame_OpenToCategory(GoGo_Druid_Panel)
 	elseif Class == "HUNTER" then
-		GoGo_Prefs.AspectPack = false
+		GoGo_SetPref("AspectPack", false)
 		InterfaceOptionsFrame_OpenToCategory(GoGo_Hunter_Panel)
 	elseif Class == "SHAMAN" then
 		GoGo_SetPref("ShamanClickForm", false)
@@ -4041,7 +4050,7 @@ function GoGo_Settings_Default(Class)
 		GoGo_Prefs.UnknownMounts = {}
 		GoGo_Prefs.GlobalPrefMounts = {}
 		GoGo_Prefs.GlobalPrefMount = false
-		GoGo_Prefs.AspectPack = false
+		GoGo_SetPref("AspectPack", false)
 		GoGo_SetPref("DruidFormNotRandomize", false)
 		GoGo_Prefs.DisableWaterFlight = true
 		GoGo_SetPref("RemoveBuffs", true)
