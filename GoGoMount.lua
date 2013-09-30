@@ -2680,6 +2680,13 @@ function GoGo_ZoneCheck()
 		if GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense) then
 			GoGo_Variables.ZoneExclude.CanFly = true
 		end --if
+	elseif GoGo_Variables.Player.ZoneID == 893 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Sunstrider Isle")
+		end --if
+		if GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense) then
+			GoGo_Variables.ZoneExclude.CanFly = false  -- to verify
+		end --if
 	elseif GoGo_Variables.Player.ZoneID == 895 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for New Tinkertown")
@@ -3137,7 +3144,7 @@ function GoGo_UpdateMountData()
 		GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][10002] = 161
 		GoGo_TableAddUnique(GoGo_Variables.GroundSpeed, 161)
 		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_UpdateMountData: We're a Druid with Feral Swiftness.  Modifying shape form speed data.")
+			GoGo_DebugAddLine("GoGo_UpdateMountData: We're a Druid with Feline Swiftness.  Modifying shape form speed data.")
 		end --if
 	end --if
 
@@ -4242,6 +4249,8 @@ end --function
 function GoGo_DebugCollectInformation()
 ---------
 	GoGo_DebugAddLine("Information: GoGoMount Version " .. GetAddOnMetadata("GoGoMount", "Version"))
+--	GoGo_DebugAddLine("Information: GoGoMount build version:  " ..  GetAddOnMetadata("GoGoMount", "Interface"))
+	GoGo_DebugAddLine("Information: World of Warcraft build version:  " .. select(4, _G.GetBuildInfo()))
 	if GoGo_Variables.ExpansionAccount == 0 then
 		GoGo_DebugAddLine("Information: Account - World of Warcraft (Classic) enabled.")
 	elseif GoGo_Variables.ExpansionAccount == 1 then
