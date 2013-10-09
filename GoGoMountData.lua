@@ -18,7 +18,7 @@ GoGo_Variables.AirSpeed = {}
 GoGo_Variables.WaterSpeed = {}
 GoGo_Variables.WaterSurfaceSpeed = {}
 GoGo_Variables.Debug = 0
-GoGo_Variables.TestVersion = false
+GoGo_Variables.TestVersion = true
 
 ---------
 function GoGo_GetMountDB()
@@ -213,7 +213,9 @@ function GoGo_GetMountDB()
 		[68056] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Swift Horde Wolf
 		[92232] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Spectral Wolf
 		[100333] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Vicious War Wolf
+		[145133] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67, [50000]=101675},  -- Moonfang
 		[148396] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Kor'kron War Wolf
+		
 
 		[18363] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Riding Kodo
 		[18989] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Gray Kodo
@@ -629,6 +631,7 @@ GoGo_Variables.MountItemIDs = {
 	[44229] = {[50000]=64762, [51000] = true},  -- Loaned Wind Rider Reins
 	[55121] = {[50000]=76203, [51000] = true},  -- River Boat
 	[71086] = {[50000]=101641, [51001] = true},  -- Dragonwrath, Tarecgosa's Rest
+	[101675] = {[50000]=145133, [51000] = true},  -- Shimmering Moonstone
 }
 
 

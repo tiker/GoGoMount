@@ -2680,12 +2680,19 @@ function GoGo_ZoneCheck()
 		if GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense) then
 			GoGo_Variables.ZoneExclude.CanFly = true
 		end --if
+	elseif GoGo_Variables.Player.ZoneID == 891 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Echo Isles")
+		end --if
+		if GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense) then
+			GoGo_Variables.ZoneExclude.CanFly = true  -- to verify
+		end --if
 	elseif GoGo_Variables.Player.ZoneID == 893 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Sunstrider Isle")
 		end --if
 		if GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense) then
-			GoGo_Variables.ZoneExclude.CanFly = false  -- to verify
+			GoGo_Variables.ZoneExclude.CanFly = true  -- to verify
 		end --if
 	elseif GoGo_Variables.Player.ZoneID == 895 then
 		if GoGo_Variables.Debug >= 10 then
@@ -2744,6 +2751,12 @@ function GoGo_ZoneCheck()
 	elseif GoGo_Variables.Player.ZoneID == 922 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Deeprun Tram")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = false
+	elseif GoGo_Variables.Player.ZoneID == 925 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Brawl'gar Arena")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 		-- can ride = false
