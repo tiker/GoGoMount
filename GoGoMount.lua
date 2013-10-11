@@ -1281,8 +1281,14 @@ function GoGo_GetIDName(itemid)
 		local GoGo_TempMount = {}
 		table.insert(GoGo_TempMount, itemid)
 		if (table.getn(GoGo_FilterMountsIn(GoGo_TempMount, 50000)) == 1) then
+			if GoGo_Variables.Debug >= 10 then
+				GoGo_DebugAddLine("GoGo_GetIDName: GetItemID for " .. itemid .. " " .. GetItemInfo(GoGo_Variables.MountDB[itemid][50000]))
+			end --if
 			return GetItemInfo(GoGo_Variables.MountDB[itemid][50000]) or "Unknown Mount"
 		else
+			if GoGo_Variables.Debug >= 10 then
+				GoGo_DebugAddLine("GoGo_GetIDName: GetSpellID for " .. itemid .. " " .. (GetSpellInfo(itemid) or "Unknown Mount"))
+			end --if
 			return GetSpellInfo(itemid) or "Unknown Mount"
 		end --if
 	elseif type(itemid) == "table" then
