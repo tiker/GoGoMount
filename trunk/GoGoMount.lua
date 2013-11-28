@@ -394,10 +394,14 @@ function GoGo_ChooseMount()
 	end --if
 
 	if (GoGo_Variables.Player.Level < 60) then
-		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ChooseMount: Disabling flying - under level 60")
+		if (GoGo_Variables.Player.Level > 58 && GoGo_Variables.Player.Class == "DRUID") then
+			-- do nothing.. druids can fly at 58
+		else
+			if GoGo_Variables.Debug >= 10 then
+				GoGo_DebugAddLine("GoGo_ChooseMount: Disabling flying - under level 60")
+			end --if
+			GoGo_Variables.NoFlying = true
 		end --if
-		GoGo_Variables.NoFlying = true
 	end --if
 
 --	if GoGo_Variables.ExpansionAccount == 3 then  -- only exists for 4.x with Cataclysm expansion
