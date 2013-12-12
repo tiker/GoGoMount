@@ -4289,6 +4289,8 @@ function GoGo_DebugCollectInformation()
 		GoGo_DebugAddLine("Information: Account - World of Warcraft: Cataclysm enabled.")
 	elseif GoGo_Variables.ExpansionAccount == 4 then
 		GoGo_DebugAddLine("Information: Account - World of Warcraft: Mists of Pandaria enabled.")
+	elseif GoGo_Variables.ExpansionAccount == 5 then
+		GoGo_DebugAddLine("Information: Account - World of Warcraft: Warlords of Draenor enabled.")
 	end --if
 	if GoGo_Variables.ExpansionGame == 0 then
 		GoGo_DebugAddLine("Information: Game - World of Warcraft (Classic) enabled.")
@@ -4300,6 +4302,8 @@ function GoGo_DebugCollectInformation()
 		GoGo_DebugAddLine("Information: Game - World of Warcraft: Cataclysm enabled.")
 	elseif GoGo_Variables.ExpansionGame == 4 then
 		GoGo_DebugAddLine("Information: Game - World of Warcraft: Mists of Pandaria enabled.")
+	elseif GoGo_Variables.ExpansionGame == 5 then
+		GoGo_DebugAddLine("Information: Game - World of Warcraft: Warlords of Draenor enabled.")
 	end --if
 	GoGo_DebugAddLine("Information: Client locale is " .. GetLocale())
 	GoGo_DebugAddLine("Information: Location = " .. GetRealZoneText() .. " - " .. GetZoneText() .. " - " ..GetSubZoneText() .. " - " .. GetMinimapZoneText())
