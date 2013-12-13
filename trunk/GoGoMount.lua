@@ -394,7 +394,7 @@ function GoGo_ChooseMount()
 	end --if
 
 	if (GoGo_Variables.Player.Level < 60) then
-		if (GoGo_Variables.Player.Level > 58 && GoGo_Variables.Player.Class == "DRUID") then
+		if (GoGo_Variables.Player.Level >= 58 and GoGo_Variables.Player.Class == "DRUID") then
 			-- do nothing.. druids can fly at 58
 		else
 			if GoGo_Variables.Debug >= 10 then
