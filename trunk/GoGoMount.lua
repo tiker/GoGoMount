@@ -3551,7 +3551,7 @@ GOGO_MESSAGES = {
 function GoGo_DebugAddLine(LogLine)
 ---------
 	if not GoGo_Variables.DebugLine then GoGo_Variables.DebugLine = 1 end --if
-	GoGo_DebugLog[GoGo_Variables.DebugLine] = LogLine
+	GoGo_DebugLog[GoGo_Variables.DebugLine] = time() .. " " .. LogLine
 	GoGo_Msg(LogLine)
 	GoGo_Variables.DebugLine = GoGo_Variables.DebugLine + 1
 	
