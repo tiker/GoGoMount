@@ -194,6 +194,7 @@ function GoGo_PreClick(button)
 		GoGo_FillButton(button, GoGo_GetMount())
 	end --if
 	
+--[[ --Disabled for now since Blizzard keeps changing group & raid layouts	
 	if not GoGo_Variables.TestVersion then
 		if ( IsInGuild() ) then
 			if GoGo_Variables.Debug >= 5 then
@@ -223,7 +224,7 @@ function GoGo_PreClick(button)
 			end --if
 			SendAddonMessage("GoGoMountVER", GetAddOnMetadata("GoGoMount", "Version"), "RAID")
 		end --if
-	end --if
+	end --if ]]
 	if GoGo_Variables.Debug >= 10 then
 		GoGo_Variables.Debug = 0
 	end --if
@@ -3551,7 +3552,7 @@ GOGO_MESSAGES = {
 function GoGo_DebugAddLine(LogLine)
 ---------
 	if not GoGo_Variables.DebugLine then GoGo_Variables.DebugLine = 1 end --if
-	GoGo_DebugLog[GoGo_Variables.DebugLine] = time() .. " " .. LogLine
+	GoGo_DebugLog[GoGo_Variables.DebugLine] = (debugprofilestop()-GoGo_Variables.DebugTimer) .. " " .. LogLine
 	GoGo_Msg(LogLine)
 	GoGo_Variables.DebugLine = GoGo_Variables.DebugLine + 1
 	

@@ -18,6 +18,7 @@ GoGo_Variables.AirSpeed = {}
 GoGo_Variables.WaterSpeed = {}
 GoGo_Variables.WaterSurfaceSpeed = {}
 GoGo_Variables.Debug = 0
+GoGo_Variables.DebugTimer = 0
 GoGo_Variables.TestVersion = false
 
 ---------
