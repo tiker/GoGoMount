@@ -3192,6 +3192,14 @@ function GoGo_UpdateMountData()
 		GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][2] = true
 	end --if
 
+	if (GoGo_Variables.Player.Class == "SHAMAN") and (GoGo_GlyphActive(19264)) then
+	-- player = shaman and has glyph of Ghost Wolf (cast ghost wolf while dead)
+		GoGo_Variables.MountDB[GoGo_Variables.Localize.GhostWolf][550] = true
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_UpdateMountData: We're a Shaman with Glyph of Ghost Wolf.  Modifying Ghost Wolf to work while the player is dead.")
+		end --if
+	end --if
+	
 	if (GoGo_Variables.Player.Class == "WARLOCK") and (GoGo_GlyphActive(56232)) then
 		-- spellid:56232 = Warlock's Glyph of Nightmares
 		-- Update Felsteeds / Dreadsteeds water surface speed to player's ground surface mount speed (160 / 200)
@@ -4015,34 +4023,48 @@ function GoGo_ZoneExclusions_Panel()
 end --function
 
 ---------
-function GoGo_SetPref(strPref, intValue)
+function GoGo_SetPref(strPref, intValue, boolNoPanel)
 ---------
+	-- boolNoPanel = set to true to skip updating GUI checkboxes  (called by setdefaults before GUI frames are loaded)
 	if (not strPref) then
 		return
 	end --if
 	
 	if strPref == "DruidClickForm" then
 		GoGo_Prefs.DruidClickForm = intValue
-		GoGo_Druid_Panel_ClickForm:SetChecked(intValue)
+		if (not boolNoPanel) then
+			GoGo_Druid_Panel_ClickForm:SetChecked(intValue)
+		end --if
 	elseif strPref == "DruidFlightForm" then
 		GoGo_Prefs.DruidFlightForm = intValue
-		GoGo_Druid_Panel_FlightForm:SetChecked(intValue)
+		if (not boolNoPanel) then
+			GoGo_Druid_Panel_FlightForm:SetChecked(intValue)
+		end --if
 	elseif strPref == "DruidFormNotRandomize" then
 		GoGo_Prefs.DruidFormNotRandomize = intValue
-		GoGo_Druid_Panel_NoShapeInRandom:SetChecked(intValue)
+		if (not boolNoPanel) then
+			GoGo_Druid_Panel_NoShapeInRandom:SetChecked(intValue)
+		end --if
 	elseif strPref == "ShamanClickForm" then
 		GoGo_Prefs.ShamanClickForm = intValue
-		GoGo_Shaman_Panel_ClickForm:SetChecked(intValue)
+		if (not boolNoPanel) then
+			GoGo_Shaman_Panel_ClickForm:SetChecked(intValue)
+		end --if
 	elseif strPref == "DruidDisableInCombat" then
 		GoGo_Prefs.DruidDisableInCombat = intValue
-		GoGo_Druid_Panel_DisableInCombat:SetChecked(intValue)
+		if (not boolNoPanel) then
+			GoGo_Druid_Panel_DisableInCombat:SetChecked(intValue)
+		end --if
 	elseif strPref == "RemoveBuffs" then
 		GoGo_Prefs.RemoveBuffs = intValue
-		GoGo_Panel_RemoveBuffs:SetChecked(intValue)
+		if (not boolNoPanel) then
+			GoGo_Panel_RemoveBuffs:SetChecked(intValue)
+		end --if
 	elseif strPref == "AspectPack" then
 		GoGo_Prefs.AspectPack = intValue
-		GoGo_Hunter_Panel_AspectOfPack:SetChecked(intValue)
-	
+		if (not boolNoPanel) then
+			GoGo_Hunter_Panel_AspectOfPack:SetChecked(intValue)
+		end --if
 	end --if
 
 end --function
@@ -4081,17 +4103,17 @@ function GoGo_Settings_Default(Class)
 		GoGo_SetOptionAutoDismount(1)
 		GoGo_Prefs.DisableUpdateNotice = false
 		GoGo_Prefs.DisableMountNotice = false
-		GoGo_SetPref("DruidClickForm", true)
-		GoGo_SetPref("DruidFlightForm", false)
+		GoGo_SetPref("DruidClickForm", true, true)
+		GoGo_SetPref("DruidFlightForm", false, true)
 		GoGo_Prefs.UnknownMounts = {}
 		GoGo_Prefs.GlobalPrefMounts = {}
 		GoGo_Prefs.GlobalPrefMount = false
-		GoGo_SetPref("AspectPack", false)
-		GoGo_SetPref("DruidFormNotRandomize", false)
+		GoGo_SetPref("AspectPack", false, true)
+		GoGo_SetPref("DruidFormNotRandomize", false, true)
 		GoGo_Prefs.DisableWaterFlight = true
 		GoGo_SetPref("RemoveBuffs", true)
-		GoGo_SetPref("DruidDisableInCombat", false)
-		GoGo_SetPref("ShamanClickForm", false)
+		GoGo_SetPref("DruidDisableInCombat", false, true)
+		GoGo_SetPref("ShamanClickForm", false, true)
 	end --if
 end --function
 
