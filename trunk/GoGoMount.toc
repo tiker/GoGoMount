@@ -1,6 +1,6 @@
 ## Interface: 50400
 ## Title: GoGoMount
-## Version: 5.4.12
+## Version: 5.4.13
 ## Notes: One-key solution for mounting/dismounting, supports spells, shapeshifting
 ## Notes-enGB: One-key solution for mounting/dismounting, supports spells, shapeshifting
 ## Notes-deDE: Ein-Tasten-Lösung für das Auf- und Absitzen von Reittieren, unterstützt auch Zaubersprüche und Gestaltwandlung
@@ -12,5 +12,6 @@
 ## Notes-koKR: 탈것의 타기/내리기를 위한 1 키 해결, 주문, 변신 지원
 ## Author: Gadgets (Tiker) @ Bleeding Hollow
 ## SavedVariablesPerCharacter: GoGo_Prefs GoGo_DebugLog
+## SavedVariables: GoGo_Prefs_Template
 
 GoGoMount.xml

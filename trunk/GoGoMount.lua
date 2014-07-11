@@ -25,6 +25,9 @@ function GoGo_OnEvent(self, event, ...)
 		if not GoGo_Prefs then
 			GoGo_Settings_Default()
 		end --if
+		if not GoGo_Prefs_Template then
+			GoGo_Prefs_Template = {}
+		end --if
 		if not GoGo_Prefs.version then
 			GoGo_Settings_Default()
 		elseif GoGo_Prefs.version ~= GetAddOnMetadata("GoGoMount", "Version") then
@@ -4111,7 +4114,7 @@ function GoGo_Settings_Default(Class)
 		GoGo_SetPref("AspectPack", false, true)
 		GoGo_SetPref("DruidFormNotRandomize", false, true)
 		GoGo_Prefs.DisableWaterFlight = true
-		GoGo_SetPref("RemoveBuffs", true)
+		GoGo_SetPref("RemoveBuffs", true, true)
 		GoGo_SetPref("DruidDisableInCombat", false, true)
 		GoGo_SetPref("ShamanClickForm", false, true)
 	end --if
