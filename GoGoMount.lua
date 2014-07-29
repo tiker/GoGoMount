@@ -653,19 +653,14 @@ function GoGo_FilterMountsOut(PlayerMounts, FilterID)
 	if table.getn(PlayerMounts) == 0 then
 		return GoGo_FilteringMounts
 	end --if
-	if Value == nil then
-		local Value = true
-	end --if
 	if not GoGo_Variables.MountDB then
 		GoGo_GetMountDB()
 	end --if
 	for a = 1, table.getn(PlayerMounts) do
 		local MountID = PlayerMounts[a]
-		for DBMountID, DBMountData in pairs(GoGo_Variables.MountDB) do
-			if (DBMountID == MountID) and not DBMountData[FilterID] then
-				table.insert(GoGo_FilteringMounts, MountID)
-			end --if
-		end --for
+		if not GoGo_Variables.MountDB[MountID][FilterID] then
+			table.insert(GoGo_FilteringMounts, MountID)
+		end --if
 	end --for
 	return GoGo_FilteringMounts
 end --function
@@ -687,15 +682,13 @@ function GoGo_FilterMountsIn(PlayerMounts, FilterID, Value)
 	
 	for a = 1, table.getn(PlayerMounts) do
 		local MountID = PlayerMounts[a]
-		for DBMountID, DBMountData in pairs(GoGo_Variables.MountDB) do
-			if (DBMountID == MountID) and DBMountData[FilterID] then
-				if Value and DBMountData[FilterID] == Value then
-					table.insert(GoGo_FilteringMounts, MountID)
-				elseif Value == nil then
-					table.insert(GoGo_FilteringMounts, MountID)
-				end --if
+		if GoGo_Variables.MountDB[MountID][FilterID] then
+			if Value and GoGo_Variables.MountDB[MountID][FilterID] == Value then
+				table.insert(GoGo_FilteringMounts, MountID)
+			elseif Value == nil then
+				table.insert(GoGo_FilteringMounts, MountID)
 			end --if
-		end --for
+		end --if
 	end --for
 	return GoGo_FilteringMounts
 end --function
@@ -2817,6 +2810,16 @@ function GoGo_ZoneCheck()
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Dun Morogh - Shimmer Ridge (3 player scenario)")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = true
+	elseif GoGo_Variables.Player.ZoneID == 947 then
+		-- Lunar Fall
+		-- Shadowmoon Valley
+		--(Both in the same area of Warlords of Draenor expansion)
+		-- Need to verify that this zone ID is not used
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Shadowmoon Valley / Lundar Fall")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false   -- can't fly here yet in WoD
 		-- can ride = true
 	elseif GoGo_Variables.Player.ZoneID == 951 then
 		if GoGo_Variables.Debug >= 10 then
