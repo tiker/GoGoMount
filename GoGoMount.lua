@@ -2822,10 +2822,20 @@ function GoGo_ZoneCheck()
 		GoGo_Variables.ZoneExclude.CanFly = false   -- can't fly here yet in WoD
 		-- can ride = true
 	elseif GoGo_Variables.Player.ZoneID == 951 then
+		-- shows Temperal Anomaly buff showing no-flying for the main island
+		-- areas in the water around the island allows for flying even with the Temperal Anomaly buff
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Timeless Isle")
 		end --if
-		GoGo_Variables.ZoneExclude.CanFly = false   -- shows Temperal Anomaly buff showing no-flying
+		-- shows Temperal Anomaly buff showing no-flying for the main island
+		-- areas in the water around the island allows for flying even with the Temperal Anomaly buff
+		-- using IsFlyableArea() for now as the only other method to determine non-flyable area right now is drawing out co-ordinates similar to Dalaran before IsFlyableArea() was introduced
+		if IsFlyableArea() then
+			GoGo_Variables.ZoneExclude.CanFly = true
+		else
+			GoGo_Variables.ZoneExclude.CanFly = false
+		end --if
+
 		-- can ride = true
 	elseif GoGo_Variables.Player.ZoneID == 953 then
 		if GoGo_Variables.Debug >= 10 then
