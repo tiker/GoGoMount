@@ -228,7 +228,7 @@ function GoGo_PreClick(button)
 			SendAddonMessage("GoGoMountVER", GetAddOnMetadata("GoGoMount", "Version"), "RAID")
 		end --if
 	end --if ]]
-	if GoGo_Variables.Debug >= 10 then
+	if GoGo_Variables.Debug >= 10 and not GoGo_Variables.TestVersion then
 		GoGo_Variables.Debug = 0
 	end --if
 end --function
@@ -682,12 +682,19 @@ function GoGo_FilterMountsIn(PlayerMounts, FilterID, Value)
 	
 	for a = 1, table.getn(PlayerMounts) do
 		local MountID = PlayerMounts[a]
-		if GoGo_Variables.MountDB[MountID][FilterID] then
-			if Value and GoGo_Variables.MountDB[MountID][FilterID] == Value then
-				table.insert(GoGo_FilteringMounts, MountID)
-			elseif Value == nil then
-				table.insert(GoGo_FilteringMounts, MountID)
+		if GoGo_Variables.MountDB[MountID] then
+			if GoGo_Variables.MountDB[MountID][FilterID] then
+				if Value and GoGo_Variables.MountDB[MountID][FilterID] == Value then
+					table.insert(GoGo_FilteringMounts, MountID)
+				elseif Value == nil then
+					table.insert(GoGo_FilteringMounts, MountID)
+				end --if
 			end --if
+		else
+			if GoGo_Variables.Debug >= 5 then
+				GoGo_DebugAddLine("GoGo_FilterMountsIn: Function called looking for unknown mount:  " .. MountID)
+			end --if
+			
 		end --if
 	end --for
 	return GoGo_FilteringMounts
@@ -739,34 +746,44 @@ function GoGo_Dismount(button)
 	return true
 end --function
 
---[[   		-- nothing calling this function - no longer needed?
----------
-function GoGo_InCompanions(item)
----------
-	for slot = 1, GetNumCompanions("MOUNT") do
-		local _, _, spellID = GetCompanionInfo("MOUNT", slot)
-		if spellID and string.find(item, spellID) then
-			if GoGo_Variables.Debug >= 10 then 
-				GoGo_DebugAddLine("GoGo_InCompanions: Found mount name  " .. GetSpellInfo(spellID) .. " in mount list.")
-			end --if
-			return GetSpellInfo(spellID)
-		end --if
-	end --for
-end --function
-]]
-
 ---------
 function GoGo_BuildMountList()
 ---------
 	local GoGo_MountList = {}
 
 	if (GetNumCompanions("MOUNT") >= 1) then
-		for slot = 1, GetNumCompanions("MOUNT"),1 do
-			local _, _, SpellID = GetCompanionInfo("MOUNT", slot)
+		for slot = 1,  C_MountJournal.GetNumMounts(),1 do
+			local _, SpellID, _, _, _, _, _, isFactionSpecific, faction = C_MountJournal.GetMountInfo(slot)
 			if GoGo_Variables.Debug >= 10 then 
-				GoGo_DebugAddLine("GoGo_BuildMountList: Found mount spell ID " .. SpellID .. " at slot " .. slot .. " and added to known mount list.")
+				-- show a line for each mount and indicate if it's usable, etc. in debug log?
+				GoGo_DebugAddLine("GoGo_BuildMountList: Found mount spell ID " .. SpellID .. " and added to known mount list.")
 			end --if
-			table.insert(GoGo_MountList, SpellID)
+
+			if isFactionSpecific then
+				if faction == 1 then
+					faction = "HORDE"
+				elseif faction == 2 then
+					faction = "ALLIANCE"
+				end --if
+		
+				if faction == GoGo_Variables.Player.Race then
+					table.insert(GoGo_MountList, SpellID)
+					if GoGo_Variables.Debug >= 10 then 
+						GoGo_DebugAddLine("GoGo_BuildMountList: " .. SpellID .. " is faction specific to " .. faction .. " and matches our faction.")
+					end --if
+				else
+					if GoGo_Variables.Debug >= 10 then 
+						GoGo_DebugAddLine("GoGo_BuildMountList: " .. SpellID .. " is faction specific to " .. faction .. " and does not match our faction.")
+					end --if
+				end --if
+			else
+				table.insert(GoGo_MountList, SpellID)
+				if GoGo_Variables.Debug >= 10 then 
+					GoGo_DebugAddLine("GoGo_BuildMountList: " .. SpellID .. " is not faction specific.")
+				end --if
+			end --if
+
+--			table.insert(GoGo_MountList, SpellID)
 		end --for
 	end --if
 
