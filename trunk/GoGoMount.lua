@@ -21,6 +21,9 @@ function GoGo_OnEvent(self, event, ...)
 ---------
 	local arg1, arg2, arg3, arg4 = ...
 	if event == "ADDON_LOADED" and arg1 == "GoGoMount" then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_OnEvent(ADDON_LOADED): Addon Loaded event fired.")
+		end --if
 		GoGoFrame:UnregisterEvent("ADDON_LOADED")
 		if not GoGo_Prefs then
 			GoGo_Settings_Default()
@@ -56,6 +59,7 @@ function GoGo_OnEvent(self, event, ...)
 		GoGo_ExtraPassengerMounts_Panel()
 		GoGo_ZoneExclusions_Panel()
 		GoGo_GlobalExclusions_Panel()
+		GoGo_CheckBindings()  -- reset key bindings when issuing /console reloadui
 		if GoGo_Prefs.autodismount then
 			GoGo_SetOptionAutoDismount(1)
 		end --if
@@ -96,6 +100,9 @@ function GoGo_OnEvent(self, event, ...)
 		GoGo_Dismount()
 	elseif event == "UPDATE_BINDINGS" then
 		if not InCombatLockdown() then  -- ticket 213
+			if GoGo_Variables.Debug >= 10 then
+				GoGo_DebugAddLine("GoGo_OnEvent(UPDATE_BINDINGS): Updating key bindings.")
+			end --if
 			GoGo_CheckBindings()
 		end --if
 	elseif event == "UI_ERROR_MESSAGE" then
@@ -753,37 +760,24 @@ function GoGo_BuildMountList()
 
 	if (GetNumCompanions("MOUNT") >= 1) then
 		for slot = 1,  C_MountJournal.GetNumMounts(),1 do
-			local _, SpellID, _, _, _, _, _, isFactionSpecific, faction = C_MountJournal.GetMountInfo(slot)
+			local _, SpellID, _, _, isUsable, _, _, isFactionSpecific, faction, _, isCollected = C_MountJournal.GetMountInfo(slot)
+			
 			if GoGo_Variables.Debug >= 10 then 
 				-- show a line for each mount and indicate if it's usable, etc. in debug log?
-				GoGo_DebugAddLine("GoGo_BuildMountList: Found mount spell ID " .. SpellID .. " and added to known mount list.")
+				--GoGo_DebugAddLine("GoGo_BuildMountList: Found mount spell ID " .. SpellID .. " and added to known mount list.")
+				GoGo_DebugAddLine("GoGo_BuildMountList: SpellID: " .. SpellID .. "  isUsable: " .. tostring(isUsable) .. "  isFactionSpecific: " .. tostring(isFactionSpecific) .. "  faction: " .. tostring(faction) .. "  isCollected: " .. tostring(isCollected) .. "  IsUsableSpell(): " .. tostring(IsUsableSpell(SpellID)) .. "  IsSpellKnown(): " .. tostring(IsSpellKnown(SpellID)))
 			end --if
 
-			if isFactionSpecific then
-				if faction == 1 then
-					faction = "HORDE"
-				elseif faction == 2 then
-					faction = "ALLIANCE"
-				end --if
-		
-				if faction == GoGo_Variables.Player.Race then
+			if isCollected and isUsable then
+					if GoGo_Variables.Debug >= 10 then 
+						GoGo_DebugAddLine("GoGo_BuildMountList: " .. SpellID .. " has been added to the list of mounts available.")
+					end --if
 					table.insert(GoGo_MountList, SpellID)
-					if GoGo_Variables.Debug >= 10 then 
-						GoGo_DebugAddLine("GoGo_BuildMountList: " .. SpellID .. " is faction specific to " .. faction .. " and matches our faction.")
-					end --if
-				else
-					if GoGo_Variables.Debug >= 10 then 
-						GoGo_DebugAddLine("GoGo_BuildMountList: " .. SpellID .. " is faction specific to " .. faction .. " and does not match our faction.")
-					end --if
-				end --if
 			else
-				table.insert(GoGo_MountList, SpellID)
-				if GoGo_Variables.Debug >= 10 then 
-					GoGo_DebugAddLine("GoGo_BuildMountList: " .. SpellID .. " is not faction specific.")
-				end --if
+					if GoGo_Variables.Debug >= 10 then 
+						GoGo_DebugAddLine("GoGo_BuildMountList: " .. SpellID .. " has not been added to the list of mounts available.")
+					end --if
 			end --if
-
---			table.insert(GoGo_MountList, SpellID)
 		end --for
 	end --if
 
