@@ -287,7 +287,7 @@ function GoGo_ChooseMount()
 	elseif (GoGo_Variables.Player.Class == "SHAMAN") then
 		GoGo_TableAddUnique(GoGo_Variables.GroundSpeed, 130)  -- Ghost Wolf
 	elseif (GoGo_Variables.Player.Class == "HUNTER") then
-		GoGo_TableAddUnique(GoGo_Variables.GroundSpeed, 130) -- Aspects
+		GoGo_TableAddUnique(GoGo_Variables.GroundSpeed, 138) -- Aspects
 	elseif (GoGo_Variables.Player.Class == "MONK") then
 		GoGo_TableAddUnique(GoGo_Variables.AirSpeed, 160)  -- Zen Flight
 	end --if
@@ -804,10 +804,10 @@ function GoGo_BuildMountList()
 	elseif GoGo_Variables.Player.Class == "HUNTER" then
 		if GoGo_InBook(GoGo_Variables.Localize.AspectPack) and GoGo_Prefs.AspectPack then
 			table.insert(GoGo_MountList, GoGo_Variables.Localize.AspectPack)
-			GoGo_TableAddUnique(GoGo_Variables.GroundSpeed, 130)
+			GoGo_TableAddUnique(GoGo_Variables.GroundSpeed, 138)
 		elseif GoGo_InBook(GoGo_Variables.Localize.AspectCheetah) then
 			table.insert(GoGo_MountList, GoGo_Variables.Localize.AspectCheetah)
-			GoGo_TableAddUnique(GoGo_Variables.GroundSpeed, 130)
+			GoGo_TableAddUnique(GoGo_Variables.GroundSpeed, 138)
 		end --if
 	elseif GoGo_Variables.Player.Class == "MONK" then
 		if GoGo_InBook(GoGo_Variables.Localize.ZenFlight) then
