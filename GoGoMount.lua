@@ -788,11 +788,14 @@ function GoGo_BuildMountList()
 		if GoGo_InBook(GoGo_Variables.Localize.CatForm) then
 			table.insert(GoGo_MountList, GoGo_Variables.Localize.CatForm)
 		end --if
-		if GoGo_InBook(GoGo_Variables.Localize.FlightForm) then
+		if GoGo_InBook(GoGo_Variables.Localize.FlightForm) then  -- may not be used any more since Warcraft 6.0
 			table.insert(GoGo_MountList, GoGo_Variables.Localize.FlightForm)
 		end --if
-		if GoGo_InBook(GoGo_Variables.Localize.FastFlightForm) then
+		if GoGo_InBook(GoGo_Variables.Localize.FastFlightForm) then  -- may not be used any more since Warcraft 6.0
 			table.insert(GoGo_MountList, GoGo_Variables.Localize.FastFlightForm)
+		end --if
+		if GoGo_InBook(165962) then  -- Flight Form that appears with "Glyph of the Stag" in Warcraft 6.0
+			table.insert(GoGo_MountList, 165962)
 		end --if
 		if GoGo_InBook(GoGo_Variables.Localize.TravelForm) then
 			table.insert(GoGo_MountList, GoGo_Variables.Localize.TravelForm)
@@ -3217,6 +3220,17 @@ function GoGo_UpdateMountData()
 	if (GoGo_Variables.Player.Class == "DRUID") and (GoGo_GlyphActive(GoGo_Variables.Localize.Glyph_Stag) and not GoGo_GlyphActive(GoGo_Variables.Localize.Glyph_Cheetah)) then
 		-- Druid's travel form can carry a passenger
 		GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][2] = true
+	end --if
+
+	if (GoGo_Variables.Player.Class == "DRUID") and not GoGo_GlyphActive(GoGo_Variables.Localize.Glyph_Stag) then
+		-- Druid's travel form is used for flight form, travel form and aqua forms based on location
+		GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][9] = true
+		GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][300] = true
+		GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][301] = true
+		GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][403] = true
+		GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][10001] = 101
+		GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][10003] = 250
+		GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][10004] = 101
 	end --if
 
 	if (GoGo_Variables.Player.Class == "SHAMAN") and (GoGo_GlyphActive(19264)) then
