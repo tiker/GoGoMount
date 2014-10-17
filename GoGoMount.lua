@@ -3428,7 +3428,7 @@ function GoGo_SetOptionAutoDismount(GoGo_Value)
 		GoGo_Prefs.autodismount = true
 	elseif GoGo_Value == 0 then	
 		GoGoFrame:UnregisterEvent("UI_ERROR_MESSAGE")
-		GoGo_Panel_AutoDismount:SetChecked(0)
+		GoGo_Panel_AutoDismount:SetChecked(false)
 		GoGo_Prefs.autodismount = false
 	end --if
 end --function
@@ -3479,7 +3479,7 @@ GOGO_COMMANDS = {
 		if GoGo_Prefs.DisableUpdateNotice then
 			GoGo_Panel_DisableUpdateNotice:SetChecked(1)
 		else
-			GoGo_Panel_DisableUpdateNotice:SetChecked(0)
+			GoGo_Panel_DisableUpdateNotice:SetChecked(false)
 		end --if
 	end, --function
 	["mountnotice"] = function()
@@ -3488,7 +3488,7 @@ GOGO_COMMANDS = {
 		if GoGo_Prefs.DisableMountNotice then
 			GoGo_Panel_DisableMountNotice:SetChecked(1)
 		else
-			GoGo_Panel_DisableMountNotice:SetChecked(0)
+			GoGo_Panel_DisableMountNotice:SetChecked(false)
 		end --if
 	end, --function
 	["druidclickform"] = function()
@@ -3636,7 +3636,7 @@ function GoGo_Panel_Options()
 			if GoGo_Prefs.autodismount then
 				GoGo_Panel_AutoDismount:SetChecked(1)
 			else
-				GoGo_Panel_AutoDismount:SetChecked(0)
+				GoGo_Panel_AutoDismount:SetChecked(false)
 			end --if
 		end --function
 	)
@@ -3658,7 +3658,7 @@ function GoGo_Panel_Options()
 			if GoGo_Prefs.GlobalPrefMount then
 				GoGo_Panel_GlobalPrefMount:SetChecked(1)
 			else
-				GoGo_Panel_GlobalPrefMount:SetChecked(0)
+				GoGo_Panel_GlobalPrefMount:SetChecked(false)
 			end --if
 		end --function
 	)
@@ -3680,7 +3680,7 @@ function GoGo_Panel_Options()
 			if GoGo_Prefs.DisableUpdateNotice then
 				GoGo_Panel_DisableUpdateNotice:SetChecked(1)
 			else
-				GoGo_Panel_DisableUpdateNotice:SetChecked(0)
+				GoGo_Panel_DisableUpdateNotice:SetChecked(false)
 			end --if
 		end --function
 	)
@@ -3702,7 +3702,7 @@ function GoGo_Panel_Options()
 			if GoGo_Prefs.DisableMountNotice then
 				GoGo_Panel_DisableMountNotice:SetChecked(1)
 			else
-				GoGo_Panel_DisableMountNotice:SetChecked(0)
+				GoGo_Panel_DisableMountNotice:SetChecked(false)
 			end --if
 		end --function
 	)
@@ -3724,7 +3724,7 @@ function GoGo_Panel_Options()
 			if GoGo_Prefs.DisableWaterFlight then
 				GoGo_Panel_DisableWaterFlight:SetChecked(1)
 			else
-				GoGo_Panel_DisableWaterFlight:SetChecked(0)
+				GoGo_Panel_DisableWaterFlight:SetChecked(false)
 			end --if
 		end --function
 	)
@@ -3803,7 +3803,7 @@ function GoGo_Druid_Panel()
 			if GoGo_Prefs.DruidDisableInCombat then
 				GoGo_Druid_Panel_DisableInCombat:SetChecked(1)
 			else
-				GoGo_Druid_Panel_DisableInCombat:SetChecked(0)
+				GoGo_Druid_Panel_DisableInCombat:SetChecked(false)
 			end --if
 		end --function
 	)
@@ -4240,7 +4240,7 @@ function GoGo_AddOptionCheckboxes(GoGo_FrameParentText)
 			local GoGo_CheckBoxName = GoGo_FrameParentText .. GoGo_MountID
 			if _G[GoGo_CheckBoxName] then
 				_G[GoGo_CheckBoxName]:SetPoint("TOPLEFT", 16, GoGo_checkboxrow)
-				_G[GoGo_CheckBoxName]:SetChecked(0)
+				_G[GoGo_CheckBoxName]:SetChecked(false)
 			else
 				GoGo_CheckButton = CreateFrame("CheckButton", GoGo_CheckBoxName, GoGo_FrameParent, "ChatConfigCheckButtonTemplate")
 				GoGo_CheckButton:SetPoint("TOPLEFT", 16, GoGo_checkboxrow)
@@ -4263,7 +4263,7 @@ function GoGo_AddOptionCheckboxes(GoGo_FrameParentText)
 					for GoGo_FavoriteCount = 1, table.getn(GoGo_Prefs.Zones[GoGo_Variables.Player.Zone]["Preferred"]) do
 						if GoGo_Prefs.Zones[GoGo_Variables.Player.Zone]["Preferred"][GoGo_FavoriteCount] == GoGo_MountID then
 							_G[GoGo_CheckBoxName]:SetChecked(1)
---							GoGo_DebugAddLine("GoGo_AddOptionCheckboxes(): set checked ")
+--							GoGo_DebugAddLine("GoGo_AddOptionCheckboxes(): set checked " .. GoGo_MountID)
 						end --if
 					end --for
 				end --if
