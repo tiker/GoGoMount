@@ -4241,6 +4241,7 @@ function GoGo_AddOptionCheckboxes(GoGo_FrameParentText)
 			if _G[GoGo_CheckBoxName] then
 				_G[GoGo_CheckBoxName]:SetPoint("TOPLEFT", 16, GoGo_checkboxrow)
 				_G[GoGo_CheckBoxName]:SetChecked(false)
+--				_G[GoGo_CheckBoxName].tooltipText = "" -- clear tool tip text
 			else
 				GoGo_CheckButton = CreateFrame("CheckButton", GoGo_CheckBoxName, GoGo_FrameParent, "ChatConfigCheckButtonTemplate")
 				GoGo_CheckButton:SetPoint("TOPLEFT", 16, GoGo_checkboxrow)
