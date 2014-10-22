@@ -748,6 +748,7 @@ GoGo_Variables.DebuffDB = {
 	24723,  -- Skeleton costume (from trick-or-treating in Inns)
 	24732,  -- Bat costume (from trick-or-treating in Inns)
 	24741,  -- Wisp Costume (from Hallowed Wand - Wisp during Halloween)
+--	24753,	-- Trick (from trick-or-treating in Inns)  -- can't be removed?
 --	24858,	-- Moonkin Form (Druids)  -- still needs to be removed for worgens shifting to running wild stance - handled in code
 	45438,  -- Ice Block (Mages)  -- takes too long to cool down after removal
 	59831,  -- Underbelly Elixir (from Underbelly Elixir - Dalaran) - one of the random effects turning player into a wasp
@@ -772,7 +773,7 @@ GoGo_Variables.DebuffDB = {
 	98445,  -- Trapped In Amber (from Ancient Amber)  -- requires 2 clicks to mount
 	114282,  -- Treant Form (Druid glyph in Warcraft 6.0)
 	122099,  -- Bamboozled (from /love Meng Meng in SW)
-	
+	172020,	-- Spider Costume (from trick-or-treating at the inns)
 }
 
 GoGo_Variables.GroundSpeed = {
