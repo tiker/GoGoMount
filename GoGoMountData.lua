@@ -543,26 +543,26 @@ function GoGo_GetMountDB()
 		[142266] = {[9] = true, [36] = true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Armored Red Dragonhawk
 		[142478] = {[9] = true, [36] = true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Armored Blue Dragonhawk
 		
-		[113199] = {[9] = true, [36] = true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Jade Cloud Serpent
-		[123992] = {[9] = true, [36] = true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Azure Cloud Serpent
-		[123993] = {[9] = true, [36] = true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Golden Cloud Serpent
-		[124408] = {[9] = true, [36] = true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Thundering Jade Cloud Serpent
-		[127154] = {[9] = true, [36] = true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Onyx Cloud Serpent
-		[127156] = {[9] = true, [36] = true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Crimson Cloud Serpent
-		[127158] = {[9] = true, [36] = true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Heavenly Onyx Cloud Serpent
-		[127161] = {[9] = true, [36] = true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Heavenly Crimson Cloud Serpent
-		[127164] = {[9] = true, [36] = true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Heavenly Golden Cloud Serpent
---		[127165] = {[9] = true, [36] = true, ["FlightOnly"] = true, [100]=true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Heavenly Jade Cloud Serpent
---		[127169] = {[9] = true, [36] = true, ["FlightOnly"] = true, [100]=true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Heavenly Azure Cloud Serpent
-		[127170] = {[9] = true, [36] = true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Astral Cloud Serpent
-		[129918] = {[9] = true, [36]=true, ["FlightOnly"] = true, [100]=true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Thundering August Cloud Serpent
-		[132036] = {[9] = true, [36]=true, ["FlightOnly"] = true, [100]=true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Thundering Ruby Cloud Serpent
-		[139407] = {[9] = true, [36]=true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Malevolent Gladiator's Cloud Serpent
-		[139442] = {[9] = true, [36]=true, ["FlightOnly"] = true, [100]=true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Thundering Cobolt Cloud Serpent
-		[148476] = {[9] = true, [36]=true, ["FlightOnly"] = true, [100]=true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Thundering Onyx Cloud Serpent
-		[148618] = {[9] = true, [36]=true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Tyrannical Gladiator's Cloud Serpent
-		[148619] = {[9] = true, [36]=true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Grievous Gladiator's Cloud Serpent
-		[148620] = {[9] = true, [36]=true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Prideful Gladiator's Cloud Serpent
+		[113199] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Jade Cloud Serpent
+		[123992] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Azure Cloud Serpent
+		[123993] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Golden Cloud Serpent
+		[124408] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Thundering Jade Cloud Serpent
+		[127154] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Onyx Cloud Serpent
+		[127156] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Crimson Cloud Serpent
+		[127158] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Heavenly Onyx Cloud Serpent
+		[127161] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Heavenly Crimson Cloud Serpent
+		[127164] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Heavenly Golden Cloud Serpent
+		[127165] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Heavenly Jade Cloud Serpent
+		[127169] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Heavenly Azure Cloud Serpent
+		[127170] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Astral Cloud Serpent
+		[129918] = {[9] = true, [38] = true, [100]=true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Thundering August Cloud Serpent
+		[132036] = {[9] = true, [38] = true, [100]=true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Thundering Ruby Cloud Serpent
+		[139407] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Malevolent Gladiator's Cloud Serpent
+		[139442] = {[9] = true, [38] = true, [100]=true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Thundering Cobolt Cloud Serpent
+		[148476] = {[9] = true, [38] = true, [100]=true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Thundering Onyx Cloud Serpent
+		[148618] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Tyrannical Gladiator's Cloud Serpent
+		[148619] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Grievous Gladiator's Cloud Serpent
+		[148620] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Prideful Gladiator's Cloud Serpent
 
 		[139448] = {[9] = true, [36]=true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Clutch of Ji-Kun
 
