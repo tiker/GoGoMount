@@ -485,13 +485,15 @@ function GoGo_ChooseMount()
 		end --if
 	end --if
 
+--[[
 	if not GoGo_InBook(GoGo_Variables.Localize.CloudSerpentRiding) then
 		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 100) or {}
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated mounts requiring Cloud Serpent Riding - " .. (table.getn(GoGo_Variables.FilteredMounts) or 0) .. " mounts left.")
 		end --if
 	end --if
-	
+]]
+
 	if IsFalling() then  -- we're falling.. save us  (only grab instant cast spells)
 		GoGo_Variables.FilteredMounts = GoGo_GetInstantMounts(GoGo_Variables.FilteredMounts) or {}
 		if GoGo_Variables.Debug >= 10 then
