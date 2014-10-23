@@ -62,13 +62,7 @@ function GoGo_GetMountDB()
 	---	[42673] = {[12] = true, [36] = true, [9] = true, [999] = true},  -- Flying Broom
 
 		[33184] = {[38] = true, [9] = true, [4] = true, [999] = true},  -- Swift Magic Broom  --  itemid
-	--	[42668] = {[11] = true, [36] = true, [9] = true, [999] = true},  -- Swift Flying Broom
 
-	---	[42679] = {[11] = true, [36] = true, [9] = true, [999] = true},  -- Swift Flying Broom
-
-
-	--	[33183] = {[38] = true, [4] = true},  -- Magic Broom  --  itemid
-	--	[33189] = {[4] = true, [15] = true, [39] = true, [10002]=100},  -- Rickety Magic Broom  --  See item dable below
 		[42667] = {[7] = true, [9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [402]=true, [403]=true, [600]=true, [601]=true, [10002]=160, [10003]=250, [50000]=33176},  -- Flying Broom  --  itemid
 		[42668] = {[9] = true, [11] = true, [36] = true, [50000]=33182},  -- Swift Flying Broom  --  [50000]=33184
 		[47977] = {[7]=true, [9] = true, [10]=true, [38] = true, [300]=true, [301]=true, [330]=true, [402]=true, [403]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67, [50000]=37011},  -- Magic Broom -- itemid
@@ -624,8 +618,11 @@ function GoGo_GetMountDB()
 		[150926] = {[9] = true, [36]=true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Draenor Chimera
 		[163025] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Grinning Reaver
 		[163024] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Warforged Nightmare
+		[171618] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Ancient Leatherhide
 		[171629] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Armored Frostboar
 		[171838] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Armored Frostwolf
+		[171626] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Armored Irontusk
+		[171630] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Armored Razorback
 		[25863] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Black Qiraji Battle Tank
 		[26655] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Black Qiraji Battle Tank
 		[6896] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Black Ram
@@ -634,10 +631,13 @@ function GoGo_GetMountDB()
 		[171832] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Breezestrider Stallion
 		[124550] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Cataclysmic Gladiator's Twilight Drake
 		[171848] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Challenger's War Yeti
+		[171846] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Champion's Treadblade
+		[171847] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Cindermane Charger
 		[170347] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Core Hound
 		[169952] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Creeping Carpet   - note indicates it can't fly... but details say it can..?
 		[171634] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Domesticated Razorback
 		[171844] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Dustmane Direwolf
+		[171625] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Dusty Rockhide
 		[175700] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Emerald Drake
 		[171632] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Frostplains Battleboar
 		[148626] = {[99999]=true, ["note"]="mount that only lasts 20 seconds?  adding here but excluding to prevent GoGoMount from flagging a unknown mount"},  -- Furious Ashhide Mushan
@@ -648,8 +648,11 @@ function GoGo_GetMountDB()
 		[459] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Gray Wolf
 		[171636] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Great Greytusk
 		[171621] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Ironhoof Destroyer
+		[171839] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Ironside Warwolf
+--		[123456] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Standard Ground Mount template
 		[171825] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Mosshide Riverwallow
 		[171622] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Mottled Meadowstomper
+		[171826] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Mudback Riverbeast
 		[171833] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Pale Thorngrazer
 		[171824] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Sapphire Riverbeast
 		[171624] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Shadowhide Pearltusk
