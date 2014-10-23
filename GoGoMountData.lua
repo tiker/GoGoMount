@@ -48,25 +48,10 @@ function GoGo_GetMountDB()
 		[127308] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Great Brown Dragon Turtle
 		[127310] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Great Purple Dragon Turtle
 		
-	--	[42692] = {[15] = true, [39] = true, [999] = true, [10002]=100},  -- Rickety Magic Broom
-
-
-	--	[42680] = {[38] = true, [999] = true},  -- Magic Broom
-
-	---	[42681] = {[38] = true, [999] = true},  -- Magic Broom
-
-	--	[42683] = {[38] = true, [999] = true},  -- Swift Magic Broom
-	---	[42684] = {[38] = true, [999] = true},  -- Swift Magic Broom
-
-	--	[42667] = {[12] = true, [36] = true, [9] = true, [999] = true},  -- Flying Broom
-	---	[42673] = {[12] = true, [36] = true, [9] = true, [999] = true},  -- Flying Broom
-
 		[33184] = {[38] = true, [9] = true, [4] = true, [999] = true},  -- Swift Magic Broom  --  itemid
-
 		[42667] = {[7] = true, [9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [402]=true, [403]=true, [600]=true, [601]=true, [10002]=160, [10003]=250, [50000]=33176},  -- Flying Broom  --  itemid
 		[42668] = {[9] = true, [11] = true, [36] = true, [50000]=33182},  -- Swift Flying Broom  --  [50000]=33184
 		[47977] = {[7]=true, [9] = true, [10]=true, [38] = true, [300]=true, [301]=true, [330]=true, [402]=true, [403]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67, [50000]=37011},  -- Magic Broom -- itemid
-
 	
 		[32243] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Tawny Wind Rider
 		[32244] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Blue Wind Rider
