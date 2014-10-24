@@ -767,6 +767,7 @@ GoGo_Variables.DebuffDB = {
 	98445,  -- Trapped In Amber (from Ancient Amber)  -- requires 2 clicks to mount
 	114282,  -- Treant Form (Druid glyph in Warcraft 6.0)
 	122099,  -- Bamboozled (from /love Meng Meng in SW)
+	172008,	-- Ghoul Costume (from trick-or-treating at inns)
 	172010,	-- Abomination Costume  (from trick-or-treating at the inns)
 	172020,	-- Spider Costume (from trick-or-treating at the inns)
 }
