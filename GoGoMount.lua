@@ -883,7 +883,7 @@ function GoGo_RemoveUnusableMounts(MountList)  -- Remove mounts Blizzard says we
 					end --if
 				end --if
 			else  -- it's a mount spell or class shape form
-				if IsUsableSpell(GoGo_SpellID) then
+				if IsUsableSpell(GoGo_SpellID) and IsSpellKnown(GoGo_SpellID) then
 					table.insert(GoGo_NewTable, GoGo_SpellID)
 				end --if
 			end --if
@@ -3130,16 +3130,16 @@ function GoGo_GetBestAirMounts(GoGo_FilteredMounts)
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_GetBestAirMounts: Druid with preferred flight forms option enabled.  Using flight form.")
 		end --if
-		if string.find(GoGo_SearchString, GoGo_Variables.Localize.FastFlightForm, 1, true) then
+		if string.find(GoGo_SearchString, 165962, 1, true) then
 			if GoGo_Variables.Debug >= 10 then
 				GoGo_DebugAddLine("GoGo_GetBestAirMounts: Found FastFlightForm")
 			end --if
-			table.insert(mounts, GoGo_Variables.Localize.FastFlightForm)
-		elseif string.find(GoGo_SearchString, GoGo_Variables.Localize.FlightForm, 1, true) then
+			table.insert(mounts, 165962)
+		elseif string.find(GoGo_SearchString, GoGo_Variables.Localize.TravelForm, 1, true) then
 			if GoGo_Variables.Debug >= 10 then
 				GoGo_DebugAddLine("GoGo_GetBestAirMounts: Found FlightForm")
 			end --if
-			table.insert(mounts, GoGo_Variables.Localize.FlightForm)
+			table.insert(mounts, GoGo_Variables.Localize.TravelForm)
 		else
 			if GoGo_Variables.Debug >= 10 then
 				GoGo_DebugAddLine("GoGo_GetBestAirMounts: No flight forms found")
