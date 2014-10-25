@@ -3385,31 +3385,27 @@ GOGO_ERRORS = {
 GOGO_SPELLS = {
 	["DRUID"] = function()
 		if GoGo_Prefs.DruidClickForm then
-			if GoGo_InBook(GoGo_Variables.Localize.AquaForm) then
-				if not GoGo_Variables.SkipFlyingMount and GoGo_InBook(GoGo_Variables.Localize.FastFlightForm) and GoGo_Variables.CanFly then
-					return "/cancelform [flying] \n/use [swimming] "..GoGo_InBook(GoGo_Variables.Localize.AquaForm).."; [indoors]"..GoGo_InBook(GoGo_Variables.Localize.CatForm).."; [combat]"..GoGo_InBook(GoGo_Variables.Localize.TravelForm).."; "..GoGo_InBook(GoGo_Variables.Localize.FastFlightForm)
-				elseif not GoGo_Variables.SkipFlyingMount and GoGo_InBook(GoGo_Variables.Localize.FlightForm) and GoGo_Variables.CanFly then
-					return "/cancelform [flying] \n/use [swimming] "..GoGo_InBook(GoGo_Variables.Localize.AquaForm).."; [indoors]"..GoGo_InBook(GoGo_Variables.Localize.CatForm).."; [combat]"..GoGo_InBook(GoGo_Variables.Localize.TravelForm).."; "..GoGo_InBook(GoGo_Variables.Localize.FlightForm)
-				else
-					return "/cancelform [flying] \n/use [swimming] "..GoGo_InBook(GoGo_Variables.Localize.AquaForm).."; [indoors]"..GoGo_InBook(GoGo_Variables.Localize.CatForm)..";"..GoGo_InBook(GoGo_Variables.Localize.TravelForm)
-				end --if
+			if not GoGo_Variables.SkipFlyingMount and GoGo_InBook(165962) and GoGo_Variables.CanFly then
+				return "/cancelform [flying] \n/use [swimming] "..GoGo_InBook(GoGo_Variables.Localize.TravelForm).."; [indoors]"..GoGo_InBook(GoGo_Variables.Localize.CatForm).."; [combat]"..GoGo_InBook(GoGo_Variables.Localize.TravelForm).."; "..GoGo_InBook(165962)
+			elseif not GoGo_Variables.SkipFlyingMount and GoGo_Variables.CanFly then
+				return "/cancelform [flying] \n/use [swimming] "..GoGo_InBook(GoGo_Variables.Localize.TravelForm).."; [indoors]"..GoGo_InBook(GoGo_Variables.Localize.CatForm).."; "..GoGo_InBook(GoGo_Variables.Localize.TravelForm)
+			else
+				return "/cancelform [flying] \n/use [swimming] "..GoGo_InBook(GoGo_Variables.Localize.TravelForm).."; [indoors]"..GoGo_InBook(GoGo_Variables.Localize.CatForm)..";"..GoGo_InBook(GoGo_Variables.Localize.TravelForm)
 			end --if
 		else
+			local GoGo_CastString = "/use "
 			local GoGo_NumForms = GetNumShapeshiftForms()
 			local GoGo_FormName = ""
-			local GoGo_CastString = "/use "
 			for GoGo_TempCount = 1, GoGo_NumForms do
 				_, GoGo_FormName = GetShapeshiftFormInfo(GoGo_TempCount)
 				GoGo_CastString = GoGo_CastString .. "[form:" .. GoGo_TempCount .. "] "..GoGo_FormName..";"
 			end --for
-			if GoGo_InBook(GoGo_Variables.Localize.AquaForm) then
-				if not GoGo_Variables.SkipFlyingMount and GoGo_InBook(GoGo_Variables.Localize.FastFlightForm) and GoGo_Variables.CanFly then
-					GoGo_CastString = GoGo_CastString .. "[swimming] "..GoGo_InBook(GoGo_Variables.Localize.AquaForm).."; [indoors]"..GoGo_InBook(GoGo_Variables.Localize.CatForm).."; [combat]"..GoGo_InBook(GoGo_Variables.Localize.TravelForm).."; "..GoGo_InBook(GoGo_Variables.Localize.FastFlightForm)
-				elseif not GoGo_Variables.SkipFlyingMount and GoGo_InBook(GoGo_Variables.Localize.FlightForm) and GoGo_Variables.CanFly then
-					GoGo_CastString = GoGo_CastString .. "[swimming] "..GoGo_InBook(GoGo_Variables.Localize.AquaForm).."; [indoors]"..GoGo_InBook(GoGo_Variables.Localize.CatForm).."; [combat]"..GoGo_InBook(GoGo_Variables.Localize.TravelForm).."; "..GoGo_InBook(GoGo_Variables.Localize.FlightForm)
-				else
-					GoGo_CastString = GoGo_CastString .. "[swimming] "..GoGo_InBook(GoGo_Variables.Localize.AquaForm).."; [indoors]"..GoGo_InBook(GoGo_Variables.Localize.CatForm)..";"..GoGo_InBook(GoGo_Variables.Localize.TravelForm)
-				end --if
+			if not GoGo_Variables.SkipFlyingMount and GoGo_InBook(165962) and GoGo_Variables.CanFly then
+				GoGo_CastString = GoGo_CastString .. "[swimming] "..GoGo_InBook(GoGo_Variables.Localize.TravelForm).."; [indoors]"..GoGo_InBook(GoGo_Variables.Localize.CatForm).."; [combat]"..GoGo_InBook(GoGo_Variables.Localize.TravelForm).."; "..GoGo_InBook(165962)
+			elseif not GoGo_Variables.SkipFlyingMount and GoGo_Variables.CanFly then
+				GoGo_CastString = GoGo_CastString .. "[swimming] "..GoGo_InBook(GoGo_Variables.Localize.TravelForm).."; [indoors]"..GoGo_InBook(GoGo_Variables.Localize.CatForm).."; [combat]"..GoGo_InBook(GoGo_Variables.Localize.TravelForm)
+			else
+				GoGo_CastString = GoGo_CastString .. "[swimming] "..GoGo_InBook(GoGo_Variables.Localize.TravelForm).."; [indoors]"..GoGo_InBook(GoGo_Variables.Localize.CatForm)..";"..GoGo_InBook(GoGo_Variables.Localize.TravelForm)
 			end --if
 			return GoGo_CastString
 		end --if
