@@ -883,7 +883,7 @@ function GoGo_RemoveUnusableMounts(MountList)  -- Remove mounts Blizzard says we
 					end --if
 				end --if
 			else  -- it's a mount spell or class shape form
-				if IsUsableSpell(GoGo_SpellID) and IsSpellKnown(GoGo_SpellID) then
+				if IsUsableSpell(GoGo_SpellID) then  -- don't use IsSpellKnown() - mounts in collection are not known... morons....
 					table.insert(GoGo_NewTable, GoGo_SpellID)
 				end --if
 			end --if
