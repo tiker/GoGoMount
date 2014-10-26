@@ -769,6 +769,7 @@ GoGo_Variables.DebuffDB = {
 	122099,  -- Bamboozled (from /love Meng Meng in SW)
 	172008,	-- Ghoul Costume (from trick-or-treating at inns)
 	172010,	-- Abomination Costume  (from trick-or-treating at the inns)
+	172015,	-- Geist Costume (from trick-or-treating at the inns)
 	172020,	-- Spider Costume (from trick-or-treating at the inns)
 }
 
