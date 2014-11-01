@@ -2920,6 +2920,12 @@ function GoGo_ZoneCheck()
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 		-- can ride = false
+	elseif GoGo_Variables.Player.ZoneID == 995 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Hall of Blackhand (instance)")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = false
 	elseif GoGo_Variables.Player.ZoneID == 1008 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Everbloom (instance)")
