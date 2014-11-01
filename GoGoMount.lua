@@ -2850,6 +2850,12 @@ function GoGo_ZoneCheck()
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false   -- can't fly here yet in WoD
 		-- can ride = true
+	elseif GoGo_Variables.Player.ZoneID == 949 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Gorgrond")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false   -- can't fly here yet in WoD
+		-- can ride = true
 	elseif GoGo_Variables.Player.ZoneID == 951 then
 		-- shows Temperal Anomaly buff showing no-flying for the main island
 		-- areas in the water around the island allows for flying even with the Temperal Anomaly buff
