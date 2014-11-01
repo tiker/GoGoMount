@@ -2884,6 +2884,12 @@ function GoGo_ZoneCheck()
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 		-- can ride = false
+	elseif GoGo_Variables.Player.ZoneID == 969 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Shadowmoon Burial Grounds")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false   -- can't fly here yet in WoD
+		-- can ride = true
 	elseif GoGo_Variables.Player.ZoneID == 978 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Ashran")
