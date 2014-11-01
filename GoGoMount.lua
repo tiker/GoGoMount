@@ -2895,6 +2895,12 @@ function GoGo_ZoneCheck()
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Iron Docks (instance)")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = true
+	elseif GoGo_Variables.Player.ZoneID == 989 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Skyreach (instance)")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
 		-- can ride = false
 	elseif GoGo_Variables.Player.ZoneID == -1 then
 		-- Arenas:
