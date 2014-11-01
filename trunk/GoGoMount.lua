@@ -2878,6 +2878,12 @@ function GoGo_ZoneCheck()
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 		-- can ride = true
+	elseif GoGo_Variables.Player.ZoneID == 984 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Auchindoun (instance)")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = false
 	elseif GoGo_Variables.Player.ZoneID == -1 then
 		-- Arenas:
 		-- -- Nagrand Arena
