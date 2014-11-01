@@ -532,6 +532,12 @@ function GoGo_ChooseMount()
 	else
 		GoGo_Variables.CanFly = false
 	end --if 
+
+	if GoGo_Variables.Debug >= 10 then
+		GoGo_DebugAddLine("GoGo_ChooseMount: ZoneExclude.Canfly = " .. tostring(GoGo_Variables.ZoneExclude.CanFly))
+		GoGo_DebugAddLine("GoGo_ChooseMount: SkipFlyingMount = " .. tostring(GoGo_Variables.SkipFlyingMount))
+		GoGo_DebugAddLine("GoGo_ChooseMount: NoFlying = " .. tostring(GoGo_Variables.NoFlying))
+	end --if
 	
 	if GoGo_Variables.Debug >= 10 then
 		GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated mounts we can't use; " .. (table.getn(GoGo_Variables.FilteredMounts) or 0) .. " mounts left.")
@@ -2866,6 +2872,12 @@ function GoGo_ZoneCheck()
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 		-- can ride = true
+	elseif GoGo_Variables.Player.ZoneID == 978 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Ashran")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = true
 	elseif GoGo_Variables.Player.ZoneID == -1 then
 		-- Arenas:
 		-- -- Nagrand Arena
@@ -2876,6 +2888,7 @@ function GoGo_ZoneCheck()
 		end --if
 	else
 		if GoGo_Variables.Debug >= 4 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Unknown zone ID.  Showing debug information.")
 			GoGo_DebugCollectInformation()
 		end --if
 	end --if
