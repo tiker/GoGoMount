@@ -398,6 +398,10 @@ function GoGo_ChooseMount()
 		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 37)
 	end --if
 
+	if GoGo_Prefs.AutoExcludeFlyingMounts and not GoGo_Variables.ZoneExclude.CanFly then
+		GoGo_Variables.SkipFlyingMount = true
+	end --if
+	
 	if IsSubmerged() then
 		GoGo_CheckSwimSurface()
 	else
@@ -445,7 +449,7 @@ function GoGo_ChooseMount()
 
 	if GoGo_Variables.SkipFlyingMount then
 		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ChooseMount: Filtering out all mounts that can fly (button 2 pressed).")
+			GoGo_DebugAddLine("GoGo_ChooseMount: Filtering out all mounts that can fly (button 2 pressed or no flying mounts preference set).")
 		end --if
 		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 10003) or {}
 	end --if
@@ -3813,6 +3817,19 @@ function GoGo_Panel_Options()
 			GoGo_SetPref("RemoveBuffs", GoGo_Panel_RemoveBuffs:GetChecked())
 		end --function
 	)
+
+	GoGo_Panel_AutoExcludeFlyingMounts = CreateFrame("CheckButton", "GoGo_Panel_AutoExcludeFlyingMounts", GoGo_Panel, "OptionsCheckButtonTemplate")
+	GoGo_Panel_AutoExcludeFlyingMounts:SetPoint("TOPLEFT", "GoGo_Panel_RemoveBuffs", "BOTTOMLEFT", 0, -4)
+	GoGo_Panel_AutoExcludeFlyingMountsText:SetText(GoGo_Variables.Localize.String.AutoExcludeFlyingMountsInNoFlyAreas)
+	GoGo_Panel_AutoExcludeFlyingMounts.tooltipText = GoGo_Variables.Localize.String.AutoExcludeFlyingMountsInNoFlyAreas_Long
+	if GoGo_Prefs.AutoExcludeFlyingMounts then
+		GoGo_Panel_AutoExcludeFlyingMounts:SetChecked(1)
+	end --if
+	GoGo_Panel_AutoExcludeFlyingMounts:SetScript("OnClick",
+		function(self)
+			GoGo_SetPref("AutoExcludeFlyingMounts", GoGo_Panel_AutoExcludeFlyingMounts:GetChecked())
+		end --function
+	)
 end --function
 
 ---------
@@ -4173,6 +4190,11 @@ function GoGo_SetPref(strPref, intValue, boolNoPanel)
 		if (not boolNoPanel) then
 			GoGo_Panel_RemoveBuffs:SetChecked(intValue)
 		end --if
+	elseif strPref == "AutoExcludeFlyingMounts" then
+		GoGo_Prefs.AutoExcludeFlyingMounts = intValue
+		if (not boolNoPanel) then
+			GoGo_Panel_AutoExcludeFlyingMounts:SetChecked(intValue)
+		end --if
 	elseif strPref == "AspectPack" then
 		GoGo_Prefs.AspectPack = intValue
 		if (not boolNoPanel) then
@@ -4205,6 +4227,7 @@ function GoGo_Settings_Default(Class)
 		GoGo_Prefs.GlobalPrefMount = false
 		GoGo_Prefs.DisableWaterFlight = true
 		GoGo_SetPref("RemoveBuffs", true)
+		GoGo_SetPref("AutoExcludeFlyingMounts", false)
 		InterfaceOptionsFrame_OpenToCategory(GoGo_Panel_Options)
 	else
 		GoGo_Prefs = {}
@@ -4225,6 +4248,7 @@ function GoGo_Settings_Default(Class)
 		GoGo_SetPref("DruidFormNotRandomize", false, true)
 		GoGo_Prefs.DisableWaterFlight = true
 		GoGo_SetPref("RemoveBuffs", true, true)
+		GoGo_SetPref("AutoExcludeFlyingMounts", false, true)
 		GoGo_SetPref("DruidDisableInCombat", false, true)
 		GoGo_SetPref("ShamanClickForm", false, true)
 	end --if
@@ -4244,9 +4268,10 @@ function GoGo_Settings_SetUpdates()
 	if not GoGo_Prefs.DruidFormNotRandomize then GoGo_Prefs.DruidFormNotRandomize = false end
 	if not GoGo_Prefs.DisableWaterFlight then GoGo_Prefs.DisableWaterFlight = false end
 	if not GoGo_Prefs.RemoveBuffs then GoGo_Prefs.RemoveBuffs = false end
+	if not GoGo_Prefs.AutoExcludeFlyingMounts then GoGo_Prefs.AutoExcludeFlyingMounts = false end
 	if not GoGo_Prefs.DruidDisableInCombat then GoGo_Prefs.DruidDisableInCombat = false end
 	if not GoGo_Prefs.ShamanClickForm then GoGo_Prefs.ShamanClickForm = false end
-	
+
 	GoGo_Prefs.UnknownMounts = {}
 	if not GoGo_Prefs.GlobalExclude then
 		GoGo_Prefs.GlobalExclude = {}
