@@ -3173,6 +3173,10 @@ function GoGo_Id(itemstring)
 	if strType then
 		return strType.." - "..itemstring
 	end --if
+	local _, _, strType = string.find(itemstring,"(follower:%d+)")
+	if strType then
+		return strType.." - "..itemstring
+	end --if
 
 end --function
 
