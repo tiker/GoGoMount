@@ -3145,57 +3145,14 @@ function GoGo_Msg(msg)
 end --function
 
 ---------
-function GoGo_Id(itemstring)
+function GoGo_Id(link)
 ---------
-	local _, _, strType = string.find(itemstring,"(item:%d+)")
-	if strType then
-		return strType.." - "..itemstring
-	end --if
-	local _, _, strType = string.find(itemstring,"(spell:%d+)")
-	if strType then
-		return strType.." - "..itemstring
-	end --if
-	local _, _, strType = string.find(itemstring,"(glyph:%d+)")
-	if strType then
-		return strType.." - "..itemstring
-	end --if
-	local _, _, strType = string.find(itemstring,"(achievement:%d+)")
-	if strType then
-		return strType.." - "..itemstring
-	end --if
-	local _, _, strType = string.find(itemstring,"(battlepet:%d+)")
-	if strType then
-		return strType.." - "..itemstring
-	end --if
-	local _, _, strType = string.find(itemstring,"(battlePetAbil:%d+)")
-	if strType then
-		return strType.." - "..itemstring
-	end --if
-	local _, _, strType = string.find(itemstring,"(talent:%d+)")
-	if strType then
-		return strType.." - "..itemstring
-	end --if
-	local _, _, strType = string.find(itemstring,"(quest:%d+)")
-	if strType then
-		return strType.." - "..itemstring
-	end --if
-	local _, _, strType = string.find(itemstring,"(enchant:%d+)")
-	if strType then
-		return strType.." - "..itemstring
-	end --if
-	local _, _, strType = string.find(itemstring,"(currency:%d+)")
-	if strType then
-		return strType.." - "..itemstring
-	end --if
-	local _, _, strType = string.find(itemstring,"(follower:%d+)")
-	if strType then
-		return strType.." - "..itemstring
-	end --if
-	local _, _, strType = string.find(itemstring,"(mission:%d+)")
-	if strType then
-		return strType.." - "..itemstring
-	end --if
-
+-- tested list:
+-- item spell glyph achievement battlepet battlePetAbil talent quest enchant currency follower mission
+	local s, e = string.find(link, "|H(.-):([-0-9]+)")
+	link = string.sub(link, s+2, e)
+--	linktype, linkID = strsplit(":", link)
+	return link
 end --function
 
 ---------
