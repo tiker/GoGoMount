@@ -2845,12 +2845,9 @@ function GoGo_ZoneCheck()
 		GoGo_Variables.ZoneExclude.CanFly = false
 		-- can ride = true
 	elseif GoGo_Variables.Player.ZoneID == 947 then
-		-- Lunar Fall
-		-- Shadowmoon Valley
-		--(Both in the same area of Warlords of Draenor expansion)
-		-- Need to verify that this zone ID is not used
+		-- May also include Lunar Fall before garrison is setup
 		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Shadowmoon Valley / Lundar Fall")
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Shadowmoon Valley")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false   -- can't fly here yet in WoD
 		-- can ride = true
