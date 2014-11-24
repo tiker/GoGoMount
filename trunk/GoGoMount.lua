@@ -42,13 +42,15 @@ function GoGo_OnEvent(self, event, ...)
 		GoGo_Variables.VerMajor, GoGo_Variables.VerMinor, GoGo_Variables.VerBuild = tonumber(GoGo_Variables.VerMajor), tonumber(GoGo_Variables.VerMinor), tonumber(GoGo_Variables.VerBuild)
 		_, GoGo_Variables.Player.Class = UnitClass("player")
 		_, GoGo_Variables.Player.Race = UnitRace("player")
+		GoGo_Variables.Player.Faction, _ = UnitFactionGroup("player")
+			GoGoFrame:RegisterEvent("PLAYER_REGEN_DISABLED")
 		if (GoGo_Variables.Player.Class == "DRUID") then
 			GoGo_Variables.Druid = {}
-			GoGoFrame:RegisterEvent("PLAYER_REGEN_DISABLED")
+--			GoGoFrame:RegisterEvent("PLAYER_REGEN_DISABLED")
 			GoGo_Druid_Panel()
 		elseif (GoGo_Variables.Player.Class == "SHAMAN") then
 			GoGo_Variables.Shaman = {}
-			GoGoFrame:RegisterEvent("PLAYER_REGEN_DISABLED")
+--			GoGoFrame:RegisterEvent("PLAYER_REGEN_DISABLED")
 			GoGo_Shaman_Panel()
 		elseif (GoGo_Variables.Player.Class == "HUNTER") then
 			GoGo_Hunter_Panel()
@@ -64,6 +66,7 @@ function GoGo_OnEvent(self, event, ...)
 			GoGo_SetOptionAutoDismount(1)
 		end --if
 	elseif event == "PLAYER_REGEN_DISABLED" then
+		GoGo_Variables.Player.ZoneID = GetCurrentMapAreaID()
 		for i, button in ipairs({GoGoButton, GoGoButton2, GoGoButton3}) do
 			if GoGo_Variables.Player.Class == "SHAMAN" then
 				if GoGo_Variables.Debug >= 10 then 
@@ -82,6 +85,16 @@ function GoGo_OnEvent(self, event, ...)
 						GoGo_DebugAddLine("GoGo_OnEvent: Druid entering combat.  Clearing macro because of set option.")
 					end --if
 					GoGo_FillButton(button)
+				end --if
+			elseif GoGo_Variables.Player.ZoneID == 950 then  -- everyone else if in nagrand
+				local name = GetSpellInfo(161691)
+				_, _, _, _, _, _, spellID = GetSpellInfo(name)
+				if spellID == 165803 or spellID == 164222 then
+					if GoGo_Variables.Player.Faction == "Alliance" then
+						GoGo_FillButton(button, GoGo_GetIDName(165803))
+					elseif GoGo_Variables.Player.Faction == "Horde" then
+						GoGo_FillButton(button, GoGo_GetIDName(164222))
+					end --if
 				end --if
 			end --if
 		end --for
