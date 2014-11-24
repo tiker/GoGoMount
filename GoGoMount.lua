@@ -511,10 +511,15 @@ function GoGo_ChooseMount()
 	end --if
 ]]
 
-	if IsFalling() then  -- we're falling.. save us  (only grab instant cast spells)
-		GoGo_Variables.FilteredMounts = GoGo_GetInstantMounts(GoGo_Variables.FilteredMounts) or {}
+	if IsFalling() or GoGo_IsMoving() then  -- we're falling.. save us  (only grab instant cast spells)
+		local GoGo_TempMounts = {}
+		GoGo_TempMounts = GoGo_GetInstantMounts(GoGo_Variables.FilteredMounts) or {}
+		if table.getn(GoGo_TempMounts) == 0 then
+			GoGo_TempMounts = GoGo_GetMountsWhileMoving(GoGo_Variables.FilteredMounts) or {}
+		end --if
+		GoGo_Variables.FilteredMounts = GoGo_TempMounts or {}
 		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated all mounts except instant casts - " .. (table.getn(GoGo_Variables.FilteredMounts) or 0) .. " mounts left.")
+			GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated all mounts except mounts that can be summoned while moving or falling - " .. (table.getn(GoGo_Variables.FilteredMounts) or 0) .. " mounts left.")
 		end --if
 	end --if
 
@@ -522,13 +527,6 @@ function GoGo_ChooseMount()
 		GoGo_Variables.FilteredMounts = GoGo_GetIndoorMounts(GoGo_Variables.FilteredMounts) or {}
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated all mounts except indoor mounts - " .. (table.getn(GoGo_Variables.FilteredMounts) or 0) .. " mounts left.")
-		end --if
-	end --if
-
-	if GoGo_IsMoving() then
-		GoGo_Variables.FilteredMounts = GoGo_GetInstantMounts(GoGo_Variables.FilteredMounts) or {}
-		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated all mounts except instant casts - " .. (table.getn(GoGo_Variables.FilteredMounts) or 0) .. " mounts left.")
 		end --if
 	end --if
 
@@ -3194,6 +3192,15 @@ function GoGo_GetInstantMounts(GoGo_FilteredMounts)
 ---------
 	-- Grab all mounts flagged as instant cast for falling or moving conditions
 	GoGo_FilteredMounts = GoGo_FilterMountsIn(GoGo_FilteredMounts, 7) or {}
+	return GoGo_FilteredMounts
+end --function
+
+---------
+function GoGo_GetMountsWhileMoving(GoGo_FilteredMounts)
+---------
+	-- Grab all mounts that can be casted (1.5 seconds) while moving
+	-- (Currently used for Nagrand (WoD) garrison ability mounts)
+	GoGo_FilteredMounts = GoGo_FilterMountsIn(GoGo_FilteredMounts, 5) or {}
 	return GoGo_FilteredMounts
 end --function
 
