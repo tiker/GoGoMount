@@ -858,6 +858,16 @@ function GoGo_BuildMountList()
 		end --if
 	end --for
 
+	-- WoD Nagrand's Garrison mounts
+	GoGo_Variables.Player.ZoneID = GetCurrentMapAreaID()
+	if GoGo_Variables.Player.ZoneID == 950 then
+		local name = GetSpellInfo(161691)
+		_, _, _, _, _, _, spellID = GetSpellInfo(name)
+		if spellID == 165803 or spellID == 164222 then
+			table.insert(GoGo_MountList, spellID)
+		end --if
+	end --if
+	
 	return GoGo_MountList
 end  --function
 
