@@ -562,13 +562,14 @@ function GoGo_ChooseMount()
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ChooseMount: Swimming and can't fly.")
 		end --if
-		if not IsIndoors() then
+		-- indoors shouldn't matter now since we've filtered out anything that can't be used indoors above
+		--if not IsIndoors() then
 			mounts = GoGo_GetBestWaterMounts(GoGo_Variables.FilteredMounts) or {}
-		else  -- we are indoors
-			if (table.getn(mounts) == 0) and (GoGo_Variables.Player.Class == "DRUID") and GoGo_InBook(GoGo_Variables.Localize.AquaForm) then
-				return GoGo_InBook(GoGo_Variables.Localize.AquaForm)
-			end --if
-		end --if
+		--else  -- we are indoors
+		--	if (table.getn(mounts) == 0) and (GoGo_Variables.Player.Class == "DRUID") and GoGo_InBook(GoGo_Variables.Localize.AquaForm) then
+		--		return GoGo_InBook(GoGo_Variables.Localize.AquaForm)
+		--	end --if
+		--end --if
 	elseif IsSubmerged() and GoGo_Variables.CanFly then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ChooseMount: Swimming but can fly.")
@@ -3317,6 +3318,23 @@ function GoGo_UpdateMountData()
 		end --if
 	end --if
 
+	if (GoGo_Variables.Player.Class == "DRUID" and (IsSwimming() or IsSubmerged())) then
+		-- set the swim speeds to whatever AquaForm speed is including possible glyph modifier set above
+		GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][10001] = GoGo_Variables.MountDB[GoGo_Variables.Localize.AquaForm][10001]
+		GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][10004] = GoGo_Variables.MountDB[GoGo_Variables.Localize.AquaForm][10004]
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_UpdateMountData: We're a Druid in or under water.  Updated Travel Form with swimming properties.")
+		end --if
+		if IsIndoors() then
+			-- Druid's travel form is now Aqua form and works indoors for swimming only
+			GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][8] = true
+			GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][53] = true
+			if GoGo_Variables.Debug >= 10 then
+				GoGo_DebugAddLine("GoGo_UpdateMountData: We're a Druid in or under water and indoors.  Updated Travel Form to work indoors as well.")
+			end --if
+		end --if
+	end --if
+
 	if (GoGo_Variables.Player.Class == "DRUID") and (GoGo_GlyphActive(GoGo_Variables.Localize.Glyph_Stag) and not GoGo_GlyphActive(GoGo_Variables.Localize.Glyph_Cheetah)) then
 		-- Druid's travel form can carry a passenger
 		GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][2] = true
@@ -3328,11 +3346,12 @@ function GoGo_UpdateMountData()
 		GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][300] = true
 		GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][301] = true
 		GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][403] = true
-		GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][10001] = 101
+--		GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][10001] = 101
 		GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][10003] = 250
-		GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][10004] = 101
+--		GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][10004] = 101
 	end --if
 
+	
 	if (GoGo_Variables.Player.Class == "SHAMAN") and (GoGo_GlyphActive(19264)) then
 	-- player = shaman and has glyph of Ghost Wolf (cast ghost wolf while dead)
 		GoGo_Variables.MountDB[GoGo_Variables.Localize.GhostWolf][550] = true
