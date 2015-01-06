@@ -2664,6 +2664,14 @@ function GoGo_ZoneCheck()
 			GoGo_Variables.ZoneExclude.CanFly = true
 		end --if
 		-- can ride = true
+	elseif GoGo_Variables.Player.ZoneID == 866 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Coldridge Valley")
+		end --if
+		if GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense) then
+			GoGo_Variables.ZoneExclude.CanFly = true
+		end --if
+		-- can ride = true
 	elseif GoGo_Variables.Player.ZoneID == 867 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Temple of the Jade Serpent (5 player instance)")
