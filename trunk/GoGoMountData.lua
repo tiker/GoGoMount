@@ -764,9 +764,10 @@ GoGo_Variables.DebuffDB = {
 	75724,	-- Seeds of Discord (Mount Hyjal quest from item "Ogre Disguise" itemid 55137)
 	91760,	-- Endure the Transformation (from Bones of Transformation)
 	91771,	-- Wisp Form (from Wisp Amulet)
-	98445,  -- Trapped In Amber (from Ancient Amber)  -- requires 2 clicks to mount
+	98445,  -- Trapped In Amber (from Ancient Amber)  	-- requires 2 clicks to mount
 	114282,  -- Treant Form (Druid glyph in Warcraft 6.0)
 	122099,  -- Bamboozled (from /love Meng Meng in SW)
+	167399,	-- Make Like A Tree (from Ancient's Bloom toy)  	-- requires 2 clicks to mount
 	172003,	-- Slime Costume (from trick-or-treating at inns)
 	172008,	-- Ghoul Costume (from trick-or-treating at inns)
 	172010,	-- Abomination Costume  (from trick-or-treating at the inns)
