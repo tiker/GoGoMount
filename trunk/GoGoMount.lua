@@ -481,6 +481,13 @@ function GoGo_ChooseMount()
 		end --if
 	end --if
 	
+	if GoGo_Variables.ZoneExclude.Draenor_Nagrand then
+		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 202) or {}
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ChooseMount: Eliminated Draenor's Nagrand ability mounts - " .. (table.getn(GoGo_Variables.FilteredMounts) or 0) .. " mounts left.")
+		end --if
+	end --if
+
 	if GoGo_Variables.ZoneExclude.AQ40 then
 		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 201) or {}
 		if GoGo_Variables.Debug >= 10 then
@@ -1436,6 +1443,7 @@ function GoGo_ZoneCheck()
 	GoGo_Variables.ZoneExclude.TheOculus = true
 	GoGo_Variables.ZoneExclude.AQ40 = true
 	GoGo_Variables.ZoneExclude.ThousandNeedles = true
+	GoGo_Variables.ZoneExclude.Draenor_Nagrand = true
 	GoGo_Variables.ZoneExclude.CanFly = false
 	GoGo_Variables.ZoneExclude.UseMountGroup = nil
 	GoGo_Variables.InBattleground = false
@@ -2898,6 +2906,7 @@ function GoGo_ZoneCheck()
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Nagrand")
 		end --if
+		GoGo_Variables.ZoneExclude.Draenor_Nagrand = false
 		GoGo_Variables.ZoneExclude.CanFly = false   -- can't fly here yet in WoD
 		-- can ride = true
 	elseif GoGo_Variables.Player.ZoneID == 951 then
