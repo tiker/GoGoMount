@@ -767,6 +767,7 @@ GoGo_Variables.DebuffDB = {
 	98445,  -- Trapped In Amber (from Ancient Amber)  	-- requires 2 clicks to mount
 	114282,  -- Treant Form (Druid glyph in Warcraft 6.0)
 	122099,  -- Bamboozled (from /love Meng Meng in SW)
+	165185,	-- Bloodclaw Charm (from Bloodmaine Claw toy)
 	167399,	-- Make Like A Tree (from Ancient's Bloom toy)  	-- requires 2 clicks to mount
 	172003,	-- Slime Costume (from trick-or-treating at inns)
 	172008,	-- Ghoul Costume (from trick-or-treating at inns)
