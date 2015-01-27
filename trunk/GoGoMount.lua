@@ -1500,8 +1500,6 @@ function GoGo_ZoneCheck()
 			-- The North Sea south of Isle of Quel'danas from Ironforge
 			-- Magister's Terrence (instance)
 			-- The Forbidden Sea (east of Loch Modan)
-			-- Blackrock Mountains
-			-- Karazhan
 			-- Dread Wastes
 		end --if
 		if not IsInInstance() then
@@ -1591,6 +1589,7 @@ function GoGo_ZoneCheck()
 	elseif GoGo_Variables.Player.ZoneID == 29 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Burning Stepps")
+			-- Blackrock Mountains
 		end --if
 		if GoGo_InBook(GoGo_Variables.Localize.FlightMastersLicense) then
 			GoGo_Variables.ZoneExclude.CanFly = true
@@ -2552,6 +2551,11 @@ function GoGo_ZoneCheck()
 	elseif GoGo_Variables.Player.ZoneID == 798 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Magister's Terrace (5 player instance")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.ZoneID == 799 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Karazhan (5 player instance")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 	elseif GoGo_Variables.Player.ZoneID == 800 then
