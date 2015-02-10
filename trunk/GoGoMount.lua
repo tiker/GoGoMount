@@ -361,7 +361,11 @@ function GoGo_ChooseMount()
 	if GoGo_Variables.Debug >= 10 then
 		GoGo_DebugAddLine("GoGo_ChooseMount: ** Searched all areas for mounts and found " .. (table.getn(GoGo_Variables.FilteredMounts) or 0) .. " mounts.")
 	end --if
-	
+
+	if GoGo_Prefs.AutoExcludeFlyingMounts and not GoGo_Variables.ZoneExclude.CanFly then
+		GoGo_Variables.SkipFlyingMount = true
+	end --if
+
 	GoGo_ZoneCheck()  -- Checking to see what we can and can not do in zones
 	GoGo_UpdateMountData()  -- update mount information with changes from talents, glyphs, etc.
 
@@ -411,10 +415,6 @@ function GoGo_ChooseMount()
 		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 37)
 	end --if
 
-	if GoGo_Prefs.AutoExcludeFlyingMounts and not GoGo_Variables.ZoneExclude.CanFly then
-		GoGo_Variables.SkipFlyingMount = true
-	end --if
-	
 	if IsSubmerged() then
 		GoGo_CheckSwimSurface()
 	else
@@ -3363,13 +3363,19 @@ function GoGo_UpdateMountData()
 
 	if (GoGo_Variables.Player.Class == "DRUID") and not GoGo_GlyphActive(GoGo_Variables.Localize.Glyph_Stag) then
 		-- Druid's travel form is used for flight form, travel form and aqua forms based on location
-		GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][9] = true
-		GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][300] = true
-		GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][301] = true
-		GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][403] = true
---		GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][10001] = 101
-		GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][10003] = 250
---		GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][10004] = 101
+		if not (GoGo_Variables.SkipFlyingMount == true) then
+			-- If player presses "no flying" mount key or uses no flying mount option, these modifiers will remove travel form preventing aqua form in water, etc.
+			GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][9] = true
+			GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][300] = true
+			GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][301] = true
+			GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][403] = true
+	--		GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][10001] = 101
+			GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][10003] = 250
+	--		GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][10004] = 101
+			if GoGo_Variables.Debug >= 10 then
+				GoGo_DebugAddLine("GoGo_UpdateMountData: We're a Druid, not skipping flying so let travel form fly!")
+			end --if
+		end --if
 	end --if
 
 	
