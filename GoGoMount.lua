@@ -803,7 +803,7 @@ function GoGo_BuildMountList()
 					if GoGo_Variables.Debug >= 10 then 
 						GoGo_DebugAddLine("GoGo_BuildMountList: " .. SpellID .. " has been added to the list of mounts available.")
 					end --if
-					table.insert(GoGo_MountList, SpellID)
+					table.insert(GoGo_MountList, SpellID)  -- copy this line to the 'else' statement below to find new mounts on the ptr
 			else
 					if GoGo_Variables.Debug >= 10 then 
 						GoGo_DebugAddLine("GoGo_BuildMountList: " .. SpellID .. " has not been added to the list of mounts available.")
