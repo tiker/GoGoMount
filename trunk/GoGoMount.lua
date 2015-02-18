@@ -362,11 +362,12 @@ function GoGo_ChooseMount()
 		GoGo_DebugAddLine("GoGo_ChooseMount: ** Searched all areas for mounts and found " .. (table.getn(GoGo_Variables.FilteredMounts) or 0) .. " mounts.")
 	end --if
 
+	GoGo_ZoneCheck()  -- Checking to see what we can and can not do in zones
+
 	if GoGo_Prefs.AutoExcludeFlyingMounts and not GoGo_Variables.ZoneExclude.CanFly then
 		GoGo_Variables.SkipFlyingMount = true
 	end --if
 
-	GoGo_ZoneCheck()  -- Checking to see what we can and can not do in zones
 	GoGo_UpdateMountData()  -- update mount information with changes from talents, glyphs, etc.
 
 	if GoGo_Variables.EngineeringLevel <= 299 then
