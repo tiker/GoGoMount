@@ -507,7 +507,7 @@ function GoGo_GetMountDB()
 		[44153] = {[9] = true, [36] = true, [45] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Flying Machine
 		[55531] = {[2] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Mechano-hog
 		[60424] = {[2] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67},  -- Mekgineer's Chopper
-		[63796] = {[9] = true, [36] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Mimiron's Head
+		[63796] = {[9] = true, [36] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Mimiron's Head
 		[66393] = {[7] = true, [10002]=200, [50000]=46856}, -- Keys to the Hot Rod
 		[76203] = {[55] = true, [200] = true, [10004]=286, [50000]=55121},  -- River Boat
 		[87090] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [10001]=67, [10002]=160, [10004]=67}, -- Goblin Trike
