@@ -3479,8 +3479,8 @@ function GoGo_UpdateMountData()
 					GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempCounter]][10002] = 220
 					GoGo_TableAddUnique(GoGo_Variables.GroundSpeed, 220)
 				elseif GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempCounter]][10002] == 160 then
-					GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempCounter]][10002] = 176
-					GoGo_TableAddUnique(GoGo_Variables.GroundSpeed, 176)
+					GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempCounter]][10002] = 170
+					GoGo_TableAddUnique(GoGo_Variables.GroundSpeed, 170)
 				elseif GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempCounter]][10002] == 100 then
 					GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempCounter]][10002] = 110
 					GoGo_TableAddUnique(GoGo_Variables.GroundSpeed, 110)
