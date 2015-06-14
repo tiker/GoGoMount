@@ -2887,6 +2887,18 @@ function GoGo_ZoneCheck()
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 		-- can ride = true
+	elseif GoGo_Variables.Player.ZoneID == 941 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Frostfire Ridge")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false   -- can't fly here yet in WoD
+		-- can ride = true
+	elseif GoGo_Variables.Player.ZoneID == 945 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Tanaan Jungle")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false   -- can't fly here yet in WoD
+		-- can ride = true
 	elseif GoGo_Variables.Player.ZoneID == 946 then
 		-- May also include Lunar Fall before garrison is setup
 		if GoGo_Variables.Debug >= 10 then
