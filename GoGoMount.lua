@@ -2891,46 +2891,60 @@ function GoGo_ZoneCheck()
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Frostfire Ridge")
 		end --if
-		GoGo_Variables.ZoneExclude.CanFly = false   -- can't fly here yet in WoD
+		if GoGo_InBook(GoGo_Variables.Localize.DraenorPathfinder) then
+			GoGo_Variables.ZoneExclude.CanFly = true
+		end --if
 		-- can ride = true
 	elseif GoGo_Variables.Player.ZoneID == 945 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Tanaan Jungle")
 		end --if
-		GoGo_Variables.ZoneExclude.CanFly = false   -- can't fly here yet in WoD
+		if GoGo_InBook(GoGo_Variables.Localize.DraenorPathfinder) then
+			GoGo_Variables.ZoneExclude.CanFly = true
+		end --if
 		-- can ride = true
 	elseif GoGo_Variables.Player.ZoneID == 946 then
 		-- May also include Lunar Fall before garrison is setup
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Talador")
 		end --if
-		GoGo_Variables.ZoneExclude.CanFly = false   -- can't fly here yet in WoD
+		if GoGo_InBook(GoGo_Variables.Localize.DraenorPathfinder) then
+			GoGo_Variables.ZoneExclude.CanFly = true
+		end --if
 		-- can ride = true
 	elseif GoGo_Variables.Player.ZoneID == 947 then
 		-- May also include Lunar Fall before garrison is setup
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Shadowmoon Valley")
 		end --if
-		GoGo_Variables.ZoneExclude.CanFly = false   -- can't fly here yet in WoD
+		if GoGo_InBook(GoGo_Variables.Localize.DraenorPathfinder) then
+			GoGo_Variables.ZoneExclude.CanFly = true
+		end --if
 		-- can ride = true
 	elseif GoGo_Variables.Player.ZoneID == 948 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Spires of Arak")
 		end --if
-		GoGo_Variables.ZoneExclude.CanFly = false   -- can't fly here yet in WoD
+		if GoGo_InBook(GoGo_Variables.Localize.DraenorPathfinder) then
+			GoGo_Variables.ZoneExclude.CanFly = true
+		end --if
 		-- can ride = true
 	elseif GoGo_Variables.Player.ZoneID == 949 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Gorgrond")
 		end --if
-		GoGo_Variables.ZoneExclude.CanFly = false   -- can't fly here yet in WoD
+		if GoGo_InBook(GoGo_Variables.Localize.DraenorPathfinder) then
+			GoGo_Variables.ZoneExclude.CanFly = true
+		end --if
 		-- can ride = true
 	elseif GoGo_Variables.Player.ZoneID == 950 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Nagrand")
 		end --if
 		GoGo_Variables.ZoneExclude.Draenor_Nagrand = false
-		GoGo_Variables.ZoneExclude.CanFly = false   -- can't fly here yet in WoD
+		if GoGo_InBook(GoGo_Variables.Localize.DraenorPathfinder) then
+			GoGo_Variables.ZoneExclude.CanFly = true
+		end --if
 		-- can ride = true
 	elseif GoGo_Variables.Player.ZoneID == 951 then
 		-- shows Temperal Anomaly buff showing no-flying for the main island
@@ -2966,12 +2980,31 @@ function GoGo_ZoneCheck()
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false   -- can't fly here yet in WoD
 		-- can ride = true
+	elseif GoGo_Variables.Player.ZoneID == 970 then
+		-- Tanaan Jungle - Kargathar Proving Grounds   --- Area behind the dark portal for Horde during initial WoD quests entering WoD
+		-- On PTR, character did not have achievement for flying and did not have spell purchased since that comes from the vendor.  On live, players might have achievement and might be able to fly here..
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Tanaan Jungle")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false   -- can't fly here yet in WoD
+		-- can ride = true
 	elseif GoGo_Variables.Player.ZoneID == 971 then
-		-- Personal garrison area
+		-- Alliance Garrison
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Lunarfall")
 		end --if
-		GoGo_Variables.ZoneExclude.CanFly = false
+		if GoGo_InBook(GoGo_Variables.Localize.DraenorPathfinder) then
+			GoGo_Variables.ZoneExclude.CanFly = true
+		end --if
+		-- can ride = true
+	elseif GoGo_Variables.Player.ZoneID == 976 then
+		-- Horde Garrison
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Quazzik's Outpost")
+		end --if
+		if GoGo_InBook(GoGo_Variables.Localize.DraenorPathfinder) then
+			GoGo_Variables.ZoneExclude.CanFly = true
+		end --if
 		-- can ride = true
 	elseif GoGo_Variables.Player.ZoneID == 978 then
 		if GoGo_Variables.Debug >= 10 then
@@ -3020,7 +3053,18 @@ function GoGo_ZoneCheck()
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Stormshield")
 		end --if
-		GoGo_Variables.ZoneExclude.CanFly = false
+		if GoGo_InBook(GoGo_Variables.Localize.DraenorPathfinder) then
+			GoGo_Variables.ZoneExclude.CanFly = true
+		end --if
+		-- can ride = true
+	elseif GoGo_Variables.Player.ZoneID == 1011 then
+		-- Horde part of Ashran
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Warspear")
+		end --if
+		if GoGo_InBook(GoGo_Variables.Localize.DraenorPathfinder) then
+			GoGo_Variables.ZoneExclude.CanFly = true
+		end --if
 		-- can ride = true
 	elseif GoGo_Variables.Player.ZoneID == -1 then
 		-- Arenas:
