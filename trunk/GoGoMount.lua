@@ -102,6 +102,7 @@ function GoGo_OnEvent(self, event, ...)
 		SetMapToCurrentZone()
 		GoGo_Variables.Player.Zone = GetRealZoneText()
 		GoGo_Variables.Player.ZoneID = GetCurrentMapAreaID()
+		if GoGo_Variables.Debug >= 5 then GoGo_ZoneCheck() end --if
 		GoGo_UpdateZonePrefs()
 		if _G["GoGo_ZoneFavorites_ContentFrame"] and _G["GoGo_ZoneFavorites_ContentFrame"]:IsShown() then
 			GoGo_AddOptionCheckboxes("GoGo_ZoneFavorites_ContentFrame")
@@ -596,6 +597,12 @@ function GoGo_ChooseMount()
 			GoGo_DebugAddLine("GoGo_ChooseMount: Looking for flying mounts since we past flight checks.")
 		end --if
 		mounts = GoGo_GetBestAirMounts(GoGo_Variables.FilteredMounts)
+	elseif (table.getn(mounts) == 0) and UnitBuff("player", GetSpellInfo(168796)) then
+		-- Druids in Ashran with "Book of Flight Form" buff can fly in Ashran zones
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ChooseMount: Didn't pass flight checks but we're a Druid with buff 168796 so we're attempting to select flight form to fly.")
+		end --if
+		mounts = GoGo_FilterMountsIn(GoGo_Variables.FilteredMounts, 501) or {}
 	else
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ChooseMount: Not looking for flying mounts since we didn't past flight checks (or found a better mount to use).")
@@ -3461,6 +3468,7 @@ function GoGo_UpdateMountData()
 			GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][300] = true
 			GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][301] = true
 			GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][403] = true
+			GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][501] = true
 	--		GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][10001] = 101
 			GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][10003] = 250
 	--		GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][10004] = 101
