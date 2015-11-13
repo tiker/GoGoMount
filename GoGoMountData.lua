@@ -769,7 +769,6 @@ GoGo_Variables.DebuffDB = {
 	21848,	-- Snowman constume from Xmas time -- requires 2 clicks to mount
 	24347,  -- Master Angler (from Hook of the Master Angler)
 	24723,  -- Skeleton costume (from trick-or-treating in Inns)
-	24732,  -- Bat costume (from trick-or-treating in Inns)
 	24741,  -- Wisp Costume (from Hallowed Wand - Wisp during Halloween)
 --	24753,	-- Trick (from trick-or-treating in Inns)  -- can't be removed?
 --	24858,	-- Moonkin Form (Druids)  -- still needs to be removed for worgens shifting to running wild stance - handled in code
@@ -798,11 +797,15 @@ GoGo_Variables.DebuffDB = {
 	122099,  -- Bamboozled (from /love Meng Meng in SW)
 	165185,	-- Bloodclaw Charm (from Bloodmaine Claw toy)
 	167399,	-- Make Like A Tree (from Ancient's Bloom toy)  	-- requires 2 clicks to mount
-	172003,	-- Slime Costume (from trick-or-treating at inns)
-	172008,	-- Ghoul Costume (from trick-or-treating at inns)
 	172010,	-- Abomination Costume  (from trick-or-treating at the inns)
 	172015,	-- Geist Costume (from trick-or-treating at the inns)
 	172020,	-- Spider Costume (from trick-or-treating at the inns)
+--  Removed the items below now that they temporarily shift back to normal form for mounting and don't need to be removed
+--	24732,  -- Bat costume (from trick-or-treating in Inns)
+--	172003,	-- Slime Costume (from trick-or-treating at inns)
+--	172008,	-- Ghoul Costume (from trick-or-treating at inns)
+--	190968, -- Myserious Brew
+--	191211, -- Nerubian Constume (from tirick-or-treating at inns)
 }
 
 GoGo_Variables.GroundSpeed = {
