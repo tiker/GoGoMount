@@ -3102,6 +3102,12 @@ function GoGo_ZoneCheck()
 			GoGo_Variables.ZoneExclude.CanFly = true
 		end --if
 		-- can ride = true
+	elseif GoGo_Variables.Player.ZoneID == 1026 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Hellfire Citadel (instance)")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = true
 	elseif GoGo_Variables.Player.ZoneID == -1 then
 		-- Arenas:
 		-- -- Nagrand Arena
