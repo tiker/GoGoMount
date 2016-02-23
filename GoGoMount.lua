@@ -3634,6 +3634,51 @@ GOGO_ERRORS = {
 
 GOGO_SPELLS = {
 	["DRUID"] = function()
+		local GoGo_CastString
+		local UseSeperator = false
+		GoGo_CastString = ""
+		if GoGo_Prefs.DruidClickForm then
+			GoGo_CastString = "/cancelform [flying] \n"
+		end --if
+		if GoGo_InBook(GoGo_Variables.Localize.TravelForm) or GoGo_InBook(GoGo_Variables.Localize.CatForm) then
+			GoGo_CastString = GoGo_CastString .. "/use "
+		end --if
+		if GoGo_InBook(GoGo_Variables.Localize.TravelForm) then
+			GoGo_CastString = GoGo_CastString .. "[swimming] "..GoGo_InBook(GoGo_Variables.Localize.TravelForm)
+			UseSeperator = true
+		end --if
+		if GoGo_InBook(GoGo_Variables.Localize.CatForm) then
+			if UseSeperator then
+				GoGo_CastString = GoGo_CastString .. ";"
+			end --if
+			GoGo_CastString = GoGo_CastString .. "[indoors] "..GoGo_InBook(GoGo_Variables.Localize.CatForm)
+			UseSeperator = true
+		end --if
+		if not GoGo_Variables.SkipFlyingMount and GoGo_InBook(165962) and GoGo_Variables.CanFly then
+			if UseSeperator then
+				GoGo_CastString = GoGo_CastString .. ";"
+			end --if
+			if GoGo_InBook(GoGo_Variables.Localize.TravelForm) then
+				GoGo_CastString = GoGo_CastString .. "[combat] "..GoGo_InBook(GoGo_Variables.Localize.TravelForm)
+				UseSeperator = true
+			end --if
+			if UseSeperator then
+				GoGo_CastString = GoGo_CastString .. ";"
+			end --if
+			GoGo_CastString = GoGo_CastString .. GoGo_InBook(165962)
+		else
+			if UseSeperator then
+				GoGo_CastString = GoGo_CastString .. ";"
+			end --if
+			if GoGo_InBook(GoGo_Variables.Localize.TravelForm) then
+				GoGo_CastString = GoGo_CastString .. GoGo_InBook(GoGo_Variables.Localize.TravelForm)
+			end --if
+		end --if
+		return GoGo_CastString
+	end, --function
+
+--[[
+	["DRUID"] = function()
 		if GoGo_Prefs.DruidClickForm then
 			if not GoGo_Variables.SkipFlyingMount and GoGo_InBook(165962) and GoGo_Variables.CanFly then
 				return "/cancelform [flying] \n/use [swimming] "..GoGo_InBook(GoGo_Variables.Localize.TravelForm).."; [indoors]"..GoGo_InBook(GoGo_Variables.Localize.CatForm).."; [combat]"..GoGo_InBook(GoGo_Variables.Localize.TravelForm).."; "..GoGo_InBook(165962)
@@ -3660,6 +3705,8 @@ GOGO_SPELLS = {
 			return GoGo_CastString
 		end --if
 	end, --function
+]]
+
 	["SHAMAN"] = function()
 		return GoGo_InBook(GoGo_Variables.Localize.GhostWolf)
 	end, --function
@@ -4705,6 +4752,11 @@ function GoGo_DebugCollectInformation()
 		GoGo_DebugAddLine("Information: We are moving as per GoGo_IsMoving()")
 	else
 		GoGo_DebugAddLine("Information: We are not moving as per GoGo_IsMoving()")
+	end --if
+	if IsPlayerMoving() then
+		GoGo_DebugAddLine("Information: We are moving as per IsPlayerMoving()")
+	else
+		GoGo_DebugAddLine("Information: We are not moving as per IsPlayerMoving()")
 	end --if
 	
 	local buffs, i = { }, 1
