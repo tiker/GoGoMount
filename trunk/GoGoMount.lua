@@ -3556,6 +3556,15 @@ function GoGo_UpdateMountData()
 			end --if
 		end --if
 	end --if
+
+	if (GoGo_Variables.Player.ZoneID == 978) and (UnitBuff("player", GetSpellInfo(170495))) then
+	-- Makes mounts instant cast if in Ashran with "Swift Riding Crop" buff
+		local GoGo_TempMountDB = {}
+		GoGo_TempMountDB = GoGo_FilterMountsIn(GoGo_Variables.FilteredMounts, 701) or {}
+		for GoGo_TempCounter = 1, table.getn(GoGo_TempMountDB) do
+			GoGo_Variables.MountDB[GoGo_TempMountDB[GoGo_TempCounter]][6] = true
+		end --for
+	end --if
 	
 	-- mount speed updates based on riding skill
 	if GoGo_GetRidingSkillLevel() == 325 then  -- increase air mounts to 410
