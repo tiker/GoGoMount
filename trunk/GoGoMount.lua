@@ -799,12 +799,12 @@ function GoGo_BuildMountList()
 	local GoGo_MountList = {}
 
 	if (GetNumCompanions("MOUNT") >= 1) then
-		local mountIDs = C_MountJournal.GetMountIDs()
-		for i, id in pairs(mountIDs) do
-			local _, SpellID, _, _, isUsable, _, _, isFactionSpecific, faction, _, isCollected, _ = C_MountJournal.GetMountInfoByID(id)
+--		local mountIDs = C_MountJournal.GetMountIDs()
+--		for i, id in pairs(mountIDs) do
+--			local _, SpellID, _, _, isUsable, _, _, isFactionSpecific, faction, _, isCollected, _ = C_MountJournal.GetMountInfoByID(id)
 
---		for slot = 1,  C_MountJournal.GetNumMounts(),1 do
---			local _, SpellID, _, _, isUsable, _, _, isFactionSpecific, faction, _, isCollected = C_MountJournal.GetMountInfo(slot)
+		for slot = 1,  C_MountJournal.GetNumMounts(),1 do
+			local _, SpellID, _, _, isUsable, _, _, isFactionSpecific, faction, _, isCollected = C_MountJournal.GetMountInfo(slot)
 			
 			if GoGo_Variables.Debug >= 10 then 
 				-- show a line for each mount and indicate if it's usable, etc. in debug log?
