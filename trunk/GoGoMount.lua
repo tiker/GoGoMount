@@ -799,8 +799,12 @@ function GoGo_BuildMountList()
 	local GoGo_MountList = {}
 
 	if (GetNumCompanions("MOUNT") >= 1) then
-		for slot = 1,  C_MountJournal.GetNumMounts(),1 do
-			local _, SpellID, _, _, isUsable, _, _, isFactionSpecific, faction, _, isCollected = C_MountJournal.GetMountInfo(slot)
+		local mountIDs = C_MountJournal.GetMountIDs()
+		for i, id in pairs(mountIDs) do
+			local _, SpellID, _, _, isUsable, _, _, isFactionSpecific, faction, _, isCollected, _ = C_MountJournal.GetMountInfoByID(id)
+
+--		for slot = 1,  C_MountJournal.GetNumMounts(),1 do
+--			local _, SpellID, _, _, isUsable, _, _, isFactionSpecific, faction, _, isCollected = C_MountJournal.GetMountInfo(slot)
 			
 			if GoGo_Variables.Debug >= 10 then 
 				-- show a line for each mount and indicate if it's usable, etc. in debug log?
@@ -3101,6 +3105,22 @@ function GoGo_ZoneCheck()
 		if GoGo_InBook(GoGo_Variables.Localize.DraenorPathfinder) then
 			GoGo_Variables.ZoneExclude.CanFly = true
 		end --if
+		-- can ride = true
+	elseif GoGo_Variables.Player.ZoneID == 1014 then
+		-- New Dalaran
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Dalaran")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = true
+	elseif GoGo_Variables.Player.ZoneID == 1021 then
+--	"240609.26499668 Information: Location = Dalaran - Dalaran -  - Dalaran", -- [130]
+--	"240609.36767671 Information: Current zone area ID as per GetCurrentMapAreaID(): 1021", -- [131]
+-- Fell through hole in new Dalaran to an area below the city to get this...
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Dalaran")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
 		-- can ride = true
 	elseif GoGo_Variables.Player.ZoneID == 1026 then
 		if GoGo_Variables.Debug >= 10 then
