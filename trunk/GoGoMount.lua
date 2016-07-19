@@ -21,13 +21,15 @@ function GoGo_OnEvent(self, event, ...)
 ---------
 	local arg1, arg2, arg3, arg4 = ...
 	if event == "ADDON_LOADED" and arg1 == "GoGoMount" then
+		GoGo_DebugLog = {}
+		if not GoGo_Prefs then
+			GoGo_Settings_Default()
+		end --if
+		GoGo_Prefs.UnknownMounts = {}
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_OnEvent(ADDON_LOADED): Addon Loaded event fired.")
 		end --if
 		GoGoFrame:UnregisterEvent("ADDON_LOADED")
-		if not GoGo_Prefs then
-			GoGo_Settings_Default()
-		end --if
 		if not GoGo_Prefs_Template then
 			GoGo_Prefs_Template = {}
 		end --if
@@ -36,8 +38,6 @@ function GoGo_OnEvent(self, event, ...)
 		elseif GoGo_Prefs.version ~= GetAddOnMetadata("GoGoMount", "Version") then
 			GoGo_Settings_SetUpdates()
 		end --if
-		GoGo_DebugLog = {}
-		GoGo_Prefs.UnknownMounts = {}
 		GoGo_Variables.VerMajor, GoGo_Variables.VerMinor, GoGo_Variables.VerBuild = strsplit(".", GetAddOnMetadata("GoGoMount", "Version"))
 		GoGo_Variables.VerMajor, GoGo_Variables.VerMinor, GoGo_Variables.VerBuild = tonumber(GoGo_Variables.VerMajor), tonumber(GoGo_Variables.VerMinor), tonumber(GoGo_Variables.VerBuild)
 		_, GoGo_Variables.Player.Class = UnitClass("player")
@@ -799,13 +799,10 @@ function GoGo_BuildMountList()
 	local GoGo_MountList = {}
 
 	if (GetNumCompanions("MOUNT") >= 1) then
---		local mountIDs = C_MountJournal.GetMountIDs()
---		for i, id in pairs(mountIDs) do
---			local _, SpellID, _, _, isUsable, _, _, isFactionSpecific, faction, _, isCollected, _ = C_MountJournal.GetMountInfoByID(id)
+		local mountIDs = C_MountJournal.GetMountIDs()
+		for i, id in pairs(mountIDs) do
+			local _, SpellID, _, _, isUsable, _, _, isFactionSpecific, faction, _, isCollected, _ = C_MountJournal.GetMountInfoByID(id)
 
-		for slot = 1,  C_MountJournal.GetNumMounts(),1 do
-			local _, SpellID, _, _, isUsable, _, _, isFactionSpecific, faction, _, isCollected = C_MountJournal.GetMountInfo(slot)
-			
 			if GoGo_Variables.Debug >= 10 then 
 				-- show a line for each mount and indicate if it's usable, etc. in debug log?
 				--GoGo_DebugAddLine("GoGo_BuildMountList: Found mount spell ID " .. SpellID .. " and added to known mount list.")
@@ -3204,6 +3201,7 @@ function GoGo_GetProfSkillLevel(searchname)
 	return 0
 end --function
 
+--[[
 ---------
 function GoGo_GlyphActive(spellid)
 ---------
@@ -3222,6 +3220,7 @@ function GoGo_GlyphActive(spellid)
 
 	return false
 end --function
+]]
 
 ---------
 function GoGo_CheckSwimSurface()
@@ -3454,6 +3453,7 @@ function GoGo_UpdateMountData()
 		end --if
 	end --if
 
+--[[
 	if (GoGo_Variables.Player.Class == "DRUID") and (GoGo_GlyphActive(GoGo_Variables.Localize.Glyph_AquaticForm)) then
 		GoGo_Variables.MountDB[GoGo_Variables.Localize.AquaForm][10001] = 135
 		GoGo_TableAddUnique(GoGo_Variables.WaterSpeed, 135)
@@ -3463,7 +3463,7 @@ function GoGo_UpdateMountData()
 			GoGo_DebugAddLine("GoGo_UpdateMountData: We're a Druid with Glyph of Aquatic Form.  Modifying Aquatic Form speed data.")
 		end --if
 	end --if
-
+]]
 	if (GoGo_Variables.Player.Class == "DRUID" and (IsSwimming() or IsSubmerged())) then
 		-- set the swim speeds to whatever AquaForm speed is including possible glyph modifier set above
 		GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][10001] = GoGo_Variables.MountDB[GoGo_Variables.Localize.AquaForm][10001]
@@ -3481,6 +3481,7 @@ function GoGo_UpdateMountData()
 		end --if
 	end --if
 
+	--[[
 	if (GoGo_Variables.Player.Class == "DRUID") and (GoGo_GlyphActive(GoGo_Variables.Localize.Glyph_Stag) and not GoGo_GlyphActive(GoGo_Variables.Localize.Glyph_Cheetah)) then
 		-- Druid's travel form can carry a passenger
 		GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][2] = true
@@ -3527,6 +3528,7 @@ function GoGo_UpdateMountData()
 			GoGo_TableAddUnique(GoGo_Variables.WaterSurfaceSpeed, 160)
 		end --if	
 	end --if
+]]
 	
 	if not GoGo_Variables.ZoneExclude.ThousandNeedles then  -- we are in thousand needles - ground mounts swim faster with buff
 		local GoGo_TempMountDB = {}
