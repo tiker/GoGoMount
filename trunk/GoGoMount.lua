@@ -293,6 +293,8 @@ function GoGo_ChooseMount()
 	GoGo_Variables.RidingLevel = GoGo_GetRidingSkillLevel() or 0
 	GoGo_Variables.Player.Level = UnitLevel("player")
 
+	GoGo_UpdateZonePrefs()  -- check & build zone preference table for this zone
+
 	if (GoGo_Variables.Player.Class == "DRUID") then
 		GoGo_TableAddUnique(GoGo_Variables.WaterSpeed, 101)  -- Aqua Form
 		GoGo_TableAddUnique(GoGo_Variables.WaterSurfaceSpeed, 101)  -- Aqua Form
@@ -306,11 +308,6 @@ function GoGo_ChooseMount()
 		GoGo_TableAddUnique(GoGo_Variables.AirSpeed, 160)  -- Zen Flight
 	end --if
 
---	updating zone preference table when logging on and when changing zones.. probably don't need to do it when mounting as well
--- 	if not GoGo_Prefs.Zones[GoGo_Variables.Player.ZoneID] or not GoGo_Prefs.Zones[GoGo_Variables.Player.ZoneID]["Preferred"] or not GoGo_Prefs.Zones[GoGo_Variables.Player.ZoneID]["Excluded"] then
---		GoGo_UpdateZonePrefs()  -- building zone template in GoGo_Prefs for preferred and excluded mounts (incase it doesn't exist such as trying to mount for the first time after installing mod without zoning)
---	end --if
-	
 	if GoGo_Variables.Debug >= 10 then
 		GoGo_DebugAddLine("GoGo_ChooseMount: " .. GoGo_Variables.Localize.Skill.Engineering .. " = "..GoGo_Variables.EngineeringLevel)
 		GoGo_DebugAddLine("GoGo_ChooseMount: " .. GoGo_Variables.Localize.Skill.Tailoring .. " = "..GoGo_Variables.TailoringLevel)
@@ -325,6 +322,7 @@ function GoGo_ChooseMount()
 --			GoGo_Variables.UnknownMountMsgShown = true
 		end --if
 	end --if
+
 	if GoGo_Variables.Debug >= 10 then
 		GoGo_DebugAddLine("GoGo_ChooseMount: Checked for zone favorites.")
 	end --if
@@ -1278,17 +1276,24 @@ end --function
 ---------
 function GoGo_UpdateZonePrefs()
 ---------
-	if not GoGo_Variables.Player.Zone then
-		return
-	end --if
+
+	local bConvert = false
+	
 	if not GoGo_Prefs.Zones[GoGo_Variables.Player.Zone] then
 		GoGo_Prefs.Zones[GoGo_Variables.Player.Zone] = {}
 	end --if
 	if not GoGo_Prefs.Zones[GoGo_Variables.Player.Zone]["Preferred"] then
 		GoGo_Prefs.Zones[GoGo_Variables.Player.Zone]["Preferred"] = {}
+		bConvert = true
 	end --if
 	if not GoGo_Prefs.Zones[GoGo_Variables.Player.Zone]["Excluded"] then
 		GoGo_Prefs.Zones[GoGo_Variables.Player.Zone]["Excluded"] = {}
+		bConvert = true
+	end --if
+
+	if not bConvert then
+		-- if we didn't create the zone in GoGo_Prefs then it's already been converted at some point so we don't need to convert again
+		return
 	end --if
 	
 	if GoGo_Prefs[GoGo_Variables.Player.Zone] then
@@ -3002,6 +3007,13 @@ function GoGo_ZoneCheck()
 	elseif GoGo_Variables.Player.ZoneID == 953 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Siege Of Orgrimmar (raid instance)")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = true
+	elseif GoGo_Variables.Player.ZoneID == 962 then
+		-- instanced version of Ashran which replaced the phased world Ashran (978) with Warcraft 7.0
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Ashran (instace)")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 		-- can ride = true
