@@ -1276,6 +1276,9 @@ end --function
 ---------
 function GoGo_UpdateZonePrefs()
 ---------
+	if not GoGo_Variables.Player.Zone then
+		return
+	end --if
 
 	local bConvert = false
 	
