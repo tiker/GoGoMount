@@ -4828,7 +4828,7 @@ function GoGo_DebugCollectInformation()
 		buff = UnitBuff("player", i)
 	end --while
 	if #buffs < 1 then
-		buffs = "We are unbuffed"
+		buffs = "We are not buffed"
 	else
 		buffs[1] = "We are buffed with: "..buffs[1]
 		buffs = table.concat(buffs, ", ")
