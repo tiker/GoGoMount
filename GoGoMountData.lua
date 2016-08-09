@@ -723,6 +723,8 @@ function GoGo_GetMountDB()
 		[213209] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Steelbound Devourer
 		[215159] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Long-Forgotten Hippogryph
 		[215558] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Ratstallion
+		[220124] = {[50000]=139421},		-- Ratstallion Harness
+
 		[222202] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Prestigious Bronze Courser
 
 		
@@ -749,6 +751,7 @@ GoGo_Variables.MountItemIDs = {
 	[55121] = {[50000]=76203, [51000] = true},  -- River Boat
 	[71086] = {[50000]=101641, [51001] = true},  -- Dragonwrath, Tarecgosa's Rest
 	[101675] = {[50000]=145133, [51000] = true},  -- Shimmering Moonstone
+	[139421] = {[50000]=220124, [51000] = true},	-- Ratstallion Harness (item casts spell id 220123 but mount is 220124)
 }
 
 

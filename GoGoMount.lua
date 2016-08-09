@@ -127,6 +127,7 @@ function GoGo_OnEvent(self, event, ...)
 		GoGo_StartStopDebug(0)
 		GoGo_Variables.Player.Zone = GetRealZoneText()
 		GoGo_Variables.Player.ZoneID = GetCurrentMapAreaID()
+--		GoGo_Variables.Player.SubZoneID = GetCurrentMapDungeonLevel()
 		GoGo_UpdateZonePrefs()
 		GoGo_Variables.ExpansionAccount = GetAccountExpansionLevel()
 		GoGo_Variables.ExpansionGame =  GetExpansionLevel()
@@ -3121,6 +3122,12 @@ function GoGo_ZoneCheck()
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 		-- can ride = true
+		if GetCurrentMapDungeonLevel() == 11 then
+			-- We're in the Underbelly area, enable the item mount
+			GoGo_Variables.MountDB[220123][10002] = 200
+			GoGo_Variables.MountDB[220123][7] = true
+			GoGo_Variables.MountDB[220123][8] = true
+		end --if
 	elseif GoGo_Variables.Player.ZoneID == 1021 then
 --	"240609.26499668 Information: Location = Dalaran - Dalaran -  - Dalaran", -- [130]
 --	"240609.36767671 Information: Current zone area ID as per GetCurrentMapAreaID(): 1021", -- [131]
