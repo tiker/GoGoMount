@@ -749,6 +749,8 @@ function GoGo_GetMountDB()
 		
 		[214791] = {[36] = true, [53] = true, [404] = true, [10001]=108, [10004]=108},  -- Brinedeep Bottom-Feeder
 		[223018] = {[36] = true, [53] = true, [404] = true, [10001]=108, [10004]=108},  -- Fathom Dweller
+
+		[215545] = {[999]=true, [9999]=true},  -- Fel Bat (Test)
 		
 --		[123456] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Standard Ground Mount template
 --		[123456] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Standard Air & Ground Mount template
