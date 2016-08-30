@@ -4625,10 +4625,21 @@ function GoGo_AddOptionCheckboxes(GoGo_FrameParentText)
 	if GoGo_MountCount == 0 then
 		return nil
 	end --if
-	
-	for loopcount=1, GoGo_MountCount do
-		local GoGo_MountID = GoGo_Mounts[loopcount]
-		local GoGo_checkboxrow = (-44 + (-16 * loopcount))
+
+	local tMountNames = {}
+	local tMountIDNames = {}
+	local sMountName
+	local i
+	for i=1, GoGo_MountCount do
+		sMountName = GoGo_GetIDName(GoGo_Mounts[i])
+		table.insert(tMountNames, sMountName)
+		tMountIDNames[sMountName] = GoGo_Mounts[i]
+	end --for
+	table.sort(tMountNames)
+
+	for i=1, GoGo_MountCount do
+		local GoGo_MountID = tMountIDNames[tMountNames[i]]
+		local GoGo_checkboxrow = (-44 + (-16 * i))
 		local GoGo_CheckBoxName = GoGo_FrameParentText .. GoGo_MountID
 		if _G[GoGo_CheckBoxName] then
 			_G[GoGo_CheckBoxName]:SetPoint("TOPLEFT", 16, GoGo_checkboxrow)
