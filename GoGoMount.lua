@@ -3156,9 +3156,16 @@ function GoGo_ZoneCheck()
 		GoGo_Variables.ZoneExclude.CanFly = false
 		-- can ride = true
 	elseif GoGo_Variables.Player.ZoneID == 1054 then
-		-- Broken Isles version of Dalaran - The Violet Hold instance for mages starting their quest line for the 7.0 expansion
+		-- Broken Isles version of Dalaran - The Violet Hold instance (scenario) for mages starting their quest line for the 7.0 expansion
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Violet Hold")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = false
+	elseif GoGo_Variables.Player.ZoneID == 1068 then
+		-- Mage hangout area in (Broken Isles) Dalaran
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Hall of the Guardian")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 		-- can ride = false
