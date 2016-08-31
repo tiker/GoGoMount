@@ -3124,9 +3124,9 @@ function GoGo_ZoneCheck()
 		-- can ride = true
 		if GetCurrentMapDungeonLevel() == 11 then
 			-- We're in the Underbelly area, enable the item mount
-			GoGo_Variables.MountDB[220123][10002] = 200
-			GoGo_Variables.MountDB[220123][7] = true
-			GoGo_Variables.MountDB[220123][8] = true
+			GoGo_Variables.MountDB[220124][10002] = 200
+			GoGo_Variables.MountDB[220124][7] = true
+			GoGo_Variables.MountDB[220124][8] = true
 		end --if
 	elseif GoGo_Variables.Player.ZoneID == 1015 then
 		if GoGo_Variables.Debug >= 10 then
