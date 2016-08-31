@@ -3155,6 +3155,13 @@ function GoGo_ZoneCheck()
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 		-- can ride = true
+	elseif GoGo_Variables.Player.ZoneID == 1054 then
+		-- Broken Isles version of Dalaran - The Violet Hold instance for mages starting their quest line for the 7.0 expansion
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Violet Hold")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = false
 	elseif GoGo_Variables.Player.ZoneID == 1076 then
 		-- The Ulduar scenario as part of the quest line for the pre-release events to Warcraft 7 - Legion
 		if GoGo_Variables.Debug >= 10 then
