@@ -3199,6 +3199,13 @@ function GoGo_ZoneCheck()
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 		-- can ride = true
+	elseif GoGo_Variables.Player.ZoneID == 1091 then
+		-- Single player scenario
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Exodar (scenario")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = true
 	elseif GoGo_Variables.Player.ZoneID == 1100 then
 		-- The Kharazan scenario as part of the quest line for the pre-release events to Warcraft 7 - Legion
 		if GoGo_Variables.Debug >= 10 then
