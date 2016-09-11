@@ -3147,6 +3147,12 @@ function GoGo_ZoneCheck()
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 		-- can ride = true
+	elseif GoGo_Variables.Player.ZoneID == 1033 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Suramar")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = true
 	elseif GoGo_Variables.Player.ZoneID == 1047 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Niskara (instance)")
