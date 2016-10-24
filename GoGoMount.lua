@@ -4633,6 +4633,8 @@ function GoGo_Settings_SetUpdates()
 	GoGo_Prefs.checkspells = nil
 	GoGo_Prefs.PaliUseCrusader = nil
 	GoGo_Prefs.PaladinUseCrusaderAura = nil
+	
+	GoGo_Prefs.PrefVer = 1
 
 end --function
 

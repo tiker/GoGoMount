@@ -12,6 +12,6 @@
 ## Notes-koKR: 탈것의 타기/내리기를 위한 1 키 해결, 주문, 변신 지원
 ## Author: Gadgets (Tiker) @ Bleeding Hollow
 ## SavedVariablesPerCharacter: GoGo_Prefs GoGo_DebugLog
-## SavedVariables: GoGo_Prefs_Template
+## SavedVariables: GoGoMount_MountSettings
 
 GoGoMount.xml
