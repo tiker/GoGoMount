@@ -1,6 +1,6 @@
-## Interface: 70100
+## Interface: 70300
 ## Title: GoGoMount
-## Version: 7.1.1
+## Version: 7.3.1
 ## Notes: One-key solution for mounting/dismounting, supports spells, shapeshifting
 ## Notes-enGB: One-key solution for mounting/dismounting, supports spells, shapeshifting
 ## Notes-deDE: Ein-Tasten-Lösung für das Auf- und Absitzen von Reittieren, unterstützt auch Zaubersprüche und Gestaltwandlung
