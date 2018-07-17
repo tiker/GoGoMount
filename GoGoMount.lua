@@ -2940,21 +2940,33 @@ function GoGo_ZoneCheck()
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Azsuna")
 		end --if
 		GoGo_Variables.ZoneExclude.LegionZones = false
-		GoGo_Variables.ZoneExclude.CanFly = false
+		if GoGo_InBook(233368) then
+			GoGo_Variables.ZoneExclude.CanFly = true
+		else
+			GoGo_Variables.ZoneExclude.CanFly = false
+		end --if
 		-- can ride = true
 	elseif GoGo_Variables.Player.ZoneID == 1017 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Stormheim")
 		end --if
 		GoGo_Variables.ZoneExclude.LegionZones = false
-		GoGo_Variables.ZoneExclude.CanFly = false
+		if GoGo_InBook(233368) then
+			GoGo_Variables.ZoneExclude.CanFly = true
+		else
+			GoGo_Variables.ZoneExclude.CanFly = false
+		end --if
 		-- can ride = true
 	elseif GoGo_Variables.Player.ZoneID == 1018 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Val'sharah")
 		end --if
 		GoGo_Variables.ZoneExclude.LegionZones = false
-		GoGo_Variables.ZoneExclude.CanFly = false
+		if GoGo_InBook(233368) then
+			GoGo_Variables.ZoneExclude.CanFly = true
+		else
+			GoGo_Variables.ZoneExclude.CanFly = false
+		end --if
 		-- can ride = true
 	elseif GoGo_Variables.Player.ZoneID == 1021 then
 		-- Broken Isles - Rooms used for scenarios as part of the various class specific quests
@@ -2968,7 +2980,11 @@ function GoGo_ZoneCheck()
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Highmountain")
 		end --if
 		GoGo_Variables.ZoneExclude.LegionZones = false
-		GoGo_Variables.ZoneExclude.CanFly = false
+		if GoGo_InBook(233368) then
+			GoGo_Variables.ZoneExclude.CanFly = true
+		else
+			GoGo_Variables.ZoneExclude.CanFly = false
+		end --if
 		-- can ride = true
 	elseif GoGo_Variables.Player.ZoneID == 1026 then
 		if GoGo_Variables.Debug >= 10 then
@@ -2981,7 +2997,11 @@ function GoGo_ZoneCheck()
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Suramar")
 		end --if
 		GoGo_Variables.ZoneExclude.LegionZones = false
-		GoGo_Variables.ZoneExclude.CanFly = false
+		if GoGo_InBook(233368) then
+			GoGo_Variables.ZoneExclude.CanFly = true
+		else
+			GoGo_Variables.ZoneExclude.CanFly = false
+		end --if
 		-- can ride = true
 	elseif GoGo_Variables.Player.ZoneID == 1047 then
 		if GoGo_Variables.Debug >= 10 then
