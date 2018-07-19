@@ -603,7 +603,7 @@ function GoGo_GetMountDB()
 
 		[147595] = {[9]=true, [38]=true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Stormcrow
 
-	-- Spells, shape forms, etc
+		-- Spells, shape forms, etc
 		[40120] = {[7] = true, [9] = true, [300] = true, [403] = true, [9998] = true, ["FlightOnly"] = true, [10003]=380},  -- Druid Swift Flight Form
 		[33943] = {[7] = true, [9] = true, [300] = true, [301] = true, [403] = true, [9998] = true, ["FlightOnly"] = true, [10003]=250},  -- Druid Flight Form
 		[165962] = {[7] = true, [9] = true, [300] = true, [301] = true, [403] = true, [501] = true, [9998] = true, ["FlightOnly"] = true, [10003]=250},  -- Druid Flight Form  (new form that appears with Glyph of the Stag with patch 6.0)
@@ -616,11 +616,10 @@ function GoGo_GetMountDB()
 		[87840] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Running Wild (Worgen Racial)
 		[125883] = {[7]=true, [9]=true, [403]=true, ["FlightOnly"]=true, [10003]=160},	-- Zen Flight (Monk glyph)
 
-	-- Other ...
+		-- Other ...
 		[163016] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67, [9999]=true},  -- Warforged Nightmare
 
-
-	-- 6.0.0 Mounts (may change before expansion is released)
+		-- 6.0.0 Mounts (may change before expansion is released)
 		[150926] = {[9] = true, [36]=true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Draenor Chimera
 		[163025] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Grinning Reaver
 		[163024] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Warforged Nightmare
@@ -671,7 +670,7 @@ function GoGo_GetMountDB()
 		[171633] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Wild Goretusk
 		[171616] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Witherhide Cliffstomper
 
--- 6.2
+		-- 6.2
 		[182912] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Felsteel Annihilator
 		[183117] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Corrupted Dreadwing
 		[183889] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Vicious War Mechanostrider
@@ -685,7 +684,7 @@ function GoGo_GetMountDB()
 		[189044] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Warmongering Gladiator's Felblood Gronnling
 		[189043] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Wild Gladiator's Felblood Gronnling
 		
--- 6.2.1
+		-- 6.2.1
 		[194046] = {[9] = true, [35] = true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Swift Spectral Rylak  (may not be player useable, might be for dead players only.. added for now to prevent GoGoMount from detecting as misisng mount)
 		[191314] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Minion of Grumpus
 		[142910] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Ironbound Wraithcharger
@@ -693,10 +692,10 @@ function GoGo_GetMountDB()
 		[189999] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Grove Warden
 		[194464] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Eclipse Dragonhawk
 
--- 6.2.3
+		-- 6.2.3
 		[201098] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Infinite Timereaver
 		
--- 7.0.1 - Legion
+		-- 7.0.1 - Legion
 		[193007] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Demonsaber
 		[190710] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Enchanted Chicken
 		[200175] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Felsaber
@@ -753,8 +752,7 @@ function GoGo_GetMountDB()
 		[215545] = {[999]=true, [9999]=true},  -- Fel Bat (Test)
 		[220508] = {[38] = true, [203]=true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67, [50000]=139505},  -- 7.0 Paladin Order Hall Mount Dummy
 
-
--- 7.1.5
+		-- 7.1.5
 		[228919] = {[36] = true, [53] = true, [404] = true, [10001]=108, [10004]=108},  -- Darkwater Skate
 		[229499] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Midnight
 		[230401] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- White Hawkstrider
@@ -762,7 +760,7 @@ function GoGo_GetMountDB()
 		[230987] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Arcanist's Manasaber
 		[231428] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Smoldering Ember Wyrm
 
--- 7.2.0
+		-- 7.2.0
 		[232519] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Abyss Worm
 		[229376] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Archmage's Prismatic Disc
 		[229385] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Ban-Lu, Grandmaster's Companion
@@ -799,7 +797,8 @@ function GoGo_GetMountDB()
 		[232525] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Vicious War Turtle
 		[232523] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Vicious War Turtle
 		[242875] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Wild Dreamrunner
--- 7.3.0
+
+		-- 7.3.0
 		[235764] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Darkspore Mana Ray
 		[239013] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Lightforged Warframe
 		[242305] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Sable Ruinstrider
@@ -829,14 +828,17 @@ function GoGo_GetMountDB()
 		[253660] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Biletooth Gnasher
 		[253661] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Crimson Slavermaw
 		[253662] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Acid Belcher
+		[253711] = {[36] = true, [53] = true, [404] = true, [10001]=108, [10004]=108},  -- Pond Nettle
 		[254069] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Glorious Felcrusher
 		[254258] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Blessed Felcrusher
 		[254259] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Avenging Felcrusher
 		[254260] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Bleakhoof Ruinstrider
--- 7.3.5.25996
+
+		-- 7.3.5.25996
 		[239766] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Blue Qiraji War Tank
 		[239770] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Black Qiraji War Tank
--- 8.0.1.25902 (According to Wowhead)
+
+		-- 8.0.1.25902 (According to Wowhead)
 		[239767] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Red Qiraji War Tank
 		[255695] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Seabraid Stallion
 		[255696] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Gilded Ravasaur
@@ -847,6 +849,7 @@ function GoGo_GetMountDB()
 		[259395] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Shu-Zen, the Divine Sentinel
 --		[123456] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Standard Ground Mount template
 --		[123456] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Standard Air & Ground Mount template
+--		[123456] = {[36] = true, [53] = true, [404] = true, [10001]=108, [10004]=108},  -- Standard Water (surface and submerged) Mount template
 	}
 end --if
 
