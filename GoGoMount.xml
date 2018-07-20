@@ -12,6 +12,7 @@
 	<Script file="localization-zhCN.lua"/>
 	<Script file="localization-zhTW.lua"/>
 	<Script file="localization.lua"/>
+	<Script file="GoGoZones.lua"/>
 	<Script file="GoGoMount.lua"/>
 	<Frame name="GoGoFrame">
 		<Scripts>

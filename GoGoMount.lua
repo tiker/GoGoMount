@@ -66,7 +66,7 @@ function GoGo_OnEvent(self, event, ...)
 			GoGo_SetOptionAutoDismount(1)
 		end --if
 	elseif event == "PLAYER_REGEN_DISABLED" then
-		GoGo_Variables.Player.ZoneID = GetCurrentMapAreaID()
+		GoGo_Variables.Player.ZoneID = C_Map.GetBestMapForUnit("player")
 		for i, button in ipairs({GoGoButton, GoGoButton2, GoGoButton3}) do
 			if GoGo_Variables.Player.Class == "SHAMAN" then
 				if GoGo_Variables.Debug >= 10 then 
@@ -99,9 +99,10 @@ function GoGo_OnEvent(self, event, ...)
 			end --if
 		end --for
 	elseif event == "ZONE_CHANGED_NEW_AREA" then
-		SetMapToCurrentZone()
+--		SetMapToCurrentZone()
 		GoGo_Variables.Player.Zone = GetRealZoneText()
-		GoGo_Variables.Player.ZoneID = GetCurrentMapAreaID()
+		GoGo_Variables.Player.ZoneID = C_Map.GetBestMapForUnit("player")
+--		GoGo_Variables.Player.ZoneID = GetCurrentMapAreaID()
 		if GoGo_Variables.Debug >= 5 then GoGo_ZoneCheck() end --if
 		GoGo_UpdateZonePrefs()
 		if _G["GoGo_ZoneFavorites_ContentFrame"] and _G["GoGo_ZoneFavorites_ContentFrame"]:IsShown() then
@@ -126,12 +127,12 @@ function GoGo_OnEvent(self, event, ...)
 	elseif (event == "PLAYER_ENTERING_WORLD") then
 		GoGo_StartStopDebug(0)
 		GoGo_Variables.Player.Zone = GetRealZoneText()
-		GoGo_Variables.Player.ZoneID = GetCurrentMapAreaID()
+		GoGo_Variables.Player.ZoneID = C_Map.GetBestMapForUnit("player")
 --		GoGo_Variables.Player.SubZoneID = GetCurrentMapDungeonLevel()
 		GoGo_UpdateZonePrefs()
 		GoGo_Variables.ExpansionAccount = GetAccountExpansionLevel()
 		GoGo_Variables.ExpansionGame =  GetExpansionLevel()
-		local _ = RegisterAddonMessagePrefix("GoGoMountVER")
+--		local _ = RegisterAddonMessagePrefix("GoGoMountVER")
 	elseif (event == "UNIT_TARGET" and arg1 == "player") then  -- find out what mount player is using - only enabled if debug level >= 6
 		local GoGo_PlayerName = UnitName("target")
 		local i = 1
@@ -207,7 +208,8 @@ function GoGo_PreClick(button)
 			GoGo_DebugAddLine("GoGo_PreClick: Player is a druid, is shifted and not in combat.")
 		end --if
 		GoGo_Dismount(button)
-	elseif GoGo_Variables.Player.Class == "SHAMAN" and UnitBuff("player", GetSpellInfo(GoGo_Variables.Localize.GhostWolf)) then
+--	elseif GoGo_Variables.Player.Class == "SHAMAN" and UnitBuff("player", GetSpellInfo(GoGo_Variables.Localize.GhostWolf)) then
+	elseif GoGo_Variables.Player.Class == "SHAMAN" and AuraUtil.FindAuraByName(GetSpellInfo(GoGo_Variables.Localize.GhostWolf), "player") then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_PreClick: Player is a shaman and is in wolf form.  Standing up.")
 		end --if
@@ -278,7 +280,7 @@ end --function
 ---------
 function GoGo_ChooseMount()
 ---------
-	SetMapToCurrentZone()  -- ticket 488
+--	SetMapToCurrentZone()  -- ticket 488
 	GoGo_Variables.CanRide = true  -- resetting canride flag
 	GoGo_Variables.NoFlying = false -- resetting flag to prevent flying
 
@@ -435,7 +437,8 @@ function GoGo_ChooseMount()
 	end --if
 
 --	if GoGo_Variables.ExpansionAccount == 3 then  -- only exists for 4.x with Cataclysm expansion
-		if UnitBuff("player", GetSpellInfo(GoGo_Variables.Localize.SeaLegs)) then
+--		if UnitBuff("player", GetSpellInfo(GoGo_Variables.Localize.SeaLegs)) then
+		if AuraUtil.FindAuraByName(GetSpellInfo(GoGo_Variables.Localize.SeaLegs), "player") then
 			if GoGo_Variables.Debug >= 10 then
 				GoGo_DebugAddLine("GoGo_ChooseMount: Sea Legs buff found - not removing Vashj'ir mount.")
 			end --if
@@ -603,7 +606,8 @@ function GoGo_ChooseMount()
 			GoGo_DebugAddLine("GoGo_ChooseMount: Looking for flying mounts since we past flight checks.")
 		end --if
 		mounts = GoGo_GetBestAirMounts(GoGo_Variables.FilteredMounts)
-	elseif (table.getn(mounts) == 0) and UnitBuff("player", GetSpellInfo(168796)) then
+--	elseif (table.getn(mounts) == 0) and UnitBuff("player", GetSpellInfo(168796)) then
+	elseif (table.getn(mounts) == 0) and AuraUtil.FindAuraByName(GetSpellInfo(168796), "player") then
 		-- Druids in Ashran with "Book of Flight Form" buff can fly in Ashran zones
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ChooseMount: Didn't pass flight checks but we're a Druid with buff 168796 so we're attempting to select flight form to fly.")
@@ -785,7 +789,8 @@ function GoGo_Dismount(button)
 			end --if
 		end --if
 	elseif GoGo_Variables.Player.Class == "SHAMAN" then
-		if UnitBuff("player", GetSpellInfo(GoGo_Variables.Localize.GhostWolf)) and button then
+--		if UnitBuff("player", GetSpellInfo(GoGo_Variables.Localize.GhostWolf)) and button then
+		if AuraUtil.FindAuraByName(GetSpellInfo(GoGo_Variables.Localize.GhostWolf), "player") and button then
 			if GoGo_Prefs.ShamanClickForm then
 				GoGo_FillButton(button, GoGo_GetMount())
 			else
@@ -894,7 +899,7 @@ function GoGo_BuildMountList()
 	end --for
 
 	-- WoD Nagrand's Garrison mounts
-	GoGo_Variables.Player.ZoneID = GetCurrentMapAreaID()
+	GoGo_Variables.Player.ZoneID = C_Map.GetBestMapForUnit("player")
 	if GoGo_Variables.Player.ZoneID == 950 then
 		local name = GetSpellInfo(161691)
 		_, _, _, _, _, _, spellID = GetSpellInfo(name)
@@ -1055,7 +1060,8 @@ function GoGo_RemoveBuffs(GoGo_Buff)  -- adds lines to button macro to remove re
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_RemoveBuffs: Checking for " .. GoGo_Buff .. " (" .. GetSpellInfo(GoGo_Buff) .. ")")
 		end --if
-		if UnitBuff("player", GetSpellInfo(GoGo_Buff)) then
+--		if UnitBuff("player", GetSpellInfo(GoGo_Buff)) then
+		if AuraUtil.FindAuraByName(GetSpellInfo(GoGo_Buff), "player") then
 			if GoGo_Variables.Debug >= 10 then
 				GoGo_DebugAddLine("GoGo_RemoveBuffs: Found and removing buff " .. GoGo_Buff .. " (" .. GetSpellInfo(GoGo_Buff) .. ")")
 			end --if
@@ -1068,7 +1074,8 @@ function GoGo_RemoveBuffs(GoGo_Buff)  -- adds lines to button macro to remove re
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_RemoveBuffs: Checking for " .. GoGo_Variables.DebuffDB[spellid] .. " (" .. GetSpellInfo(GoGo_Variables.DebuffDB[spellid]) .. ")")
 		end --if
-		if UnitBuff("player", GetSpellInfo(GoGo_Variables.DebuffDB[spellid])) then
+--		if UnitBuff("player", GetSpellInfo(GoGo_Variables.DebuffDB[spellid])) then
+		if AuraUtil.FindAuraByName(GetSpellInfo(GoGo_Variables.DebuffDB[spellid]), "player") then
 			if GoGo_Variables.Debug >= 10 then
 				GoGo_DebugAddLine("GoGo_RemoveBuffs: Found and removing buff " .. GoGo_Variables.DebuffDB[spellid] .. " (" .. GetSpellInfo(GoGo_Variables.DebuffDB[spellid]) .. ")")
 			end --if
@@ -1346,6 +1353,8 @@ function GoGo_UpdateZonePrefs()
 		GoGo_Prefs.Zones[GoGo_Variables.Player.Zone] = nil
 	end --if
 
+	-- Moving from GoGoPrefs.Zones to GoGoPrefs.MapIDs
+	GoGo_ZoneMapIDMigration()
 end --function
 
 ---------
@@ -1498,16 +1507,17 @@ function GoGo_ZoneCheck()
 	GoGo_Variables.ZoneExclude.UseMountGroup = nil
 	GoGo_Variables.InBattleground = false
 	GoGo_Variables.ZoneExclude.LegionZones = true
-	GoGo_Variables.Player.ZoneID = GetCurrentMapAreaID()
+	GoGo_Variables.Player.ZoneID = C_Map.GetBestMapForUnit("player")  -- to remove
+	GoGo_Variables.Player.MapID = C_Map.GetBestMapForUnit("player")
 
 	if GoGo_Variables.Debug >= 10 then
 		GoGo_DebugAddLine("GoGo_ZoneCheck: Beginning function.")
 	end --if
 	if GoGo_Variables.Debug >= 5 then
-		GoGo_DebugAddLine("GoGo_ChooseMount: Zone ID = " .. GoGo_Variables.Player.ZoneID)
+		GoGo_DebugAddLine("GoGo_ChooseMount: Map ID = " .. GoGo_Variables.Player.MapID)
 	end --if
 
-	if GoGo_Variables.Player.ZoneID == 1 then
+	if GoGo_Variables.Player.MapID == 1 then
 	--
 	elseif GoGo_Variables.Player.ZoneID == 4 then
 		if GoGo_Variables.Debug >= 10 then
@@ -1601,17 +1611,6 @@ function GoGo_ZoneCheck()
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Searing Gorge")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = true
-	elseif GoGo_Variables.Player.ZoneID == 29 then
-		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Burning Stepps")
-			-- Blackrock Mountains
-		end --if
-		GoGo_Variables.ZoneExclude.CanFly = true
-	elseif GoGo_Variables.Player.ZoneID == 30 then
-		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Elwynn Forest")
-		end --if
-		GoGo_Variables.ZoneExclude.CanFly = true
 	elseif GoGo_Variables.Player.ZoneID == 32 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Deadwind Pass")
@@ -1627,6 +1626,12 @@ function GoGo_ZoneCheck()
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Loch Modan")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = true
+	elseif GoGo_Variables.Player.MapID == 36 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Burning Stepps")
+			-- Blackrock Mountains
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = true
 	elseif GoGo_Variables.Player.ZoneID == 36 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Redridge Mountains")
@@ -1635,6 +1640,11 @@ function GoGo_ZoneCheck()
 	elseif GoGo_Variables.Player.ZoneID == 37 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Northern Stranglethorn")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = true
+	elseif GoGo_Variables.Player.MapID == 37 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Elwynn Forest")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = true
 	elseif GoGo_Variables.Player.ZoneID == 38 then
@@ -1675,6 +1685,11 @@ function GoGo_ZoneCheck()
 	elseif GoGo_Variables.Player.ZoneID == 81 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Stonetalon Mountains")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = true
+	elseif GoGo_Variables.Player.MapID == 84 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Stormwind")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = true
 	elseif GoGo_Variables.Player.ZoneID == 101 then
@@ -1725,11 +1740,6 @@ function GoGo_ZoneCheck()
 	elseif GoGo_Variables.Player.ZoneID == 281 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Winterspring")
-		end --if
-		GoGo_Variables.ZoneExclude.CanFly = true
-	elseif GoGo_Variables.Player.ZoneID == 301 then
-		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Stormwind")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = true
 	elseif GoGo_Variables.Player.ZoneID == 321 then
@@ -3505,7 +3515,8 @@ function GoGo_UpdateMountData()
 	if not GoGo_Variables.ZoneExclude.ThousandNeedles then  -- we are in thousand needles - ground mounts swim faster with buff
 		local GoGo_TempMountDB = {}
 		local GoGo_TempLoopCounter
-		if UnitBuff("player", GetSpellInfo(75627)) and IsSwimming() then
+--		if UnitBuff("player", GetSpellInfo(75627)) and IsSwimming() then
+		if AuraUtil.FindAuraByName(GetSpellInfo(75627), "player") and IsSwimming() then
 			if GoGo_Variables.Debug >= 10 then
 				GoGo_DebugAddLine("GoGo_UpdateMountData: In Thousand Needles with buff.  Updating water speed of ground mounts.")
 			end --if
@@ -3523,7 +3534,8 @@ function GoGo_UpdateMountData()
 		end --if
 	end --if
 	
-	if UnitBuff("player", GetSpellInfo(80610)) and IsSwimming() then
+--	if UnitBuff("player", GetSpellInfo(80610)) and IsSwimming() then
+	if AuraUtil.FindAuraByName(GetSpellInfo(80610), "player") and IsSwimming() then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_UpdateMountData: Swimming with Water Gliding buff.  Updating water speed of ground mounts - increasing by 50%.")
 		end --if
@@ -3541,7 +3553,8 @@ function GoGo_UpdateMountData()
 
 	if (GoGo_Variables.Player.ZoneID == 610) or (GoGo_Variables.Player.ZoneID == 614) or (GoGo_Variables.Player.ZoneID == 615) then
 		if GoGo_Variables.ExpansionAccount == 3 then  -- only exists for 4.x with Cataclysm expansion
-			if UnitBuff("player", GetSpellInfo(GoGo_Variables.Localize.SeaLegs)) then
+			if AuraUtil.FindAuraByName(GetSpellInfo(GoGo_Variables.Localize.SeaLegs), "player") then
+--			if UnitBuff("player", GetSpellInfo(GoGo_Variables.Localize.SeaLegs)) then
 				GoGo_UpdateMountSpeedDB(GoGo_Variables.FilteredMounts, 404, 10001, 270)
 				GoGo_TableAddUnique(GoGo_Variables.WaterSpeed, 270)
 				GoGo_UpdateMountSpeedDB(GoGo_Variables.FilteredMounts, 404, 10004, 270)
@@ -3551,7 +3564,8 @@ function GoGo_UpdateMountData()
 		end --if
 	end --if
 
-	if (GoGo_Variables.Player.ZoneID == 978) and (UnitBuff("player", GetSpellInfo(170495))) then
+--	if (GoGo_Variables.Player.ZoneID == 978) and (UnitBuff("player", GetSpellInfo(170495))) then
+	if (GoGo_Variables.Player.ZoneID == 978) and (AuraUtil.FindAuraByName(GetSpellInfo(170495), "player")) then
 	-- Makes mounts instant cast if in Ashran with "Swift Riding Crop" buff
 		local GoGo_TempMountDB = {}
 		GoGo_TempMountDB = GoGo_FilterMountsIn(GoGo_Variables.FilteredMounts, 701) or {}
@@ -4453,7 +4467,7 @@ function GoGo_Settings_Default(Class)
 		InterfaceOptionsFrame_OpenToCategory(GoGo_Panel_Options)
 	else
 		GoGo_Prefs = {}
-		GoGo_Prefs.Zones = {}
+		GoGo_Prefs.MapIDs = {}
 		GoGo_Prefs.ExtraPassengerMounts = {}
 		GoGo_Prefs.GlobalExclude = {}
 		GoGo_Prefs.version = GetAddOnMetadata("GoGoMount", "Version")
@@ -4500,8 +4514,8 @@ function GoGo_Settings_SetUpdates()
 	if not GoGo_Prefs.GlobalExclude then
 		GoGo_Prefs.GlobalExclude = {}
 	end --if
-	if not GoGo_Prefs.Zones then
-		GoGo_Prefs.Zones = {}
+	if not GoGo_Prefs.MapIDs then
+		GoGo_Prefs.MapIDs = {}
 	end --if
 	if not GoGo_Prefs.ExtraPassengerMounts then
 		GoGo_Prefs.ExtraPassengerMounts = {}
@@ -4692,6 +4706,8 @@ function GoGo_DebugCollectInformation()
 		GoGo_DebugAddLine("Information: Account - World of Warcraft: Warlords of Draenor enabled.")
 	elseif GoGo_Variables.ExpansionAccount == 6 then
 		GoGo_DebugAddLine("Information: Account - World of Warcraft: Legion enabled.")
+	elseif GoGo_Variables.ExpansionAccount == 7 then
+		GoGo_DebugAddLine("Information: Account - World of Warcraft: Battle for Azeroth enabled.")
 	end --if
 	if GoGo_Variables.ExpansionGame == 0 then
 		GoGo_DebugAddLine("Information: Game - World of Warcraft (Classic) enabled.")
@@ -4707,13 +4723,15 @@ function GoGo_DebugCollectInformation()
 		GoGo_DebugAddLine("Information: Game - World of Warcraft: Warlords of Draenor enabled.")
 	elseif GoGo_Variables.ExpansionGame == 6 then
 		GoGo_DebugAddLine("Information: Game - World of Warcraft: Legion enabled.")
+	elseif GoGo_Variables.ExpansionGame == 7 then
+		GoGo_DebugAddLine("Information: Game - World of Warcraft: Battle for Azeroth enabled.")
 	end --if
 	GoGo_DebugAddLine("Information: Client locale is " .. GetLocale())
 	GoGo_DebugAddLine("Information: Location = " .. GetRealZoneText() .. " - " .. GetZoneText() .. " - " ..GetSubZoneText() .. " - " .. GetMinimapZoneText())
-	GoGo_DebugAddLine("Information: Current zone area ID as per GetCurrentMapAreaID(): " .. GetCurrentMapAreaID())
-	GoGo_DebugAddLine("Information: Current map ID as per GetCurrentMapDungeonLevel(): " .. GetCurrentMapDungeonLevel())
-	local posX, posY = GetPlayerMapPosition("Player")
-	GoGo_DebugAddLine("Information: Player location: X = ".. posX .. ", Y = " .. posY)
+	GoGo_DebugAddLine("Information: Current zone area ID as per C_Map.GetBestMapForUnit('player'): " .. C_Map.GetBestMapForUnit("player"))
+--	GoGo_DebugAddLine("Information: Current map ID as per GetCurrentMapDungeonLevel(): " .. GetCurrentMapDungeonLevel())
+--	local posX, posY = GetPlayerMapPosition("Player")
+--	GoGo_DebugAddLine("Information: Player location: X = ".. posX .. ", Y = " .. posY)
 	GoGo_DebugAddLine("Information: Current unit speed is " .. GetUnitSpeed("player"))
 	local level = UnitLevel("player")
 	GoGo_DebugAddLine("Information: We are level " .. level)
@@ -4777,6 +4795,7 @@ function GoGo_DebugCollectInformation()
 		GoGo_DebugAddLine("Information: We are not moving as per IsPlayerMoving()")
 	end --if
 	
+--[[	-- Temporarily disabling this for now to get GoGoMount working again with 8.0
 	local buffs, i = { }, 1
 	local buff = UnitBuff("player", i)
 	while buff do
@@ -4791,6 +4810,7 @@ function GoGo_DebugCollectInformation()
 		buffs = table.concat(buffs, ", ")
 	end --if
 	GoGo_DebugAddLine("Information: " .. buffs)
+]]
 	GoGo_DebugAddLine("Information: End of information.")	
 end --function
 
