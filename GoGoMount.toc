@@ -1,6 +1,6 @@
 ## Interface: 80000
 ## Title: GoGoMount
-## Version: 8.0.5
+## Version: 8.0.6
 ## Notes: One-key solution for mounting/dismounting, supports spells, shapeshifting
 ## Notes-enGB: One-key solution for mounting/dismounting, supports spells, shapeshifting
 ## Notes-deDE: Ein-Tasten-Lösung für das Auf- und Absitzen von Reittieren, unterstützt auch Zaubersprüche und Gestaltwandlung
