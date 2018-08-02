@@ -2324,6 +2324,227 @@ function GoGo_ZoneCheck()
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Ulduar (instance) -- unknown")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
+--	elseif GoGo_Variables.Player.MapID == 153 then
+--	elseif GoGo_Variables.Player.MapID == 154 then
+	elseif GoGo_Variables.Player.MapID == 155 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Obsidian Sanctum (25 player instance)")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+--	elseif GoGo_Variables.Player.MapID == 156 then
+--	elseif GoGo_Variables.Player.MapID == 157 then
+--	elseif GoGo_Variables.Player.MapID == 158 then
+--	elseif GoGo_Variables.Player.MapID == 159 then
+--	elseif GoGo_Variables.Player.MapID == 160 then
+--	elseif GoGo_Variables.Player.MapID == 161 then
+	elseif GoGo_Variables.Player.MapID == 162 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Naxxaramas (instance)")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = true
+	elseif GoGo_Variables.Player.MapID == 163 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Naxxaramas (instance) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = true
+	elseif GoGo_Variables.Player.MapID == 164 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Naxxaramas (instance) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = true
+	elseif GoGo_Variables.Player.MapID == 165 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Naxxaramas (instance) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = true
+	elseif GoGo_Variables.Player.MapID == 166 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Naxxaramas (instance) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = true
+	elseif GoGo_Variables.Player.MapID == 167 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Naxxaramas (instance) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = true
+--	elseif GoGo_Variables.Player.MapID == 168 then
+	elseif GoGo_Variables.Player.MapID == 169 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Isle of Conquest (battleground)")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		GoGo_Variables.InBattleground = true
+	elseif GoGo_Variables.Player.MapID == 170 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Hrothgar's Landing")
+		end --if
+--		GoGo_Variables.ZoneExclude.CanFly = true
+--	elseif GoGo_Variables.Player.MapID == 171 then
+--	elseif GoGo_Variables.Player.MapID == 172 then
+--	elseif GoGo_Variables.Player.MapID == 173 then
+	elseif GoGo_Variables.Player.MapID == 174 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Lost Isles")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 175 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Lost Isles -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 176 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Lost Isles -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 177 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Lost Isles -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 178 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Lost Isles -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+--	elseif GoGo_Variables.Player.MapID == 179 then
+--	elseif GoGo_Variables.Player.MapID == 180 then
+--	elseif GoGo_Variables.Player.MapID == 181 then
+--	elseif GoGo_Variables.Player.MapID == 182 then
+--	elseif GoGo_Variables.Player.MapID == 183 then
+--	elseif GoGo_Variables.Player.MapID == 184 then
+--	elseif GoGo_Variables.Player.MapID == 185 then
+	elseif GoGo_Variables.Player.MapID == 186 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Icecrown Citadel (25 player instance)")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 187 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Icecrown Citadel (25 player instance) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 188 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Icecrown Citadel (25 player instance) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 189 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Icecrown Citadel (25 player instance) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 190 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Icecrown Citadel (25 player instance) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 191 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Icecrown Citadel (25 player instance) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 192 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Icecrown Citadel (25 player instance) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 193 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Icecrown Citadel (25 player instance) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 194 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Kezan (Goblin starting area)")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 195 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Kezan (Goblin starting area) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 196 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Kezan (Goblin starting area) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 197 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Kezan (Goblin starting area) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 198 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Mount Hyjal")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = true
+	elseif GoGo_Variables.Player.MapID == 199 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Southern Barrons")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = true
+	elseif GoGo_Variables.Player.MapID == 200 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Ruby Sanctum")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 201 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Kelp'thar Forest")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = true
+	elseif GoGo_Variables.Player.MapID == 202 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Gilneas")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = true
+--	elseif GoGo_Variables.Player.MapID == 203 then
+	elseif GoGo_Variables.Player.MapID == 204 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Abyssal Depths")
+		end --if
+		if GoGo_Variables.Player.SubZone == GoGo_Variables.Localize.Zone.DarkbreakCove then
+			if GoGo_Variables.Debug >= 10 then
+				GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Abyssal Depths / Darkbreak Cove.")
+			end --if
+			GoGo_Variables.ZoneExclude.CanFly = false
+		elseif GoGo_Variables.Player.SubZone == GoGo_Variables.Localize.Zone.Lghorek then
+			if GoGo_Variables.Debug >= 10 then
+				GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Abyssal Depths / L'ghorek.")
+			end --if
+			GoGo_Variables.ZoneExclude.CanFly = false
+		elseif GoGo_Variables.Player.SubZone == GoGo_Variables.Localize.Zone.TenebrousCavern then
+			if GoGo_Variables.Debug >= 10 then
+				GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Abyssal Depths / Tenebrous Cavern.")
+			end --if
+			GoGo_Variables.ZoneExclude.CanFly = false
+		elseif GoGo_Variables.Player.SubZone == GoGo_Variables.Localize.Zone.TheCerebrillum then
+			if GoGo_Variables.Debug >= 10 then
+				GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Abyssal Depths / The Cerebrillum.")
+			end --if
+			GoGo_Variables.ZoneExclude.CanFly = false
+		else
+			if GoGo_Variables.Debug >= 10 then
+				GoGo_DebugAddLine("GoGo_ZoneCheck: Activating Flying - in Abyssal Depths (not in known no fly area).")
+			end --if
+			GoGo_Variables.ZoneExclude.CanFly = true
+		end --if
+	elseif GoGo_Variables.Player.MapID == 205 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Shimmering Expanse")
+		end --if
+		if GoGo_Variables.Player.SubZone == GoGo_Variables.Localize.Zone.Nespirah then
+			if GoGo_Variables.Debug >= 10 then
+				GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Shimmering Expanse / Nesphirah.")
+			end --if
+			GoGo_Variables.ZoneExclude.CanFly = false
+		else
+			if GoGo_Variables.Debug >= 10 then
+				GoGo_DebugAddLine("GoGo_ZoneCheck: Activating Flying - in Shimmering Expanse (and not in known no fly area).")
+			end --if
+			GoGo_Variables.ZoneExclude.CanFly = true
+		end --if
 	elseif GoGo_Variables.Player.ZoneID == 210 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Cape of Stranglethorn")
@@ -2417,11 +2638,6 @@ function GoGo_ZoneCheck()
 			GoGo_Variables.ZoneExclude.CanFly = true
 		end --if
 		-- can ride = true
-	elseif GoGo_Variables.Player.ZoneID == 531 then
-		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Obsidian Sanctum (25 player instance)")
-		end --if
-		GoGo_Variables.ZoneExclude.CanFly = false
 	elseif GoGo_Variables.Player.MapID == 532 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Frostfire Ridge -- unknown")
@@ -2455,11 +2671,6 @@ function GoGo_ZoneCheck()
 			GoGo_Variables.ZoneExclude.CanFly = true
 		end --if
 		-- can ride = true
-	elseif GoGo_Variables.Player.ZoneID == 535 then
-		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Naxxaramas (instance)")
-		end --if
-		GoGo_Variables.ZoneExclude.CanFly = true
 	elseif GoGo_Variables.Player.MapID == 536 then
 		-- May also include Lunar Fall before garrison is setup
 		if GoGo_Variables.Debug >= 10 then
@@ -2496,35 +2707,24 @@ function GoGo_ZoneCheck()
 			GoGo_Variables.ZoneExclude.CanFly = true
 		end --if
 		-- can ride = true
---	elseif GoGo_Variables.Player.MapID == 540 then
---		-- May also include Lunar Fall before garrison is setup
---		if GoGo_Variables.Debug >= 10 then
---			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Shadowmoon Valley - unknown")
---		end --if
---		if GoGo_InBook(GoGo_Variables.Localize.DraenorPathfinder) then
---			GoGo_Variables.ZoneExclude.CanFly = true
---		end --if
+	elseif GoGo_Variables.Player.MapID == 540 then
+		-- May also include Lunar Fall before garrison is setup
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Shadowmoon Valley - unknown")
+		end --if
+		if GoGo_InBook(GoGo_Variables.Localize.DraenorPathfinder) then
+			GoGo_Variables.ZoneExclude.CanFly = true
+		end --if
 --		-- can ride = true
---	elseif GoGo_Variables.Player.ZoneID == 540 then
---		if GoGo_Variables.Debug >= 10 then
---			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Isle of Conquest (battleground)")
---		end --if
---		GoGo_Variables.ZoneExclude.CanFly = false
---		GoGo_Variables.InBattleground = true
---	elseif GoGo_Variables.Player.MapID == 541 then
---		-- May also include Lunar Fall before garrison is setup
---		if GoGo_Variables.Debug >= 10 then
---			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Shadowmoon Valley")
---		end --if
---		if GoGo_InBook(GoGo_Variables.Localize.DraenorPathfinder) then
---			GoGo_Variables.ZoneExclude.CanFly = true
---		end --if
+	elseif GoGo_Variables.Player.MapID == 541 then
+		-- May also include Lunar Fall before garrison is setup
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Shadowmoon Valley")
+		end --if
+		if GoGo_InBook(GoGo_Variables.Localize.DraenorPathfinder) then
+			GoGo_Variables.ZoneExclude.CanFly = true
+		end --if
 --		-- can ride = true
---	elseif GoGo_Variables.Player.ZoneID == 541 then
---		if GoGo_Variables.Debug >= 10 then
---			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Hrothgar's Landing")
---		end --if
---		GoGo_Variables.ZoneExclude.CanFly = true
 	elseif GoGo_Variables.Player.MapID == 542 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Spires of Arak")
@@ -2549,11 +2749,6 @@ function GoGo_ZoneCheck()
 			GoGo_Variables.ZoneExclude.CanFly = true
 		end --if
 		-- can ride = true
-	elseif GoGo_Variables.Player.ZoneID == 544 then
-		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Lost Isles")
-		end --if
-		GoGo_Variables.ZoneExclude.CanFly = false
 	elseif GoGo_Variables.Player.MapID == 545 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Gorgrond -- unknown")
@@ -2642,86 +2837,17 @@ function GoGo_ZoneCheck()
 --		end --if
 --		GoGo_Variables.ZoneExclude.CanFly = false
 		-- can ride = true
-	elseif GoGo_Variables.Player.ZoneID == 604 then
+	elseif GoGo_Variables.Player.MapID == 619 then
 		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Icecrown Citadel (25 player instance)")
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Broken Shore - The Veiled Isles")
 		end --if
-		GoGo_Variables.ZoneExclude.CanFly = false
-	elseif GoGo_Variables.Player.ZoneID == 605 then
-		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Kezan (Goblin starting area)")
-		end --if
-		GoGo_Variables.ZoneExclude.CanFly = false
-	elseif GoGo_Variables.Player.ZoneID == 606 then
-		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Mount Hyjal")
-		end --if
-		GoGo_Variables.ZoneExclude.CanFly = true
-	elseif GoGo_Variables.Player.ZoneID == 607 then
-		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Southern Barrons")
-		end --if
-		GoGo_Variables.ZoneExclude.CanFly = true
-	elseif GoGo_Variables.Player.ZoneID == 609 then
-		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Ruby Sanctum")
-		end --if
-		GoGo_Variables.ZoneExclude.CanFly = false
-	elseif GoGo_Variables.Player.ZoneID == 610 then
-		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Kelp'thar Forest")
-		end --if
-		GoGo_Variables.ZoneExclude.CanFly = true
-	elseif GoGo_Variables.Player.ZoneID == 611 then
-		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Gilneas")
-		end --if
-		GoGo_Variables.ZoneExclude.CanFly = true
-	elseif GoGo_Variables.Player.ZoneID == 614 then
-		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Abyssal Depths")
-		end --if
-		if GoGo_Variables.Player.SubZone == GoGo_Variables.Localize.Zone.DarkbreakCove then
-			if GoGo_Variables.Debug >= 10 then
-				GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Abyssal Depths / Darkbreak Cove.")
-			end --if
-			GoGo_Variables.ZoneExclude.CanFly = false
-		elseif GoGo_Variables.Player.SubZone == GoGo_Variables.Localize.Zone.Lghorek then
-			if GoGo_Variables.Debug >= 10 then
-				GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Abyssal Depths / L'ghorek.")
-			end --if
-			GoGo_Variables.ZoneExclude.CanFly = false
-		elseif GoGo_Variables.Player.SubZone == GoGo_Variables.Localize.Zone.TenebrousCavern then
-			if GoGo_Variables.Debug >= 10 then
-				GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Abyssal Depths / Tenebrous Cavern.")
-			end --if
-			GoGo_Variables.ZoneExclude.CanFly = false
-		elseif GoGo_Variables.Player.SubZone == GoGo_Variables.Localize.Zone.TheCerebrillum then
-			if GoGo_Variables.Debug >= 10 then
-				GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Abyssal Depths / The Cerebrillum.")
-			end --if
-			GoGo_Variables.ZoneExclude.CanFly = false
-		else
-			if GoGo_Variables.Debug >= 10 then
-				GoGo_DebugAddLine("GoGo_ZoneCheck: Activating Flying - in Abyssal Depths (not in known no fly area).")
-			end --if
+		GoGo_Variables.ZoneExclude.LegionZones = false
+		if GoGo_InBook(233368) then
 			GoGo_Variables.ZoneExclude.CanFly = true
-		end --if
-	elseif GoGo_Variables.Player.ZoneID == 615 then
-		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Shimmering Expanse")
-		end --if
-		if GoGo_Variables.Player.SubZone == GoGo_Variables.Localize.Zone.Nespirah then
-			if GoGo_Variables.Debug >= 10 then
-				GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - in Shimmering Expanse / Nesphirah.")
-			end --if
-			GoGo_Variables.ZoneExclude.CanFly = false
 		else
-			if GoGo_Variables.Debug >= 10 then
-				GoGo_DebugAddLine("GoGo_ZoneCheck: Activating Flying - in Shimmering Expanse (and not in known no fly area).")
-			end --if
-			GoGo_Variables.ZoneExclude.CanFly = true
+			GoGo_Variables.ZoneExclude.CanFly = false
 		end --if
+		-- can ride = true
 	elseif GoGo_Variables.Player.MapID == 622 then
 		-- Alliance part of Ashran
 		if GoGo_Variables.Debug >= 10 then
