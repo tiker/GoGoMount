@@ -45,7 +45,7 @@ function GoGo_OnEvent(self, event, ...)
 		_, GoGo_Variables.Player.Class = UnitClass("player")
 		_, GoGo_Variables.Player.Race = UnitRace("player")
 		GoGo_Variables.Player.Faction, _ = UnitFactionGroup("player")
-			GoGoFrame:RegisterEvent("PLAYER_REGEN_DISABLED")
+		GoGoFrame:RegisterEvent("PLAYER_REGEN_DISABLED")
 		GoGo_UpdateZonePrefs()  -- Migrate zone settings before attempting to draw options
 		if (GoGo_Variables.Player.Class == "DRUID") then
 			GoGo_Variables.Druid = {}
@@ -103,6 +103,9 @@ function GoGo_OnEvent(self, event, ...)
 			end --if
 		end --for
 	elseif event == "ZONE_CHANGED_NEW_AREA" or event == "ZONE_CHANGED_INDOORS" or event == "ZONE_CHANGED" then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_OnEvent(ZONE_CHANGED_NEW_AREA): Event fired.")
+		end --if
 --		SetMapToCurrentZone()
 		GoGo_Variables.Player.Zone = GetRealZoneText()
 		GoGo_Variables.Player.MapID = C_Map.GetBestMapForUnit("player")
@@ -1302,14 +1305,8 @@ function GoGo_UpdateZonePrefs()
 	GoGo_Variables.Player.MapID = C_Map.GetBestMapForUnit("player")
 	GoGo_Variables.Player.ZoneID = GoGo_Variables.ZoneMapID[GoGo_Variables.Player.MapID]
 
-	if not GoGo_Variables.Player.ZoneID then
-		return
-	end --if
-
-	if not GoGo_Variables.Player.Zone then
-		return
-	end --if
-
+	if not GoGo_Prefs then return end
+	
 	if GoGo_Prefs[GoGo_Variables.Player.Zone] then
 		if not GoGo_Prefs.Zones then
 			GoGo_Prefs.Zones = {}
@@ -1334,11 +1331,7 @@ function GoGo_UpdateZonePrefs()
 		GoGo_Prefs[GoGo_Variables.Player.Zone] = nil
 	end --if
 
-	if not GoGo_Prefs.Zones then
-		return
-	end --if
-
-	if GoGo_Prefs.Zones[GoGo_Variables.Player.Zone] then
+	if GoGo_Prefs.Zones and GoGo_Prefs.Zones[GoGo_Variables.Player.Zone] then
 		if not GoGo_Prefs.Zones[GoGo_Variables.Player.ZoneID] then
 			GoGo_Prefs.Zones[GoGo_Variables.Player.ZoneID] = {}
 		end --if
@@ -5606,6 +5599,14 @@ function GoGo_AddOptionCheckboxes(GoGo_FrameParentText)
 	if not GoGo_Variables.Player.MapID then
 		return  -- some UI mods try to draw frames before game has loaded causing errors.. this is to stop the errors.
 	end --if
+--	if not GoGo_Prefs then
+		-- like above, something tries to draw the options before we've even created our default settings on new installs
+--		return
+--	elseif not GoGo_Prefs.MapIDs then
+--		return
+--	elseif not GoGo_Prefs.MapIDs[GoGo_Variables.Player.MapID] then
+--		return
+--	end --if
 	
 	local GoGo_Mounts = GoGo_BuildMountList()
 	local GoGo_MountCount = table.getn(GoGo_Mounts) or 0
