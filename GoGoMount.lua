@@ -3508,7 +3508,17 @@ function GoGo_ZoneCheck()
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Wailing Caverns (5 player instance)")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
-	elseif GoGo_Variables.Player.ZoneID == 750 then
+	elseif GoGo_Variables.Player.MapID == 750 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Thunder Totem")
+		end --if
+		GoGo_Variables.ZoneExclude.LegionZones = false
+		if GoGo_InBook(233368) then
+			GoGo_Variables.ZoneExclude.CanFly = true
+		else
+			GoGo_Variables.ZoneExclude.CanFly = false
+		end --if
+		-- can ride = true	elseif GoGo_Variables.Player.ZoneID == 750 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Maraudon (instance)")
 		end --if
