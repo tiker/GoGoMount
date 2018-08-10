@@ -2858,6 +2858,108 @@ function GoGo_ZoneCheck()
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Mechanar (instance) -- unknown")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 269 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Arcatraz (instance) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 270 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Arcatraz (instance) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 271 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Arcatraz (instance) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 272 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Mana Tombs (instance)")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 273 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Black Morass (instance)")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 274 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Old Hillsbrad (instance)")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 275 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Lost City Of The Battle for Gilneas (battleground)")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		GoGo_Variables.InBattleground = true
+--	elseif GoGo_Variables.Player.MapID == 276 then
+	elseif GoGo_Variables.Player.MapID == 277 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Lost City Of The Tol'vir (5 player instance)")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 279 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Wailing Caverns (5 player instance)")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 280 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Maraudon (instance) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 281 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Maraudon (instance) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 282 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Baradin Hold (instance)")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 283 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Blackrock Caverns? (instance) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 284 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Blackrock Caverns? (instance) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 285 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Blackwing Descent (10 player instance) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 286 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Blackwing Descent (10 player instance) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 287 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Blackwing Lair (40 player instance) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 288 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Blackwing Lair (40 player instance) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 289 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Blackwing Lair (40 player instance) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 290 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Blackwing Lair (40 player instance) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
 	elseif GoGo_Variables.Player.MapID == 291 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Deadmines (5 player instance) -- unknown")
@@ -2868,6 +2970,162 @@ function GoGo_ZoneCheck()
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Deadmines (5 player instance) -- unknown")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 293 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Grim Batol (instance)")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 294 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Bastion of Twilight (10 man instance) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 295 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Bastion of Twilight (10 man instance) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 296 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Bastion of Twilight (10 man instance) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 297 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Lost City of Tol'Vir (instance) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 298 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Lost City of Tol'Vir (instance) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 299 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Lost City of Tol'Vir (instance) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 300 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Razorfen Downs (instance)")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 301 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Razorfen Krawl (instance)")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 302 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Scarlet Monastery (5 man instance) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 303 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Scarlet Monastery (5 man instance) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 304 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Scarlet Monastery (5 man instance) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 305 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Scarlet Monastery (5 man instance) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+--	elseif GoGo_Variables.Player.MapID == 306 then
+--	elseif GoGo_Variables.Player.MapID == 307 then
+--	elseif GoGo_Variables.Player.MapID == 308 then
+--	elseif GoGo_Variables.Player.MapID == 309 then
+	elseif GoGo_Variables.Player.MapID == 310 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Shadowfang Keep (heroic) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 311 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Shadowfang Keep (heroic) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 312 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Shadowfang Keep (heroic) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 313 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Shadowfang Keep (heroic) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 314 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Shadowfang Keep (heroic) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 315 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Shadowfang Keep (heroic) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 316 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Shadowfang Keep (heroic) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+--	elseif GoGo_Variables.Player.MapID == 317 then
+--	elseif GoGo_Variables.Player.MapID == 318 then
+	elseif GoGo_Variables.Player.MapID == 319 then  -- AQ40
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Ahn'Qiraj (AQ40) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		GoGo_Variables.ZoneExclude.AQ40 = false
+	elseif GoGo_Variables.Player.MapID == 320 then  -- AQ40
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Ahn'Qiraj (AQ40) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		GoGo_Variables.ZoneExclude.AQ40 = false
+	elseif GoGo_Variables.Player.MapID == 321 then  -- AQ40
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Ahn'Qiraj (AQ40) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		GoGo_Variables.ZoneExclude.AQ40 = false
+	elseif GoGo_Variables.Player.MapID == 322 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Throne of the Tides (5 man instance) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 323 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Throne of the Tides (5 man instance) -- unknown")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 324 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Stonecore (instance)")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 325 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Vortex Pinnacle")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		GoGo_Variables.ZoneExclude.UseMountGroup = 500
+	elseif GoGo_Variables.Player.MapID == 327 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Ahn'Qiraj: The Fallen Kingdom")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = true
+	elseif GoGo_Variables.Player.MapID == 328 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Throne Of The Four Winds (10 player instance")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+--	elseif GoGo_Variables.Player.MapID == 329 then
 	elseif GoGo_Variables.Player.MapID == 525 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Frostfire Ridge -- unknown")
@@ -3629,42 +3887,6 @@ function GoGo_ZoneCheck()
 --			GoGo_Variables.ZoneExclude.CanFly = false
 --		end --if
 --		-- can ride = true
-	elseif GoGo_Variables.Player.ZoneID == 731 then
-		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Arcatraz (instance)")
-		end --if
-		GoGo_Variables.ZoneExclude.CanFly = false
-	elseif GoGo_Variables.Player.ZoneID == 732 then
-		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Mana Tombs (instance)")
-		end --if
-		GoGo_Variables.ZoneExclude.CanFly = false
-	elseif GoGo_Variables.Player.ZoneID == 733 then
-		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Black Morass (instance)")
-		end --if
-		GoGo_Variables.ZoneExclude.CanFly = false
-	elseif GoGo_Variables.Player.ZoneID == 734 then
-		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Old Hillsbrad (instance)")
-		end --if
-		GoGo_Variables.ZoneExclude.CanFly = false
-	elseif GoGo_Variables.Player.ZoneID == 736 then
-		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Lost City Of The Battle for Gilneas (battleground)")
-		end --if
-		GoGo_Variables.ZoneExclude.CanFly = false
-		GoGo_Variables.InBattleground = true
-	elseif GoGo_Variables.Player.ZoneID == 747 then
-		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Lost City Of The Tol'vir (5 player instance)")
-		end --if
-		GoGo_Variables.ZoneExclude.CanFly = false
-	elseif GoGo_Variables.Player.ZoneID == 749 then
-		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Wailing Caverns (5 player instance)")
-		end --if
-		GoGo_Variables.ZoneExclude.CanFly = false
 	elseif GoGo_Variables.Player.MapID == 750 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Thunder Totem")
@@ -3675,98 +3897,7 @@ function GoGo_ZoneCheck()
 		else
 			GoGo_Variables.ZoneExclude.CanFly = false
 		end --if
-		-- can ride = true	elseif GoGo_Variables.Player.ZoneID == 750 then
-		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Maraudon (instance)")
-		end --if
-		GoGo_Variables.ZoneExclude.CanFly = false
-	elseif GoGo_Variables.Player.ZoneID == 752 then
-		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Baradin Hold (instance)")
-		end --if
-		GoGo_Variables.ZoneExclude.CanFly = false
-	elseif GoGo_Variables.Player.ZoneID == 753 then
-		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Blackrock Caverns? (instance)")
-		end --if
-		GoGo_Variables.ZoneExclude.CanFly = false
-	elseif GoGo_Variables.Player.ZoneID == 754 then
-		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Blackwing Descent (10 player instance)")
-		end --if
-		GoGo_Variables.ZoneExclude.CanFly = false
-	elseif GoGo_Variables.Player.ZoneID == 755 then
-		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Blackwing Lair (40 player instance)")
-		end --if
-		GoGo_Variables.ZoneExclude.CanFly = false
-	elseif GoGo_Variables.Player.ZoneID == 757 then
-		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Grim Batol (instance)")
-		end --if
-		GoGo_Variables.ZoneExclude.CanFly = false
-	elseif GoGo_Variables.Player.ZoneID == 758 then
-		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Bastion of Twilight (10 man instance)")
-		end --if
-		GoGo_Variables.ZoneExclude.CanFly = false
-	elseif GoGo_Variables.Player.ZoneID == 759 then
-		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Lost City of Tol'Vir (instance)")
-		end --if
-		GoGo_Variables.ZoneExclude.CanFly = false
-	elseif GoGo_Variables.Player.ZoneID == 760 then
-		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Razorfen Downs (instance)")
-		end --if
-		GoGo_Variables.ZoneExclude.CanFly = false
-	elseif GoGo_Variables.Player.ZoneID == 761 then
-		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Razorfen Krawl (instance)")
-		end --if
-		GoGo_Variables.ZoneExclude.CanFly = false
-	elseif GoGo_Variables.Player.ZoneID == 762 then
-		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Scarlet Monastery (5 man instance)")
-		end --if
-		GoGo_Variables.ZoneExclude.CanFly = false
-	elseif GoGo_Variables.Player.ZoneID == 764 then
-		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Shadowfang Keep (heroic)")
-		end --if
-		GoGo_Variables.ZoneExclude.CanFly = false
-	elseif GoGo_Variables.Player.ZoneID == 766 then  -- AQ40
-		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Ahn'Qiraj (AQ40)")
-		end --if
-		GoGo_Variables.ZoneExclude.CanFly = false
-		GoGo_Variables.ZoneExclude.AQ40 = false
-	elseif GoGo_Variables.Player.ZoneID == 767 then
-		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Throne of the Tides (5 man instance)")
-		end --if
-		GoGo_Variables.ZoneExclude.CanFly = false
-	elseif GoGo_Variables.Player.ZoneID == 768 then
-		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Stonecore (instance)")
-		end --if
-		GoGo_Variables.ZoneExclude.CanFly = false
-	elseif GoGo_Variables.Player.ZoneID == 769 then
-		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Vortex Pinnacle")
-		end --if
-		GoGo_Variables.ZoneExclude.CanFly = false
-		GoGo_Variables.ZoneExclude.UseMountGroup = 500
-	elseif GoGo_Variables.Player.ZoneID == 772 then
-		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Ahn'Qiraj: The Fallen Kingdom")
-		end --if
-		GoGo_Variables.ZoneExclude.CanFly = true
-	elseif GoGo_Variables.Player.ZoneID == 773 then
-		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Throne Of The Four Winds (10 player instance")
-		end --if
-		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = true	
 	elseif GoGo_Variables.Player.ZoneID == 776 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Gruul's Lair (25 player instance)")
