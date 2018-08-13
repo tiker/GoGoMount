@@ -36,8 +36,6 @@ function GoGo_ZoneCheck()
 	GoGo_Variables.InBattleground = false
 	GoGo_Variables.ZoneExclude.LegionZones = true
 	GoGo_Variables.Player.MapID = C_Map.GetBestMapForUnit("player")
-	GoGo_Variables.Player.ZoneID = GoGo_Variables.ZoneMapID[GoGo_Variables.Player.MapID]  -- to remove
-	local iZoneID = GoGo_Variables.ZoneMapID[GoGo_Variables.Player.MapID]
 	
 	if GoGo_Variables.Debug >= 10 then
 		GoGo_DebugAddLine("GoGo_ZoneCheck: Beginning function.")
