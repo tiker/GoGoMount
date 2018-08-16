@@ -3762,8 +3762,24 @@ function GoGo_ZoneCheck()
 --	elseif GoGo_Variables.Player.MapID == 700 then
 --	elseif GoGo_Variables.Player.MapID == 701 then
 --	elseif GoGo_Variables.Player.MapID == 702 then
---	elseif GoGo_Variables.Player.MapID == 703 then
---	elseif GoGo_Variables.Player.MapID == 704 then
+	elseif GoGo_Variables.Player.MapID == 703 then
+		-- 5 player instance
+		-- Halls of Valor - Fields of the Eternal Hunt
+		-- East end, outdoors, ground mounts allowed
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Halls of Valor - Fields of the Eternal Hunt")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = true
+	elseif GoGo_Variables.Player.MapID == 704 then
+		-- 5 player instance
+		-- Halls of Valor - Hearth of Revelry
+		-- last part of the instance leading up to the final boss
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Halls of Valor - Hearth of Revelry")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = false
 --	elseif GoGo_Variables.Player.MapID == 705 then
 --	elseif GoGo_Variables.Player.MapID == 706 then
 --	elseif GoGo_Variables.Player.MapID == 707 then
@@ -3772,7 +3788,13 @@ function GoGo_ZoneCheck()
 --	elseif GoGo_Variables.Player.MapID == 710 then
 --	elseif GoGo_Variables.Player.MapID == 711 then
 --	elseif GoGo_Variables.Player.MapID == 712 then
---	elseif GoGo_Variables.Player.MapID == 713 then
+	elseif GoGo_Variables.Player.MapID == 713 then
+		-- 5 player instance in Azuna
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Eye of Azshara (instance)")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = true
 	elseif GoGo_Variables.Player.MapID == 714 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Niskara (instance)")
@@ -4012,19 +4034,19 @@ function GoGo_ZoneCheck()
 		GoGo_Variables.ZoneExclude.CanFly = false
 		-- can ride = true
 	elseif GoGo_Variables.Player.MapID == 831 then
-		-- Krokuun
+		-- Krokuun - Top level
 		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Krokuun -- unknown")
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Krokuun - The Vindicaar")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
-		-- can ride = true
+		-- can ride = false
 	elseif GoGo_Variables.Player.MapID == 832 then
-		-- Krokuun
+		-- Krokuun - Bottom level
 		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Krokuun -- unknown")
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Krokuun - The Vindicaar")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
-		-- can ride = true
+		-- can ride = false
 	elseif GoGo_Variables.Player.MapID == 833 then
 		-- Krokuun
 		if GoGo_Variables.Debug >= 10 then
@@ -4080,7 +4102,13 @@ function GoGo_ZoneCheck()
 --	elseif GoGo_Variables.Player.MapID == 873 then
 --	elseif GoGo_Variables.Player.MapID == 874 then
 --	elseif GoGo_Variables.Player.MapID == 875 then
---	elseif GoGo_Variables.Player.MapID == 876 then
+	elseif GoGo_Variables.Player.MapID == 876 then
+		-- boat from prison to market (overal map?)
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for ...")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = false
 --	elseif GoGo_Variables.Player.MapID == 877 then
 --	elseif GoGo_Variables.Player.MapID == 878 then
 --	elseif GoGo_Variables.Player.MapID == 879 then
@@ -4089,9 +4117,27 @@ function GoGo_ZoneCheck()
 --	elseif GoGo_Variables.Player.MapID == 882 then
 --	elseif GoGo_Variables.Player.MapID == 883 then
 --	elseif GoGo_Variables.Player.MapID == 884 then
---	elseif GoGo_Variables.Player.MapID == 885 then
---	elseif GoGo_Variables.Player.MapID == 886 then
---	elseif GoGo_Variables.Player.MapID == 887 then
+	elseif GoGo_Variables.Player.MapID == 885 then
+		-- Krokuun - Top level
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Antoran Wastes - Hope's Landing")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = true
+	elseif GoGo_Variables.Player.MapID == 886 then
+		-- Krokuun - Top level
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Antoran Wastes - The Vindicaar")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = false
+	elseif GoGo_Variables.Player.MapID == 887 then
+		-- Krokuun - Bottom level
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Antoran Wastes - The Vindicaar")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = false
 	elseif GoGo_Variables.Player.MapID == 888 then
 		-- ----
 		if GoGo_Variables.Debug >= 10 then
@@ -4129,6 +4175,40 @@ function GoGo_ZoneCheck()
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 		-- can ride = false
+	elseif GoGo_Variables.Player.MapID == 895 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Tiragarde Sound")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = true
+	elseif GoGo_Variables.Player.MapID == 896 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Boralus Drustvar")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = true
+	elseif GoGo_Variables.Player.MapID == 1021 then
+		-- Instance / Scenario starting BfA (Getting the Azeroth heart necklace)
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Chamber of Heart")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = false
+	elseif GoGo_Variables.Player.MapID == 1161 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Boralus Harbor - Tradewinds Market")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = true
+	elseif GoGo_Variables.Player.MapID == 1169 then
+		-- In prison!
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Tol Dagor")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = false
+
+
 --	elseif GoGo_Variables.Player.ZoneID == -1 then
 		-- Arenas:
 		-- -- Nagrand Arena
