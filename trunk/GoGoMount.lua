@@ -2920,10 +2920,10 @@ end --function
 function GoGo_AddOptionCheckboxes(GoGo_FrameParentText)
 ---------
 	-- GoGo_FrameParentText will contain a string to indicate which panel called this function
-		-- "GoGo_ZoneFavorites_ContentFrame" so far..
-		-- "GoGo_GlobalFavorites_ContentFrame" ..
-		-- "GoGo_GlobalExclusions_ContentFrame" .
-		-- "GoGo_ZoneExclusions_ContentFrame" .
+		-- "GoGo_ZoneFavorites_ContentFrame"
+		-- "GoGo_GlobalFavorites_ContentFrame"
+		-- "GoGo_GlobalExclusions_ContentFrame"
+		-- "GoGo_ZoneExclusions_ContentFrame"
 	if not GoGo_Variables.Player.MapID then
 		return  -- some UI mods try to draw frames before game has loaded causing errors.. this is to stop the errors.
 	end --if
