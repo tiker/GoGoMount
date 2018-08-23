@@ -1674,30 +1674,49 @@ function GoGo_ZoneCheck()
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 	elseif GoGo_Variables.Player.MapID == 339 then
+		-- Black Temple - Illidari Training Grounds
+		-- 25 player instance in Shadowmoon Valley (Burning Crusade)
+		-- Second area
 		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Black Temple (25 player instance) -- unknown")
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Black Temple - Illidari Training Grounds")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = true
 	elseif GoGo_Variables.Player.MapID == 340 then
+		-- Black Temple - Karabor Sewers
+		-- 25 player instance in Shadowmoon Valley (Burning Crusade)
 		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Black Temple (25 player instance) -- unknown")
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Black Temple - Karabor Sewers")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = false
 	elseif GoGo_Variables.Player.MapID == 341 then
+		-- Black Temple - Sanctuary of Shadows
+		-- 25 player instance in Shadowmoon Valley (Burning Crusade)
+		-- Third area
 		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Black Temple (25 player instance) -- unknown")
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Black Temple - Sanctuary of Shadows")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = true
 	elseif GoGo_Variables.Player.MapID == 342 then
+		-- Black Temple - Halls of Anguish
+		-- 25 player instance in Shadowmoon Valley (Burning Crusade)
+		-- Fourth area
 		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Black Temple (25 player instance) -- unknown")
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Black Temple - Halls of Anguish")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = false
 	elseif GoGo_Variables.Player.MapID == 343 then
+		-- Black Temple - Gorefiend's Vigil
+		-- 25 player instance in Shadowmoon Valley (Burning Crusade)
+		-- Fifth area
 		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Black Temple (25 player instance) -- unknown")
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Black Temple - Gorefiend's Vigil")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = false
 	elseif GoGo_Variables.Player.MapID == 344 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Black Temple (25 player instance) -- unknown")
@@ -2991,7 +3010,7 @@ function GoGo_ZoneCheck()
 		end --if
 		-- can ride = true
 	elseif GoGo_Variables.Player.MapID == 581 then
-		-- Alliance Garrison
+		-- Alliance Garrison ??
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Lunarfall -- unknown")
 		end --if
@@ -2999,7 +3018,16 @@ function GoGo_ZoneCheck()
 			GoGo_Variables.ZoneExclude.CanFly = true
 		end --if
 		-- can ride = true
---	elseif GoGo_Variables.Player.MapID == 582 then
+	elseif GoGo_Variables.Player.MapID == 582 then
+		-- Alliance Garrison (3)
+		-- Lundarfall
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Lunarfall (Garrison)")
+		end --if
+		if GoGo_InBook(GoGo_Variables.Localize.DraenorPathfinder) then
+			GoGo_Variables.ZoneExclude.CanFly = true
+		end --if
+		-- can ride = true
 	elseif GoGo_Variables.Player.MapID == 585 then
 		-- Horde Garrison
 		if GoGo_Variables.Debug >= 10 then
@@ -4048,12 +4076,14 @@ function GoGo_ZoneCheck()
 		GoGo_Variables.ZoneExclude.CanFly = false
 		-- can ride = false
 	elseif GoGo_Variables.Player.MapID == 833 then
-		-- Krokuun
+		-- Krokuun - Nath'raxas Spire
+		-- North end of Krokuun zone
+		-- Indoors area
 		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Krokuun -- unknown")
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Krokuun - Nath'raxas Spire")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
-		-- can ride = true
+		-- can ride = false
 --	elseif GoGo_Variables.Player.MapID == 834 then
 --	elseif GoGo_Variables.Player.MapID == 835 then
 --	elseif GoGo_Variables.Player.MapID == 836 then
@@ -4079,9 +4109,10 @@ function GoGo_ZoneCheck()
 --	elseif GoGo_Variables.Player.MapID == 856 then
 --	elseif GoGo_Variables.Player.MapID == 857 then
 	elseif GoGo_Variables.Player.MapID == 858 then
-		-- Krokuun
+		-- Assult on Broken Shore
+		-- Single player instance opening up the Broken Shore island
 		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Assult on Broken Shore (scenario)")
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Assult on Broken Shore")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 		-- can ride = true
@@ -4114,9 +4145,27 @@ function GoGo_ZoneCheck()
 --	elseif GoGo_Variables.Player.MapID == 879 then
 --	elseif GoGo_Variables.Player.MapID == 880 then
 --	elseif GoGo_Variables.Player.MapID == 881 then
---	elseif GoGo_Variables.Player.MapID == 882 then
---	elseif GoGo_Variables.Player.MapID == 883 then
---	elseif GoGo_Variables.Player.MapID == 884 then
+	elseif GoGo_Variables.Player.MapID == 882 then
+		-- Mac'Aree
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Mac'Aree")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = true
+	elseif GoGo_Variables.Player.MapID == 883 then
+		-- Mac'Aree - Top level
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Mac'Aree - The Vindicaar")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = false
+	elseif GoGo_Variables.Player.MapID == 884 then
+		-- Mac'Aree - Bottom level
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Mac'Aree - The Vindicaar")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = false
 	elseif GoGo_Variables.Player.MapID == 885 then
 		-- Krokuun - Top level
 		if GoGo_Variables.Debug >= 10 then
@@ -4148,30 +4197,35 @@ function GoGo_ZoneCheck()
 --	elseif GoGo_Variables.Player.MapID == 889 then
 --	elseif GoGo_Variables.Player.MapID == 890 then
 	elseif GoGo_Variables.Player.MapID == 891 then
-		-- Azuremyst Isle - The Vindicaar
+		-- Azuremyst Isle
 		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Azuremyst Isle - The Vindicaar -- unknown")
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Azuremyst Isle")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
-		-- can ride = false
+		-- can ride = true
 	elseif GoGo_Variables.Player.MapID == 892 then
-		-- Azuremyst Isle - The Vindicaar
+		-- Exodar (Quest version)
+		-- Quest line leading to the opening (access) to Argus zones
 		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Azuremyst Isle - The Vindicaar -- unknown")
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Exodar")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
-		-- can ride = false
+		-- can ride = true
 	elseif GoGo_Variables.Player.MapID == 893 then
 		-- Azuremyst Isle - The Vindicaar
+		-- Top level
+		-- The ship after accepting the quest in Exodor before the cut scene (traveling to Argus)
 		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Azuremyst Isle - The Vindicaar -- unknown")
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Azuremyst Isle - The Vindicaar")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 		-- can ride = false
 	elseif GoGo_Variables.Player.MapID == 894 then
 		-- Azuremyst Isle - The Vindicaar
+		-- Bottom level
+		-- The ship after accepting the quest in Exodor before the cut scene (traveling to Argus)
 		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Azuremyst Isle - The Vindicaar -- unknown")
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Azuremyst Isle - The Vindicaar")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 		-- can ride = false
@@ -4184,6 +4238,13 @@ function GoGo_ZoneCheck()
 	elseif GoGo_Variables.Player.MapID == 896 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Boralus Drustvar")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = true
+	elseif GoGo_Variables.Player.MapID == 942 then
+		-- Will probably be flyable in the future
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Stormsong Valley")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 		-- can ride = true
@@ -4201,9 +4262,28 @@ function GoGo_ZoneCheck()
 		GoGo_Variables.ZoneExclude.CanFly = false
 		-- can ride = true
 	elseif GoGo_Variables.Player.MapID == 1169 then
-		-- In prison!
+		-- Island with prison
+		-- Starting Warcraft 8.0
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Tol Dagor")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = true
+	elseif GoGo_Variables.Player.MapID == 1171 then
+		-- Tiragarde Sound - Gol Thovas
+		-- Indoor cave
+		-- Bottom level
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Tiragarde Sound - Gol Thovas")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = false
+	elseif GoGo_Variables.Player.MapID == 1172 then
+		-- Tiragarde Sound - Gol Thovas
+		-- Indoor cave
+		-- Top level
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Tiragarde Sound - Gol Thovas")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 		-- can ride = false
