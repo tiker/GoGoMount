@@ -698,35 +698,21 @@ function GoGo_ZoneCheck()
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = true
 	elseif GoGo_Variables.Player.MapID == 125 then
+		-- Dalaran
+		-- Warcraft 3 / Northrend
+		-- Outdoor area
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Dalaran")
 		end --if
-		if not IsFlyableArea() then  -- have to use this.. flying is different in sewers and is different between 4.x with and without cataclysm
-			if GoGo_Variables.Debug >= 10 then
-				GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - Player in " .. GoGo_Variables.Localize.Zone.Dalaran .. " and not in flyable area.")
-			end --if
-			GoGo_Variables.ZoneExclude.CanFly = false
-		else
-			if GoGo_Variables.Debug >= 10 then
-				GoGo_DebugAddLine("GoGo_ZoneCheck: Activating Flying - Player in " .. GoGo_Variables.Localize.Zone.Dalaran .. " and in flyable area.")
-			end --if
-			GoGo_Variables.ZoneExclude.CanFly = true
-		end --if
+		GoGo_Variables.ZoneExclude.CanFly = true
 	elseif GoGo_Variables.Player.MapID == 126 then
+		-- Dalaran
+		-- Warcraft 3 / Northrend
+		-- Sewers
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Dalaran")
 		end --if
-		if not IsFlyableArea() then  -- TODO review flying in Northrend Dalaran after 8.0 zone / map id changes
-			if GoGo_Variables.Debug >= 10 then
-				GoGo_DebugAddLine("GoGo_ZoneCheck: Deactivating Flying - Player in " .. GoGo_Variables.Localize.Zone.Dalaran .. " and not in flyable area.")
-			end --if
-			GoGo_Variables.ZoneExclude.CanFly = false
-		else
-			if GoGo_Variables.Debug >= 10 then
-				GoGo_DebugAddLine("GoGo_ZoneCheck: Activating Flying - Player in " .. GoGo_Variables.Localize.Zone.Dalaran .. " and in flyable area.")
-			end --if
-			GoGo_Variables.ZoneExclude.CanFly = true
-		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
 	elseif GoGo_Variables.Player.MapID == 127 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Crystal Song Forest")
@@ -837,13 +823,17 @@ function GoGo_ZoneCheck()
 --	elseif GoGo_Variables.Player.MapID == 160 then
 --	elseif GoGo_Variables.Player.MapID == 161 then
 	elseif GoGo_Variables.Player.MapID == 162 then
+		-- Naxxaramas
+		-- North West (Golem) wing
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Naxxaramas (instance)")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = true
 	elseif GoGo_Variables.Player.MapID == 163 then
+		-- Naxxaramas
+		-- North East (Spider) wing
 		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Naxxaramas (instance) -- unknown")
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Naxxaramas (instance)")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = true
 	elseif GoGo_Variables.Player.MapID == 164 then
@@ -857,8 +847,10 @@ function GoGo_ZoneCheck()
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = true
 	elseif GoGo_Variables.Player.MapID == 166 then
+		-- Naxxaramas
+		-- First level (entering the instance)
 		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Naxxaramas (instance) -- unknown")
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Naxxaramas (instance)")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = true
 	elseif GoGo_Variables.Player.MapID == 167 then
@@ -1310,13 +1302,17 @@ function GoGo_ZoneCheck()
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 	elseif GoGo_Variables.Player.MapID == 258 then
+		-- Sethekk Halls
+		-- Bottom level
 		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Sethekk Halls (instance) -- unknown")
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Sethekk Halls (instance)")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 	elseif GoGo_Variables.Player.MapID == 259 then
+		-- Sethekk Halls
+		-- Top level
 		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Sethekk Halls (instance) -- unknown")
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Sethekk Halls (instance)")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 	elseif GoGo_Variables.Player.MapID == 260 then
@@ -3955,9 +3951,30 @@ function GoGo_ZoneCheck()
 --	elseif GoGo_Variables.Player.MapID == 758 then
 --	elseif GoGo_Variables.Player.MapID == 759 then
 --	elseif GoGo_Variables.Player.MapID == 760 then
---	elseif GoGo_Variables.Player.MapID == 761 then
---	elseif GoGo_Variables.Player.MapID == 762 then
---	elseif GoGo_Variables.Player.MapID == 763 then
+	elseif GoGo_Variables.Player.MapID == 761 then
+		-- Court of Stars (5 player instance)
+		-- First area entering the instance
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Court of Stars (instance)")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = true
+	elseif GoGo_Variables.Player.MapID == 762 then
+		-- Court of Stars (5 player instance)
+		-- Inside a building (talking to people) bottom floor
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Court of Stars (instance)")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = false
+	elseif GoGo_Variables.Player.MapID == 763 then
+		-- Court of Stars (5 player instance)
+		-- Inside a building (talking to people) top floor
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Court of Stars (instance)")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = false
 --	elseif GoGo_Variables.Player.MapID == 764 then
 --	elseif GoGo_Variables.Player.MapID == 765 then
 --	elseif GoGo_Variables.Player.MapID == 766 then
@@ -4134,12 +4151,13 @@ function GoGo_ZoneCheck()
 --	elseif GoGo_Variables.Player.MapID == 874 then
 --	elseif GoGo_Variables.Player.MapID == 875 then
 	elseif GoGo_Variables.Player.MapID == 876 then
-		-- boat from prison to market (overal map?)
+		-- Great Sea
+		-- Overall area covering Kul'Tiras
 		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for ...")
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Great Sea")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
-		-- can ride = false
+		-- can ride = true
 --	elseif GoGo_Variables.Player.MapID == 877 then
 --	elseif GoGo_Variables.Player.MapID == 878 then
 --	elseif GoGo_Variables.Player.MapID == 879 then
@@ -4287,6 +4305,15 @@ function GoGo_ZoneCheck()
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 		-- can ride = false
+	elseif GoGo_Variables.Player.MapID == 1183 then
+		-- Stormsong Valley - Thornheart
+		-- Outdoor area
+		-- South part of the zone
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Stormsong Valley - Thornheart")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = true
 
 
 --	elseif GoGo_Variables.Player.ZoneID == -1 then
