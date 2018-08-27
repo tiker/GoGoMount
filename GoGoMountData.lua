@@ -890,6 +890,7 @@ function GoGo_GetMountDB()
 		[278803] = {[36] = true, [53] = true, [404] = true, [10001]=108, [10004]=108},  -- Great Sea Ray
 		[278979] = {[36] = true, [53] = true, [404] = true, [10001]=108, [10004]=108},  -- Surf Jelly
 		[279454] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Conquerer's Scythemaw
+		[279456] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Highland Mustang
 		[279457] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Broken Highland Mustang
 		
 --		[123456] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Standard Ground Mount template
