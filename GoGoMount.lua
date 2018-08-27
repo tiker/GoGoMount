@@ -381,7 +381,7 @@ function GoGo_ChooseMount()
 	end --if
 
 	GoGo_UpdateMountData()  -- update mount information with changes from talents, glyphs, etc.
-
+--[[
 	if GoGo_Variables.EngineeringLevel <= 299 then
 		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 45)
 		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 46)
@@ -409,6 +409,7 @@ function GoGo_ChooseMount()
 		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 48)
 		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 47)
 	end --if
+]]
 	if GoGo_Variables.RidingLevel <= 224 then
 		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 36)
 		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 35)
