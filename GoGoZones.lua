@@ -4259,6 +4259,16 @@ function GoGo_ZoneCheck()
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 		-- can ride = true
+	elseif GoGo_Variables.Player.MapID == 907 then
+		-- No mounting
+		-- Starting area after using character level boost token (Warrior)
+		-- On an Alliance air ship
+		-- Parent map is Kalimdor
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Seething Shore")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = false
 	elseif GoGo_Variables.Player.MapID == 942 then
 		-- Will probably be flyable in the future
 		if GoGo_Variables.Debug >= 10 then
