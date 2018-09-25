@@ -917,6 +917,7 @@ function GoGo_GetMountDB()
 
 		-- 8.1.0.27826 (According to Wowhead)
 		[281887] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Vicious Black Warsaber
+		[281890] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Vicious Black Bonesteed
 
 		
 --		[123456] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Standard Ground Mount template
