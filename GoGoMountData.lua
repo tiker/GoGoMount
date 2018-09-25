@@ -844,7 +844,7 @@ function GoGo_GetMountDB()
 		[237287] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Alabaster Hyena
 		[239049] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Obsidian Krolusk
 		[239766] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67, [50000]=151626},  -- Blue Qiraji War Tank
-		[239767] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Red Qiraji War Tank
+		[239767] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67, [50000]=151625},  -- Red Qiraji War Tank
 		[243795] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Leaping Veinseeker
 		[250735] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Bloodgorged Crawg
 		[254811] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Squawks
@@ -948,6 +948,7 @@ GoGo_Variables.MountItemIDs = {
 	[101675] = {[50000]=145133, [51000] = true},  -- Shimmering Moonstone
 	[139421] = {[50000]=220124, [51000] = true},	-- Ratstallion Harness (item casts spell id 220123 but mount is 220124)
 	[139505] = {[50000]=220508, [51000] = true},	-- Reins of the Charger
+	[151625] = {[50000]=239767, [51000] = true},  	-- Ruby Qiraji Resonating Crystal
 	[151626] = {[50000]=239766, [51000] = true},  	-- Sapphire Qiraji Resonating Crystal
 }
 
