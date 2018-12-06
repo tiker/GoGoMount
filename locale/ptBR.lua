@@ -1,4 +1,3 @@
-﻿-- http://wow.curseforge.com/addons/gogomount/localization/ptBR/
 if GetLocale() == "ptBR" then
 	BINDING_HEADER_GOGOHEADER = "GoGoMount"
 	BINDING_NAME_GOGOBINDING = "Montar / Desmontar" -- Needs review
