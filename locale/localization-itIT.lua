@@ -1,6 +1,3 @@
-﻿-- For translations visit:  /  Per le traduzioni vai a:
--- http://wow.curseforge.com/addons/gogomount/localization/itIT/
-
 if GetLocale() == "itIT" then
 	BINDING_HEADER_GOGOHEADER = "GoGoMount"
 	BINDING_NAME_GOGOBINDING = "Montare / Smontare" -- Needs review
