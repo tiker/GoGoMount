@@ -846,7 +846,7 @@ function GoGo_GetMountDB()
 		[239049] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Obsidian Krolusk
 		[239766] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67, [50000]=151626},  -- Blue Qiraji War Tank
 		[239767] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67, [50000]=151625},  -- Red Qiraji War Tank
-		[243795] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Leaping Veinseeker
+		[243795] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Leaping Veinseeker
 		[250735] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Bloodgorged Crawg
 		[254811] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Squawks
 		[254813] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Summon Sharkbait
