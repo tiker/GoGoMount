@@ -4137,6 +4137,16 @@ function GoGo_ZoneCheck()
 --	elseif GoGo_Variables.Player.MapID == 860 then
 --	elseif GoGo_Variables.Player.MapID == 861 then
 --	elseif GoGo_Variables.Player.MapID == 862 then
+	elseif GoGo_Variables.Player.MapID == 862 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Zuldazar")
+		end --if
+		if GoGo_InBook(278833) then
+			GoGo_Variables.ZoneExclude.CanFly = true
+		else
+			GoGo_Variables.ZoneExclude.CanFly = false
+		end --if
+		-- can ride = true
 --	elseif GoGo_Variables.Player.MapID == 863 then
 --	elseif GoGo_Variables.Player.MapID == 864 then
 --	elseif GoGo_Variables.Player.MapID == 865 then
@@ -4156,7 +4166,11 @@ function GoGo_ZoneCheck()
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Great Sea")
 		end --if
-		GoGo_Variables.ZoneExclude.CanFly = false
+		if GoGo_InBook(278833) then
+			GoGo_Variables.ZoneExclude.CanFly = true
+		else
+			GoGo_Variables.ZoneExclude.CanFly = false
+		end --if
 		-- can ride = true
 --	elseif GoGo_Variables.Player.MapID == 877 then
 --	elseif GoGo_Variables.Player.MapID == 878 then
@@ -4251,13 +4265,21 @@ function GoGo_ZoneCheck()
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Tiragarde Sound")
 		end --if
-		GoGo_Variables.ZoneExclude.CanFly = false
+		if GoGo_InBook(278833) then
+			GoGo_Variables.ZoneExclude.CanFly = true
+		else
+			GoGo_Variables.ZoneExclude.CanFly = false
+		end --if
 		-- can ride = true
 	elseif GoGo_Variables.Player.MapID == 896 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Boralus Drustvar")
 		end --if
-		GoGo_Variables.ZoneExclude.CanFly = false
+		if GoGo_InBook(278833) then
+			GoGo_Variables.ZoneExclude.CanFly = true
+		else
+			GoGo_Variables.ZoneExclude.CanFly = false
+		end --if
 		-- can ride = true
 	elseif GoGo_Variables.Player.MapID == 907 then
 		-- No mounting
@@ -4274,7 +4296,11 @@ function GoGo_ZoneCheck()
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Stormsong Valley")
 		end --if
-		GoGo_Variables.ZoneExclude.CanFly = false
+		if GoGo_InBook(278833) then
+			GoGo_Variables.ZoneExclude.CanFly = true
+		else
+			GoGo_Variables.ZoneExclude.CanFly = false
+		end --if
 		-- can ride = true
 	elseif GoGo_Variables.Player.MapID == 1021 then
 		-- Instance / Scenario starting BfA (Getting the Azeroth heart necklace)
@@ -4287,7 +4313,11 @@ function GoGo_ZoneCheck()
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Boralus Harbor - Tradewinds Market")
 		end --if
-		GoGo_Variables.ZoneExclude.CanFly = false
+		if GoGo_InBook(278833) then
+			GoGo_Variables.ZoneExclude.CanFly = true
+		else
+			GoGo_Variables.ZoneExclude.CanFly = false
+		end --if
 		-- can ride = true
 	elseif GoGo_Variables.Player.MapID == 1169 then
 		-- Island with prison
@@ -4324,7 +4354,28 @@ function GoGo_ZoneCheck()
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 		-- can ride = true
-
+	elseif GoGo_Variables.Player.MapID == 1355 then
+		-- Mechagon
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Nazjatar")
+		end --if
+		if GoGo_InBook(278833) then
+			GoGo_Variables.ZoneExclude.CanFly = true
+		else
+			GoGo_Variables.ZoneExclude.CanFly = false
+		end --if
+		-- can ride = true
+	elseif GoGo_Variables.Player.MapID == 1462 then
+		-- Mechagon
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Mechagon")
+		end --if
+		if GoGo_InBook(278833) then
+			GoGo_Variables.ZoneExclude.CanFly = true
+		else
+			GoGo_Variables.ZoneExclude.CanFly = false
+		end --if
+		-- can ride = true
 
 --	elseif GoGo_Variables.Player.ZoneID == -1 then
 		-- Arenas:
