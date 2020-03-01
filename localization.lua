@@ -6,6 +6,7 @@
 	GoGo_Variables.Localize.AspectCheetah = 5118
 	GoGo_Variables.Localize.AspectPack = 13159
 --	GoGo_Variables.Localize.AzerothianNavigation = 90269  -- changed during beta to 90267
+	GoGo_Variables.Localize.BattleForAzerothPathfinder = 278833
 	GoGo_Variables.Localize.CatForm = 768
 --	GoGo_Variables.Localize.ColdWeatherFlying = 54197	-- Removed with patch 7.3.5
 --	GoGo_Variables.Localize.CloudSerpentRiding = 130487		-- Gone with Warcraft 6.0
