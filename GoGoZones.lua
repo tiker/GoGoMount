@@ -4957,9 +4957,25 @@ function GoGo_ZoneCheck()
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 		-- can ride = true
+    elseif GoGo_Variables.Player.MapID == 1527 then
+        if GoGo_Variables.Debug >= 10 then
+            GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Uldum")
+        end --if
+        if GoGo_InBook(GoGo_Variables.Localize.BattleForAzerothPathfinder) then
+            GoGo_Variables.ZoneExclude.CanFly = true
+        end --if
+        -- can ride = true
 	elseif GoGo_Variables.Player.MapID == 1528 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Nazjatar")
+		end --if
+		if GoGo_InBook(GoGo_Variables.Localize.BattleForAzerothPathfinder) then
+			GoGo_Variables.ZoneExclude.CanFly = true
+		end --if
+		-- can ride = true
+	elseif GoGo_Variables.Player.MapID == 1530 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Vale of Eternal Blossoms")
 		end --if
 		if GoGo_InBook(GoGo_Variables.Localize.BattleForAzerothPathfinder) then
 			GoGo_Variables.ZoneExclude.CanFly = true
