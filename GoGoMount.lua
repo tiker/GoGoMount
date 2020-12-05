@@ -581,7 +581,7 @@ function GoGo_ChooseMount()
 		GoGo_Variables.CanFly = false
 	end --if 
 
-	if GoGo_Variables.Debug >= 10 then
+	if GoGo_Variables.Debug >= 6 then
 		GoGo_DebugAddLine("GoGo_ChooseMount: ZoneExclude.Canfly = " .. tostring(GoGo_Variables.ZoneExclude.CanFly))
 		GoGo_DebugAddLine("GoGo_ChooseMount: SkipFlyingMount = " .. tostring(GoGo_Variables.SkipFlyingMount))
 		GoGo_DebugAddLine("GoGo_ChooseMount: NoFlying = " .. tostring(GoGo_Variables.NoFlying))
