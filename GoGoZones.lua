@@ -36,6 +36,7 @@ function GoGo_ZoneCheck()
 	GoGo_Variables.InBattleground = false
 	GoGo_Variables.ZoneExclude.LegionZones = true
 	GoGo_Variables.Player.MapID = C_Map.GetBestMapForUnit("player")
+    GoGo_Variables.ZoneExclude.TheMaw = true
 	
 	if GoGo_Variables.Debug >= 10 then
 		GoGo_DebugAddLine("GoGo_ZoneCheck: Beginning function.")
@@ -4342,6 +4343,14 @@ function GoGo_ZoneCheck()
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = true
 		-- can ride = true
+		
+	elseif GoGo_Variables.Player.MapID == 1648 then  -- The Maw
+		if GoGo_Variables.Debug >= 10
+		then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Maw")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		GoGo_Variables.ZoneExclude.TheMaw = false
 
 
 --	elseif GoGo_Variables.Player.ZoneID == -1 then
