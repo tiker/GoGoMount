@@ -410,7 +410,11 @@ function GoGo_ChooseMount()
 		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 47)
 	end --if
 ]]
-	if GoGo_Variables.RidingLevel <= 224 then
+
+	if GoGo_Variables.Player.MapID == 1355 then
+
+
+	elseif GoGo_Variables.RidingLevel <= 224 then
 		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 36)
 		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 35)
 	elseif GoGo_Variables.RidingLevel >= 225 and GoGo_Variables.RidingLevel <= 299 then
@@ -431,7 +435,7 @@ function GoGo_ChooseMount()
 
 	if IsSubmerged() then
 		GoGo_CheckSwimSurface()
-	else
+	elseif GoGo_Variables.Player.MapID ~= 1355 then
 		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 53)
 	end --if
 
@@ -609,8 +613,9 @@ function GoGo_ChooseMount()
 		end --if
 	end --if
 
+	if GoGo_Variables.Player.MapID ~= 1355 then
 	GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 53)
-
+	end
 	if (table.getn(mounts) == 0) and GoGo_Variables.CanFly then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ChooseMount: Looking for flying mounts since we past flight checks.")
@@ -716,11 +721,11 @@ end --function
 function GoGo_FilterMountsOut(PlayerMounts, FilterID)
 ---------
 	local GoGo_FilteringMounts = {}
-	if not PlayerMounts then PlayerMounts = {} end --if
-	if table.getn(PlayerMounts) == 0 then
+	if not PlayerMounts then PlayerMounts = {} end --if --Make sure at least something is passed.
+	if table.getn(PlayerMounts) == 0 then --return if passed nothing.
 		return GoGo_FilteringMounts
 	end --if
-	if not GoGo_Variables.MountDB then
+	if not GoGo_Variables.MountDB then --If passed the wrong object fetch the correct one
 		GoGo_GetMountDB()
 	end --if
 	for a = 1, table.getn(PlayerMounts) do
@@ -850,14 +855,14 @@ function GoGo_BuildMountList()
 		if GoGo_InBook(GoGo_Variables.Localize.CatForm) then
 			table.insert(GoGo_MountList, GoGo_Variables.Localize.CatForm)
 		end --if
-		if GoGo_InBook(GoGo_Variables.Localize.FlightForm) then  -- may not be used any more since Warcraft 6.0
-			table.insert(GoGo_MountList, GoGo_Variables.Localize.FlightForm)
+		if GoGo_InBook(GoGo_Variables.Localize.TravelForm2) then  -- may not be used any more since Warcraft 6.0
+			table.insert(GoGo_MountList, GoGo_Variables.Localize.TravelForm2)
 		end --if
 		if GoGo_InBook(GoGo_Variables.Localize.FastFlightForm) then  -- may not be used any more since Warcraft 6.0
 			table.insert(GoGo_MountList, GoGo_Variables.Localize.FastFlightForm)
 		end --if
-		if GoGo_InBook(165962) then  -- Flight Form that appears with "Glyph of the Stag" in Warcraft 6.0
-			table.insert(GoGo_MountList, 165962)
+		if GoGo_InBook(GoGo_Variables.Localize.FlightForm) then  -- Flight Form that appears with "Glyph of the Stag" in Warcraft 6.0
+			table.insert(GoGo_MountList, GoGo_Variables.Localize.FlightForm)
 		end --if
 		if GoGo_InBook(GoGo_Variables.Localize.TravelForm) then
 			table.insert(GoGo_MountList, GoGo_Variables.Localize.TravelForm)
@@ -1638,17 +1643,17 @@ end --function
 function GoGo_GetRidingSkillLevel()
 --------- 
 	if GoGo_InBook(GoGo_Variables.Localize.MasterRiding) then
-		return 325
+		return GoGo_Variables.Localize.Skill.MasterRiding
 	elseif GoGo_InBook(GoGo_Variables.Localize.ArtisanRiding) then
-		return 300
+		return GoGo_Variables.Localize.Skill.ArtisanRiding
 	elseif GoGo_InBook(GoGo_Variables.Localize.ExpertRiding) then
-		return 225
+		return GoGo_Variables.Localize.Skill.ExpertRiding
 	elseif GoGo_InBook(GoGo_Variables.Localize.JourneymanRiding) then
-		return 150
+		return GoGo_Variables.Localize.Skill.JourneymanRiding
 	elseif GoGo_InBook(GoGo_Variables.Localize.ApprenticeRiding) then
-		return 75
+		return GoGo_Variables.Localize.Skill.ApprenticeRiding
 	else
-		return 0
+		return GoGo_Variables.Localize.Skill.NoRiding
 	end --if
 
 	-- master riding just makes epic flying mounts faster - no need to search for it specifically
@@ -1741,14 +1746,14 @@ function GoGo_GetBestAirMounts(GoGo_FilteredMounts)
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_GetBestAirMounts: Druid with preferred flight forms option enabled.  Using flight form.")
 		end --if
-		if string.find(GoGo_SearchString, 165962, 1, true) then
-			if GoGo_Variables.Debug >= 10 then
-				GoGo_DebugAddLine("GoGo_GetBestAirMounts: Found FastFlightForm")
-			end --if
-			table.insert(mounts, 165962)
-		elseif string.find(GoGo_SearchString, GoGo_Variables.Localize.TravelForm, 1, true) then
+		if string.find(GoGo_SearchString, GoGo_Variables.Localize.FlightForm, 1, true) then
 			if GoGo_Variables.Debug >= 10 then
 				GoGo_DebugAddLine("GoGo_GetBestAirMounts: Found FlightForm")
+			end --if
+			table.insert(mounts, GoGo_Variables.Localize.FlightForm)
+		elseif string.find(GoGo_SearchString, GoGo_Variables.Localize.TravelForm, 1, true) then
+			if GoGo_Variables.Debug >= 10 then
+				GoGo_DebugAddLine("GoGo_GetBestAirMounts: Found TravelForm")
 			end --if
 			table.insert(mounts, GoGo_Variables.Localize.TravelForm)
 		else
@@ -1960,13 +1965,13 @@ function GoGo_UpdateMountData()
 	end --if
 	
 	-- mount speed updates based on riding skill
-	if GoGo_GetRidingSkillLevel() == 325 then  -- increase air mounts to 410
+	if GoGo_GetRidingSkillLevel() == GoGo_Variables.Localize.Skill.MasterRiding then  -- increase air mounts to 410
 		GoGo_UpdateMountSpeedDB(GoGo_Variables.FilteredMounts, 300, 10003, 410)
 	elseif GoGo_GetRidingSkillLevel() == 300 then  -- increase air mounts to 380
 		GoGo_UpdateMountSpeedDB(GoGo_Variables.FilteredMounts, 301, 10003, 380)
 	end --if
 
-	if GoGo_GetRidingSkillLevel() >= 150 then  -- increase ground mounts to 200
+	if GoGo_GetRidingSkillLevel() >= GoGo_Variables.Localize.Skill.JourneymanRiding then  -- increase ground mounts to 200
 		GoGo_UpdateMountSpeedDB(GoGo_Variables.FilteredMounts, 330, 10002, 200)
 	end --if	
 
@@ -2056,7 +2061,7 @@ GOGO_SPELLS = {
 			GoGo_CastString = GoGo_CastString .. "[indoors] "..GoGo_InBook(GoGo_Variables.Localize.CatForm)
 			UseSeperator = true
 		end --if
-		if not GoGo_Variables.SkipFlyingMount and GoGo_InBook(165962) and GoGo_Variables.CanFly then
+		if not GoGo_Variables.SkipFlyingMount and GoGo_InBook(GoGo_Variables.Localize.FlightForm) and GoGo_Variables.CanFly then
 			if UseSeperator then
 				GoGo_CastString = GoGo_CastString .. ";"
 			end --if
@@ -2067,7 +2072,7 @@ GOGO_SPELLS = {
 			if UseSeperator then
 				GoGo_CastString = GoGo_CastString .. ";"
 			end --if
-			GoGo_CastString = GoGo_CastString .. GoGo_InBook(165962)
+			GoGo_CastString = GoGo_CastString .. GoGo_InBook(GoGo_Variables.Localize.FlightForm)
 		else
 			if UseSeperator then
 				GoGo_CastString = GoGo_CastString .. ";"
@@ -2082,8 +2087,8 @@ GOGO_SPELLS = {
 --[[
 	["DRUID"] = function()
 		if GoGo_Prefs.DruidClickForm then
-			if not GoGo_Variables.SkipFlyingMount and GoGo_InBook(165962) and GoGo_Variables.CanFly then
-				return "/cancelform [flying] \n/use [swimming] "..GoGo_InBook(GoGo_Variables.Localize.TravelForm).."; [indoors]"..GoGo_InBook(GoGo_Variables.Localize.CatForm).."; [combat]"..GoGo_InBook(GoGo_Variables.Localize.TravelForm).."; "..GoGo_InBook(165962)
+			if not GoGo_Variables.SkipFlyingMount and GoGo_InBook(GoGo_Variables.Localize.FlightForm) and GoGo_Variables.CanFly then
+				return "/cancelform [flying] \n/use [swimming] "..GoGo_InBook(GoGo_Variables.Localize.TravelForm).."; [indoors]"..GoGo_InBook(GoGo_Variables.Localize.CatForm).."; [combat]"..GoGo_InBook(GoGo_Variables.Localize.TravelForm).."; "..GoGo_InBook(GoGo_Variables.Localize.FlightForm)
 			elseif not GoGo_Variables.SkipFlyingMount and GoGo_Variables.CanFly then
 				return "/cancelform [flying] \n/use [swimming] "..GoGo_InBook(GoGo_Variables.Localize.TravelForm).."; [indoors]"..GoGo_InBook(GoGo_Variables.Localize.CatForm).."; "..GoGo_InBook(GoGo_Variables.Localize.TravelForm)
 			else
@@ -2097,8 +2102,8 @@ GOGO_SPELLS = {
 				_, GoGo_FormName = GetShapeshiftFormInfo(GoGo_TempCount)
 				GoGo_CastString = GoGo_CastString .. "[form:" .. GoGo_TempCount .. "] "..GoGo_FormName..";"
 			end --for
-			if not GoGo_Variables.SkipFlyingMount and GoGo_InBook(165962) and GoGo_Variables.CanFly then
-				GoGo_CastString = GoGo_CastString .. "[swimming] "..GoGo_InBook(GoGo_Variables.Localize.TravelForm).."; [indoors]"..GoGo_InBook(GoGo_Variables.Localize.CatForm).."; [combat]"..GoGo_InBook(GoGo_Variables.Localize.TravelForm).."; "..GoGo_InBook(165962)
+			if not GoGo_Variables.SkipFlyingMount and GoGo_InBook(GoGo_Variables.Localize.FlightForm) and GoGo_Variables.CanFly then
+				GoGo_CastString = GoGo_CastString .. "[swimming] "..GoGo_InBook(GoGo_Variables.Localize.TravelForm).."; [indoors]"..GoGo_InBook(GoGo_Variables.Localize.CatForm).."; [combat]"..GoGo_InBook(GoGo_Variables.Localize.TravelForm).."; "..GoGo_InBook(GoGo_Variables.Localize.FlightForm)
 			elseif not GoGo_Variables.SkipFlyingMount and GoGo_Variables.CanFly then
 				GoGo_CastString = GoGo_CastString .. "[swimming] "..GoGo_InBook(GoGo_Variables.Localize.TravelForm).."; [indoors]"..GoGo_InBook(GoGo_Variables.Localize.CatForm).."; [combat]"..GoGo_InBook(GoGo_Variables.Localize.TravelForm)
 			else
