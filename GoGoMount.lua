@@ -439,12 +439,12 @@ function GoGo_ChooseMount()
 		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 53)
 	end --if
 
-	if (GoGo_Variables.Player.Level < 60) then
+	if (GoGo_Variables.Player.Level < 30) then
 		if (GoGo_Variables.Player.Level >= 58 and GoGo_Variables.Player.Class == "DRUID") then
 			-- do nothing.. druids can fly at 58
 		else
 			if GoGo_Variables.Debug >= 10 then
-				GoGo_DebugAddLine("GoGo_ChooseMount: Disabling flying - under level 60")
+				GoGo_DebugAddLine("GoGo_ChooseMount: Disabling flying - under level 30")
 			end --if
 			GoGo_Variables.NoFlying = true
 		end --if
@@ -1534,9 +1534,9 @@ end --function
 ---------
 function GoGo_CanRide()
 ---------
-	if GoGo_Variables.Player.Level >= 20 then
+	if GoGo_Variables.Player.Level >= 10 then
 		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_CanRide: Passed - Player is over level 20.")
+			GoGo_DebugAddLine("GoGo_CanRide: Passed - Player is over level 10.")
 		end --if
 		return true
 	end --if

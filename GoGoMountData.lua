@@ -25,6 +25,23 @@ GoGo_Variables.TestVersion = true
 --if GoGo_Variables.Debug >= 6 then
 --  GoGo_DebugAddLine("GoGo_Variables initialized ")
 --end
+
+---------------------------------------------------------
+-- Mount data (true/false by default, else value)
+--
+-- 5 : while moving
+-- 7 : instant
+-- 8 : indoor
+-- 52 : Northrend loaned
+-- 54 : The Oculus
+-- 10002 : Underwater (speed)
+-- 10002 : Ground (speed)
+-- 10003 : Flying (speed)
+-- 10003 : Water surface (speed)
+--
+---------------------------------------------------------
+
+
 ---------
 function GoGo_GetMountDB()
 ---------
