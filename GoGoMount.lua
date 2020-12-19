@@ -838,10 +838,15 @@ function GoGo_Dismount(button)
 			end --if
 		end --if
 	elseif GoGo_Variables.Player.Covenant == GoGo_Variables.Localize.NightFae then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_Dismount: Getting out of Soulshape ")
+		end --if
 		if AuraUtil.FindAuraByName(GetSpellInfo(GoGo_Variables.Localize.SoulShape), "player") and button then
 			if GoGo_Prefs.NightFaeClickForm then
 				GoGo_FillButton(button, GoGo_GetMount())
 			else
+			    -- Soulshape button is replaced by Flicker. Clicking on the button while in Soulshape without the ClickForm option
+				-- will Flicker instead of getting out of Soulshape
 				GoGo_FillButton(button, GoGo_InBook(GoGo_Variables.Localize.SoulShape))
 			end --if
 		end --if
