@@ -2314,6 +2314,7 @@ function GoGo_DebugAddLine(LogLine)
 	if not GoGo_Variables.DebugLine then GoGo_Variables.DebugLine = 1 end --if
 	GoGo_DebugLog[GoGo_Variables.DebugLine] = (debugprofilestop()-GoGo_Variables.DebugTimer) .. " " .. LogLine
 	GoGo_Msg(LogLine)
+	if DLAPI then DLAPI.DebugLog("GoGoMount", LogLine) end 
 	GoGo_Variables.DebugLine = GoGo_Variables.DebugLine + 1
 	
 end --function
