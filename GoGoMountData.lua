@@ -34,7 +34,7 @@ GoGo_Variables.TestVersion = true
 -- 8 : indoor
 -- 52 : Northrend loaned
 -- 54 : The Oculus
--- 10002 : Underwater (speed)
+-- 10001 : Underwater (speed)
 -- 10002 : Ground (speed)
 -- 10003 : Flying (speed)
 -- 10003 : Water surface (speed)
@@ -636,6 +636,7 @@ function GoGo_GetMountDB()
 		-- [13159] = {[7] = true, [8] = true, [500] = true, ["DefaultInstance"] = true, [10002]=138},  -- Aspect of the Pack
 		[87840] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Running Wild (Worgen Racial)
 		[125883] = {[7]=true, [9]=true, [403]=true, ["FlightOnly"]=true, [10003]=160},	-- Zen Flight (Monk glyph)
+		[310143] = {[7] = true, [8] = true, [500] = true, [1000] = true, ["DefaultInstance"] = true, [10002]=150}, -- Night Fae SoulShape
 
 		-- Other ...
 		[163016] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67, [9999]=true},  -- Warforged Nightmare

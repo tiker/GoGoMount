@@ -40,6 +40,8 @@
 		GlobalZoneDescription = "Preferred mounts defined here will only take effect if there are no zone specific mount favorites set for the current zone you are in.", -- Requires localization
 		HunterOptions = "Настройки для охотников", -- Needs review
 		NewVersionFound = "Доступна новая версия GoGoMount.",
+		NightFaeOptions = "Night Fae Options", -- Requires localization
+		NightFaeOptions = "Single click mount from Soulshape instead of dismounting", -- Requires localization
 		NoShapeInRandom = "Не использовать облики друида при выборе случайного средства передвижения", -- Needs review
 		PaladinOptions = "Paladin Options", -- Requires localization
 		RemoveBuffs = "Снять положительные эффекты, не позволяющие сесть верхом", -- Needs review

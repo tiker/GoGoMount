@@ -21,8 +21,11 @@
 	GoGo_Variables.Localize.GhostWolf = 2645
 	GoGo_Variables.Localize.JourneymanRiding = 33391  -- 150 Riding Skill
 	GoGo_Variables.Localize.MasterRiding = 90265  -- 300 Riding Skill + 310% speed
+	GoGo_Variables.Localize.NoCovenant = 0
+	GoGo_Variables.Localize.NightFae = 3
 	GoGo_Variables.Localize.RunningWild = 87840
 	GoGo_Variables.Localize.SeaLegs = 73701
+	GoGo_Variables.Localize.SoulShape = 310143 -- Night Fae Signature Ability
 	GoGo_Variables.Localize.TravelForm = 783 -- Druid talent
 	GoGo_Variables.Localize.TravelForm2 = 33943 -- Druid talent
 	GoGo_Variables.Localize.ZenFlight = 125883  -- Spell in book appears for monks with glyph of zen flight

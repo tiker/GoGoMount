@@ -44,6 +44,7 @@ function GoGo_OnEvent(self, event, ...)
 		GoGo_Variables.VerMajor, GoGo_Variables.VerMinor, GoGo_Variables.VerBuild = tonumber(GoGo_Variables.VerMajor), tonumber(GoGo_Variables.VerMinor), tonumber(GoGo_Variables.VerBuild)
 		_, GoGo_Variables.Player.Class = UnitClass("player")
 		_, GoGo_Variables.Player.Race = UnitRace("player")
+		GoGo_Variables.Player.Covenant = C_Covenants.GetActiveCovenantID()
 		GoGo_Variables.Player.Faction, _ = UnitFactionGroup("player")
 		GoGoFrame:RegisterEvent("PLAYER_REGEN_DISABLED")
 		GoGo_UpdateZonePrefs()  -- Migrate zone settings before attempting to draw options
@@ -57,6 +58,8 @@ function GoGo_OnEvent(self, event, ...)
 			GoGo_Shaman_Panel()
 		elseif (GoGo_Variables.Player.Class == "HUNTER") then
 			GoGo_Hunter_Panel()
+		elseif (GoGo_Variables.Player.Covenant == GoGo_Variables.Localize.NightFae) then
+			GoGo_NightFae_Panel()
 		end --if
 		GoGo_Panel_Options()
 		GoGo_ZoneFavorites_Panel()
@@ -118,6 +121,10 @@ function GoGo_OnEvent(self, event, ...)
 		end --if
 		if _G["GoGo_ZoneExclusions_ContentFrame"] and _G["GoGo_ZoneExclusions_ContentFrame"]:IsShown() then
 			GoGo_AddOptionCheckboxes("GoGo_ZoneExclusions_ContentFrame")
+		end --if
+		-- Covenant is no set properly on start. Try to get it when we change zones
+		if (GoGo_Variables.Player.Covenant == GoGo_Variables.Localize.NoCovenant) then
+		    GoGo_Variables.Player.Covenant = C_Covenants.GetActiveCovenantID()
 		end --if
 	elseif event == "TAXIMAP_OPENED" then
 		GoGo_Dismount()
@@ -223,6 +230,11 @@ function GoGo_PreClick(button)
 			GoGo_DebugAddLine("GoGo_PreClick: Player is a shaman and is in wolf form.  Standing up.")
 		end --if
 		GoGo_Dismount(button)
+	elseif GoGo_Variables.Player.Covenant == GoGo_Variables.Localize.NightFae and AuraUtil.FindAuraByName(GetSpellInfo(GoGo_Variables.Localize.SoulShape), "player") then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_PreClick: Player is in SoulShape form.  Standing up.")
+		end --if
+		GoGo_Dismount(button)
 	elseif not InCombatLockdown() then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_PreClick: Player not in combat, button pressed, looking for a mount.")
@@ -318,6 +330,8 @@ function GoGo_ChooseMount()
 		GoGo_TableAddUnique(GoGo_Variables.GroundSpeed, 138) -- Aspects
 	elseif (GoGo_Variables.Player.Class == "MONK") then
 		GoGo_TableAddUnique(GoGo_Variables.AirSpeed, 160)  -- Zen Flight
+	elseif (GoGo_Variables.Player.Covenant == GoGo_Variables.Localize.NightFae) then
+		GoGo_TableAddUnique(GoGo_Variables.GroundSpeed, 150)  -- Soulshape
 	end --if
 
 	if GoGo_Variables.Debug >= 10 then
@@ -822,6 +836,14 @@ function GoGo_Dismount(button)
 				GoGo_FillButton(button, GoGo_InBook(GoGo_Variables.Localize.GhostWolf))
 			end --if
 		end --if
+	elseif GoGo_Variables.Player.Covenant == GoGo_Variables.Localize.NightFae then
+		if AuraUtil.FindAuraByName(GetSpellInfo(GoGo_Variables.Localize.SoulShape), "player") and button then
+			if GoGo_Prefs.SoulShapeClickForm then
+				GoGo_FillButton(button, GoGo_GetMount())
+			else
+				GoGo_FillButton(button, GoGo_InBook(GoGo_Variables.Localize.SoulShape))
+			end --if
+		end --if
 	else
 		return nil
 	end --if
@@ -893,6 +915,8 @@ function GoGo_BuildMountList()
 			table.insert(GoGo_MountList, GoGo_Variables.Localize.ZenFlight)
 			GoGo_TableAddUnique(GoGo_Variables.AirSpeed, 160)
 		end --if
+	elseif GoGo_Variables.Player.Covenant == GoGo_Variables.Localize.NightFae then
+			table.insert(GoGo_MountList, GoGo_Variables.Localize.SoulShape)
 	end --if
 
 	if GoGo_Variables.Player.Race == "Worgen" then
@@ -1404,7 +1428,7 @@ function GoGo_CheckForUnknownMounts(MountList)
 			end --if
 			GoGo_ZonePrefMount(MountID)		-- to remove zone favorite flag if mount unknown
 			GoGo_GlobalPrefMount(MountID)		-- to remove global favorite flag if mount unknown
-			if GoGo_Variables.Debug >= 10 then
+			if GoGo_Variables.Debug >= 6 then
 				GoGo_DebugAddLine("GoGo_CheckForUnknownMounts: Unknown mount found:  " .. MountID)
 			end --if
 			if not GoGo_Prefs.DisableMountNotice and not GoGo_Variables.UnknownMountMsgShown then
@@ -2126,6 +2150,10 @@ GOGO_SPELLS = {
 	["SHAMAN"] = function()
 		return GoGo_InBook(GoGo_Variables.Localize.GhostWolf)
 	end, --function
+
+	["NIGHTFAE"] = function()
+		return GoGo_InBook(GoGo_Variables.Localize.SoulShape)
+	end, --function
 }
 
 ---------
@@ -2581,6 +2609,28 @@ function GoGo_Shaman_Panel()
 end --function
 
 ---------
+function GoGo_NightFae_Panel()
+---------
+	GoGo_NightFae_Panel = CreateFrame("Frame", nil, UIParent)
+	GoGo_NightFae_Panel.name = GoGo_Variables.Localize.String.NightFaeOptions
+	GoGo_NightFae_Panel.parent = "GoGoMount"
+	GoGo_NightFae_Panel.default = function (self) GoGo_Settings_Default("NIGHTFAE"); end;  -- use clear command with default button
+	InterfaceOptions_AddCategory(GoGo_NightFae_Panel)
+
+	GoGo_NightFae_Panel_ClickForm = CreateFrame("CheckButton", "GoGo_NightFae_Panel_ClickForm", GoGo_NightFae_Panel, "OptionsCheckButtonTemplate")
+	GoGo_NightFae_Panel_ClickForm:SetPoint("TOPLEFT", 16, -16)
+	GoGo_NightFae_Panel_ClickFormText:SetText(GoGo_Variables.Localize.String.NightFaeSingleClick)
+	if GoGo_Prefs.NightFaeClickForm then
+		GoGo_NightFae_Panel_ClickForm:SetChecked(1)
+	end --if
+	GoGo_NightFae_Panel_ClickForm:SetScript("OnClick",
+		function(self)
+			GoGo_SetPref("NightFaeClickForm", GoGo_NightFae_Panel_ClickForm:GetChecked())
+		end --function
+	)
+end --function
+
+---------
 function GoGo_ZoneFavorites_Panel()
 ---------
 	GoGo_ZoneFavorites_Panel = CreateFrame("Frame", nil, UIParent)
@@ -2816,6 +2866,11 @@ function GoGo_SetPref(strPref, intValue, boolNoPanel)
 		if (not boolNoPanel) then
 			GoGo_Shaman_Panel_ClickForm:SetChecked(intValue)
 		end --if
+	elseif strPref == "NightFaeClickForm" then
+		GoGo_Prefs.NightFaeClickForm = intValue
+		if (not boolNoPanel) then
+			GoGo_NightFae_Panel_ClickForm:SetChecked(intValue)
+		end --if
 	elseif strPref == "DruidDisableInCombat" then
 		GoGo_Prefs.DruidDisableInCombat = intValue
 		if (not boolNoPanel) then
@@ -2887,6 +2942,7 @@ function GoGo_Settings_Default(Class)
 		GoGo_SetPref("AutoExcludeFlyingMounts", false, true)
 		GoGo_SetPref("DruidDisableInCombat", false, true)
 		GoGo_SetPref("ShamanClickForm", false, true)
+		GoGo_SetPref("NightFaeClickForm", false, true)
 		GoGo_Prefs.PrefVer = 1
 
 	end --if
@@ -2909,6 +2965,7 @@ function GoGo_Settings_SetUpdates()
 	if not GoGo_Prefs.AutoExcludeFlyingMounts then GoGo_Prefs.AutoExcludeFlyingMounts = false end
 	if not GoGo_Prefs.DruidDisableInCombat then GoGo_Prefs.DruidDisableInCombat = false end
 	if not GoGo_Prefs.ShamanClickForm then GoGo_Prefs.ShamanClickForm = false end
+	if not GoGo_Prefs.NightFaeClickForm then GoGo_Prefs.NightFaeClickForm = false end
 
 	GoGo_Prefs.UnknownMounts = {}
 	if not GoGo_Prefs.GlobalExclude then
@@ -3148,6 +3205,17 @@ function GoGo_DebugCollectInformation()
 	local level = UnitLevel("player")
 	GoGo_DebugAddLine("Information: We are level " .. level)
 	GoGo_DebugAddLine("Information: We are a " .. GoGo_Variables.Player.Race .. " " .. GoGo_Variables.Player.Class)
+	if GoGo_Variables.Player.Covenant == 0 then
+		GoGo_DebugAddLine("Information: We do not have a covenant.")
+	elseif GoGo_Variables.Player.Covenant == 1 then
+		GoGo_DebugAddLine("Information: Our covenant is Kyrian.")
+	elseif GoGo_Variables.Player.Covenant == 2 then
+		GoGo_DebugAddLine("Information: Our covenant is Venthyr.")
+	elseif GoGo_Variables.Player.Covenant == 3 then
+		GoGo_DebugAddLine("Information: Our covenant is Night Fae.")
+	elseif GoGo_Variables.Player.Covenant == 4 then
+		GoGo_DebugAddLine("Information: Our covenant is Necro Lord.")
+	end --if
 	if IsInGuild() and GetGuildPerkInfo(2) then
 		GoGo_DebugAddLine("Information: We are in a guild with the Mount Up perk")
 	end --if

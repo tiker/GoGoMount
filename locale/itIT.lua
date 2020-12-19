@@ -40,6 +40,8 @@ if GetLocale() == "itIT" then
 		GlobalZoneDescription = "Supporti preferiti qui definiti effetto solo se non ci sono particolari preferenze montaggio di zona previsti per la zona corrente in cui ti trovi", -- Needs review
 		HunterOptions = "Hunter Opzioni", -- Needs review
 		NewVersionFound = "Una versione più recente di GoGoMount è disponibile.", -- Needs review
+		NightFaeOptions = "Night Fae Options", -- Requires localization
+		NightFaeOptions = "Single click mount from Soulshape instead of dismounting", -- Requires localization
 		NoShapeInRandom = "Non casuale forme forma con i monti", -- Needs review
 		PaladinOptions = "Opzioni Paladin", -- Needs review
 		RemoveBuffs = "Rimuovere gli appassionati che possono prevenire il montaggio", -- Needs review

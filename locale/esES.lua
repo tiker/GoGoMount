@@ -40,6 +40,8 @@
 		GlobalZoneDescription = "Preferred mounts defined here will only take effect if there are no zone specific mount favorites set for the current zone you are in.", -- Requires localization
 		HunterOptions = "Hunter Options", -- Requires localization
 		NewVersionFound = "Una nueva actualización de GoGoMount está disponible y es usada por ", -- Needs review
+		NightFaeOptions = "Night Fae Options", -- Requires localization
+		NightFaeOptions = "Single click mount from Soulshape instead of dismounting", -- Requires localization
 		NoShapeInRandom = "Do not randomize shape forms with mounts", -- Requires localization
 		PaladinOptions = "Paladin Options", -- Requires localization
 		RemoveBuffs = "Remove buffs that can prevent mounting", -- Requires localization
