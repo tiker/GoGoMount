@@ -58,8 +58,6 @@ function GoGo_OnEvent(self, event, ...)
 			GoGo_Shaman_Panel()
 		elseif (GoGo_Variables.Player.Class == "HUNTER") then
 			GoGo_Hunter_Panel()
-		elseif (GoGo_Variables.Player.Covenant == GoGo_Variables.Localize.NightFae) then
-			GoGo_NightFae_Panel()
 		end --if
 		GoGo_Panel_Options()
 		GoGo_ZoneFavorites_Panel()
@@ -125,6 +123,9 @@ function GoGo_OnEvent(self, event, ...)
 		-- Covenant is no set properly on start. Try to get it when we change zones
 		if (GoGo_Variables.Player.Covenant == GoGo_Variables.Localize.NoCovenant) then
 		    GoGo_Variables.Player.Covenant = C_Covenants.GetActiveCovenantID()
+			if (GoGo_Variables.Player.Covenant == GoGo_Variables.Localize.NightFae) then
+				GoGo_NightFae_Panel()
+			end --if
 		end --if
 	elseif event == "TAXIMAP_OPENED" then
 		GoGo_Dismount()
@@ -838,7 +839,7 @@ function GoGo_Dismount(button)
 		end --if
 	elseif GoGo_Variables.Player.Covenant == GoGo_Variables.Localize.NightFae then
 		if AuraUtil.FindAuraByName(GetSpellInfo(GoGo_Variables.Localize.SoulShape), "player") and button then
-			if GoGo_Prefs.SoulShapeClickForm then
+			if GoGo_Prefs.NightFaeClickForm then
 				GoGo_FillButton(button, GoGo_GetMount())
 			else
 				GoGo_FillButton(button, GoGo_InBook(GoGo_Variables.Localize.SoulShape))

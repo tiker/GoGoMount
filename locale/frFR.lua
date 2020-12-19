@@ -41,7 +41,7 @@
 		HunterOptions = "Options pour Chasseurs",
 		NewVersionFound = "Une nouvelle version de GoGoMount est disponible.",
 		NightFaeOptions = "Night Fae Options", -- Requires localization
-		NightFaeOptions = "Single click mount from Soulshape instead of dismounting", -- Requires localization
+		NightFaeSingleClick = "Single click mount from Soulshape instead of dismounting", -- Requires localization
 		NoShapeInRandom = "Ne pas randomiser les formes avec les montures",
 		PaladinOptions = "Options pour paladins",
 		RemoveBuffs = "Supprimer les buffs qui empêchent l'utilisation des montures",

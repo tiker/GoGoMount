@@ -41,7 +41,7 @@
 		HunterOptions = "猎人选项",
 		NewVersionFound = "GoGoMount 有新版本可更新",
 		NightFaeOptions = "Night Fae Options", -- Requires localization
-		NightFaeOptions = "Single click mount from Soulshape instead of dismounting", -- Requires localization
+		NightFaeSingleClick = "Single click mount from Soulshape instead of dismounting", -- Requires localization
 		NoShapeInRandom = "不使用随机变身形态", -- Needs review
 		PaladinOptions = "圣骑士选项",
 		RemoveBuffs = "移除会影响召唤坐骑的Buffs",

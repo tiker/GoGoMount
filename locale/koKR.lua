@@ -41,7 +41,7 @@
 		HunterOptions = "사냥꾼 옵션",
 		NewVersionFound = "GoGoMount의 새로운 버전을 사용할 수 있습니다.",
 		NightFaeOptions = "Night Fae Options", -- Requires localization
-		NightFaeOptions = "Single click mount from Soulshape instead of dismounting", -- Requires localization
+		NightFaeSingleClick = "Single click mount from Soulshape instead of dismounting", -- Requires localization
 		NoShapeInRandom = "탈것이나 변신 폼 무작위로 사용 안함",
 		PaladinOptions = "성기사 옵션", -- Needs review
 		RemoveBuffs = "탈것을 방해하는 버프 제거",

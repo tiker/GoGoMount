@@ -41,7 +41,7 @@
 		HunterOptions = "Jäger-Optionen",
 		NewVersionFound = "Eine aktualisierte Version von GoGoMount ist verfügbar und wird verwendet von ",
 		NightFaeOptions = "Night Fae Options", -- Requires localization
-		NightFaeOptions = "Single click mount from Soulshape instead of dismounting", -- Requires localization
+		NightFaeSingleClick = "Single click mount from Soulshape instead of dismounting", -- Requires localization
 		NoShapeInRandom = "Gestaltwandlung und Reittiere nicht gemeinsam in einer Zufallsliste verwenden.",
 		PaladinOptions = "Paladin-Einstellungen",
 		RemoveBuffs = "Entferne Buffs, die das Aufsitzen verhindern",

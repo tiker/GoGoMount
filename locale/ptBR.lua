@@ -41,7 +41,7 @@ if GetLocale() == "ptBR" then
 		HunterOptions = "Hunter Options", -- Requires localization
 		NewVersionFound = "A versão mais recente do GoGoMount está disponível.", -- Needs review
 		NightFaeOptions = "Night Fae Options", -- Requires localization
-		NightFaeOptions = "Single click mount from Soulshape instead of dismounting", -- Requires localization
+		NightFaeSingleClick = "Single click mount from Soulshape instead of dismounting", -- Requires localization
 		NoShapeInRandom = "Do not randomize shape forms with mounts", -- Requires localization
 		PaladinOptions = "Paladin Options", -- Requires localization
 		RemoveBuffs = "Remove buffs that can prevent mounting", -- Requires localization

@@ -41,7 +41,7 @@
 		HunterOptions = "Настройки для охотников", -- Needs review
 		NewVersionFound = "Доступна новая версия GoGoMount.",
 		NightFaeOptions = "Night Fae Options", -- Requires localization
-		NightFaeOptions = "Single click mount from Soulshape instead of dismounting", -- Requires localization
+		NightFaeSingleClick = "Single click mount from Soulshape instead of dismounting", -- Requires localization
 		NoShapeInRandom = "Не использовать облики друида при выборе случайного средства передвижения", -- Needs review
 		PaladinOptions = "Paladin Options", -- Requires localization
 		RemoveBuffs = "Снять положительные эффекты, не позволяющие сесть верхом", -- Needs review

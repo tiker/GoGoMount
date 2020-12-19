@@ -41,7 +41,7 @@
 		HunterOptions = "獵人選項",
 		NewVersionFound = "已有GoGoMount的更新版本",
 		NightFaeOptions = "Night Fae Options", -- Requires localization
-		NightFaeOptions = "Single click mount from Soulshape instead of dismounting", -- Requires localization
+		NightFaeSingleClick = "Single click mount from Soulshape instead of dismounting", -- Requires localization
 		NoShapeInRandom = "Do not randomize shape forms with mounts", -- Requires localization
 		PaladinOptions = "聖騎士選項", -- Needs review
 		RemoveBuffs = "自動移除讓你無法上坐騎的BUFF", -- Needs review
