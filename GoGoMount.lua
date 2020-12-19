@@ -3116,6 +3116,8 @@ function GoGo_DebugCollectInformation()
 		GoGo_DebugAddLine("Information: Account - World of Warcraft: Legion enabled.")
 	elseif GoGo_Variables.ExpansionAccount == 7 then
 		GoGo_DebugAddLine("Information: Account - World of Warcraft: Battle for Azeroth enabled.")
+	elseif GoGo_Variables.ExpansionAccount == 8 then
+		GoGo_DebugAddLine("Information: Account - World of Warcraft: Shadowlands enabled.")
 	end --if
 	if GoGo_Variables.ExpansionGame == 0 then
 		GoGo_DebugAddLine("Information: Game - World of Warcraft (Classic) enabled.")
@@ -3133,6 +3135,8 @@ function GoGo_DebugCollectInformation()
 		GoGo_DebugAddLine("Information: Game - World of Warcraft: Legion enabled.")
 	elseif GoGo_Variables.ExpansionGame == 7 then
 		GoGo_DebugAddLine("Information: Game - World of Warcraft: Battle for Azeroth enabled.")
+	elseif GoGo_Variables.ExpansionGame == 8 then
+		GoGo_DebugAddLine("Information: Game - World of Warcraft: Shadowlands enabled.")
 	end --if
 	GoGo_DebugAddLine("Information: Client locale is " .. GetLocale())
 	GoGo_DebugAddLine("Information: Location = " .. GetRealZoneText() .. " - " .. GetZoneText() .. " - " ..GetSubZoneText() .. " - " .. GetMinimapZoneText())
