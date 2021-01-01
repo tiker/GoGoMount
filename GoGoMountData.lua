@@ -32,8 +32,17 @@ GoGo_Variables.TestVersion = true
 -- 5 : while moving
 -- 7 : instant
 -- 8 : indoor
+-- 35 : Mounts unusable under Riding Level 300
+-- 36 : Mounts unusable under Riding Level 225
+-- 37 : Mounts unusable under Riding Level 150
+-- 38 : Mounts unusablea under Riding Level 75
 -- 52 : Northrend loaned
 -- 54 : The Oculus
+-- 330 : Ground mounts which can go up to 200%
+-- 400 : Thousand Needles speed buff special
+-- 402 : Mount Up guild perk special
+-- 405 : Water Gliding buff special
+-- 701 : Ashran Swift Riding Crop special
 -- 10001 : Underwater (speed)
 -- 10002 : Ground (speed)
 -- 10003 : Flying (speed)
