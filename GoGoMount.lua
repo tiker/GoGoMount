@@ -869,7 +869,11 @@ function GoGo_BuildMountList()
 			if GoGo_Variables.Debug >= 10 then 
 				-- show a line for each mount and indicate if it's usable, etc. in debug log?
 				--GoGo_DebugAddLine("GoGo_BuildMountList: Found mount spell ID " .. SpellID .. " and added to known mount list.")
-				GoGo_DebugAddLine("GoGo_BuildMountList: SpellID: " .. SpellID .. "  isUsable: " .. tostring(isUsable) .. "  isFactionSpecific: " .. tostring(isFactionSpecific) .. "  faction: " .. tostring(faction) .. "  isCollected: " .. tostring(isCollected) .. "  IsUsableSpell(): " .. tostring(IsUsableSpell(SpellID)) .. "  IsSpellKnown(): " .. tostring(IsSpellKnown(SpellID)))
+				if SpellID == 0 then
+				    GoGo_DebugAddLine("GoGo_BuildMountList: SpellID: " .. SpellID )
+				else
+					GoGo_DebugAddLine("GoGo_BuildMountList: SpellID: " .. SpellID .. "  isUsable: " .. tostring(isUsable) .. "  isFactionSpecific: " .. tostring(isFactionSpecific) .. "  faction: " .. tostring(faction) .. "  isCollected: " .. tostring(isCollected) .. "  IsUsableSpell(): " .. tostring(IsUsableSpell(SpellID)) .. "  IsSpellKnown(): " .. tostring(IsSpellKnown(SpellID)))
+				end --if
 			end --if
 
 			if isCollected and isUsable then
@@ -3079,14 +3083,17 @@ function GoGo_AddOptionCheckboxes(GoGo_FrameParentText)
 		end --if
 		
 		if GoGo_FrameParentText == "GoGo_ZoneFavorites_ContentFrame" then
-			if table.getn(GoGo_Prefs.MapIDs[GoGo_Variables.Player.MapID]["Preferred"]) > 0 then
-				--GoGo_DebugAddLine("GoGo_AddOptionCheckboxes(): zone exists ")
-				for GoGo_FavoriteCount = 1, table.getn(GoGo_Prefs.MapIDs[GoGo_Variables.Player.MapID]["Preferred"]) do
-					if GoGo_Prefs.MapIDs[GoGo_Variables.Player.MapID]["Preferred"][GoGo_FavoriteCount] == GoGo_MountID then
-						_G[GoGo_CheckBoxName]:SetChecked(1)
---							GoGo_DebugAddLine("GoGo_AddOptionCheckboxes(): set checked " .. GoGo_MountID)
-					end --if
-				end --for
+		    -- Checking if MapID is valid as we sometimes get called before MapID is valid (e.g. jumping in the Maw)
+			if  GoGo_Variables.Player.MapID then
+				if table.getn(GoGo_Prefs.MapIDs[GoGo_Variables.Player.MapID]["Preferred"]) > 0 then
+					--GoGo_DebugAddLine("GoGo_AddOptionCheckboxes(): zone exists ")
+					for GoGo_FavoriteCount = 1, table.getn(GoGo_Prefs.MapIDs[GoGo_Variables.Player.MapID]["Preferred"]) do
+						if GoGo_Prefs.MapIDs[GoGo_Variables.Player.MapID]["Preferred"][GoGo_FavoriteCount] == GoGo_MountID then
+							_G[GoGo_CheckBoxName]:SetChecked(1)
+							-- GoGo_DebugAddLine("GoGo_AddOptionCheckboxes(): set checked " .. GoGo_MountID)
+						end --if
+					end --for
+				end --if
 			end --if
 			_G[GoGo_CheckBoxName]:SetScript("OnClick",
 				function(self)
