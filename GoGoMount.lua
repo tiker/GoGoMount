@@ -2214,6 +2214,10 @@ GOGO_COMMANDS = {
 		GoGo_StartStopDebug(10)
 		GoGo_Msg("debug")
 	end, --function
+	["debug 0"] = function()
+		GoGo_StartStopDebug(0)
+		GoGo_Msg("debug")
+	end, --function
 	["debug 6"] = function()
 		GoGo_StartStopDebug(6)
 		GoGo_Msg("debug")
@@ -2300,6 +2304,8 @@ GOGO_MESSAGES = {
 			return "GoGoMount debugging level 6 set"
 		elseif GoGo_Variables.Debug == 5 then
 			return "GoGoMount debugging level 5 set"
+		elseif GoGo_Variables.Debug == 0 then
+			return "GoGoMount debugging disabled for 1 GoGoButton click."
 		end --if
 	end, --function
 	["globalexclude"] = function()
