@@ -4343,7 +4343,13 @@ function GoGo_ZoneCheck()
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = true
 		-- can ride = true
-		
+	elseif GoGo_Variables.Player.MapID == 1543 then  -- Jumping into the Maw
+		if GoGo_Variables.Debug >= 10
+		then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Maw")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		GoGo_Variables.ZoneExclude.TheMaw = false
 	elseif GoGo_Variables.Player.MapID == 1648 then  -- The Maw
 		if GoGo_Variables.Debug >= 10
 		then
@@ -4351,7 +4357,12 @@ function GoGo_ZoneCheck()
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 		GoGo_Variables.ZoneExclude.TheMaw = false
-
+	elseif GoGo_Variables.Player.MapID == 1670 then
+		-- Oribos
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Oribos")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
 
 --	elseif GoGo_Variables.Player.ZoneID == -1 then
 		-- Arenas:
