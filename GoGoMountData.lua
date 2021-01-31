@@ -3,6 +3,7 @@ BINDING_NAME_GOGOBINDING = "Mount/Dismount"
 BINDING_NAME_GOGOBINDING2 = "Mount/Dismount (no flying)"
 BINDING_NAME_GOGOBINDING3 = "Mount/Dismount Passenger Mounts"
 BINDING_NAME_GOGOBINDING4 = "Mount/Dismount Seller Mounts"
+BINDING_NAME_GOGOBINDING5 = "Mount/Dismount Herbalism Mounts"
 
 GoGo_Variables = {}
 GoGo_Variables.ZoneExclude = {}
@@ -32,9 +33,12 @@ GoGo_Variables.TestVersion = true
 --
 -- 2 : passenger mount
 -- 3 : seller mount
+-- 4 : ????
 -- 5 : while moving
+-- 6 : can be used to gather herbs
 -- 7 : instant
 -- 8 : indoor
+-- 9 : ????
 -- 35 : Mounts unusable under Riding Level 300
 -- 36 : Mounts unusable under Riding Level 225
 -- 37 : Mounts unusable under Riding Level 150
@@ -43,13 +47,16 @@ GoGo_Variables.TestVersion = true
 -- 54 : The Oculus
 -- 330 : Ground mounts which can go up to 200%
 -- 400 : Thousand Needles speed buff special
--- 402 : Mount Up guild perk special
+-- 402 : Mount Up guild perk special (Ground)
+-- 403 : Mount Up guild perk special (Air)
 -- 405 : Water Gliding buff special
+-- 501 : Druid flight form
 -- 701 : Ashran Swift Riding Crop special
 -- 10001 : Underwater (speed)
 -- 10002 : Ground (speed)
 -- 10003 : Flying (speed)
 -- 10004 : Water surface (speed)
+-- 50000 : item ID <-> Spell ID for mounts from an item
 --
 ---------------------------------------------------------
 
@@ -545,7 +552,7 @@ function GoGo_GetMountDB()
 		[76203] = {[55] = true, [200] = true, [10004]=286, [50000]=55121},  -- River Boat
 		[87090] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67}, -- Goblin Trike
 		[87091] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67}, -- Goblin Turbo-Trike
-		[134359] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Sky Golem (The Sky Claw)
+		[134359] = {[6] = true, [9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Sky Golem (The Sky Claw)
 		[171845] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Warlord's Deathwheel
 		[179244] = {[39] = true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Summon Chauffeur
 		[179245] = {[39] = true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Summon Chauffeur
