@@ -72,7 +72,7 @@ function GoGo_OnEvent(self, event, ...)
 	elseif event == "PLAYER_REGEN_DISABLED" then
 		GoGo_Variables.Player.MapID = C_Map.GetBestMapForUnit("player")
 		GoGo_Variables.Player.ZoneID = GoGo_Variables.ZoneMapID[GoGo_Variables.Player.MapID]
-		for i, button in ipairs({GoGoButton, GoGoButton2, GoGoButton3}) do
+		for i, button in ipairs({GoGoButton, GoGoButton2, GoGoButton3, GoGoButton4}) do
 			if GoGo_Variables.Player.Class == "SHAMAN" then
 				if GoGo_Variables.Debug >= 10 then 
 					GoGo_DebugAddLine("GoGo_OnEvent: Shaman entering combat.  Setting macro.")
@@ -492,6 +492,13 @@ function GoGo_ChooseMount()
 			GoGo_DebugAddLine("GoGo_ChooseMount: Filtering out all mounts except passenger mounts since passenger mount only was requested.")
 		end --if
 		GoGo_Variables.FilteredMounts = GoGo_FilterMountsIn(GoGo_Variables.FilteredMounts, 2) or {}
+	end --if
+
+	if GoGo_Variables.SelectSellerMount then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ChooseMount: Filtering out all mounts except seller mounts since seller mount only was requested.")
+		end --if
+		GoGo_Variables.FilteredMounts = GoGo_FilterMountsIn(GoGo_Variables.FilteredMounts, 3) or {}
 	end --if
 
 	if GoGo_Variables.SkipFlyingMount then
@@ -1551,7 +1558,7 @@ end --function
 ---------
 function GoGo_CheckBindings()
 ---------
-	for binding, button in pairs({GOGOBINDING = GoGoButton, GOGOBINDING2 = GoGoButton2, GOGOBINDING3 = GoGoButton3}) do
+	for binding, button in pairs({GOGOBINDING = GoGoButton, GOGOBINDING2 = GoGoButton2, GOGOBINDING3 = GoGoButton3, GOGOBINDING4 = GoGoButton4}) do
 		ClearOverrideBindings(button)
 		local key1, key2 = GetBindingKey(binding)
 		if key1 then
