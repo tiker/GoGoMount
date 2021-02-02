@@ -3,6 +3,8 @@ if GetLocale() == "ptBR" then
 	BINDING_NAME_GOGOBINDING = "Montar / Desmontar" -- Needs review
 	BINDING_NAME_GOGOBINDING2 = "Montar / Desmontar (não voadora)" -- Needs review
 	BINDING_NAME_GOGOBINDING3 = "Montar / Desmontar Montaria de passageiros" -- Needs review
+	BINDING_NAME_GOGOBINDING4 = "Mount/Dismount Seller Mounts" -- Requires localization
+	BINDING_NAME_GOGOBINDING5 = "Mount/Dismount Herbalism Mounts" -- Requires localization
 	GoGo_Variables.Localize = {
 	Skill = {
 		Engineering = "Engenharia", -- Needs review

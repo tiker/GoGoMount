@@ -3,6 +3,8 @@
 	BINDING_NAME_GOGOBINDING = "Montar/Desmontar" -- Needs review
 	BINDING_NAME_GOGOBINDING2 = "Montar/Desmontar (no voladora)" -- Needs review
 	BINDING_NAME_GOGOBINDING3 = "Montar/Desmontar Monturas de Pasajeros" -- Needs review
+	BINDING_NAME_GOGOBINDING4 = "Mount/Dismount Seller Mounts" -- Requires localization
+	BINDING_NAME_GOGOBINDING5 = "Mount/Dismount Herbalism Mounts" -- Requires localization
 	GoGo_Variables.Localize = {
 	Skill = {
 		Engineering = "Ingeniería", -- Needs review

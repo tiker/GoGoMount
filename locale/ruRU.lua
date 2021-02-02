@@ -3,6 +3,8 @@
 	BINDING_NAME_GOGOBINDING = "Оседлать/Спешиться"
 	BINDING_NAME_GOGOBINDING2 = "Оседлать/Спешиться (наземный транспорт)"
 	BINDING_NAME_GOGOBINDING3 = "Оседлать/Спешиться (транспорт с пассажирами)"
+	BINDING_NAME_GOGOBINDING4 = "Mount/Dismount Seller Mounts" -- Requires localization
+	BINDING_NAME_GOGOBINDING5 = "Mount/Dismount Herbalism Mounts" -- Requires localization
 	GoGo_Variables.Localize = {
 	Skill = {
 		Engineering = "Инженерное дело", -- Needs review

@@ -3,6 +3,8 @@
 	BINDING_NAME_GOGOBINDING = "坐騎/解除坐騎"
 	BINDING_NAME_GOGOBINDING2 = "坐騎/解除坐騎(無飛行)"
 	BINDING_NAME_GOGOBINDING3 = "坐騎/解除有乘客的坐騎"
+	BINDING_NAME_GOGOBINDING4 = "Mount/Dismount Seller Mounts" -- Requires localization
+	BINDING_NAME_GOGOBINDING5 = "Mount/Dismount Herbalism Mounts" -- Requires localization
 	GoGo_Variables.Localize = {
 	Skill = {
 		Engineering = "工程學",
