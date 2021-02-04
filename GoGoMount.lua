@@ -2363,6 +2363,7 @@ GOGO_MESSAGES = {
 		end --if
 	end, --function
 	["UnknownMount"] = function() return GoGo_Variables.Localize.String.UnknownMountFound end, --function
+	["UnknownMountType"] = function() return GoGo_Variables.Localize.String.UnknownMountTypeFound end, --function
 	["optiongui"] = function() return "To open the GUI options window - </gogo options>" end, --function
 }
 
