@@ -1943,20 +1943,6 @@ function GoGo_UpdateMountData()
 		end --if
 	end --if
 	
-	if (GoGo_Variables.Player.Class == "WARLOCK") and (GoGo_GlyphActive(56232)) then
-		-- spellid:56232 = Warlock's Glyph of Nightmares
-		-- Update Felsteeds / Dreadsteeds water surface speed to player's ground surface mount speed (160 / 200)
-		if GoGo_Variables.Debug >= 10 then
-			GoGo_DebugAddLine("GoGo_UpdateMountData: We're a Warlock with Glyph of Nightmares.  Modifying Warlock class mounts' water surface speed data.")
-		end --if
-		if GoGo_GetRidingSkillLevel() >= 150 then  -- increase ground mounts to 200
-			GoGo_UpdateMountSpeedDB(GoGo_Variables.FilteredMounts, 406, 10004, 200)
-			GoGo_TableAddUnique(GoGo_Variables.WaterSurfaceSpeed, 200)
-		else
-			GoGo_UpdateMountSpeedDB(GoGo_Variables.FilteredMounts, 406, 10004, 160)
-			GoGo_TableAddUnique(GoGo_Variables.WaterSurfaceSpeed, 160)
-		end --if	
-	end --if
 ]]
 	
 	if not GoGo_Variables.ZoneExclude.ThousandNeedles then  -- we are in thousand needles - ground mounts swim faster with buff
