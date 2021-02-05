@@ -323,8 +323,14 @@ function GoGo_GetMountDB()
 		spellID = select(2, C_MountJournal.GetMountInfoByID(mountID))
 		mountTypeID  = select(5, C_MountJournal.GetMountInfoExtraByID(mountID))
 		if GoGo_Variables.MountDB[spellID] == nil and mountTypeID ~= 242 then
+			if GoGo_Variables.Debug >= 10 then
+				GoGo_DebugAddLine("GoGo_GetMountDB: Adding mount " .. spellID .. " with standard type " .. mountTypeID )
+			end --if
 			if  GoGo_Variables.GenericMountDB[mountTypeID] == nil then
 				GoGo_Msg(UnknownMountType)
+				if GoGo_Variables.Debug >= 6 then
+					GoGo_DebugAddLine("GoGo_GetMountDB: Missing type " .. mountTypeID )
+				end --if
 			else
 				GoGo_Variables.MountDB[spellID] = GoGo_Variables.GenericMountDB[mountTypeID]
 			end --if
