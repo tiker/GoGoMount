@@ -84,6 +84,8 @@ function GoGo_GetMountDB()
 	GoGo_Variables.GenericMountDB = {
 	
 		[230] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67}, -- Generic Ground Mount
+		-- No default for type 231
+		-- No default for type 232
 	
 	}
 
@@ -119,6 +121,15 @@ function GoGo_GetMountDB()
 		
 		-- Misc (to check) 
 		[136471] = {[37] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Spawn of Horridon
+		
+		
+		-- TYPE 231
+		[30174] = {[15] = true, [39] = true, [10001]=67, [10002]=100, [10004]=67},  -- Riding Turtle
+		[64731] = {[15] = true, [39] = true, [402]=true, [404]=true, [10001]=108, [10002]=100, [10004]=108},  -- Sea Turtle
+		
+		
+		-- TYPE 232
+		[75207] = {[36] = true, [53] = true, [401] = true, [10001]=108, [10002]=160, [10003]=250, [10004]=371},  -- Vashj'ir Seahorse
 
 
 
@@ -129,8 +140,6 @@ function GoGo_GetMountDB()
 		[26054] = {[38] = true, [201] = true, [330]=true, [402]=true, [10002]=160},  -- Red Qiraji Battle Tank
 		[26056] = {[38] = true, [201] = true, [330]=true, [402]=true, [10002]=160},  -- Green Qiraji Battle Tank
 
-		[30174] = {[15] = true, [39] = true, [10001]=67, [10002]=100, [10004]=67},  -- Riding Turtle
-		[64731] = {[15] = true, [39] = true, [402]=true, [404]=true, [10001]=108, [10002]=100, [10004]=108},  -- Sea Turtle
 		
 		[33184] = {[38] = true, [9] = true, [4] = true, [999] = true},  -- Swift Magic Broom  --  itemid
 		[42667] = {[7] = true, [9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [402]=true, [403]=true, [600]=true, [601]=true, [10002]=160, [10003]=250, [50000]=33176},  -- Flying Broom  --  itemid
@@ -346,7 +355,6 @@ function GoGo_GetMountDB()
 
 		[139448] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Clutch of Ji-Kun
 
-		[75207] = {[36] = true, [53] = true, [401] = true, [10001]=108, [10002]=160, [10003]=250, [10004]=371},  -- Abyssal Seahorse (was Abyssal Manta)
 		[98718] = {[36] = true, [53] = true, [404] = true, [10001]=108, [10002]=160, [10003]=250, [10004]=108},  -- Subdued Seahorse
 
 		[121820] = {[2] = true, [9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Obsidian Nightwing
