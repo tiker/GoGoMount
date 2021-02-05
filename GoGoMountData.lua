@@ -95,6 +95,7 @@ function GoGo_GetMountDB()
 		-- Type 242: Swift Spectral Mounts - mounts used in Ghost Form, after dying
 		-- No default for type 247
 		[248] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67}, -- Generic Flying Mount
+		[254] = {[36] = true, [53] = true, [404] = true, [10001]=108, [10004]=108}, -- Generic Water Mount
 	
 	}
 
@@ -173,6 +174,14 @@ function GoGo_GetMountDB()
 		[126508] = {[9] = true, [39] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Geosynchronous World Spinner
 
 
+		-- SPECIAL 254
+		
+		-- Misc (to check)
+		[98718] = {[36] = true, [53] = true, [404] = true, [10001]=108, [10002]=160, [10003]=250, [10004]=108},  -- Subdued Seahorse
+		[228919] = {[36] = true, [53] = true, [404] = true, [10001]=108, [10002]=160, [10003]=250, [10004]=108},  -- Darkwater Skate
+		[278803] = {[36] = true, [53] = true, [404] = true, [10001]=108, [10002]=160, [10003]=250, [10004]=108},  -- Great Sea Ray
+		[278979] = {[36] = true, [53] = true, [404] = true, [10001]=108, [10002]=160, [10003]=250, [10004]=108},  -- Surf Jelly
+
 		------------------------------------------------------
 	
 		[33184] = {[38] = true, [9] = true, [4] = true, [999] = true},  -- Swift Magic Broom  --  itemid
@@ -216,7 +225,6 @@ function GoGo_GetMountDB()
 		[61446] = {[9] = true, [47] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Swift Spellfire Carpet
 		--	[????] = {[11] = true, [47] = true, [9] = true, [36] = true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10004]=67},  -- Swift Flying Carpet   --- item 39303
 
-		[98718] = {[36] = true, [53] = true, [404] = true, [10001]=108, [10002]=160, [10003]=250, [10004]=108},  -- Subdued Seahorse
 
 
 		[24347] = {[7]=true, [8]=true, [10001]=91, [10004]=91, [50000]=19979},  -- Master Angler
@@ -250,40 +258,11 @@ function GoGo_GetMountDB()
 		-- 7.0.1 - Legion
 		[220124] = {[50000]=139421},		-- Ratstallion Harness
 
-
-
-		[214791] = {[36] = true, [53] = true, [404] = true, [10001]=108, [10004]=108},  -- Brinedeep Bottom-Feeder
-		[223018] = {[36] = true, [53] = true, [404] = true, [10001]=108, [10004]=108},  -- Fathom Dweller
-
 		[215545] = {[999]=true, [9999]=true},  -- Fel Bat (Test)
 		[220508] = {[38] = true, [203]=true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67, [50000]=139505},  -- 7.0 Paladin Order Hall Mount Dummy
 
-		-- 7.1.5
-		[228919] = {[36] = true, [53] = true, [404] = true, [10001]=108, [10002]=160, [10003]=250, [10004]=108},  -- Darkwater Skate
-
-		-- 7.3.0
-		[253711] = {[36] = true, [53] = true, [404] = true, [10001]=108, [10004]=108},  -- Pond Nettle
-
 		-- 8.0.1.25902
 		[239766] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67, [50000]=151626},  -- Blue Qiraji War Tank
-
-		-- 8.0.1.26624
-		[278803] = {[36] = true, [53] = true, [404] = true, [10001]=108, [10002]=160, [10003]=250, [10004]=108},  -- Great Sea Ray
-		[278979] = {[36] = true, [53] = true, [404] = true, [10001]=108, [10002]=160, [10003]=250, [10004]=108},  -- Surf Jelly
-
-		-- 8.1.0.28202
-		[288711] = {[36] = true, [53] = true, [404] = true, [10001]=108, [10004]=108},  -- Saltwater Seahorse
-
-		-- 8.2
-
-		[300153] = {[36] = true, [53] = true, [404] = true, [10001]=108, [10004]=108}, -- CRIMSON TIDEstalion
-		[300150] = {[36] = true, [53] = true, [404] = true, [10001]=108, [10004]=108}, --Fabius
-		[300151] = {[36] = true, [53] = true, [404] = true, [10001]=108, [10004]=108}, --iNKSCALE DEEPSEEKER
-		[300152] = {[36] = true, [53] = true, [404] = true, [10001]=108, [10004]=108}, --tidestallion
-
-		-- 8.3
---		[123456] = {[36] = true, [53] = true, [404] = true, [10001]=108, [10004]=108},  -- Standard Water (surface and submerged) Mount template
-
 
        -- 9.0 Ground mounts (from wowhead)
 	   
@@ -335,6 +314,7 @@ function GoGo_GetMountDB()
 		-- [171847] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Cindermane Charger
 		-- [237288] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Reins of the Onyx War Hyena
 		-- [278966] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Tempestuous Skystallion
+		-- [300152] = {[36] = true, [53] = true, [404] = true, [10001]=108, [10004]=108}, -- Tidestallion
 	   
 	}
 	
