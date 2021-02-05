@@ -86,6 +86,7 @@ function GoGo_GetMountDB()
 		[230] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67}, -- Generic Ground Mount
 		-- No default for type 231
 		-- No default for type 232
+		[241] = {[38] = true, [201] = true, [330]=true, [402]=true, [10002]=160}, -- Qiraji Battle Tanks
 	
 	}
 
@@ -135,12 +136,6 @@ function GoGo_GetMountDB()
 
 		------------------------------------------------------
 	
-		[25953] = {[38] = true, [201] = true, [330]=true, [402]=true, [10002]=160},  -- Blue Qiraji Battle Tank
-		[26055] = {[38] = true, [201] = true, [330]=true, [402]=true, [10002]=160},  -- Yellow Qiraji Battle Tank
-		[26054] = {[38] = true, [201] = true, [330]=true, [402]=true, [10002]=160},  -- Red Qiraji Battle Tank
-		[26056] = {[38] = true, [201] = true, [330]=true, [402]=true, [10002]=160},  -- Green Qiraji Battle Tank
-
-		
 		[33184] = {[38] = true, [9] = true, [4] = true, [999] = true},  -- Swift Magic Broom  --  itemid
 		[42667] = {[7] = true, [9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [402]=true, [403]=true, [600]=true, [601]=true, [10002]=160, [10003]=250, [50000]=33176},  -- Flying Broom  --  itemid
 		[42668] = {[9] = true, [11] = true, [36] = true, [50000]=33182},  -- Swift Flying Broom  --  [50000]=33184
