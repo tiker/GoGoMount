@@ -96,6 +96,8 @@ function GoGo_GetMountDB()
 		-- No default for type 247
 		[248] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67}, -- Generic Flying Mount
 		[254] = {[36] = true, [53] = true, [404] = true, [10001]=108, [10004]=108}, -- Generic Water Mount
+		[284] = {[39] = true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67}, -- Chauffeured mounts
+		-- No default for type 398
 	
 	}
 
@@ -181,6 +183,10 @@ function GoGo_GetMountDB()
 		[228919] = {[36] = true, [53] = true, [404] = true, [10001]=108, [10002]=160, [10003]=250, [10004]=108},  -- Darkwater Skate
 		[278803] = {[36] = true, [53] = true, [404] = true, [10001]=108, [10002]=160, [10003]=250, [10004]=108},  -- Great Sea Ray
 		[278979] = {[36] = true, [53] = true, [404] = true, [10001]=108, [10002]=160, [10003]=250, [10004]=108},  -- Surf Jelly
+		
+		
+		-- TYPE 398
+		[267270] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Kua'fon
 
 		------------------------------------------------------
 	
@@ -217,8 +223,6 @@ function GoGo_GetMountDB()
 		[60424] = {[2] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Mekgineer's Chopper
 		[66393] = {[7] = true, [10002]=200, [50000]=46856}, -- Keys to the Hot Rod
 		[76203] = {[55] = true, [200] = true, [10004]=286, [50000]=55121},  -- River Boat
-		[179244] = {[39] = true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Summon Chauffeur
-		[179245] = {[39] = true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Summon Chauffeur
 
 		[61442] = {[9] = true, [47] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Swift Mooncloth Carpet
 		[61444] = {[9] = true, [47] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Swift Shadoweave Carpet
@@ -269,10 +273,6 @@ function GoGo_GetMountDB()
 		[295190] = {[8]=true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67, [50000]=168035},  -- Mawrat Harness
 		[304916] = {[8]=true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67, [50000]=170499},  -- Maw Seeker Harness
 		
-		-- Incorrect flying
-		[267270] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Kua'fon
-		
-		
 		-- Obsolete (Uncategorized spells)
 		--    [471] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Palamino
 		--   [3363] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Nether Drake
@@ -318,7 +318,7 @@ function GoGo_GetMountDB()
 	   
 	}
 	
-	-- Fill generic mount types from journql
+	-- Fill generic mount types from journal
 	for _,mountID in ipairs(C_MountJournal.GetMountIDs()) do
 		spellID = select(2, C_MountJournal.GetMountInfoByID(mountID))
 		mountTypeID  = select(5, C_MountJournal.GetMountInfoExtraByID(mountID))
