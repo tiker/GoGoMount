@@ -323,7 +323,7 @@ function GoGo_ChooseMount()
 	if (GoGo_Variables.Player.Class == "DRUID") then
 		GoGo_TableAddUnique(GoGo_Variables.WaterSpeed, 101)  -- Aqua Form
 		GoGo_TableAddUnique(GoGo_Variables.WaterSurfaceSpeed, 101)  -- Aqua Form
-		GoGo_TableAddUnique(GoGo_Variables.GroundSpeed, 125)  -- Cat Form
+		GoGo_TableAddUnique(GoGo_Variables.GroundSpeed, 130)  -- Cat Form
 		GoGo_TableAddUnique(GoGo_Variables.GroundSpeed, 140)  -- Travel Form
 	elseif (GoGo_Variables.Player.Class == "SHAMAN") then
 		GoGo_TableAddUnique(GoGo_Variables.GroundSpeed, 130)  -- Ghost Wolf
@@ -1095,14 +1095,15 @@ function GoGo_IsShifted()
 		GoGo_DebugAddLine("GoGo_IsShifted:  GoGo_IsShifted starting")
 	end --if
 	for i = 1, GetNumShapeshiftForms() do
-		local _, name, active = GetShapeshiftFormInfo(i)
+		local _, active = GetShapeshiftFormInfo(i)
 		if active then
 			if GoGo_Variables.Debug >= 10 then
-				GoGo_DebugAddLine("GoGo_IsShifted: Found " .. name)
+				GoGo_DebugAddLine("GoGo_IsShifted: Found " .. i)
 			end --if
-			return name
+			return true
 		end
 	end --for
+	return false
 end --function
 
 ---------
@@ -1872,11 +1873,21 @@ end --function
 ---------
 function GoGo_UpdateMountData()
 ---------
+	if (GoGo_Variables.Player.Class == "DRUID") and (GoGo_Variables.Player.Level>=20) then
+		GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][10002] = 200
+		GoGo_TableAddUnique(GoGo_Variables.GroundSpeed, 200)
+	end --if
+
 	if (GoGo_Variables.Player.Class == "DRUID") and GoGo_InBook(GoGo_Variables.Localize.FelineSwiftness) then
-		GoGo_Variables.MountDB[GoGo_Variables.Localize.CatForm][10002] = 144
-		GoGo_TableAddUnique(GoGo_Variables.GroundSpeed, 144)
-		GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][10002] = 161
-		GoGo_TableAddUnique(GoGo_Variables.GroundSpeed, 161)
+		GoGo_Variables.MountDB[GoGo_Variables.Localize.CatForm][10002] = 149
+		GoGo_TableAddUnique(GoGo_Variables.GroundSpeed, 149)
+		if (GoGo_Variables.Player.Level<20) then
+			GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][10002] = 161
+			GoGo_TableAddUnique(GoGo_Variables.GroundSpeed, 161)
+		else
+			GoGo_Variables.MountDB[GoGo_Variables.Localize.TravelForm][10002] = 230
+			GoGo_TableAddUnique(GoGo_Variables.GroundSpeed, 230)
+		end --if
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_UpdateMountData: We're a Druid with Feline Swiftness.  Modifying shape form speed data.")
 		end --if
