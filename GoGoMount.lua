@@ -391,10 +391,6 @@ function GoGo_ChooseMount()
 
 	GoGo_ZoneCheck()  -- Checking to see what we can and can not do in zones
 
-	if GoGo_Prefs.AutoExcludeFlyingMounts and not GoGo_Variables.ZoneExclude.CanFly and not GoGo_Variables.SelectHerbMount then
-		GoGo_Variables.SkipFlyingMount = true
-	end --if
-
 	GoGo_UpdateMountData()  -- update mount information with changes from talents, glyphs, etc.
 --[[
 	if GoGo_Variables.EngineeringLevel <= 299 then
@@ -482,6 +478,11 @@ function GoGo_ChooseMount()
 			GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 401)
 		end --if
 --	end --if
+
+	if GoGo_Prefs.AutoExcludeFlyingMounts and (not GoGo_Variables.ZoneExclude.CanFly or GoGo_Variables.NoFlying) and not GoGo_Variables.SelectHerbMount then
+		GoGo_Variables.SkipFlyingMount = true
+	end --if
+
 
 	if (GoGo_Variables.Player.Class == "DRUID" and GoGo_Prefs.DruidFormNotRandomize and not GoGo_IsMoving() and not IsFalling()) then
 		GoGo_Variables.FilteredMounts = GoGo_FilterMountsOut(GoGo_Variables.FilteredMounts, 9998)
