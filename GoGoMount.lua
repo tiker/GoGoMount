@@ -839,7 +839,7 @@ function GoGo_Dismount(button)
 				GoGo_FillButton(button, GoGo_GetMount())
 			else
 --				CancelUnitBuff("player", GoGo_IsShifted())  -- protected by blizzard now
-				GoGo_FillButton(button, GoGo_IsShifted())
+				GoGo_FillButton(button, GoGo_GetIDName(GoGo_IsShifted()))
 			end --if
 		end --if
 	elseif GoGo_Variables.Player.Class == "SHAMAN" then
@@ -1096,12 +1096,12 @@ function GoGo_IsShifted()
 		GoGo_DebugAddLine("GoGo_IsShifted:  GoGo_IsShifted starting")
 	end --if
 	for i = 1, GetNumShapeshiftForms() do
-		local _, active = GetShapeshiftFormInfo(i)
+		local _, active, _, spellID = GetShapeshiftFormInfo(i)
 		if active then
 			if GoGo_Variables.Debug >= 10 then
-				GoGo_DebugAddLine("GoGo_IsShifted: Found " .. i)
+				GoGo_DebugAddLine("GoGo_IsShifted: Found " .. spellID)
 			end --if
-			return true
+			return spellID
 		end
 	end --for
 	return false
