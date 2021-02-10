@@ -78,6 +78,11 @@ function GoGo_OnEvent(self, event, ...)
 					GoGo_DebugAddLine("GoGo_OnEvent: Shaman entering combat.  Setting macro.")
 				end --if
 				GoGo_FillButton(button, GoGo_InBook(GOGO_SPELLS["SHAMAN"]))
+			elseif GoGo_Variables.Player.Covenant == GoGo_Variables.Localize.NightFae then
+				if GoGo_Variables.Debug >= 10 then 
+					GoGo_DebugAddLine("GoGo_OnEvent: Night Fae entering combat.  Setting macro.")
+				end --if
+				GoGo_FillButton(button, GoGo_InBook(GOGO_SPELLS["NIGHTFAE"]))
 			elseif GoGo_Variables.Player.Class == "DRUID" then
 				if not GoGo_Prefs.DruidDisableInCombat then
 					GoGo_ZoneCheck()  -- Checking to see what we can and can not do in zones
