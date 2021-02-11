@@ -39,6 +39,8 @@ GoGo_Variables.TestVersion = true
 -- 7 : instant
 -- 8 : indoor
 -- 9 : ????
+-- 10 :
+-- 11 :
 -- 14 :
 -- 15 :
 -- 35 : Mounts unusable under Riding Level 300
@@ -117,7 +119,9 @@ function GoGo_GetMountDB()
 		[55531] = {[2] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Mechano-hog
 		[60136] = {[2] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Grand Caravan Mammoth
 		[60140] = {[2] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Grand Caravan Mammoth
+		[60424] = {[2] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Mekgineer's Chopper
 		[61465] = {[2] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Grand Black War Mammoth
+		[61466] = {[2] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Grand Black War Mammoth
 		[61467] = {[2] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Grand Black War Mammoth
 		[61469] = {[2] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Grand Ice Mammoth
 		[61470] = {[2] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Grand Ice Mammoth
@@ -187,92 +191,52 @@ function GoGo_GetMountDB()
 		
 		-- TYPE 398
 		[267270] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Kua'fon
-
-		------------------------------------------------------
-	
-		[33184] = {[38] = true, [9] = true, [4] = true, [999] = true},  -- Swift Magic Broom  --  itemid
+		
+		-- SHAPE FORMS AND SPEED SPELLS
+		[768] = {[7] = true, [8] = true, [1000] = true, [500] = true, ["DefaultInstance"] = true, [10002]=130},  -- Druid Cat Form
+		[783] = {[7] = true, [500] = true, [1000]=true, [10002]=140}, -- Druid Travel Form
+		[1066] = {[7] = true, [53] = true, [500]=true, [1000]=true, [10001]=101, [10004]=101, ["DefaultInstance"] = true},  -- Druid Aqua form
+		[2645] = {[7] = true, [8] = true, [500] = true, [1000] = true, ["DefaultInstance"] = true, [10002]=130}, -- Shaman Ghost Wolf Form
+		[33943] = {[7] = true, [9] = true, [300] = true, [301] = true, [403] = true, [9998] = true, ["FlightOnly"] = true, [10003]=250},  -- Druid Flight Form
+		[40120] = {[7] = true, [9] = true, [300] = true, [403] = true, [9998] = true, ["FlightOnly"] = true, [10003]=380},  -- Druid Swift Flight Form
+		[87840] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Running Wild (Worgen Racial)
+		[125883] = {[7]=true, [9]=true, [403]=true, ["FlightOnly"]=true, [10003]=160},	-- Zen Flight (Monk glyph)
+		[165962] = {[7] = true, [9] = true, [300] = true, [301] = true, [403] = true, [501] = true, [9998] = true, ["FlightOnly"] = true, [10003]=250},  -- Druid Flight Form  (new form that appears with Glyph of the Stag with patch 6.0)
+		[186257] = {[7] = true, [8] = true, [500] = true, ["DefaultInstance"] = true, [10002]=138},  -- Aspect of the Cheeta
+		[310143] = {[7] = true, [8] = true, [500] = true, [1000] = true, ["DefaultInstance"] = true, [10002]=150}, -- Night Fae SoulShape
+		
+		
+		-- MOUNTS FROM ITEMS
 		[42667] = {[7] = true, [9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [402]=true, [403]=true, [600]=true, [601]=true, [10002]=160, [10003]=250, [50000]=33176},  -- Flying Broom  --  itemid
 		[42668] = {[9] = true, [11] = true, [36] = true, [50000]=33182},  -- Swift Flying Broom  --  [50000]=33184
 		[47977] = {[7]=true, [9] = true, [10]=true, [38] = true, [300]=true, [301]=true, [330]=true, [402]=true, [403]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67, [50000]=37011},  -- Magic Broom -- itemid
-	
-		[64762] = {[9] = true, [39] = true, [52] = true, ["FlightOnly"] = true, [10003]=250, [50000]=44229},  -- Loaned Wind Rider Reins
-
 		[49345] = {[9] = true, [54] = true, ["FlightOnly"] = true, [50000]=37815},  -- Emerald Drake
 		[49461] = {[9] = true, [54] = true, ["FlightOnly"] = true, [50000]=37859},  -- Amber Drake
 		[49462] = {[9] = true, [54] = true, ["FlightOnly"] = true, [50000]=37860},  -- Ruby Drake
-
-		[145133] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67, [50000]=101675},  -- Moonfang
-		[164222] = {[5]=true, [39]=true, [202]=true, [330]=true, [402]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Frostwolf War Wolf
-
-		[165803] = {[5]=true, [39] = true, [202]=true, [330]=true, [402]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Telaari Talbuk
-
-		--[64987] = {[38] = true, [999] = true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10004]=67},  --Big Blizzard Bear [PH] - ticket 211
-		
-
-		[127272] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=200},  -- Orange Water Strider  (walks on water)
-		[127274] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=200},  -- Jade Water Strider  (walks on water)
-		[127278] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=200},  -- Golden Water Strider  (walks on water)
-	
-		[59802] = {[2] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Grand Ice Mammoth
-		[59804] = {[2] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Grand Ice Mammoth
-		[59810] = {[2] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Grand Black War Mammoth
-		[59811] = {[2] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Grand Black War Mammoth
-		[61466] = {[2] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Grand Black War Mammoth
-		
-
-		[60424] = {[2] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Mekgineer's Chopper
+		[64762] = {[9] = true, [39] = true, [52] = true, ["FlightOnly"] = true, [10003]=250, [50000]=44229},  -- Loaned Wind Rider Reins
 		[66393] = {[7] = true, [10002]=200, [50000]=46856}, -- Keys to the Hot Rod
 		[76203] = {[55] = true, [200] = true, [10004]=286, [50000]=55121},  -- River Boat
-
-		[61442] = {[9] = true, [47] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Swift Mooncloth Carpet
-		[61444] = {[9] = true, [47] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Swift Shadoweave Carpet
-		[61446] = {[9] = true, [47] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Swift Spellfire Carpet
-		--	[????] = {[11] = true, [47] = true, [9] = true, [36] = true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10004]=67},  -- Swift Flying Carpet   --- item 39303
-
-
-
-		[24347] = {[7]=true, [8]=true, [10001]=91, [10004]=91, [50000]=19979},  -- Master Angler
-		
-
 		[101641] = {[9] = true, [19] = true, [39] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67, [50000]=71086},  -- Tarecgosa's Visage
-	--	[62087] = {[15] = true, [39] = true, [53] = true, [999] = true},  -- Aquatic Riding Ray   -- removed from the 3.1 PTR datafiles
-
-		-- Spells, shape forms, etc
-		[40120] = {[7] = true, [9] = true, [300] = true, [403] = true, [9998] = true, ["FlightOnly"] = true, [10003]=380},  -- Druid Swift Flight Form
-		[33943] = {[7] = true, [9] = true, [300] = true, [301] = true, [403] = true, [9998] = true, ["FlightOnly"] = true, [10003]=250},  -- Druid Flight Form
-		[165962] = {[7] = true, [9] = true, [300] = true, [301] = true, [403] = true, [501] = true, [9998] = true, ["FlightOnly"] = true, [10003]=250},  -- Druid Flight Form  (new form that appears with Glyph of the Stag with patch 6.0)
-		[783] = {[7] = true, [500] = true, [1000]=true, [10002]=140}, -- Druid Travel Form
-		[2645] = {[7] = true, [8] = true, [500] = true, [1000] = true, ["DefaultInstance"] = true, [10002]=130}, -- Shaman Ghost Wolf Form
-		[768] = {[7] = true, [8] = true, [1000] = true, [500] = true, ["DefaultInstance"] = true, [10002]=125},  -- Druid Cat Form
-		[1066] = {[7] = true, [53] = true, [500]=true, [1000]=true, [10001]=101, [10004]=101, ["DefaultInstance"] = true},  -- Druid Aqua form
-		[186257] = {[7] = true, [8] = true, [500] = true, ["DefaultInstance"] = true, [10002]=138},  -- Aspect of the Cheeta
-		-- [13159] = {[7] = true, [8] = true, [500] = true, ["DefaultInstance"] = true, [10002]=138},  -- Aspect of the Pack
-		[87840] = {[14] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Running Wild (Worgen Racial)
-		[125883] = {[7]=true, [9]=true, [403]=true, ["FlightOnly"]=true, [10003]=160},	-- Zen Flight (Monk glyph)
-		[310143] = {[7] = true, [8] = true, [500] = true, [1000] = true, ["DefaultInstance"] = true, [10002]=150}, -- Night Fae SoulShape
-
-		-- Other ...
-		[163016] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67, [9999]=true},  -- Warforged Nightmare
-
-		-- 6.0.0 Mounts (may change before expansion is released)
-		[150926] = {[9] = true, [36]=true, ["FlightOnly"] = true, [300]=true, [301]=true, [403]=true, [10003]=250},  -- Draenor Chimera
-		[148626] = {[99999]=true, ["note"]="mount that only lasts 20 seconds?  adding here but excluding to prevent GoGoMount from flagging a unknown mount"},  -- Furious Ashhide Mushan
-		[171828] = {[9]=true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Solar Spirehawk
-
-		-- 7.0.1 - Legion
+		[145133] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67, [50000]=101675},  -- Moonfang
 		[220124] = {[50000]=139421},		-- Ratstallion Harness
-
-		[215545] = {[999]=true, [9999]=true},  -- Fel Bat (Test)
 		[220508] = {[38] = true, [203]=true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67, [50000]=139505},  -- 7.0 Paladin Order Hall Mount Dummy
-
-		-- 8.0.1.25902
 		[239766] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67, [50000]=151626},  -- Blue Qiraji War Tank
-
-       -- 9.0 Ground mounts (from wowhead)
-	   
 		[295190] = {[8]=true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67, [50000]=168035},  -- Mawrat Harness
 		[304916] = {[8]=true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67, [50000]=170499},  -- Maw Seeker Harness
 		
+		
+		-- DRAENOR NAGRAND GARISON ABILITY
+		[164222] = {[5]=true, [39]=true, [202]=true, [330]=true, [402]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Frostwolf War Wolf
+		[165803] = {[5]=true, [39] = true, [202]=true, [330]=true, [402]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Telaari Talbuk
+		
+		
+		-- OTHER
+		[148626] = {[99999]=true, ["note"]="mount that only lasts 20 seconds?  adding here but excluding to prevent GoGoMount from flagging a unknown mount"},  -- Furious Ashhide Mushan
+		[163016] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67, [9999]=true},  -- Warforged Nightmare
+
+
+		------------------------------------------------------
+
 		-- Obsolete (Uncategorized spells)
 		--    [471] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Palamino
 		--   [3363] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Nether Drake
@@ -293,6 +257,8 @@ function GoGo_GetMountDB()
 		--  [54727] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Winged Steed of the Ebon Blade
 		--  [58819] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Swift Brown Steed
 		--  [59573] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Brown Polar Bear
+		--  [59802] = {[2] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Grand Ice Mammoth
+		--  [59804] = {[2] = true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Grand Ice Mammoth
 		-- [148970] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Felsteed
 		-- [148972] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Dreadsteed
 		-- [171840] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Coldflame Infernal
@@ -305,8 +271,12 @@ function GoGo_GetMountDB()
 		-- [123160] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Crimson Riding Crane
 		-- [127178] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Jungle Riding Crane
 		-- [127180] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Albino Riding Crane
+		-- [127272] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=200},  -- Orange Water Strider  (walks on water)
+		-- [127274] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=200},  -- Jade Water Strider  (walks on water)
+		-- [127278] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=200},  -- Golden Water Strider  (walks on water)
 		-- [171618] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Ancient Leatherhide
 		-- [213349] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67},  -- Flarecore Infernal
+		-- [215545] = {[999]=true, [9999]=true},  -- Fel Bat (Test)
 
 		-- Obsolete (Flying mounts)
 		--  [32345] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Peep the Phoenix Mount
@@ -315,6 +285,9 @@ function GoGo_GetMountDB()
 		-- [237288] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Reins of the Onyx War Hyena
 		-- [278966] = {[9] = true, [38] = true, [300]=true, [301]=true, [330]=true, [400]=true, [402]=true, [403]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10003]=250, [10004]=67},  -- Tempestuous Skystallion
 		-- [300152] = {[36] = true, [53] = true, [404] = true, [10001]=108, [10004]=108}, -- Tidestallion
+		
+		-- Obsolete (Removed)
+		--  [33184] = {[38] = true, [9] = true, [4] = true, [999] = true},  -- Swift Magic Broom  --  itemid
 	   
 	}
 	
