@@ -223,6 +223,7 @@ function GoGo_GetMountDB()
 		[239766] = {[38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67, [50000]=151626},  -- Blue Qiraji War Tank
 		[295190] = {[8]=true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67, [50000]=168035},  -- Mawrat Harness
 		[304916] = {[8]=true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67, [50000]=170499},  -- Maw Seeker Harness
+		[315315] = {[8]=true, [38] = true, [330]=true, [400]=true, [402]=true, [405]=true, [701]=true, [10001]=67, [10002]=160, [10004]=67, [50000]=174464},  -- Spectral Bridle
 		
 		
 		-- DRAENOR NAGRAND GARISON ABILITY
@@ -334,7 +335,8 @@ GoGo_Variables.MountItemIDs = {
 	[151625] = {[50000]=239767, [51000] = true},  	-- Ruby Qiraji Resonating Crystal
 	[151626] = {[50000]=239766, [51000] = true},  	-- Sapphire Qiraji Resonating Crystal
 	[168035] = {[50000]=295190, [51000] = true},  	-- Mawrat Harness
-	[170499] = {[50000]=304916, [51000] = true}  	-- Maw Seeker Harness
+	[170499] = {[50000]=304916, [51000] = true},  	-- Maw Seeker Harness
+	[174464] = {[50000]=315315, [51000] = true},  	-- Spectral Bride
 }
 
 
