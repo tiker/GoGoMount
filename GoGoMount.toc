@@ -1,4 +1,4 @@
-## Interface: 90002
+## Interface: 90005
 ## Title: GoGoMount (Ghuda's fork)
 ## Version: 2.1.0
 ## Notes: One-key solution for mounting/dismounting, supports spells, shapeshifting
