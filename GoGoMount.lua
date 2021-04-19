@@ -945,7 +945,8 @@ function GoGo_BuildMountList()
 			table.insert(GoGo_MountList, GoGo_Variables.Localize.ZenFlight)
 			GoGo_TableAddUnique(GoGo_Variables.AirSpeed, 160)
 		end --if
-	elseif GoGo_Variables.Player.Covenant == GoGo_Variables.Localize.NightFae then
+	end --if
+	if GoGo_Variables.Player.Covenant == GoGo_Variables.Localize.NightFae then
 			table.insert(GoGo_MountList, GoGo_Variables.Localize.SoulShape)
 	end --if
 
