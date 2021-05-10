@@ -346,7 +346,7 @@ function GoGo_ChooseMount()
 		GoGo_DebugAddLine("GoGo_ChooseMount: " .. GoGo_Variables.Localize.Skill.Riding .. " = "..GoGo_Variables.RidingLevel)
 	end --if
 
-	if (table.getn(mounts) == 0) then
+	if (table.getn(mounts) == 0) and GoGo_Variables.Player.MapID then
 		if table.getn(GoGo_Prefs.MapIDs[GoGo_Variables.Player.MapID]["Preferred"]) > 0 then
 			GoGo_Variables.FilteredMounts = GoGo_Prefs.MapIDs[GoGo_Variables.Player.MapID]["Preferred"] or {}
 			GoGo_CheckForUnknownMounts(GoGo_Variables.FilteredMounts)
@@ -1332,7 +1332,7 @@ function GoGo_RemoveExcluded()  -- removes excluded mounts from mount selection 
 			end --for
 		end --for
 	end --if
-	if table.getn(GoGo_Prefs.MapIDs[GoGo_Variables.Player.MapID]["Excluded"]) > 0 then
+	if GoGo_Variables.Player.MapID and table.getn(GoGo_Prefs.MapIDs[GoGo_Variables.Player.MapID]["Excluded"]) > 0 then
 		for a = 1, table.getn(GoGo_Prefs.MapIDs[GoGo_Variables.Player.MapID]["Excluded"]) do
 			for b = 1, table.getn(GoGo_Variables.FilteredMounts) do
 				if GoGo_Variables.FilteredMounts[b] == GoGo_Prefs.MapIDs[GoGo_Variables.Player.MapID]["Excluded"][a] then
@@ -3235,7 +3235,12 @@ function GoGo_DebugCollectInformation()
 	end --if
 	GoGo_DebugAddLine("Information: Client locale is " .. GetLocale())
 	GoGo_DebugAddLine("Information: Location = " .. GetRealZoneText() .. " - " .. GetZoneText() .. " - " ..GetSubZoneText() .. " - " .. GetMinimapZoneText())
-	GoGo_DebugAddLine("Information: Current zone area ID as per C_Map.GetBestMapForUnit('player'): " .. C_Map.GetBestMapForUnit("player"))
+	AreaID = C_Map.GetBestMapForUnit("player")
+	if AreaID then
+		GoGo_DebugAddLine("Information: Current zone area ID as per C_Map.GetBestMapForUnit('player'): " .. AreaID)
+	else
+		GoGo_DebugAddLine("Information: Current zone area ID as per C_Map.GetBestMapForUnit('player') returned a nil value ")
+	end --if
 --	GoGo_DebugAddLine("Information: Current map ID as per GetCurrentMapDungeonLevel(): " .. GetCurrentMapDungeonLevel())
 --	local posX, posY = GetPlayerMapPosition("Player")
 --	GoGo_DebugAddLine("Information: Player location: X = ".. posX .. ", Y = " .. posY)

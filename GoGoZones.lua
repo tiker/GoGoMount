@@ -42,7 +42,11 @@ function GoGo_ZoneCheck()
 		GoGo_DebugAddLine("GoGo_ZoneCheck: Beginning function.")
 	end --if
 	if GoGo_Variables.Debug >= 5 then
-		GoGo_DebugAddLine("GoGo_ChooseMount: Map ID = " .. GoGo_Variables.Player.MapID)
+	    if GoGo_Variables.Player.MapID then
+			GoGo_DebugAddLine("GoGo_ChooseMount: Map ID = " .. GoGo_Variables.Player.MapID)
+		else
+			GoGo_DebugAddLine("GoGo_ChooseMount: Map ID is nil")
+		end --if
 	end --if
 
 	if GoGo_Variables.Player.MapID == 1 then
