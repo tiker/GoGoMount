@@ -4171,6 +4171,13 @@ function GoGo_ZoneCheck()
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Oribos")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 1961 then  -- Korthia
+		if GoGo_Variables.Debug >= 10
+		then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Maw")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		GoGo_Variables.ZoneExclude.TheMaw = false
 
 --	elseif GoGo_Variables.Player.ZoneID == -1 then
 		-- Arenas:

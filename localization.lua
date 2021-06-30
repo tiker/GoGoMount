@@ -39,4 +39,6 @@
 	GoGo_Variables.Localize.Skill.JourneymanRiding = 150
 	GoGo_Variables.Localize.Skill.ApprenticeRiding = 75
 	GoGo_Variables.Localize.Skill.NoRiding = 0
+	GoGo_Variables.Localize.TheTrueMawWalker = 353214
+	GoGo_Variables.Localize.TheTrueMawWalkerQuest = 63663
 	GoGo_Variables.Localize.WisdomOfTheFourWinds = 115913	-- Removed with patch 7.3.5
