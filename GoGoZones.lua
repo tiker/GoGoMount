@@ -4158,6 +4158,46 @@ function GoGo_ZoneCheck()
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 		GoGo_Variables.ZoneExclude.TheMaw = false
+	elseif GoGo_Variables.Player.MapID == 1525 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Revendreth")
+		end --if
+		if C_QuestLog.IsQuestFlaggedCompleted(GoGo_Variables.Localize.MemoriesOfSunlessSkies) then
+			GoGo_Variables.ZoneExclude.CanFly = true
+		else
+			GoGo_Variables.ZoneExclude.CanFly = false
+		end --if
+		-- can ride = true
+	elseif GoGo_Variables.Player.MapID == 1533 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Bastion")
+		end --if
+		if C_QuestLog.IsQuestFlaggedCompleted(GoGo_Variables.Localize.MemoriesOfSunlessSkies) then
+			GoGo_Variables.ZoneExclude.CanFly = true
+		else
+			GoGo_Variables.ZoneExclude.CanFly = false
+		end --if
+		-- can ride = true
+	elseif GoGo_Variables.Player.MapID == 1536 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Maldraxus")
+		end --if
+		if C_QuestLog.IsQuestFlaggedCompleted(GoGo_Variables.Localize.MemoriesOfSunlessSkies) then
+			GoGo_Variables.ZoneExclude.CanFly = true
+		else
+			GoGo_Variables.ZoneExclude.CanFly = false
+		end --if
+		-- can ride = true
+	elseif GoGo_Variables.Player.MapID == 1565 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Ardenweald")
+		end --if
+		if C_QuestLog.IsQuestFlaggedCompleted(GoGo_Variables.Localize.MemoriesOfSunlessSkies) then
+			GoGo_Variables.ZoneExclude.CanFly = true
+		else
+			GoGo_Variables.ZoneExclude.CanFly = false
+		end --if
+		-- can ride = true
 	elseif GoGo_Variables.Player.MapID == 1648 then  -- The Maw
 		if GoGo_Variables.Debug >= 10
 		then
@@ -4171,6 +4211,16 @@ function GoGo_ZoneCheck()
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Oribos")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
+	elseif GoGo_Variables.Player.MapID == 1701 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Ardenweald: Heart of the Forest")
+		end --if
+		if C_QuestLog.IsQuestFlaggedCompleted(GoGo_Variables.Localize.MemoriesOfSunlessSkies) then
+			GoGo_Variables.ZoneExclude.CanFly = true
+		else
+			GoGo_Variables.ZoneExclude.CanFly = false
+		end --if
+		-- can ride = true
 	elseif GoGo_Variables.Player.MapID == 1961 then  -- Korthia
 		if GoGo_Variables.Debug >= 10
 		then
