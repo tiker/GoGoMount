@@ -927,6 +927,9 @@ function GoGo_BuildMountList()
 		if GoGo_InBook(GoGo_Variables.Localize.FlightForm) then  -- Flight Form that appears with "Glyph of the Stag" in Warcraft 6.0
 			table.insert(GoGo_MountList, GoGo_Variables.Localize.FlightForm)
 		end --if
+		if GoGo_InBook(GoGo_Variables.Localize.MountForm) then
+			table.insert(GoGo_MountList, GoGo_Variables.Localize.MountForm)
+		end --if
 		if GoGo_InBook(GoGo_Variables.Localize.TravelForm) then
 			table.insert(GoGo_MountList, GoGo_Variables.Localize.TravelForm)
 		end --if

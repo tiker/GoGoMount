@@ -21,6 +21,7 @@
 	GoGo_Variables.Localize.GhostWolf = 2645
 	GoGo_Variables.Localize.JourneymanRiding = 33391  -- 150 Riding Skill
 	GoGo_Variables.Localize.MasterRiding = 90265  -- 300 Riding Skill + 310% speed
+	GoGo_Variables.Localize.MountForm = 210053
 	GoGo_Variables.Localize.NoCovenant = 0
 	GoGo_Variables.Localize.NightFae = 3
 	GoGo_Variables.Localize.RunningWild = 87840
