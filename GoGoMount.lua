@@ -16,6 +16,10 @@ function GoGo_OnLoad()
 	GoGoFrame:RegisterEvent("ZONE_CHANGED_NEW_AREA")
 	GoGoFrame:RegisterEvent("ZONE_CHANGED_INDOORS")
 	GoGoFrame:RegisterEvent("ZONE_CHANGED")
+	
+	if GoGo_SLFlying == nil then
+		GoGo_SLFlying = false;
+	end
 end --function
 
 ---------

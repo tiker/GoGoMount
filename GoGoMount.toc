@@ -12,6 +12,6 @@
 ## Notes-koKR: 탈것의 타기/내리기를 위한 1 키 해결, 주문, 변신 지원
 ## Author: Ghuda (Vol'jin) based on gogoMounts by Gadgets (Tiker), EMMount by Everyjams and GoGoMount_ExtraMounts by sterrosa
 ## SavedVariablesPerCharacter: GoGo_Prefs GoGo_DebugLog
-## SavedVariables: GoGoMount_MountSettings
+## SavedVariables: GoGoMount_MountSettings GoGo_SLFlying
 
 GoGoMount.xml
