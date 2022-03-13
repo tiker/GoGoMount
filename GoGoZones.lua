@@ -3722,7 +3722,13 @@ function GoGo_ZoneCheck()
 --	elseif GoGo_Variables.Player.MapID == 787 then
 --	elseif GoGo_Variables.Player.MapID == 788 then
 --	elseif GoGo_Variables.Player.MapID == 789 then
---	elseif GoGo_Variables.Player.MapID == 790 then
+	elseif GoGo_Variables.Player.MapID == 790 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Eye of Azhara (non instanced)")
+		end --if
+		GoGo_Variables.ZoneExclude.LegionZones = false
+		GoGo_Variables.ZoneExclude.CanFly = true
+		-- can ride = true
 --	elseif GoGo_Variables.Player.MapID == 791 then
 --	elseif GoGo_Variables.Player.MapID == 792 then
 --	elseif GoGo_Variables.Player.MapID == 793 then
