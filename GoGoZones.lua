@@ -4234,17 +4234,24 @@ function GoGo_ZoneCheck()
 	elseif GoGo_Variables.Player.MapID == 1960 then  -- The Maw - The Hunt for the Baron
 		if GoGo_Variables.Debug >= 10
 		then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Maw")
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Maw - The Hunt for the Baron")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 		GoGo_Variables.ZoneExclude.TheMaw = false
 	elseif GoGo_Variables.Player.MapID == 1961 then  -- Korthia
 		if GoGo_Variables.Debug >= 10
 		then
-			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Maw")
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Korthia")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 		GoGo_Variables.ZoneExclude.TheMaw = false
+	elseif GoGo_Variables.Player.MapID == 1970 then  -- Zereth Morthis
+		if GoGo_Variables.Debug >= 10
+		then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Zereth Morthis")
+		end --if
+		local _, _, _, completed = GetAchievementInfo(GoGo_Variables.Localize.UnlockingTheSecret)
+		GoGo_Variables.ZoneExclude.CanFly = completed
 
 --	elseif GoGo_Variables.Player.ZoneID == -1 then
 		-- Arenas:
