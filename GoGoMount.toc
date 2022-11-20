@@ -1,4 +1,4 @@
-## Interface: 90205
+## Interface: 100000
 ## Title: GoGoMount (Ghuda's fork)
 ## Version: @project-version@
 ##
