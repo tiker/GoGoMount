@@ -1050,8 +1050,8 @@ function GoGo_InBags(item)
 	end --if
 
 	for bag = 0, NUM_BAG_FRAMES do
-		for slot = 1, GetContainerNumSlots(bag) do
-			local link = GetContainerItemLink(bag, slot)
+		for slot = 1, C_Container.GetContainerNumSlots(bag) do
+			local link = C_Container.GetContainerItemLink(bag, slot)
 			if link then
 				local _, itemid, _ = strsplit(":",link,3)
 				if tonumber(itemid) == item then
