@@ -22,5 +22,6 @@
 ## SavedVariables: GoGoMount_MountSettings GoGo_SLFlying
 ## X-WoWI-ID: 26331
 ## X-Wago-ID: RBKp3r6E
+## X-Curse-Project-ID: 442189
 
 GoGoMount.xml
