@@ -4254,9 +4254,9 @@ function GoGo_ZoneCheck()
 		local _, _, _, completed = GetAchievementInfo(GoGo_Variables.Localize.UnlockingTheSecret)
 		GoGo_Variables.ZoneExclude.CanFly = completed
 	elseif GoGo_Variables.Player.MapID == 2022 then -- The Waking Shores - Obsidian Bulwark
+		GoGo_Variables.ZoneExclude.DragonRiding = true
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Waking Shores - Obsidian Bulwark")
-		GoGo_Variables.ZoneExclude.DragonRiding = true
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = true
 	elseif GoGo_Variables.Player.MapID == 2070 then
