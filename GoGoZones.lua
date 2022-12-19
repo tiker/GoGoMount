@@ -4288,6 +4288,12 @@ function GoGo_ZoneCheck()
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Primalist Future")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = true
+	elseif GoGo_Variables.Player.MapID == 2093 then -- Ohn'ahran Plains - The Eternal Kurgans
+		GoGo_Variables.ZoneExclude.DragonRiding = true
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Ohn'ahran Plains - The Eternal Kurgans")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = true
 	elseif GoGo_Variables.Player.MapID == 2112 then -- Valdraken
 		GoGo_Variables.ZoneExclude.DragonRiding = true
 		if GoGo_Variables.Debug >= 10 then
